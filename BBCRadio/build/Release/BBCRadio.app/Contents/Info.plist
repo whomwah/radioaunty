@@ -6,8 +6,10 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>BBCRadio</string>
+	<key>CFBundleIconFile</key>
+	<string>bbclogo</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.BBCRadio</string>
+	<string>com.whomwah.BBCRadio</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

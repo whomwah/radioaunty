@@ -19,7 +19,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					300,
-					1124.20849609375,
+					586,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXErrorsWarningsDataSource_TypeID,
@@ -32,7 +32,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					1234,
+					696,
 					20,
 					48,
 					43,
@@ -49,13 +49,35 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 250534400;
-			PBXWorkspaceStateSaveDate = 250534400;
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					656,
+					60,
+					20,
+					48.16259765625,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 250536196;
+			PBXWorkspaceStateSaveDate = 250536196;
 		};
 		perUserProjectItems = {
 			AE06A1480EEED0D60060FF71 /* PBXTextBookmark */ = AE06A1480EEED0D60060FF71 /* PBXTextBookmark */;
 			AE92B1750EEEDA110053535D /* PBXTextBookmark */ = AE92B1750EEEDA110053535D /* PBXTextBookmark */;
-			AEC1CA710EEED8D800451972 /* PBXTextBookmark */ = AEC1CA710EEED8D800451972 /* PBXTextBookmark */;
+			AE96339F0EEEE323005F1213 /* PBXTextBookmark */ = AE96339F0EEEE323005F1213 /* PBXTextBookmark */;
 		};
 		sourceControlManager = AE06A0910EEECE880060FF71 /* Source Control */;
 		userBuildSettings = {
@@ -104,7 +126,7 @@
 	};
 	AE06A13E0EEECFC50060FF71 /* AppController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1412, 322}}";
+			sepNavIntBoundsRect = "{{0, 0}, {874, 322}}";
 			sepNavSelRange = "{190, 0}";
 			sepNavVisRange = "{0, 0}";
 		};
@@ -136,7 +158,7 @@
 		vrLen = 0;
 		vrLoc = 0;
 	};
-	AEC1CA710EEED8D800451972 /* PBXTextBookmark */ = {
+	AE96339F0EEEE323005F1213 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = AE06A13E0EEECFC50060FF71 /* AppController.h */;
 		name = "AppController.h: 12";
