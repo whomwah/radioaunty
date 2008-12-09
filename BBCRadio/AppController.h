@@ -12,6 +12,14 @@
 
 @interface AppController : NSObject {
   IBOutlet WebView * myWebView;
+  IBOutlet NSProgressIndicator * spinner;
 }
+
+- (void)loadUrl;
+- (void)fetchErrorMessage:(WebView *)sender;
+- (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame;
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame;
+- (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame;
+- (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame;
 
 @end
