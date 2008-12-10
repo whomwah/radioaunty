@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>BBCRadio</string>
 	<key>CFBundleIconFile</key>
-	<string>bbclogo</string>
+	<string>radio</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.whomwah.BBCRadio</string>
 	<key>CFBundleInfoDictionaryVersion</key>
