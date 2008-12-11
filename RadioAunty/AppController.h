@@ -9,17 +9,20 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
+@class PreferencesWindowController;
 
 @interface AppController : NSObject {
   IBOutlet WebView * myWebView;
   IBOutlet NSProgressIndicator * spinner;
   NSArray * stations;
   NSDictionary * currentStation;
+  PreferencesWindowController * preferencesWindowController;
 }
 
 @property (retain) NSArray * stations;
 @property (retain) NSDictionary * currentStation;
 
+- (void)displayPreferenceWindow:(id)sender;
 - (void)loadUrl:(NSDictionary *)station;
 - (void)changeStation:(id)sender;
 - (void)fetchErrorMessage:(WebView *)sender;

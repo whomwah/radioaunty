@@ -11,6 +11,8 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		AE3A975E0EF10E36001BE665 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */; };
+		AE3A97B60EF11305001BE665 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE3A97B50EF11305001BE665 /* Preferences.xib */; };
 		AEEFADFF0EF022C40021B372 /* radio.icns in Resources */ = {isa = PBXBuildFile; fileRef = AEEFADFD0EF022C40021B372 /* radio.icns */; };
 		AEEFAE000EF022C40021B372 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEEFADFE0EF022C40021B372 /* Stations.plist */; };
 		AEEFAE030EF022D20021B372 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEFAE020EF022D20021B372 /* WebKit.framework */; };
@@ -28,6 +30,9 @@
 		32CA4F630368D1EE00C91783 /* RadioAunty_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioAunty_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* RadioAunty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAunty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		AE3A97B50EF11305001BE665 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		AEEFADFD0EF022C40021B372 /* radio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio.icns; sourceTree = "<group>"; };
 		AEEFADFE0EF022C40021B372 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		AEEFAE020EF022D20021B372 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
@@ -53,6 +58,8 @@
 			children = (
 				AEEFAE070EF022E20021B372 /* AppController.h */,
 				AEEFAE080EF022E20021B372 /* AppController.m */,
+				AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */,
+				AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -113,6 +120,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
+				AE3A97B50EF11305001BE665 /* Preferences.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
 				AEEFADFF0EF022C40021B372 /* radio.icns in Resources */,
 				AEEFAE000EF022C40021B372 /* Stations.plist in Resources */,
+				AE3A97B60EF11305001BE665 /* Preferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +194,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				AEEFAE090EF022E20021B372 /* AppController.m in Sources */,
+				AE3A975E0EF10E36001BE665 /* PreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

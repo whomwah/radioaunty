@@ -7,6 +7,7 @@
 //
 
 #import "AppController.h"
+#import "PreferencesWindowController.h"
 
 #define STARTUP_NETWORK 7;
 #define CONSOLE_URL @"http://www.bbc.co.uk/iplayer/console/";
@@ -74,6 +75,14 @@
   NSDictionary * station = [[self stations] objectAtIndex:index];
   self.currentStation = station;
   [self loadUrl:[self currentStation]];  
+}
+
+- (void)displayPreferenceWindow:(id)sender
+{
+	if (!preferencesWindowController) {
+		preferencesWindowController = [[PreferencesWindowController alloc] init];
+	}
+	[preferencesWindowController showWindow:self];
 }
 
 #pragma mark URL load Delegates
