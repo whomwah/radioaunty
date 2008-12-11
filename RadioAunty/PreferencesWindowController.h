@@ -8,9 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+extern NSString * const DSRCheckForUpdates;
+extern NSString * const DSRDefaultStation;
 
 @interface PreferencesWindowController : NSWindowController {
 
+  IBOutlet NSButton * checkbox;
+  IBOutlet NSPopUpButton * stationsList;
+  
 }
+
+- (BOOL)checkForUpdates;
+- (int)defaultStation;
+- (IBAction)changeCheckForDefaults:(id)sender;
+- (IBAction)changeDefaultStation:(id)sender;
 
 @end

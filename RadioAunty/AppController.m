@@ -17,6 +17,18 @@
 @synthesize stations;
 @synthesize currentStation;
 
++ (void)initialize
+{
+  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+  NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
+  int i = STARTUP_NETWORK;
+  [defaultValues setObject:[NSNumber numberWithInt:i] forKey:DSRDefaultStation];
+  [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DSRCheckForUpdates];
+  [defaults registerDefaults:defaultValues];
+  [defaults synchronize];
+  NSLog(@"registered defaults: %@", defaultValues);
+}
+
 - (id) init {
   if (self = [super init]) {
     int startStationIndex = STARTUP_NETWORK;
