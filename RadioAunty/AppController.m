@@ -8,16 +8,21 @@
 
 #import "AppController.h"
 
+#define STARTUP_NETWORK 7;
+#define CONSOLE_URL @"http://www.bbc.co.uk/iplayer/console/";
 
 @implementation AppController
 
+@synthesize stations;
+@synthesize currentStation;
+
 - (id) init {
   if (self = [super init]) {
-    /*
-    NSString *errorDesc = nil;
+    int startStationIndex = STARTUP_NETWORK;
+    NSString * errorDesc = nil;
     NSPropertyListFormat format;
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
-    NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+    NSString * plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
+    NSData * plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
     NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
                                           propertyListFromData:plistXML
                                           mutabilityOption:NSPropertyListMutableContainersAndLeaves
@@ -26,31 +31,52 @@
       NSLog(errorDesc);
       [errorDesc release];
     }
-    //self.personName = [temp objectForKey:@"Name"];
-    //self.phoneNumbers = [NSMutableArray arrayWithArray:[temp objectForKey:@"Phones"]];
-    */
+    
+    self.stations = [temp objectForKey:@"Stations"];
+    [self setUpStation:startStationIndex];
   }
   return self;
 }
 
 - (void)awakeFromNib
 {
-  [self loadUrl];
+  [self loadUrl:[self currentStation]];
 }
 
-- (void)loadUrl
+- (void)loadUrl:(NSDictionary *)station
 {
-  NSURL *URL = [NSURL URLWithString:@"http://www.bbc.co.uk/iplayer/console/6music"];
+  NSString * console = CONSOLE_URL;
+  NSString * urlString = [console stringByAppendingString:[self keyForStation:station]]; 
+  NSURL * URL = [NSURL URLWithString:urlString];
   [[myWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]];  
 }
 
 - (void)changeStation:(id)sender
 {
   int i = [sender tag];
-  NSLog(@"station changed to: %d", i);
+  [[[sender menu] itemWithTitle:[self labelForStation:[self currentStation]]] setState:NSOffState]; 
+  [sender setState:NSOnState];
+  [self setUpStation:i];
 }
 
-#pragma mark URL Delegates
+- (NSString *)keyForStation:(NSDictionary *)station
+{
+  return [station objectForKey:@"key"];
+}
+
+- (NSString *)labelForStation:(NSDictionary *)station
+{
+  return [station objectForKey:@"label"];
+}
+
+- (void)setUpStation:(int)index
+{
+  NSDictionary * station = [[self stations] objectAtIndex:index];
+  self.currentStation = station;
+  [self loadUrl:[self currentStation]];  
+}
+
+#pragma mark URL load Delegates
 
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
@@ -72,6 +98,7 @@
   [self fetchErrorMessage:(id)sender];  
 }
 
+
 #pragma mark URL fetch errors
 
 - (void)fetchErrorMessage:(WebView *)sender
@@ -91,9 +118,11 @@
   [alert release];  
 }
 
-- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
+{
   if (returnCode == NSAlertFirstButtonReturn) {
-    [self loadUrl];
+    NSLog(@"trying to load %@ again", [self currentStation]);
+  [self loadUrl:[self currentStation]];
   }
   
   if (returnCode == NSAlertSecondButtonReturn) {

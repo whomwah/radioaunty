@@ -13,14 +13,23 @@
 @interface AppController : NSObject {
   IBOutlet WebView * myWebView;
   IBOutlet NSProgressIndicator * spinner;
+  NSArray * stations;
+  NSDictionary * currentStation;
 }
 
-- (void)loadUrl;
+@property (retain) NSArray * stations;
+@property (retain) NSDictionary * currentStation;
+
+- (void)loadUrl:(NSDictionary *)station;
 - (void)changeStation:(id)sender;
 - (void)fetchErrorMessage:(WebView *)sender;
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame;
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame;
 - (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame;
 - (void)webView:(WebView *)sender didFailLoadWithError:(NSError *)error forFrame:(WebFrame *)frame;
+
+- (void)setUpStation:(int)index;
+- (NSString *)keyForStation:(NSDictionary *)station;
+- (NSString *)labelForStation:(NSDictionary *)station;
 
 @end
