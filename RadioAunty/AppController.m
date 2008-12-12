@@ -21,32 +21,33 @@
 {
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
   NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
+  
   int i = STARTUP_NETWORK;
+  NSString * errorDesc = nil;
+  NSPropertyListFormat format;
+  NSString * plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
+  NSData * plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+  NSDictionary * temp = (NSDictionary *)[NSPropertyListSerialization
+                                         propertyListFromData:plistXML
+                                         mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                         format:&format errorDescription:&errorDesc];
+  if (!temp) {
+    NSLog(errorDesc);
+    [errorDesc release];
+  }
+  
   [defaultValues setObject:[NSNumber numberWithInt:i] forKey:DSRDefaultStation];
   [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DSRCheckForUpdates];
+  [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
+  
   [defaults registerDefaults:defaultValues];
-  [defaults synchronize];
   NSLog(@"registered defaults: %@", defaultValues);
 }
 
 - (id) init {
   if (self = [super init]) {
-    int startStationIndex = STARTUP_NETWORK;
-    NSString * errorDesc = nil;
-    NSPropertyListFormat format;
-    NSString * plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
-    NSData * plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-    NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
-                                          propertyListFromData:plistXML
-                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
-                                          format:&format errorDescription:&errorDesc];
-    if (!temp) {
-      NSLog(errorDesc);
-      [errorDesc release];
-    }
-    
-    self.stations = [temp objectForKey:@"Stations"];
-    [self setUpStation:startStationIndex];
+    self.stations = [[NSUserDefaults standardUserDefaults] arrayForKey:DSRStations];
+    [self setUpStation:[[NSUserDefaults standardUserDefaults] integerForKey:DSRDefaultStation]];
   }
   return self;
 }
@@ -85,6 +86,7 @@
 - (void)setUpStation:(int)index
 {
   NSDictionary * station = [[self stations] objectAtIndex:index];
+  NSLog(@"setting up station: %@", station);
   self.currentStation = station;
   [self loadUrl:[self currentStation]];  
 }

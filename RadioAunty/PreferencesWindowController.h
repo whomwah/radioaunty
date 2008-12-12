@@ -10,17 +10,10 @@
 
 extern NSString * const DSRCheckForUpdates;
 extern NSString * const DSRDefaultStation;
+extern NSString * const DSRStations;
 
 @interface PreferencesWindowController : NSWindowController {
-
-  IBOutlet NSButton * checkbox;
-  IBOutlet NSPopUpButton * stationsList;
   
 }
-
-- (BOOL)checkForUpdates;
-- (int)defaultStation;
-- (IBAction)changeCheckForDefaults:(id)sender;
-- (IBAction)changeDefaultStation:(id)sender;
 
 @end
