@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"  xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <channel>
+      <title>RadioAunty Changelog</title>
+      <link>http://github.com/whomwah/radioaunty/tree/master/radioaunty.xml</link>
+      <description>Most recent changes with links to updates.</description>
+      <language>en</language>
+         <item>
+            <title>Version 1.0 (initial release)</title>
+						<sparkle:releaseNotesLink>
+              http://github.com/whomwah/radioaunty/tree/master/CHANGELOG
+						</sparkle:releaseNotesLink>
+            <pubDate>Fri, 12 Dec 2008 20:00:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/tree/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.0" length="535600" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCQVjkRGvivDyOSfGCr1vL4VV6+eQIVAI/v3zWd9yo+8+XvfiaQ/ZjxIlFd" />
+         </item>
+   </channel>
+</rss>

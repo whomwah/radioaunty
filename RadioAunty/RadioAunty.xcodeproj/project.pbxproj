@@ -13,11 +13,27 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		AE3A975E0EF10E36001BE665 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */; };
 		AE3A97B60EF11305001BE665 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE3A97B50EF11305001BE665 /* Preferences.xib */; };
+		AECEFB380EF2C77F00481512 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AECEFB370EF2C77F00481512 /* Sparkle.framework */; };
+		AECEFB6F0EF2C9E200481512 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AECEFB370EF2C77F00481512 /* Sparkle.framework */; };
+		AECEFB760EF2CBBA00481512 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AECEFB750EF2CBBA00481512 /* dsa_pub.pem */; };
 		AEEFADFF0EF022C40021B372 /* radio.icns in Resources */ = {isa = PBXBuildFile; fileRef = AEEFADFD0EF022C40021B372 /* radio.icns */; };
 		AEEFAE000EF022C40021B372 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEEFADFE0EF022C40021B372 /* Stations.plist */; };
 		AEEFAE030EF022D20021B372 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEEFAE020EF022D20021B372 /* WebKit.framework */; };
 		AEEFAE090EF022E20021B372 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEEFAE080EF022E20021B372 /* AppController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AECEFB6D0EF2C89A00481512 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AECEFB6F0EF2C9E200481512 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -32,6 +48,8 @@
 		AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		AE3A97B50EF11305001BE665 /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
+		AECEFB370EF2C77F00481512 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		AECEFB750EF2CBBA00481512 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		AEEFADFD0EF022C40021B372 /* radio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio.icns; sourceTree = "<group>"; };
 		AEEFADFE0EF022C40021B372 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		AEEFAE020EF022D20021B372 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
@@ -46,6 +64,7 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				AEEFAE030EF022D20021B372 /* WebKit.framework in Frameworks */,
+				AECEFB380EF2C77F00481512 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +85,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AECEFB370EF2C77F00481512 /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
 			name = "Linked Frameworks";
@@ -113,6 +133,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AECEFB750EF2CBBA00481512 /* dsa_pub.pem */,
 				AEEFADFD0EF022C40021B372 /* radio.icns */,
 				AEEFADFE0EF022C40021B372 /* Stations.plist */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -142,6 +163,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				AECEFB6D0EF2C89A00481512 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -180,6 +202,7 @@
 				AEEFADFF0EF022C40021B372 /* radio.icns in Resources */,
 				AEEFAE000EF022C40021B372 /* Stations.plist in Resources */,
 				AE3A97B60EF11305001BE665 /* Preferences.xib in Resources */,
+				AECEFB760EF2CBBA00481512 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +246,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
@@ -240,6 +267,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = RadioAunty_Prefix.pch;
