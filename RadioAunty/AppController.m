@@ -55,6 +55,7 @@
 - (void)awakeFromNib
 {
   [self loadUrl:[self currentStation]];
+  [self buildMenu];
 }
 
 - (void)loadUrl:(NSDictionary *)station
@@ -97,6 +98,30 @@
 		preferencesWindowController = [[PreferencesWindowController alloc] init];
 	}
 	[preferencesWindowController showWindow:self];
+}
+
+#pragma mark Build Listen menu
+
+-(void)buildMenu
+{
+  NSEnumerator * enumerator = [stations objectEnumerator];
+  NSUInteger index = 0;
+    
+  for (NSDictionary * station in enumerator) {  
+    NSMenuItem* newItem;
+    newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
+                                    action:@selector(changeStation:) 
+                             keyEquivalent:@""];
+    if ([currentStation isEqual:station]) {
+      [newItem setState:NSOnState]; 
+    }
+    [newItem setEnabled:YES];
+    [newItem setTag:index];
+    [newItem setTarget:self];
+    [listenMenu addItem:newItem];
+    [newItem release];
+    index++;
+  }
 }
 
 #pragma mark URL load Delegates
