@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern NSString * const DSRCheckForUpdates;
 extern NSString * const DSRDefaultStation;
 extern NSString * const DSRStations;
 

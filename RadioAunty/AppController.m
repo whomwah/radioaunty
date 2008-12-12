@@ -37,7 +37,6 @@
   }
   
   [defaultValues setObject:[NSNumber numberWithInt:i] forKey:DSRDefaultStation];
-  [defaultValues setObject:[NSNumber numberWithBool:NO] forKey:DSRCheckForUpdates];
   [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
   
   [defaults registerDefaults:defaultValues];
@@ -121,7 +120,7 @@
     [listenMenu addItem:newItem];
     [newItem release];
     index++;
-  }
+  } 
 }
 
 #pragma mark URL load Delegates

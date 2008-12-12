@@ -8,7 +8,6 @@
 
 #import "PreferencesWindowController.h"
 
-NSString * const DSRCheckForUpdates = @"CheckForUpdates";
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
 

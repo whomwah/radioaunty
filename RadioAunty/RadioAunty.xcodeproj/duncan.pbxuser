@@ -2,7 +2,7 @@
 {
 	089C165DFE840E0CC02AAC07 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 427}}";
+			sepNavIntBoundsRect = "{{0, 0}, {828, 624}}";
 			sepNavSelRange = "{209, 0}";
 			sepNavVisRange = "{0, 209}";
 			sepNavWindowFrame = "{{61, 142}, {1091, 589}}";
@@ -265,6 +265,35 @@
 			AECEFBA60EF2D4FC00481512 /* PlistBookmark */ = AECEFBA60EF2D4FC00481512 /* PlistBookmark */;
 			AECEFBA70EF2D4FC00481512 /* PlistBookmark */ = AECEFBA70EF2D4FC00481512 /* PlistBookmark */;
 			AECEFBA80EF2D4FC00481512 /* PlistBookmark */ = AECEFBA80EF2D4FC00481512 /* PlistBookmark */;
+			AECEFBAC0EF2D86200481512 /* PBXTextBookmark */ = AECEFBAC0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBAD0EF2D86200481512 /* PlistBookmark */ = AECEFBAD0EF2D86200481512 /* PlistBookmark */;
+			AECEFBAE0EF2D86200481512 /* PBXTextBookmark */ = AECEFBAE0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBAF0EF2D86200481512 /* PBXTextBookmark */ = AECEFBAF0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB00EF2D86200481512 /* PBXTextBookmark */ = AECEFBB00EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB10EF2D86200481512 /* PBXTextBookmark */ = AECEFBB10EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB20EF2D86200481512 /* PlistBookmark */ = AECEFBB20EF2D86200481512 /* PlistBookmark */;
+			AECEFBB30EF2D86200481512 /* PBXTextBookmark */ = AECEFBB30EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB40EF2D86200481512 /* PBXTextBookmark */ = AECEFBB40EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB50EF2D86200481512 /* PBXTextBookmark */ = AECEFBB50EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB60EF2D86200481512 /* PBXTextBookmark */ = AECEFBB60EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB70EF2D86200481512 /* PBXTextBookmark */ = AECEFBB70EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBB80EF2D86200481512 /* PlistBookmark */ = AECEFBB80EF2D86200481512 /* PlistBookmark */;
+			AECEFBB90EF2D86200481512 /* PBXTextBookmark */ = AECEFBB90EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBBA0EF2D86200481512 /* PlistBookmark */ = AECEFBBA0EF2D86200481512 /* PlistBookmark */;
+			AECEFBBB0EF2D86200481512 /* PBXTextBookmark */ = AECEFBBB0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBBC0EF2D86200481512 /* PBXTextBookmark */ = AECEFBBC0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBBD0EF2D86200481512 /* PBXTextBookmark */ = AECEFBBD0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBBE0EF2D86200481512 /* PBXTextBookmark */ = AECEFBBE0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBBF0EF2D86200481512 /* PBXTextBookmark */ = AECEFBBF0EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBC00EF2D86200481512 /* PBXTextBookmark */ = AECEFBC00EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBC10EF2D86200481512 /* PBXTextBookmark */ = AECEFBC10EF2D86200481512 /* PBXTextBookmark */;
+			AECEFBC20EF2DA2700481512 /* PBXTextBookmark */ = AECEFBC20EF2DA2700481512 /* PBXTextBookmark */;
+			AECEFBC60EF2DA4200481512 /* PBXTextBookmark */ = AECEFBC60EF2DA4200481512 /* PBXTextBookmark */;
+			AECEFBC80EF2DA5500481512 /* PBXTextBookmark */ = AECEFBC80EF2DA5500481512 /* PBXTextBookmark */;
+			AECEFBC90EF2DA5500481512 /* PBXTextBookmark */ = AECEFBC90EF2DA5500481512 /* PBXTextBookmark */;
+			AECEFBCE0EF2DA7000481512 /* PBXTextBookmark */ = AECEFBCE0EF2DA7000481512 /* PBXTextBookmark */;
+			AECEFBD20EF2DAD000481512 /* PBXTextBookmark */ = AECEFBD20EF2DAD000481512 /* PBXTextBookmark */;
+			AECEFBD60EF2DB6000481512 /* PBXTextBookmark */ = AECEFBD60EF2DB6000481512 /* PBXTextBookmark */;
 			AEEFAE180EF025310021B372 = AEEFAE180EF025310021B372 /* PBXTextBookmark */;
 			AEEFAE250EF025930021B372 = AEEFAE250EF025930021B372 /* PBXTextBookmark */;
 			AEEFAE260EF025930021B372 = AEEFAE260EF025930021B372 /* PBXTextBookmark */;
@@ -304,17 +333,17 @@
 	};
 	AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 623}}";
-			sepNavSelRange = "{378, 0}";
-			sepNavVisRange = "{0, 378}";
+			sepNavIntBoundsRect = "{{0, 0}, {828, 624}}";
+			sepNavSelRange = "{179, 0}";
+			sepNavVisRange = "{0, 334}";
 			sepNavWindowFrame = "{{15, 184}, {1091, 589}}";
 		};
 	};
 	AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 623}}";
-			sepNavSelRange = "{436, 0}";
-			sepNavVisRange = "{0, 562}";
+			sepNavIntBoundsRect = "{{0, 0}, {828, 624}}";
+			sepNavSelRange = "{195, 0}";
+			sepNavVisRange = "{0, 504}";
 			sepNavWindowFrame = "{{61, 142}, {1091, 589}}";
 		};
 	};
@@ -372,7 +401,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 21";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -382,7 +411,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 37";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 507;
 		vrLoc = 55;
@@ -402,7 +431,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 39";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 308;
 		vrLoc = 254;
@@ -412,7 +441,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 37";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 366;
 		vrLoc = 196;
@@ -442,7 +471,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 30";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 507;
 		vrLoc = 55;
@@ -452,7 +481,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 27";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -462,7 +491,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 21";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -472,7 +501,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 21";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -482,7 +511,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 12";
 		rLen = 14;
-		rLoc = 293;
+		rLoc = 235;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -492,7 +521,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 33";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 407;
 		vrLoc = 155;
@@ -502,7 +531,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 33";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 407;
 		vrLoc = 155;
@@ -512,7 +541,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 21";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -522,7 +551,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 12";
 		rLen = 17;
-		rLoc = 271;
+		rLoc = 213;
 		rType = 0;
 		vrLen = 407;
 		vrLoc = 155;
@@ -532,7 +561,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 29";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 411;
 		vrLoc = 151;
@@ -542,7 +571,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 18;
-		rLoc = 346;
+		rLoc = 302;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -552,7 +581,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 30";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 507;
 		vrLoc = 55;
@@ -562,7 +591,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 18;
-		rLoc = 346;
+		rLoc = 302;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -582,7 +611,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -602,7 +631,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -612,7 +641,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 559;
 		vrLoc = 3;
@@ -622,7 +651,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -642,7 +671,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 18";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -652,7 +681,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 559;
 		vrLoc = 3;
@@ -672,7 +701,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 22";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -692,7 +721,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -702,7 +731,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 54";
 		rLen = 5;
-		rLoc = 557;
+		rLoc = 499;
 		rType = 0;
 		vrLen = 6;
 		vrLoc = 556;
@@ -712,7 +741,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 19";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -722,7 +751,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 34";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -742,7 +771,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 460;
 		vrLoc = 102;
@@ -752,7 +781,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 0;
-		rLoc = 354;
+		rLoc = 310;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -772,7 +801,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 460;
 		vrLoc = 102;
@@ -782,7 +811,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 18;
-		rLoc = 346;
+		rLoc = 302;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -802,7 +831,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 18;
-		rLoc = 346;
+		rLoc = 302;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -812,7 +841,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 308;
 		vrLoc = 254;
@@ -822,7 +851,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 37;
@@ -842,7 +871,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 37;
@@ -852,7 +881,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -872,7 +901,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -892,7 +921,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -922,7 +951,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 13";
 		rLen = 0;
-		rLoc = 286;
+		rLoc = 242;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -932,7 +961,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 13";
 		rLen = 0;
-		rLoc = 351;
+		rLoc = 293;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 37;
@@ -942,7 +971,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 0;
-		rLoc = 304;
+		rLoc = 260;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -962,7 +991,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 0;
-		rLoc = 304;
+		rLoc = 260;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -972,7 +1001,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 15";
 		rLen = 0;
-		rLoc = 375;
+		rLoc = 317;
 		rType = 0;
 		vrLen = 308;
 		vrLoc = 254;
@@ -982,7 +1011,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 14";
 		rLen = 0;
-		rLoc = 304;
+		rLoc = 260;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -992,7 +1021,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 439;
+		rLoc = 381;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1002,7 +1031,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 19";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1012,7 +1041,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 439;
+		rLoc = 381;
 		rType = 0;
 		vrLen = 308;
 		vrLoc = 254;
@@ -1022,7 +1051,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 22";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1032,7 +1061,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 22";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1042,7 +1071,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 439;
+		rLoc = 381;
 		rType = 0;
 		vrLen = 460;
 		vrLoc = 102;
@@ -1062,7 +1091,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 18";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1072,7 +1101,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 460;
 		vrLoc = 102;
@@ -1082,7 +1111,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 18";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1092,7 +1121,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 308;
 		vrLoc = 254;
@@ -1102,7 +1131,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 18";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1112,7 +1141,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 28";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 308;
 		vrLoc = 254;
@@ -1122,7 +1151,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 13";
 		rLen = 11;
-		rLoc = 291;
+		rLoc = 247;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1131,8 +1160,8 @@
 		isa = PBXTextBookmark;
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 11";
-		rLen = 15;
-		rLoc = 236;
+		rLen = 0;
+		rLoc = 195;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 37;
@@ -1142,7 +1171,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 13";
 		rLen = 11;
-		rLoc = 291;
+		rLoc = 247;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1152,7 +1181,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1162,7 +1191,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 27";
 		rLen = 0;
-		rLoc = 553;
+		rLoc = 495;
 		rType = 0;
 		vrLen = 525;
 		vrLoc = 37;
@@ -1172,7 +1201,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 15";
 		rLen = 0;
-		rLoc = 366;
+		rLoc = 322;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1182,7 +1211,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 34";
 		rLen = 0;
-		rLoc = 555;
+		rLoc = 497;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1192,7 +1221,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1202,7 +1231,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 15";
 		rLen = 0;
-		rLoc = 394;
+		rLoc = 336;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1212,7 +1241,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1232,7 +1261,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1242,7 +1271,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 17";
 		rLen = 0;
-		rLoc = 371;
+		rLoc = 327;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1252,7 +1281,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 378;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1262,7 +1291,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 12";
 		rLen = 0;
-		rLoc = 266;
+		rLoc = 222;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1272,7 +1301,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 378;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1282,7 +1311,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 378;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1303,7 +1332,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 12";
 		rLen = 0;
-		rLoc = 266;
+		rLoc = 222;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1313,7 +1342,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 378;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1323,7 +1352,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 20";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 334;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1393,7 +1422,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 20";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 334;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1413,7 +1442,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 20";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 334;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1555,7 +1584,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 72";
 		rLen = 0;
-		rLoc = 2241;
+		rLoc = 2157;
 		rType = 0;
 		vrLen = 1149;
 		vrLoc = 1551;
@@ -1575,7 +1604,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 72";
 		rLen = 0;
-		rLoc = 2241;
+		rLoc = 2157;
 		rType = 0;
 		vrLen = 1149;
 		vrLoc = 1551;
@@ -1595,7 +1624,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 71";
 		rLen = 0;
-		rLoc = 2238;
+		rLoc = 2154;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 1777;
@@ -1615,7 +1644,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 181";
 		rLen = 5;
-		rLoc = 5297;
+		rLoc = 5214;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 4417;
@@ -1635,7 +1664,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 181";
 		rLen = 5;
-		rLoc = 5297;
+		rLoc = 5214;
 		rType = 0;
 		vrLen = 885;
 		vrLoc = 4417;
@@ -1655,7 +1684,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 378;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1665,7 +1694,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 20";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 334;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1685,7 +1714,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 181";
 		rLen = 5;
-		rLoc = 5297;
+		rLoc = 5214;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 3999;
@@ -1705,7 +1734,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 181";
 		rLen = 5;
-		rLoc = 5297;
+		rLoc = 5214;
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 3999;
@@ -1715,7 +1744,7 @@
 		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
 		name = "PreferencesWindowController.m: 19";
 		rLen = 0;
-		rLoc = 436;
+		rLoc = 378;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 0;
@@ -1725,7 +1754,7 @@
 		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
 		name = "PreferencesWindowController.h: 20";
 		rLen = 0;
-		rLoc = 378;
+		rLoc = 334;
 		rType = 0;
 		vrLen = 378;
 		vrLoc = 0;
@@ -1745,7 +1774,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 159";
 		rLen = 0;
-		rLoc = 4643;
+		rLoc = 4560;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 4001;
@@ -1755,7 +1784,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 159";
 		rLen = 0;
-		rLoc = 4643;
+		rLoc = 4560;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 4001;
@@ -1765,7 +1794,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 149";
 		rLen = 0;
-		rLoc = 4301;
+		rLoc = 4218;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 4001;
@@ -1775,7 +1804,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 149";
 		rLen = 0;
-		rLoc = 4301;
+		rLoc = 4218;
 		rType = 0;
 		vrLen = 1301;
 		vrLoc = 4001;
@@ -1785,7 +1814,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 149";
 		rLen = 0;
-		rLoc = 4301;
+		rLoc = 4218;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 3722;
@@ -1885,7 +1914,7 @@
 		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
 		name = "AppController.m: 149";
 		rLen = 0;
-		rLoc = 4301;
+		rLoc = 4218;
 		rType = 0;
 		vrLen = 1383;
 		vrLoc = 3722;
@@ -2364,6 +2393,300 @@
 		rLen = 0;
 		rLoc = 2147483647;
 	};
+	AECEFBAC0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 5";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 209;
+		vrLoc = 0;
+	};
+	AECEFBAD0EF2D86200481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBAE0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 21";
+		rLen = 0;
+		rLoc = 490;
+		rType = 0;
+		vrLen = 1333;
+		vrLoc = 0;
+	};
+	AECEFBAF0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
+		name = "PreferencesWindowController.h: 10";
+		rLen = 0;
+		rLoc = 179;
+		rType = 0;
+		vrLen = 334;
+		vrLoc = 0;
+	};
+	AECEFBB00EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
+		name = "PreferencesWindowController.m: 10";
+		rLen = 0;
+		rLoc = 195;
+		rType = 0;
+		vrLen = 504;
+		vrLoc = 0;
+	};
+	AECEFBB10EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 39";
+		rLen = 0;
+		rLoc = 1284;
+		rType = 0;
+		vrLen = 1584;
+		vrLoc = 547;
+	};
+	AECEFBB20EF2D86200481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBB30EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 21";
+		rLen = 0;
+		rLoc = 490;
+		rType = 0;
+		vrLen = 1333;
+		vrLoc = 0;
+	};
+	AECEFBB40EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 149";
+		rLen = 0;
+		rLoc = 4218;
+		rType = 0;
+		vrLen = 1383;
+		vrLoc = 3722;
+	};
+	AECEFBB50EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 21";
+		rLen = 0;
+		rLoc = 490;
+		rType = 0;
+		vrLen = 1333;
+		vrLoc = 0;
+	};
+	AECEFBB60EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
+		name = "PreferencesWindowController.h: 10";
+		rLen = 0;
+		rLoc = 179;
+		rType = 0;
+		vrLen = 334;
+		vrLoc = 0;
+	};
+	AECEFBB70EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
+		name = "PreferencesWindowController.m: 10";
+		rLen = 0;
+		rLoc = 195;
+		rType = 0;
+		vrLen = 504;
+		vrLoc = 0;
+	};
+	AECEFBB80EF2D86200481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBB90EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 5";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 209;
+		vrLoc = 0;
+	};
+	AECEFBBA0EF2D86200481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBBB0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 21";
+		rLen = 0;
+		rLoc = 490;
+		rType = 0;
+		vrLen = 1333;
+		vrLoc = 0;
+	};
+	AECEFBBC0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 39";
+		rLen = 0;
+		rLoc = 1284;
+		rType = 0;
+		vrLen = 1608;
+		vrLoc = 547;
+	};
+	AECEFBBD0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 21";
+		rLen = 0;
+		rLoc = 490;
+		rType = 0;
+		vrLen = 1333;
+		vrLoc = 0;
+	};
+	AECEFBBE0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE3A975C0EF10E36001BE665 /* PreferencesWindowController.h */;
+		name = "PreferencesWindowController.h: 10";
+		rLen = 0;
+		rLoc = 179;
+		rType = 0;
+		vrLen = 334;
+		vrLoc = 0;
+	};
+	AECEFBBF0EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE3A975D0EF10E36001BE665 /* PreferencesWindowController.m */;
+		name = "PreferencesWindowController.m: 10";
+		rLen = 0;
+		rLoc = 195;
+		rType = 0;
+		vrLen = 504;
+		vrLoc = 0;
+	};
+	AECEFBC00EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 39";
+		rLen = 0;
+		rLoc = 1284;
+		rType = 0;
+		vrLen = 1237;
+		vrLoc = 2979;
+	};
+	AECEFBC10EF2D86200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 39";
+		rLen = 0;
+		rLoc = 1284;
+		rType = 0;
+		vrLen = 1235;
+		vrLoc = 2979;
+	};
+	AECEFBC20EF2DA2700481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 123";
+		rLen = 0;
+		rLoc = 3635;
+		rType = 0;
+		vrLen = 1239;
+		vrLoc = 2979;
+	};
+	AECEFBC60EF2DA4200481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 120";
+		rLen = 0;
+		rLoc = 3583;
+		rType = 0;
+		vrLen = 1239;
+		vrLoc = 2979;
+	};
+	AECEFBC80EF2DA5500481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 120";
+		rLen = 0;
+		rLoc = 3583;
+		rType = 0;
+		vrLen = 1236;
+		vrLoc = 2979;
+	};
+	AECEFBC90EF2DA5500481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 120";
+		rLen = 0;
+		rLoc = 3583;
+		rType = 0;
+		vrLen = 1175;
+		vrLoc = 2897;
+	};
+	AECEFBCE0EF2DA7000481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 120";
+		rLen = 0;
+		rLoc = 3583;
+		rType = 0;
+		vrLen = 1179;
+		vrLoc = 2894;
+	};
+	AECEFBD20EF2DAD000481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 120";
+		rLen = 0;
+		rLoc = 3583;
+		rType = 0;
+		vrLen = 1179;
+		vrLoc = 2894;
+	};
+	AECEFBD60EF2DB6000481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE080EF022E20021B372 /* AppController.m */;
+		name = "AppController.m: 120";
+		rLen = 0;
+		rLoc = 3583;
+		rType = 0;
+		vrLen = 1179;
+		vrLoc = 2894;
+	};
 	AEEFADDC0EF022AB0021B372 /* RadioAunty */ = {
 		isa = PBXExecutable;
 		activeArgIndices = (
@@ -2403,17 +2726,17 @@
 	};
 	AEEFAE070EF022E20021B372 /* AppController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 588}}";
-			sepNavSelRange = "{581, 0}";
-			sepNavVisRange = "{0, 880}";
+			sepNavIntBoundsRect = "{{0, 0}, {828, 624}}";
+			sepNavSelRange = "{490, 0}";
+			sepNavVisRange = "{0, 1333}";
 			sepNavWindowFrame = "{{38, 163}, {1091, 589}}";
 		};
 	};
 	AEEFAE080EF022E20021B372 /* AppController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 2632}}";
-			sepNavSelRange = "{4301, 0}";
-			sepNavVisRange = "{3722, 1383}";
+			sepNavIntBoundsRect = "{{0, 0}, {828, 2534}}";
+			sepNavSelRange = "{3583, 0}";
+			sepNavVisRange = "{2894, 1179}";
 			sepNavWindowFrame = "{{16, 184}, {1091, 589}}";
 		};
 	};

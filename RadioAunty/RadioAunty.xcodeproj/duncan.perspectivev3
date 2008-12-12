@@ -257,6 +257,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -339,7 +341,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>AEEFADF50EF022BB0021B372</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Info.plist</string>
+								<string>AppController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -347,29 +349,29 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>AEEFADF60EF022BB0021B372</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Info.plist</string>
+										<string>AppController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AECEFBA80EF2D4FC00481512</string>
+										<string>AECEFBD60EF2DB6000481512</string>
 										<key>history</key>
 										<array>
 											<string>AEEFAE250EF025930021B372</string>
 											<string>AEEFAE260EF025930021B372</string>
 											<string>AE4A12CD0EF16BBC004E9285</string>
-											<string>AECEFB1D0EF2C68800481512</string>
-											<string>AECEFB1E0EF2C68800481512</string>
-											<string>AECEFB480EF2C81100481512</string>
 											<string>AECEFB490EF2C81100481512</string>
 											<string>AECEFB4B0EF2C81100481512</string>
 											<string>AECEFB4D0EF2C81100481512</string>
 											<string>AECEFB4F0EF2C81100481512</string>
 											<string>AECEFB510EF2C81100481512</string>
 											<string>AECEFB7A0EF2CD4900481512</string>
-											<string>AECEFB960EF2D38C00481512</string>
-											<string>AECEFBA10EF2D4FC00481512</string>
 											<string>AECEFBA20EF2D4FC00481512</string>
-											<string>AECEFBA30EF2D4FC00481512</string>
+											<string>AECEFBAC0EF2D86200481512</string>
+											<string>AECEFBAD0EF2D86200481512</string>
+											<string>AECEFBAE0EF2D86200481512</string>
+											<string>AECEFBAF0EF2D86200481512</string>
+											<string>AECEFBB00EF2D86200481512</string>
+											<string>AECEFBB10EF2D86200481512</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -407,6 +409,20 @@
 											<string>AECEFBA50EF2D4FC00481512</string>
 											<string>AECEFBA60EF2D4FC00481512</string>
 											<string>AECEFBA70EF2D4FC00481512</string>
+											<string>AECEFBB20EF2D86200481512</string>
+											<string>AECEFBB30EF2D86200481512</string>
+											<string>AECEFBB40EF2D86200481512</string>
+											<string>AECEFBB50EF2D86200481512</string>
+											<string>AECEFBB60EF2D86200481512</string>
+											<string>AECEFBB70EF2D86200481512</string>
+											<string>AECEFBB80EF2D86200481512</string>
+											<string>AECEFBB90EF2D86200481512</string>
+											<string>AECEFBBA0EF2D86200481512</string>
+											<string>AECEFBBB0EF2D86200481512</string>
+											<string>AECEFBBC0EF2D86200481512</string>
+											<string>AECEFBBD0EF2D86200481512</string>
+											<string>AECEFBBE0EF2D86200481512</string>
+											<string>AECEFBBF0EF2D86200481512</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -420,18 +436,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {889, 459}}</string>
+								<string>{{0, 0}, {889, 656}}</string>
 								<key>RubberWindowFrame</key>
 								<string>24 77 1141 701 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>459pt</string>
+							<string>656pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>197pt</string>
+							<string>0pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -445,7 +461,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {889, 170}}</string>
+										<string>{{10, 27}, {889, -27}}</string>
 										<key>RubberWindowFrame</key>
 										<string>24 77 1141 701 0 0 1280 778 </string>
 									</dict>
@@ -700,7 +716,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>250795260.007972</real>
+	<real>250796896.45370701</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
