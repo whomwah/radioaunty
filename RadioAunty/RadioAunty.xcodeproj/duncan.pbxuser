@@ -2,7 +2,7 @@
 {
 	089C165DFE840E0CC02AAC07 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {828, 624}}";
+			sepNavIntBoundsRect = "{{0, 0}, {828, 427}}";
 			sepNavSelRange = "{209, 0}";
 			sepNavVisRange = "{0, 209}";
 			sepNavWindowFrame = "{{61, 142}, {1091, 589}}";
@@ -251,6 +251,20 @@
 			AECEFB8B0EF2D1A500481512 /* PBXTextBookmark */ = AECEFB8B0EF2D1A500481512 /* PBXTextBookmark */;
 			AECEFB8D0EF2D20300481512 /* PBXTextBookmark */ = AECEFB8D0EF2D20300481512 /* PBXTextBookmark */;
 			AECEFB910EF2D27600481512 /* PBXTextBookmark */ = AECEFB910EF2D27600481512 /* PBXTextBookmark */;
+			AECEFB960EF2D38C00481512 /* PBXTextBookmark */ = AECEFB960EF2D38C00481512 /* PBXTextBookmark */;
+			AECEFB970EF2D38C00481512 /* PBXTextBookmark */ = AECEFB970EF2D38C00481512 /* PBXTextBookmark */;
+			AECEFB980EF2D38C00481512 /* PlistBookmark */ = AECEFB980EF2D38C00481512 /* PlistBookmark */;
+			AECEFB990EF2D38C00481512 /* PBXTextBookmark */ = AECEFB990EF2D38C00481512 /* PBXTextBookmark */;
+			AECEFB9A0EF2D38C00481512 /* PBXTextBookmark */ = AECEFB9A0EF2D38C00481512 /* PBXTextBookmark */;
+			AECEFB9B0EF2D38C00481512 /* PlistBookmark */ = AECEFB9B0EF2D38C00481512 /* PlistBookmark */;
+			AECEFBA10EF2D4FC00481512 /* PBXTextBookmark */ = AECEFBA10EF2D4FC00481512 /* PBXTextBookmark */;
+			AECEFBA20EF2D4FC00481512 /* PlistBookmark */ = AECEFBA20EF2D4FC00481512 /* PlistBookmark */;
+			AECEFBA30EF2D4FC00481512 /* PlistBookmark */ = AECEFBA30EF2D4FC00481512 /* PlistBookmark */;
+			AECEFBA40EF2D4FC00481512 /* PlistBookmark */ = AECEFBA40EF2D4FC00481512 /* PlistBookmark */;
+			AECEFBA50EF2D4FC00481512 /* PBXTextBookmark */ = AECEFBA50EF2D4FC00481512 /* PBXTextBookmark */;
+			AECEFBA60EF2D4FC00481512 /* PlistBookmark */ = AECEFBA60EF2D4FC00481512 /* PlistBookmark */;
+			AECEFBA70EF2D4FC00481512 /* PlistBookmark */ = AECEFBA70EF2D4FC00481512 /* PlistBookmark */;
+			AECEFBA80EF2D4FC00481512 /* PlistBookmark */ = AECEFBA80EF2D4FC00481512 /* PlistBookmark */;
 			AEEFAE180EF025310021B372 = AEEFAE180EF025310021B372 /* PBXTextBookmark */;
 			AEEFAE250EF025930021B372 = AEEFAE250EF025930021B372 /* PBXTextBookmark */;
 			AEEFAE260EF025930021B372 = AEEFAE260EF025930021B372 /* PBXTextBookmark */;
@@ -2196,6 +2210,159 @@
 		rType = 0;
 		vrLen = 880;
 		vrLoc = 0;
+	};
+	AECEFB960EF2D38C00481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 25";
+		rLen = 0;
+		rLoc = 581;
+		rType = 0;
+		vrLen = 880;
+		vrLoc = 0;
+	};
+	AECEFB970EF2D38C00481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 5";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 209;
+		vrLoc = 0;
+	};
+	AECEFB980EF2D38C00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			SUPublicDSAKeyFile,
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 11;
+		rLoc = 0;
+	};
+	AECEFB990EF2D38C00481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AEEFAE070EF022E20021B372 /* AppController.h */;
+		name = "AppController.h: 25";
+		rLen = 0;
+		rLoc = 581;
+		rType = 0;
+		vrLen = 880;
+		vrLoc = 0;
+	};
+	AECEFB9A0EF2D38C00481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 5";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 209;
+		vrLoc = 0;
+	};
+	AECEFB9B0EF2D38C00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			SUPublicDSAKeyFile,
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBA10EF2D4FC00481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 5";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 209;
+		vrLoc = 0;
+	};
+	AECEFBA20EF2D4FC00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = AEEFADFE0EF022C40021B372 /* Stations.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Stations.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBA30EF2D4FC00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			NSMainNibFile,
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 8;
+		rLoc = 0;
+	};
+	AECEFBA40EF2D4FC00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			SUPublicDSAKeyFile,
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBA50EF2D4FC00481512 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 089C165DFE840E0CC02AAC07 /* English */;
+		name = "InfoPlist.strings: 5";
+		rLen = 0;
+		rLoc = 209;
+		rType = 0;
+		vrLen = 209;
+		vrLoc = 0;
+	};
+	AECEFBA60EF2D4FC00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			SUPublicDSAKeyFile,
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBA70EF2D4FC00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = AEEFADFE0EF022C40021B372 /* Stations.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Stations.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	AECEFBA80EF2D4FC00481512 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/RadioAunty/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 	AEEFADDC0EF022AB0021B372 /* RadioAunty */ = {
 		isa = PBXExecutable;

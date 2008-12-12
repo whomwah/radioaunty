@@ -10,8 +10,8 @@
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/tree/master/CHANGELOG
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 12 Dec 2008 20:00:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.0" length="535600" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCQVjkRGvivDyOSfGCr1vL4VV6+eQIVAI/v3zWd9yo+8+XvfiaQ/ZjxIlFd" />
+            <pubDate>Fri, 12 Dec 2008 17:20:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.0" length="535538" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCig3Up2azirTGMUO4/IAo3IVJBTwIVAIMaXuJR5cvwQ5td3lrKSjUzCk/B" />
          </item>
    </channel>
 </rss>
