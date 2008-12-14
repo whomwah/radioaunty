@@ -11,7 +11,7 @@
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG
 						</sparkle:releaseNotesLink>
             <pubDate>Sun, 14 Dec 2008 20:48:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.0" length="429346" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDEDoHVovreCKRTr34BlTdbj6UOwgIUHD/iDIIhiqZgYnr+qdN5hzJv1rM=" />
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.1" length="429346" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDEDoHVovreCKRTr34BlTdbj6UOwgIUHD/iDIIhiqZgYnr+qdN5hzJv1rM=" />
          </item>
    </channel>
 </rss>
