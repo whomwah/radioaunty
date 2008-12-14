@@ -9,7 +9,6 @@
 #import "AppController.h"
 #import "PreferencesWindowController.h"
 
-#define STARTUP_NETWORK 7;
 #define CONSOLE_URL @"http://www.bbc.co.uk/iplayer/console/";
 
 @implementation AppController
@@ -21,8 +20,6 @@
 {
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
   NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
-  
-  int i = STARTUP_NETWORK;
   NSString * errorDesc = nil;
   NSPropertyListFormat format;
   NSString * plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
@@ -36,7 +33,7 @@
     [errorDesc release];
   }
   
-  [defaultValues setObject:[NSNumber numberWithInt:i] forKey:DSRDefaultStation];
+  [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:DSRDefaultStation];
   [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
   
   [defaults registerDefaults:defaultValues];
@@ -46,7 +43,7 @@
 - (id) init {
   if (self = [super init]) {
     self.stations = [[NSUserDefaults standardUserDefaults] arrayForKey:DSRStations];
-    [self setUpStation:[[NSUserDefaults standardUserDefaults] integerForKey:DSRDefaultStation]];
+    [self setAndLoadStation:[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation]];
   }
   return self;
 }
@@ -57,20 +54,25 @@
   [self buildMenu];
 }
 
+- (IBAction)refreshCurrentStation:(id)sender
+{
+  [self loadUrl:[self currentStation]];
+}
+
 - (void)loadUrl:(NSDictionary *)station
 {
   NSString * console = CONSOLE_URL;
   NSString * urlString = [console stringByAppendingString:[self keyForStation:station]]; 
   NSURL * URL = [NSURL URLWithString:urlString];
-  [[myWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]];  
+  NSLog(@"Loading: %@", URL);
+  [[myWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]]; 
 }
 
 - (void)changeStation:(id)sender
 {
-  int i = [sender tag];
   [[[sender menu] itemWithTitle:[self labelForStation:[self currentStation]]] setState:NSOffState]; 
   [sender setState:NSOnState];
-  [self setUpStation:i];
+  [self setAndLoadStation:[self findStationForId:[sender tag]]];
 }
 
 - (NSString *)keyForStation:(NSDictionary *)station
@@ -83,12 +85,30 @@
   return [station objectForKey:@"label"];
 }
 
-- (void)setUpStation:(int)index
+- (NSNumber *)idForStation:(NSDictionary *)station
 {
-  NSDictionary * station = [[self stations] objectAtIndex:index];
-  NSLog(@"setting up station: %@", station);
-  self.currentStation = station;
+  return [station objectForKey:@"id"];
+}
+
+- (void)setAndLoadStation:(NSDictionary *)station
+{
+  self.currentStation = station;  
   [self loadUrl:[self currentStation]];  
+}
+
+- (NSDictionary *)findStationForId:(int)key
+{
+  NSEnumerator * enumerator = [stations objectEnumerator];
+  
+  for (NSDictionary * station in enumerator) {  
+    if ([[NSNumber numberWithInt:key] isEqual:[station valueForKey:@"id"]]) {
+      NSLog(@"Found station: %@", station);
+      return station;
+      break;
+    }
+  }
+  
+  return nil;
 }
 
 - (void)displayPreferenceWindow:(id)sender
@@ -104,10 +124,10 @@
 -(void)buildMenu
 {
   NSEnumerator * enumerator = [stations objectEnumerator];
-  NSUInteger index = 0;
-    
+
   for (NSDictionary * station in enumerator) {  
-    NSMenuItem* newItem;
+    NSMenuItem * newItem;
+    
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
                                     action:@selector(changeStation:) 
                              keyEquivalent:@""];
@@ -115,11 +135,10 @@
       [newItem setState:NSOnState]; 
     }
     [newItem setEnabled:YES];
-    [newItem setTag:index];
+    [newItem setTag:[[station valueForKey:@"id"] intValue]];
     [newItem setTarget:self];
     [listenMenu addItem:newItem];
     [newItem release];
-    index++;
   } 
 }
 

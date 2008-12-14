@@ -1,3 +1,8 @@
+*1.1.0* (Dec 13th, 2008)
+
+* extended autoupdater, now choose to look (hourly, daily, weekly, monthly) 
+* extended autoupdater, added last updated 
+
 *1.0.0* (Dec 12th, 2008)
 
 * initial release
