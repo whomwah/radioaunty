@@ -257,6 +257,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -301,8 +303,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>13</integer>
-									<integer>7</integer>
+									<integer>2</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -335,14 +337,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>AEEFADF50EF022BB0021B372</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppController.m</string>
+								<string>AppController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -350,11 +350,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>AEEFADF60EF022BB0021B372</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppController.m</string>
+										<string>AppController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AE6EEA0F0EF53EDB001EDEFF</string>
+										<string>AE2771040EF5A867004A5E96</string>
 										<key>history</key>
 										<array>
 											<string>AEEFAE250EF025930021B372</string>
@@ -370,9 +370,9 @@
 											<string>AE52B8650EF537CC00974DB9</string>
 											<string>AE52B8660EF537CC00974DB9</string>
 											<string>AE52B8710EF538C100974DB9</string>
-											<string>AE6EE9F70EF53D3A001EDEFF</string>
-											<string>AE6EE9F80EF53D3A001EDEFF</string>
-											<string>AE6EE9F90EF53D3A001EDEFF</string>
+											<string>AE3737F90EF5A7F200E87F01</string>
+											<string>AE3737FA0EF5A7F200E87F01</string>
+											<string>AE3738010EF5A7F200E87F01</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -392,9 +392,6 @@
 											<string>AECEFB5B0EF2C81100481512</string>
 											<string>AECEFB5F0EF2C81100481512</string>
 											<string>AECEFB7E0EF2CD4900481512</string>
-											<string>AE6EE9FA0EF53D3A001EDEFF</string>
-											<string>AE6EE9FB0EF53D3A001EDEFF</string>
-											<string>AE6EE9FC0EF53D3A001EDEFF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -517,11 +514,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>AE6EE9F30EF53C4D001EDEFF</string>
+				<string>AE2770FB0EF5A867004A5E96</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>AE6EE9F40EF53C4D001EDEFF</string>
+				<string>AE2770FC0EF5A867004A5E96</string>
 				<string>AEEFADF50EF022BB0021B372</string>
-				<string>AE6EE9F50EF53C4D001EDEFF</string>
+				<string>AE2770FD0EF5A867004A5E96</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -666,14 +663,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>AE6EEA010EF53D55001EDEFF</string>
+				<string>AE2770FE0EF5A867004A5E96</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>AE6EEA020EF53D55001EDEFF</string>
-				<string>AE6EEA030EF53D55001EDEFF</string>
-				<string>AE6EEA040EF53D55001EDEFF</string>
-				<string>AE6EEA050EF53D55001EDEFF</string>
-				<string>AEEFADF50EF022BB0021B372</string>
+				<string>AE2770FF0EF5A867004A5E96</string>
+				<string>AE2771000EF5A867004A5E96</string>
+				<string>AE2771010EF5A867004A5E96</string>
+				<string>AE2771020EF5A867004A5E96</string>
+				<string>AE2771030EF5A867004A5E96</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -688,7 +685,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>250953435.80663699</real>
+	<real>250980455.527152</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>

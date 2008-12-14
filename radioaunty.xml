@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.0 (initial release)</title>
+            <title>Version 1.1 (feature updates)</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 12 Dec 2008 17:20:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.0" length="535451" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCbkHMT6WOvvnRKVatoQsgcmPveLAIVAMGqID6Md4Bg2h9YeVrXtcQenaYR" />
+            <pubDate>Sun, 14 Dec 2008 20:48:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.0" length="429346" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDEDoHVovreCKRTr34BlTdbj6UOwgIUHD/iDIIhiqZgYnr+qdN5hzJv1rM=" />
          </item>
    </channel>
 </rss>
