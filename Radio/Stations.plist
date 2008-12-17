@@ -10,6 +10,8 @@
 		<string>bbc_6music</string>
 		<key>label</key>
 		<string>6 Music</string>
+		<key>blurb</key>
+		<string>Closer to the music that you love.</string>
 	</dict>
 	<key>Stations</key>
 	<array>
@@ -20,6 +22,8 @@
 			<string>radio1</string>
 			<key>label</key>
 			<string>Radio 1</string>
+			<key>blurb</key>
+			<string>The best new music and entertainment.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -28,6 +32,8 @@
 			<string>bbc_1xtra</string>
 			<key>label</key>
 			<string>1xtra</string>
+			<key>blurb</key>
+			<string>Love black music, love 1Xtra.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -36,6 +42,8 @@
 			<string>radio2</string>
 			<key>label</key>
 			<string>Radio 2</string>
+			<key>blurb</key>
+			<string>The most listened-to station in the UK.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -44,6 +52,8 @@
 			<string>radio3</string>
 			<key>label</key>
 			<string>Radio 3</string>
+			<key>blurb</key>
+			<string>Live music and the arts.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -52,6 +62,8 @@
 			<string>radio4fm</string>
 			<key>label</key>
 			<string>Radio 4 FM</string>
+			<key>blurb</key>
+			<string>UK Radio Station of the Year 2008.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -60,6 +72,8 @@
 			<string>fivelive</string>
 			<key>label</key>
 			<string>Radio 5 live</string>
+			<key>blurb</key>
+			<string>The UK&apos;s home of live news and live sport.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -68,6 +82,8 @@
 			<string>5livesportsextra</string>
 			<key>label</key>
 			<string>Radio 5 live sports extra</string>
+			<key>blurb</key>
+			<string>More live sport. Pure live sport.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -76,6 +92,8 @@
 			<string>bbc_6music</string>
 			<key>label</key>
 			<string>6 Music</string>
+			<key>blurb</key>
+			<string>Closer to the music that you love.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -84,6 +102,8 @@
 			<string>bbc7</string>
 			<key>label</key>
 			<string>Radio 7</string>
+			<key>blurb</key>
+			<string>Unadulterated entertainment.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -92,6 +112,8 @@
 			<string>asiannetwork</string>
 			<key>label</key>
 			<string>Asian Network</string>
+			<key>blurb</key>
+			<string>The New Sound of Asian Britain.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -100,6 +122,8 @@
 			<string>worldservice</string>
 			<key>label</key>
 			<string>World Service</string>
+			<key>blurb</key>
+			<string>Impartial news and reports from around the world.</string>
 		</dict>
 	</array>
 </dict>

@@ -19,6 +19,14 @@
   NSString * urlString = [console stringByAppendingString:[station valueForKey:@"key"]]; 
   NSURL * URL = [NSURL URLWithString:urlString];
   
+  [GrowlApplicationBridge notifyWithTitle:[station valueForKey:@"label"]
+                              description:[station valueForKey:@"blurb"]
+                         notificationName:@"Station about to play"
+                                 iconData:nil
+                                 priority:1
+                                 isSticky:NO
+                             clickContext:nil];
+  
   [empView addSubview:preloaderView];
   [preloaderView positionInCenterOf:empView];
   [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]]; 

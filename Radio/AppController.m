@@ -12,6 +12,8 @@
 
 @implementation AppController
 
+@synthesize repeatingTimer;
+
 + (void)initialize
 {
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -38,12 +40,25 @@
 
 - (void)awakeFromNib
 {
-	drMainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+  drMainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
 	[[drMainWindowController window] makeMainWindow];
 	[[drMainWindowController window] makeKeyAndOrderFront:self];
-
+  
   [self buildMenu];
+  [GrowlApplicationBridge setGrowlDelegate:self];
   [drMainWindowController setAndLoadStation:[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation]]; 
+  
+  NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:15.0
+                                                    target:self 
+                                                  selector:@selector(pollNowPlaying:)
+                                                  userInfo:nil
+                                                   repeats:YES];
+  self.repeatingTimer = timer;
+}
+
+- (void)pollNowPlaying:(id)sender
+{
+  NSLog(@"Checking for new nowplaying data");
 }
 
 - (void)dealloc

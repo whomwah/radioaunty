@@ -18,6 +18,9 @@
 		AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */; };
 		AE6966860EF6AE9700B029FE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE6966850EF6AE9700B029FE /* MainWindow.xib */; };
 		AE69668F0EF6AF3D00B029FE /* EmpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE69668E0EF6AF3D00B029FE /* EmpView.xib */; };
+		AE73A0030EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = AE73A0020EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict */; };
+		AE73A04C0EF957A200AB9578 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73A04B0EF957A200AB9578 /* Growl.framework */; };
+		AE73A04F0EF957B200AB9578 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AE73A04B0EF957A200AB9578 /* Growl.framework */; };
 		AEA0B43D0EF7EFCE00137DAA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B43C0EF7EFCE00137DAA /* Preferences.xib */; };
 		AEA0B4410EF7F01600137DAA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEA0B44D0EF7F03300137DAA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
@@ -34,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AE73A04F0EF957B200AB9578 /* Growl.framework in CopyFiles */,
 				AEA0B44D0EF7F03300137DAA /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,6 +64,8 @@
 		AE6966700EF6AD1800B029FE /* EmpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmpViewController.m; sourceTree = "<group>"; };
 		AE6966850EF6AE9700B029FE /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		AE69668E0EF6AF3D00B029FE /* EmpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmpView.xib; sourceTree = "<group>"; };
+		AE73A0020EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
+		AE73A04B0EF957A200AB9578 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		AEA0B43C0EF7EFCE00137DAA /* Preferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		AEA0B4400EF7F01600137DAA /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		AEA0B4500EF7F09400137DAA /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */,
 				AEA0B4410EF7F01600137DAA /* Sparkle.framework in Frameworks */,
+				AE73A04C0EF957A200AB9578 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +109,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE73A04B0EF957A200AB9578 /* Growl.framework */,
 				AEA0B4400EF7F01600137DAA /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 			);
@@ -161,6 +169,7 @@
 				AE6966850EF6AE9700B029FE /* MainWindow.xib */,
 				AE69668E0EF6AF3D00B029FE /* EmpView.xib */,
 				AEA0B43C0EF7EFCE00137DAA /* Preferences.xib */,
+				AE73A0020EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -242,6 +251,7 @@
 				AEA0B43D0EF7EFCE00137DAA /* Preferences.xib in Resources */,
 				AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */,
 				AEA0B48A0EF7F3D200137DAA /* radio.icns in Resources */,
+				AE73A0030EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

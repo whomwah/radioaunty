@@ -7,17 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 
 @class MainWindowController;
 @class PreferencesWindowController;
 
-@interface AppController : NSObject {
+@interface AppController : NSObject <GrowlApplicationBridgeDelegate> {
   IBOutlet NSMenu * listenMenu;
+  NSTimer * repeatingTimer;
 	MainWindowController * drMainWindowController;
   PreferencesWindowController * preferencesWindowController;
 }
 
+@property (retain) NSTimer * repeatingTimer;
+
 - (void)buildMenu;
+- (void)pollNowPlaying:(id)sender;
 - (IBAction)changeStation:(id)sender;
 - (IBAction)refreshStation:(id)sender;
 - (IBAction)displayPreferenceWindow:(id)sender;
