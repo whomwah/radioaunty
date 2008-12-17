@@ -77,30 +77,17 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 251207299;
-			PBXWorkspaceStateSaveDate = 251207299;
+			PBXPerProjectTemplateStateSaveDate = 251209241;
+			PBXWorkspaceStateSaveDate = 251209241;
 		};
 		perUserProjectItems = {
 			AE333C010EF79B890077A647 /* PlistBookmark */ = AE333C010EF79B890077A647 /* PlistBookmark */;
 			AE333C040EF79B890077A647 /* PlistBookmark */ = AE333C040EF79B890077A647 /* PlistBookmark */;
 			AE476EF80EF9210A0025170B /* PBXTextBookmark */ = AE476EF80EF9210A0025170B /* PBXTextBookmark */;
-			AE476EFA0EF9210A0025170B /* PBXTextBookmark */ = AE476EFA0EF9210A0025170B /* PBXTextBookmark */;
-			AE476EFB0EF9210A0025170B /* PBXTextBookmark */ = AE476EFB0EF9210A0025170B /* PBXTextBookmark */;
-			AE476F020EF921340025170B /* PBXTextBookmark */ = AE476F020EF921340025170B /* PBXTextBookmark */;
 			AE476F060EF921940025170B /* PBXTextBookmark */ = AE476F060EF921940025170B /* PBXTextBookmark */;
-			AE476F090EF921940025170B /* PBXTextBookmark */ = AE476F090EF921940025170B /* PBXTextBookmark */;
-			AE476F0A0EF921940025170B /* PBXTextBookmark */ = AE476F0A0EF921940025170B /* PBXTextBookmark */;
-			AE476F0B0EF921940025170B /* PBXTextBookmark */ = AE476F0B0EF921940025170B /* PBXTextBookmark */;
-			AE476F110EF921D10025170B /* PBXTextBookmark */ = AE476F110EF921D10025170B /* PBXTextBookmark */;
 			AE476F260EF9228A0025170B /* PBXTextBookmark */ = AE476F260EF9228A0025170B /* PBXTextBookmark */;
 			AE476F270EF9228A0025170B /* PBXTextBookmark */ = AE476F270EF9228A0025170B /* PBXTextBookmark */;
-			AE476F290EF9228A0025170B /* PBXTextBookmark */ = AE476F290EF9228A0025170B /* PBXTextBookmark */;
-			AE476F2A0EF9228A0025170B /* PlistBookmark */ = AE476F2A0EF9228A0025170B /* PlistBookmark */;
-			AE476F2B0EF9228A0025170B /* PBXTextBookmark */ = AE476F2B0EF9228A0025170B /* PBXTextBookmark */;
 			AE476F390EF923B40025170B /* PlistBookmark */ = AE476F390EF923B40025170B /* PlistBookmark */;
-			AE476F3A0EF923B40025170B /* PBXTextBookmark */ = AE476F3A0EF923B40025170B /* PBXTextBookmark */;
-			AE476F3B0EF923B40025170B /* PlistBookmark */ = AE476F3B0EF923B40025170B /* PlistBookmark */;
-			AE476F420EF9240E0025170B /* PBXTextBookmark */ = AE476F420EF9240E0025170B /* PBXTextBookmark */;
 			AE6966670EF6AD0200B029FE /* PBXTextBookmark */ = AE6966670EF6AD0200B029FE /* PBXTextBookmark */;
 			AE6966680EF6AD0200B029FE /* PBXTextBookmark */ = AE6966680EF6AD0200B029FE /* PBXTextBookmark */;
 			AE6966780EF6ADEF00B029FE /* PBXTextBookmark */ = AE6966780EF6ADEF00B029FE /* PBXTextBookmark */;
@@ -112,15 +99,16 @@
 			AE9C9D8A0EF8E95300260D64 /* PBXTextBookmark */ = AE9C9D8A0EF8E95300260D64 /* PBXTextBookmark */;
 			AE9C9D8C0EF8E95300260D64 /* PBXTextBookmark */ = AE9C9D8C0EF8E95300260D64 /* PBXTextBookmark */;
 			AE9C9DD00EF8EC8000260D64 /* PBXTextBookmark */ = AE9C9DD00EF8EC8000260D64 /* PBXTextBookmark */;
-			AEA0B45B0EF7F13200137DAA /* PBXTextBookmark */ = AEA0B45B0EF7F13200137DAA /* PBXTextBookmark */;
 			AEA0B45D0EF7F13200137DAA /* PBXTextBookmark */ = AEA0B45D0EF7F13200137DAA /* PBXTextBookmark */;
 			AEA0B45E0EF7F13200137DAA /* PBXTextBookmark */ = AEA0B45E0EF7F13200137DAA /* PBXTextBookmark */;
-			AEA0B4720EF7F35B00137DAA /* PBXTextBookmark */ = AEA0B4720EF7F35B00137DAA /* PBXTextBookmark */;
 			AEA0B48F0EF7F42500137DAA /* PlistBookmark */ = AEA0B48F0EF7F42500137DAA /* PlistBookmark */;
 			AEA0B49E0EF7F57B00137DAA /* PBXTextBookmark */ = AEA0B49E0EF7F57B00137DAA /* PBXTextBookmark */;
 			AEA0B4EE0EF7FCBB00137DAA /* PBXTextBookmark */ = AEA0B4EE0EF7FCBB00137DAA /* PBXTextBookmark */;
 			AEA0B55F0EF8067E00137DAA /* PBXTextBookmark */ = AEA0B55F0EF8067E00137DAA /* PBXTextBookmark */;
 			AEA0B5600EF8067E00137DAA /* PBXTextBookmark */ = AEA0B5600EF8067E00137DAA /* PBXTextBookmark */;
+			AEF042490EF92645008C3FD4 /* PBXTextBookmark */ = AEF042490EF92645008C3FD4 /* PBXTextBookmark */;
+			AEF0424A0EF92645008C3FD4 /* PBXTextBookmark */ = AEF0424A0EF92645008C3FD4 /* PBXTextBookmark */;
+			AEF042590EF926A1008C3FD4 /* PlistBookmark */ = AEF042590EF926A1008C3FD4 /* PlistBookmark */;
 		};
 		sourceControlManager = AE69664B0EF6ABC400B029FE /* Source Control */;
 		userBuildSettings = {
@@ -164,36 +152,6 @@
 		vrLen = 1654;
 		vrLoc = 43;
 	};
-	AE476EFA0EF9210A0025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B2A80EF7D19800137DAA /* EmpViewController.m */;
-		name = "EmpViewController.m: 34";
-		rLen = 0;
-		rLoc = 927;
-		rType = 0;
-		vrLen = 1580;
-		vrLoc = 136;
-	};
-	AE476EFB0EF9210A0025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */;
-		name = "MainWindowController.m: 46";
-		rLen = 0;
-		rLoc = 1380;
-		rType = 0;
-		vrLen = 1654;
-		vrLoc = 43;
-	};
-	AE476F020EF921340025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B2A80EF7D19800137DAA /* EmpViewController.m */;
-		name = "EmpViewController.m: 33";
-		rLen = 0;
-		rLoc = 927;
-		rType = 0;
-		vrLen = 1082;
-		vrLoc = 255;
-	};
 	AE476F060EF921940025170B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = AE69666F0EF6AD1800B029FE /* EmpViewController.h */;
@@ -203,46 +161,6 @@
 		rType = 0;
 		vrLen = 932;
 		vrLoc = 0;
-	};
-	AE476F090EF921940025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE69666F0EF6AD1800B029FE /* EmpViewController.h */;
-		name = "EmpViewController.h: 21";
-		rLen = 0;
-		rLoc = 458;
-		rType = 0;
-		vrLen = 932;
-		vrLoc = 0;
-	};
-	AE476F0A0EF921940025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B2A80EF7D19800137DAA /* EmpViewController.m */;
-		name = "EmpViewController.m: 33";
-		rLen = 0;
-		rLoc = 927;
-		rType = 0;
-		vrLen = 1452;
-		vrLoc = 0;
-	};
-	AE476F0B0EF921940025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B5520EF8055B00137DAA /* Preloader.m */;
-		name = "Preloader.m: 26";
-		rLen = 0;
-		rLoc = 567;
-		rType = 0;
-		vrLen = 872;
-		vrLoc = 0;
-	};
-	AE476F110EF921D10025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B2A80EF7D19800137DAA /* EmpViewController.m */;
-		name = "EmpViewController.m: 45";
-		rLen = 0;
-		rLoc = 1227;
-		rType = 0;
-		vrLen = 1786;
-		vrLoc = 291;
 	};
 	AE476F260EF9228A0025170B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -264,37 +182,6 @@
 		vrLen = 209;
 		vrLoc = 0;
 	};
-	AE476F290EF9228A0025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B5520EF8055B00137DAA /* Preloader.m */;
-		name = "Preloader.m: 23";
-		rLen = 0;
-		rLoc = 440;
-		rType = 0;
-		vrLen = 872;
-		vrLoc = 0;
-	};
-	AE476F2A0EF9228A0025170B /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/duncan/Desktop/Radio/Info.plist;
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	AE476F2B0EF9228A0025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 089C165DFE840E0CC02AAC07 /* English */;
-		name = "InfoPlist.strings: 5";
-		rLen = 0;
-		rLoc = 209;
-		rType = 0;
-		vrLen = 209;
-		vrLoc = 0;
-	};
 	AE476F390EF923B40025170B /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
@@ -305,37 +192,6 @@
 		name = /Users/duncan/Desktop/Radio/Info.plist;
 		rLen = 0;
 		rLoc = 2147483647;
-	};
-	AE476F3A0EF923B40025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B2A80EF7D19800137DAA /* EmpViewController.m */;
-		name = "EmpViewController.m: 45";
-		rLen = 0;
-		rLoc = 1227;
-		rType = 0;
-		vrLen = 1786;
-		vrLoc = 291;
-	};
-	AE476F3B0EF923B40025170B /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/duncan/Desktop/Radio/Info.plist;
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	AE476F420EF9240E0025170B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */;
-		name = "EmpViewController.m: 40";
-		rLen = 0;
-		rLoc = 1073;
-		rType = 0;
-		vrLen = 1757;
-		vrLoc = 369;
 	};
 	AE69663F0EF6ABA500B029FE /* Radio */ = {
 		isa = PBXExecutable;
@@ -526,18 +382,6 @@
 		vrLen = 306;
 		vrLoc = 0;
 	};
-	AEA0B2A80EF7D19800137DAA /* EmpViewController.m */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.objc;
-		name = EmpViewController.m;
-		path = /Users/duncan/Desktop/Radio/EmpViewController.m;
-		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1241, 1078}}";
-			sepNavSelRange = "{1073, 0}";
-			sepNavVisRange = "{369, 1757}";
-		};
-	};
 	AEA0B4500EF7F09400137DAA /* PreferencesWindowController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1025, 618}}";
@@ -551,23 +395,6 @@
 			sepNavSelRange = "{241, 100}";
 			sepNavVisRange = "{0, 403}";
 		};
-	};
-	AEA0B45B0EF7F13200137DAA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B45C0EF7F13200137DAA /* SUAppcast.h */;
-		name = "SUAppcast.h: 12";
-		rLen = 0;
-		rLoc = 198;
-		rType = 0;
-		vrLen = 668;
-		vrLoc = 0;
-	};
-	AEA0B45C0EF7F13200137DAA /* SUAppcast.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = SUAppcast.h;
-		path = /Users/duncan/Desktop/Radio/Sparkle.framework/Headers/SUAppcast.h;
-		sourceTree = "<absolute>";
 	};
 	AEA0B45D0EF7F13200137DAA /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -587,16 +414,6 @@
 		rLoc = 0;
 		rType = 0;
 		vrLen = 403;
-		vrLoc = 0;
-	};
-	AEA0B4720EF7F35B00137DAA /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AEA0B45C0EF7F13200137DAA /* SUAppcast.h */;
-		name = "SUAppcast.h: 12";
-		rLen = 0;
-		rLoc = 198;
-		rType = 0;
-		vrLen = 668;
 		vrLoc = 0;
 	};
 	AEA0B48F0EF7F42500137DAA /* PlistBookmark */ = {
@@ -664,5 +481,36 @@
 		rType = 0;
 		vrLen = 872;
 		vrLoc = 0;
+	};
+	AEF042490EF92645008C3FD4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */;
+		name = "EmpViewController.m: 40";
+		rLen = 0;
+		rLoc = 1073;
+		rType = 0;
+		vrLen = 1757;
+		vrLoc = 369;
+	};
+	AEF0424A0EF92645008C3FD4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */;
+		name = "EmpViewController.m: 40";
+		rLen = 0;
+		rLoc = 1073;
+		rType = 0;
+		vrLen = 1757;
+		vrLoc = 369;
+	};
+	AEF042590EF926A1008C3FD4 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/duncan/repos/git/radioaunty/Radio/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 }

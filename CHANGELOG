@@ -1,3 +1,8 @@
+*1.2* (Dec 17th, 2008)
+
+* refactor of code so I can add more station in the future
+* Changed project name to be more generic 
+
 *1.1.0* (Dec 13th, 2008)
 
 * extended autoupdater, now choose to look (hourly, daily, weekly, monthly) 
