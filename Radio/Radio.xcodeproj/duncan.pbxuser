@@ -8,7 +8,7 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Release;
+		activeBuildConfigurationName = Debug;
 		activeExecutable = AE69663F0EF6ABA500B029FE /* Radio */;
 		activeTarget = 8D1107260486CEB800E47090 /* Radio */;
 		addToTargets = (
@@ -77,23 +77,15 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 251236711;
-			PBXWorkspaceStateSaveDate = 251236711;
+			PBXPerProjectTemplateStateSaveDate = 251237941;
+			PBXWorkspaceStateSaveDate = 251237941;
 		};
 		perUserProjectItems = {
-			AE2783330EF991D2005C548F /* PBXTextBookmark */ = AE2783330EF991D2005C548F /* PBXTextBookmark */;
 			AE27834D0EF99319005C548F /* PBXTextBookmark */ = AE27834D0EF99319005C548F /* PBXTextBookmark */;
 			AE27834E0EF99319005C548F /* PBXTextBookmark */ = AE27834E0EF99319005C548F /* PBXTextBookmark */;
 			AE27834F0EF99319005C548F /* PlistBookmark */ = AE27834F0EF99319005C548F /* PlistBookmark */;
 			AE2783500EF99319005C548F /* PBXTextBookmark */ = AE2783500EF99319005C548F /* PBXTextBookmark */;
-			AE2783510EF99319005C548F /* PBXTextBookmark */ = AE2783510EF99319005C548F /* PBXTextBookmark */;
-			AE2783520EF99319005C548F /* PBXTextBookmark */ = AE2783520EF99319005C548F /* PBXTextBookmark */;
-			AE2783530EF99319005C548F /* PBXTextBookmark */ = AE2783530EF99319005C548F /* PBXTextBookmark */;
-			AE2783540EF99319005C548F /* PBXTextBookmark */ = AE2783540EF99319005C548F /* PBXTextBookmark */;
-			AE2783550EF99319005C548F /* PBXTextBookmark */ = AE2783550EF99319005C548F /* PBXTextBookmark */;
-			AE2783560EF99319005C548F /* PlistBookmark */ = AE2783560EF99319005C548F /* PlistBookmark */;
-			AE2783570EF99319005C548F /* PBXTextBookmark */ = AE2783570EF99319005C548F /* PBXTextBookmark */;
-			AE2783700EF99438005C548F /* PBXTextBookmark */ = AE2783700EF99438005C548F /* PBXTextBookmark */;
+			AE2B086D0EF9964700A20FD3 /* PlistBookmark */ = AE2B086D0EF9964700A20FD3 /* PlistBookmark */;
 			AE333C040EF79B890077A647 /* PlistBookmark */ = AE333C040EF79B890077A647 /* PlistBookmark */;
 			AE476F270EF9228A0025170B /* PBXTextBookmark */ = AE476F270EF9228A0025170B /* PBXTextBookmark */;
 			AE6966670EF6AD0200B029FE /* PBXTextBookmark */ = AE6966670EF6AD0200B029FE /* PBXTextBookmark */;
@@ -107,6 +99,8 @@
 			AE73A0A80EF95C3000AB9578 /* PBXTextBookmark */ = AE73A0A80EF95C3000AB9578 /* PBXTextBookmark */;
 			AE73A0AA0EF95C3000AB9578 /* PBXTextBookmark */ = AE73A0AA0EF95C3000AB9578 /* PBXTextBookmark */;
 			AE73A0AB0EF95C3000AB9578 /* PBXTextBookmark */ = AE73A0AB0EF95C3000AB9578 /* PBXTextBookmark */;
+			AE88AF230EF995A700192FF0 /* PBXTextBookmark */ = AE88AF230EF995A700192FF0 /* PBXTextBookmark */;
+			AE88AF250EF995A700192FF0 /* PlistBookmark */ = AE88AF250EF995A700192FF0 /* PlistBookmark */;
 			AE9C9D8C0EF8E95300260D64 /* PBXTextBookmark */ = AE9C9D8C0EF8E95300260D64 /* PBXTextBookmark */;
 			AEA0B45D0EF7F13200137DAA /* PBXTextBookmark */ = AEA0B45D0EF7F13200137DAA /* PBXTextBookmark */;
 			AEA0B45E0EF7F13200137DAA /* PBXTextBookmark */ = AEA0B45E0EF7F13200137DAA /* PBXTextBookmark */;
@@ -116,7 +110,6 @@
 			AEA0B55F0EF8067E00137DAA /* PBXTextBookmark */ = AEA0B55F0EF8067E00137DAA /* PBXTextBookmark */;
 			AEA0B5600EF8067E00137DAA /* PBXTextBookmark */ = AEA0B5600EF8067E00137DAA /* PBXTextBookmark */;
 			AECF66210EF9652700754A03 /* PBXTextBookmark */ = AECF66210EF9652700754A03 /* PBXTextBookmark */;
-			AECF66250EF9659D00754A03 /* PlistBookmark */ = AECF66250EF9659D00754A03 /* PlistBookmark */;
 		};
 		sourceControlManager = AE69664B0EF6ABC400B029FE /* Source Control */;
 		userBuildSettings = {
@@ -127,16 +120,6 @@
 		executables = (
 			AE69663F0EF6ABA500B029FE /* Radio */,
 		);
-	};
-	AE2783330EF991D2005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE6966570EF6ABF200B029FE /* AppController.m */;
-		name = "AppController.m: 48";
-		rLen = 0;
-		rLoc = 1763;
-		rType = 0;
-		vrLen = 1335;
-		vrLoc = 0;
 	};
 	AE27834D0EF99319005C548F /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -179,86 +162,17 @@
 		vrLen = 1132;
 		vrLoc = 0;
 	};
-	AE2783510EF99319005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE69666F0EF6AD1800B029FE /* EmpViewController.h */;
-		name = "EmpViewController.h: 11";
-		rLen = 0;
-		rLoc = 213;
-		rType = 0;
-		vrLen = 956;
-		vrLoc = 0;
-	};
-	AE2783520EF99319005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE6966560EF6ABF200B029FE /* AppController.h */;
-		name = "AppController.h: 24";
-		rLen = 0;
-		rLoc = 577;
-		rType = 0;
-		vrLen = 644;
-		vrLoc = 0;
-	};
-	AE2783530EF99319005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE6966570EF6ABF200B029FE /* AppController.m */;
-		name = "AppController.m: 20";
-		rLen = 0;
-		rLoc = 482;
-		rType = 0;
-		vrLen = 1335;
-		vrLoc = 0;
-	};
-	AE2783540EF99319005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE69666F0EF6AD1800B029FE /* EmpViewController.h */;
-		name = "EmpViewController.h: 11";
-		rLen = 0;
-		rLoc = 213;
-		rType = 0;
-		vrLen = 956;
-		vrLoc = 0;
-	};
-	AE2783550EF99319005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */;
-		name = "EmpViewController.m: 39";
-		rLen = 0;
-		rLoc = 1217;
-		rType = 0;
-		vrLen = 1132;
-		vrLoc = 0;
-	};
-	AE2783560EF99319005C548F /* PlistBookmark */ = {
+	AE2B086D0EF9964700A20FD3 /* PlistBookmark */ = {
 		isa = PlistBookmark;
-		fRef = AE333BDB0EF79B4B0077A647 /* Stations.plist */;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
+			CFBundleVersion,
 		);
-		name = /Users/duncan/_checkouts/git/radioaunty/Radio/Stations.plist;
-		rLen = 0;
-		rLoc = 2147483647;
-	};
-	AE2783570EF99319005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */;
-		name = "EmpViewController.m: 39";
-		rLen = 0;
-		rLoc = 1217;
-		rType = 0;
-		vrLen = 1132;
-		vrLoc = 0;
-	};
-	AE2783700EF99438005C548F /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = AE69666F0EF6AD1800B029FE /* EmpViewController.h */;
-		name = "EmpViewController.h: 11";
-		rLen = 0;
-		rLoc = 213;
-		rType = 0;
-		vrLen = 956;
-		vrLoc = 0;
+		name = /Users/duncan/_checkouts/git/radioaunty/Radio/Info.plist;
+		rLen = 3;
+		rLoc = 0;
 	};
 	AE333C040EF79B890077A647 /* PlistBookmark */ = {
 		isa = PlistBookmark;
@@ -472,6 +386,28 @@
 		vrLen = 714;
 		vrLoc = 0;
 	};
+	AE88AF230EF995A700192FF0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = AE69666F0EF6AD1800B029FE /* EmpViewController.h */;
+		name = "EmpViewController.h: 11";
+		rLen = 0;
+		rLoc = 213;
+		rType = 0;
+		vrLen = 956;
+		vrLoc = 0;
+	};
+	AE88AF250EF995A700192FF0 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleVersion,
+		);
+		name = /Users/duncan/_checkouts/git/radioaunty/Radio/Info.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
 	AE9C9D8C0EF8E95300260D64 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = AEA0B4510EF7F09400137DAA /* PreferencesWindowController.m */;
@@ -591,16 +527,5 @@
 		rType = 0;
 		vrLen = 306;
 		vrLoc = 0;
-	};
-	AECF66250EF9659D00754A03 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 8D1107310486CEB800E47090 /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/duncan/repos/git/radioaunty/Radio/Info.plist;
-		rLen = 0;
-		rLoc = 2147483647;
 	};
 }

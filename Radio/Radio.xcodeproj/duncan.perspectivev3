@@ -257,8 +257,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -298,10 +296,17 @@
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>AEA0B0F50EF7B44F00137DAA</string>
 								<string>080E96DDFE201D6D7F000001</string>
+								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>E2644B35053B69B200211256</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
-							<array/>
+							<array>
+								<array>
+									<integer>17</integer>
+									<integer>13</integer>
+									<integer>0</integer>
+								</array>
+							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
 							<string>{{0, 0}, {196, 525}}</string>
 						</dict>
@@ -336,7 +341,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>AE6966620EF6AD0200B029FE</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>EmpViewController.h</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -344,11 +349,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>AE6966630EF6AD0200B029FE</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>EmpViewController.h</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>AE2783700EF99438005C548F</string>
+										<string>AE2B086D0EF9964700A20FD3</string>
 										<key>history</key>
 										<array>
 											<string>AEA0B4EE0EF7FCBB00137DAA</string>
@@ -359,12 +364,12 @@
 											<string>AE73A0AA0EF95C3000AB9578</string>
 											<string>AE73A0AB0EF95C3000AB9578</string>
 											<string>AECF66210EF9652700754A03</string>
-											<string>AECF66250EF9659D00754A03</string>
 											<string>AE27834D0EF99319005C548F</string>
 											<string>AE27834E0EF99319005C548F</string>
 											<string>AE27834F0EF99319005C548F</string>
 											<string>AE2783500EF99319005C548F</string>
-											<string>AE2783510EF99319005C548F</string>
+											<string>AE88AF230EF995A700192FF0</string>
+											<string>AE88AF250EF995A700192FF0</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -382,13 +387,6 @@
 											<string>AEA0B55F0EF8067E00137DAA</string>
 											<string>AEA0B5600EF8067E00137DAA</string>
 											<string>AE73A00D0EF9549D00AB9578</string>
-											<string>AE2783330EF991D2005C548F</string>
-											<string>AE2783520EF99319005C548F</string>
-											<string>AE2783530EF99319005C548F</string>
-											<string>AE2783540EF99319005C548F</string>
-											<string>AE2783550EF99319005C548F</string>
-											<string>AE2783560EF99319005C548F</string>
-											<string>AE2783570EF99319005C548F</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -511,11 +509,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>AE2783360EF991D2005C548F</string>
+				<string>AE2B08640EF9964700A20FD3</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>AE2783370EF991D2005C548F</string>
+				<string>AE2B08650EF9964700A20FD3</string>
 				<string>AE6966620EF6AD0200B029FE</string>
-				<string>AE2783380EF991D2005C548F</string>
+				<string>AE2B08660EF9964700A20FD3</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -660,14 +658,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>AE2783390EF991D2005C548F</string>
+				<string>AE2B08670EF9964700A20FD3</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>AE27833A0EF991D2005C548F</string>
-				<string>AE27833B0EF991D2005C548F</string>
-				<string>AE27833C0EF991D2005C548F</string>
-				<string>AE27833D0EF991D2005C548F</string>
-				<string>AE6966620EF6AD0200B029FE</string>
+				<string>AE2B08680EF9964700A20FD3</string>
+				<string>AE2B08690EF9964700A20FD3</string>
+				<string>AE2B086A0EF9964700A20FD3</string>
+				<string>AE2B086B0EF9964700A20FD3</string>
+				<string>AE2B086C0EF9964700A20FD3</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -682,7 +680,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>251237432.96347901</real>
+	<real>251237959.89728001</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
