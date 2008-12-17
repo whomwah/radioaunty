@@ -8,9 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern NSString * const DSRDefaultStation;
-extern NSString * const DSRStations;
-
 @interface PreferencesWindowController : NSWindowController {
   
 }

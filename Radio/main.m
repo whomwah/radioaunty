@@ -1,8 +1,8 @@
 //
 //  main.m
-//  RadioAunty
+//  Radio
 //
-//  Created by Duncan Robertson on 10/12/2008.
+//  Created by Duncan Robertson on 15/12/2008.
 //  Copyright Whomwah 2008. All rights reserved.
 //
 

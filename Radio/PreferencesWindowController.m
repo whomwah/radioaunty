@@ -8,9 +8,6 @@
 
 #import "PreferencesWindowController.h"
 
-NSString * const DSRDefaultStation = @"DefaultStation";
-NSString * const DSRStations = @"Stations";
-
 @implementation PreferencesWindowController
 
 - (id)init
