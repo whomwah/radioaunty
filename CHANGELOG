@@ -1,3 +1,8 @@
+*1.3* (Dec 17th, 2008)
+
+* Add Growl support
+  [http://growl.info/]
+
 *1.2* (Dec 17th, 2008)
 
 * refactor of code so I can add more station in the future

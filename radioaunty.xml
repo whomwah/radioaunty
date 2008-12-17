@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.2 (code updates)</title>
+            <title>Version 1.3 (Add Growl support)</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG
 						</sparkle:releaseNotesLink>
-            <pubDate>Wed, 17 Dec 2008 20:48:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.2" length="545537" type="application/octet-stream" sparkle:dsaSignature="MCwCFGWYOsZWg3NGGntsH1mbZJzsiMP5AhQ6Xhi7m5ngsxF3oM9BlR1Wnb/5Ng==" />
+            <pubDate>Wed, 17 Dec 2008 21:00:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.3" length="616481" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCnCwAseiNqxvNdJRl4ajdfBBxyzQIUMZFMz8VV6yEH/splq0K0hprdJpI=" />
          </item>
    </channel>
 </rss>

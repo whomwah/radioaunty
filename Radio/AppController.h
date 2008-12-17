@@ -19,10 +19,7 @@
   PreferencesWindowController * preferencesWindowController;
 }
 
-@property (retain) NSTimer * repeatingTimer;
-
 - (void)buildMenu;
-- (void)pollNowPlaying:(id)sender;
 - (IBAction)changeStation:(id)sender;
 - (IBAction)refreshStation:(id)sender;
 - (IBAction)displayPreferenceWindow:(id)sender;
