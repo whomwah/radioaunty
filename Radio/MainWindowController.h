@@ -12,6 +12,7 @@ extern NSString * const DSRDefaultStation;
 extern NSString * const DSRStations;
 
 @class EmpViewController;
+@class NowNext;
 
 @interface MainWindowController : NSWindowController {
 	IBOutlet NSView * drMainView;
@@ -19,6 +20,7 @@ extern NSString * const DSRStations;
   NSString * wTitle;
   NSDictionary * currentStation;
   NSArray * stations;
+  NowNext * drNowNext;
 }
 
 @property (retain) NSString * wTitle;

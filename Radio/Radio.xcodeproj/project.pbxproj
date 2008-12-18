@@ -11,6 +11,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		AE0E9C240EFA3B460024215E /* NowNext.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0E9C230EFA3B460024215E /* NowNext.m */; };
 		AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE333BBA0EF798740077A647 /* WebKit.framework */; };
 		AE333BDC0EF79B4B0077A647 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Stations.plist */; };
 		AE6966580EF6ABF200B029FE /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966570EF6ABF200B029FE /* AppController.m */; };
@@ -54,6 +55,8 @@
 		32CA4F630368D1EE00C91783 /* Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* RadioAunty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAunty.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE0E9C220EFA3B460024215E /* NowNext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NowNext.h; sourceTree = "<group>"; };
+		AE0E9C230EFA3B460024215E /* NowNext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NowNext.m; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		AE6966560EF6ABF200B029FE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 		AEA0B0F50EF7B44F00137DAA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE0E9C220EFA3B460024215E /* NowNext.h */,
+				AE0E9C230EFA3B460024215E /* NowNext.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */,
 				AEA0B4520EF7F09400137DAA /* PreferencesWindowController.m in Sources */,
 				AEA0B5530EF8055B00137DAA /* Preloader.m in Sources */,
+				AE0E9C240EFA3B460024215E /* NowNext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "MainWindowController.h"
 #import "EmpViewController.h"
+#import "NowNext.h"
 
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
@@ -25,6 +26,7 @@ NSString * const DSRStations = @"Stations";
   self.wTitle = [[self currentStation] valueForKey:@"label"];
   
   drEmpViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
+  drNowNext = [[NowNext alloc] init];
   
   NSView * aEmpView = [drEmpViewController view];
   NSSize currentSize = [drMainView frame].size; 
@@ -49,6 +51,7 @@ NSString * const DSRStations = @"Stations";
 - (void)dealloc
 {
 	[drEmpViewController release];
+  [drNowNext release];
 	[super dealloc];
 }
 
