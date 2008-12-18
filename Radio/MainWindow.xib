@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="1" id="9"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -93,23 +93,23 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">displayPatternTitle1: wTitle</string>
+						<string key="label">displayPatternTitle1: drNowNext.display_title</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="1005"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">displayPatternTitle1: wTitle</string>
+							<string key="NSLabel">displayPatternTitle1: drNowNext.display_title</string>
 							<string key="NSBinding">displayPatternTitle1</string>
-							<string key="NSKeyPath">wTitle</string>
+							<string key="NSKeyPath">drNowNext.display_title</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSDisplayPattern</string>
-								<string key="NS.object.0">BBC %{title1}@</string>
+								<string key="NS.object.0">%{title1}@</string>
 							</object>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">51</int>
+					<int key="connectionID">87</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -190,7 +190,7 @@
 					<string>{{659, 537}, {330, 143}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{659, 537}, {330, 143}}</string>
-					<integer value="1"/>
+					<reference ref="9"/>
 					<string>{196, 240}</string>
 					<string>{{202, 428}, {480, 270}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -217,7 +217,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">51</int>
+			<int key="maxID">87</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

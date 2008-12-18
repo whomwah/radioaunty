@@ -8,25 +8,23 @@
 
 #import "MainWindowController.h"
 #import "EmpViewController.h"
-#import "NowNext.h"
+#import "BBCNowNext.h"
 
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
 
 @implementation MainWindowController
 
-@synthesize wTitle;
 @synthesize currentStation;
 @synthesize stations;
+@synthesize drNowNext;
 
 - (void)windowDidLoad
 {
 	self.stations = [[NSUserDefaults standardUserDefaults] arrayForKey:DSRStations];
   self.currentStation = [[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation];
-  self.wTitle = [[self currentStation] valueForKey:@"label"];
   
   drEmpViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
-  drNowNext = [[NowNext alloc] init];
   
   NSView * aEmpView = [drEmpViewController view];
   NSSize currentSize = [drMainView frame].size; 
@@ -51,7 +49,6 @@ NSString * const DSRStations = @"Stations";
 - (void)dealloc
 {
 	[drEmpViewController release];
-  [drNowNext release];
 	[super dealloc];
 }
 
@@ -71,9 +68,26 @@ NSString * const DSRStations = @"Stations";
 }
 
 - (void)setAndLoadStation:(NSDictionary *)station
-{
+{  
   self.currentStation = station;  
   [drEmpViewController loadUrl:[self currentStation]];  
+}
+
+
+- (void)setNowPlaying
+{
+  BBCNowNext * nn = [[BBCNowNext alloc] initUsingService:[[self currentStation] valueForKey:@"key"] 
+                                                  outlet:[[self currentStation] valueForKey:@"outlet"]];
+  self.drNowNext = nn;
+  
+  if (!drNowNext.display_title) {
+    drNowNext.display_title = [[self currentStation] valueForKey:@"label"];
+  }
+  if (!drNowNext.display_title) {
+    drNowNext.short_synopsis = @"";
+  }
+  
+  [nn release];
 }
 
 @end

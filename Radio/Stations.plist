@@ -7,7 +7,7 @@
 		<key>id</key>
 		<integer>8</integer>
 		<key>key</key>
-		<string>bbc_6music</string>
+		<string>6music</string>
 		<key>label</key>
 		<string>6 Music</string>
 		<key>blurb</key>
@@ -29,7 +29,7 @@
 			<key>id</key>
 			<integer>2</integer>
 			<key>key</key>
-			<string>bbc_1xtra</string>
+			<string>1xtra</string>
 			<key>label</key>
 			<string>1xtra</string>
 			<key>blurb</key>
@@ -59,11 +59,13 @@
 			<key>id</key>
 			<integer>5</integer>
 			<key>key</key>
-			<string>radio4fm</string>
+			<string>radio4</string>
 			<key>label</key>
 			<string>Radio 4 FM</string>
 			<key>blurb</key>
 			<string>UK Radio Station of the Year 2008.</string>
+			<key>outlet</key>
+			<string>fm</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -89,7 +91,7 @@
 			<key>id</key>
 			<integer>8</integer>
 			<key>key</key>
-			<string>bbc_6music</string>
+			<string>6music</string>
 			<key>label</key>
 			<string>6 Music</string>
 			<key>blurb</key>

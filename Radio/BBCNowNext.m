@@ -1,27 +1,48 @@
 //
-//  NowNext.m
+//  BBCNowNext.m
 //  Radio
 //
 //  Created by Duncan Robertson on 18/12/2008.
 //  Copyright 2008 Whomwah. All rights reserved.
 //
 
-#import "NowNext.h"
+#import "BBCNowNext.h"
 
-
-@implementation NowNext
+@implementation BBCNowNext
 
 @synthesize receivedData;
-@synthesize title;
-@synthesize description;
+@synthesize display_title;
+@synthesize short_synopsis;
 
-- (id)init
+-(id)init
 {
-  [super init];	
-	return self;
+  // Dog does not respond to this initializer
+  NSAssert( false, @"BBCNowNext classes must use one of the designated initializers." );
+  
+  [self autorelease];
+  return nil;
 }
 
-- (void)fetchUsing:(NSURL *)url
+- (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
+{
+  if( (self = [super init]) ) {
+    NSString * outlet;
+    NSString * service = sv;
+    
+    if (ol) {
+      outlet = [NSString stringWithFormat:@"%@/", ol];
+    } else {
+      outlet = @"";
+    }
+    
+    NSString * urlString = [NSString stringWithFormat:@"http://www.bbc.co.uk/%@/programmes/schedules/%@upcoming.xml", service, outlet];
+    NSLog(@"NowNext: %@", urlString);
+    [self fetch:[NSURL URLWithString:urlString]];
+  }
+  return self;
+}
+
+- (void)fetch:(NSURL *)url
 {
   // create the request
   NSURLRequest * theRequest = [NSURLRequest requestWithURL:url
@@ -49,6 +70,7 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
   [receivedData appendData:data];
+  NSLog(@"data fetched");
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -67,7 +89,25 @@
   // do something with the data
   NSLog(@"Succeeded! Received %d bytes of data", [receivedData length]);
   
+  NSError * error;
+  NSXMLDocument * doc;
+  NSArray * dTitle;
+  NSArray * dSynopsis;
+  
+  doc = [[NSXMLDocument alloc] initWithData:receivedData options:0 error:&error];
+  
+  dTitle = [doc nodesForXPath:@".//now/broadcast/*/display_titles/title" error:&error];
+  if ([dTitle count] > 0) {
+    self.display_title = [[dTitle objectAtIndex:0] stringValue];
+  }
+  
+  dSynopsis = [doc nodesForXPath:@".//now/broadcast/*/short_synopsis" error:&error];
+  if ([dSynopsis count] > 0) {
+    self.short_synopsis = [[dSynopsis objectAtIndex:0] stringValue];
+  }
+  
   // release the connection, and the data object
+  [doc release];
   [connection release];
   [receivedData release];
 }

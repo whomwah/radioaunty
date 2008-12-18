@@ -45,6 +45,7 @@
   [self buildMenu];
   [GrowlApplicationBridge setGrowlDelegate:self];
   [drMainWindowController setAndLoadStation:[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation]]; 
+  [drMainWindowController setNowPlaying];
 }
 
 - (void)dealloc
@@ -62,11 +63,11 @@
   NSDictionary * station = [drMainWindowController findStationForId:[sender tag]];
   NSString * title = [station valueForKey:@"label"];
   
-  [drMainWindowController setWTitle:title];
   [[[sender menu] itemWithTitle:[[drMainWindowController currentStation] valueForKey:@"label"]] setState:NSOffState];
   
   [sender setState:NSOnState];
   [drMainWindowController setAndLoadStation:station];
+  [drMainWindowController setNowPlaying];
   NSLog(@"changing to: %@", title);
 }
 
@@ -86,7 +87,9 @@
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
                                                                    action:@selector(changeStation:) 
                                                             keyEquivalent:@""];
-    if ([[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation] isEqual:station]) {
+    NSString * dStation = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation] valueForKey:@"key"];
+    
+    if ([dStation isEqualToString:[station valueForKey:@"key"]]) {
       [newItem setState:NSOnState]; 
     }
     [newItem setEnabled:YES];

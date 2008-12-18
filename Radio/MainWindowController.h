@@ -12,22 +12,22 @@ extern NSString * const DSRDefaultStation;
 extern NSString * const DSRStations;
 
 @class EmpViewController;
-@class NowNext;
+@class BBCNowNext;
 
 @interface MainWindowController : NSWindowController {
 	IBOutlet NSView * drMainView;
+  BBCNowNext * drNowNext;
   EmpViewController * drEmpViewController;
-  NSString * wTitle;
   NSDictionary * currentStation;
   NSArray * stations;
-  NowNext * drNowNext;
 }
 
-@property (retain) NSString * wTitle;
 @property (retain) NSDictionary * currentStation;
 @property (retain) NSArray * stations;
+@property (retain) BBCNowNext * drNowNext;
 
 - (NSDictionary *)findStationForId:(int)key;
 - (void)setAndLoadStation:(NSDictionary *)station;
+- (void)setNowPlaying;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  NowNext.h
+//  BBCNowNext.h
 //  Radio
 //
 //  Created by Duncan Robertson on 18/12/2008.
@@ -9,17 +9,18 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface NowNext : NSObject {
-  NSString * title;
-  NSString * description;
+@interface BBCNowNext : NSObject {
+  NSString * display_title;
+  NSString * short_synopsis;
   NSMutableData * receivedData;
 }
 
 @property (retain) NSMutableData * receivedData;
-@property (retain) NSString * title;
-@property (retain) NSString * description;
+@property (retain) NSString * display_title;
+@property (retain) NSString * short_synopsis;
 
-- (void)fetchUsing:(NSURL *)url;
+- (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
+- (void)fetch:(NSURL *)url;
 
 // delagates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
