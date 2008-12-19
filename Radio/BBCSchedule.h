@@ -1,5 +1,5 @@
 //
-//  BBCNowNext.h
+//  BBCSchedule.h
 //  Radio
 //
 //  Created by Duncan Robertson on 18/12/2008.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface BBCNowNext : NSObject {
+@interface BBCSchedule : NSObject {
   NSString * display_title;
   NSString * short_synopsis;
   NSMutableData * receivedData;

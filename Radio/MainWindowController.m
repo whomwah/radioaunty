@@ -8,7 +8,7 @@
 
 #import "MainWindowController.h"
 #import "EmpViewController.h"
-#import "BBCNowNext.h"
+#import "BBCSchedule.h"
 
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
@@ -17,7 +17,7 @@ NSString * const DSRStations = @"Stations";
 
 @synthesize currentStation;
 @synthesize stations;
-@synthesize drNowNext;
+@synthesize bbcSchedule;
 
 - (void)windowDidLoad
 {
@@ -76,15 +76,15 @@ NSString * const DSRStations = @"Stations";
 
 - (void)setNowPlaying
 {
-  BBCNowNext * nn = [[BBCNowNext alloc] initUsingService:[[self currentStation] valueForKey:@"key"] 
-                                                  outlet:[[self currentStation] valueForKey:@"outlet"]];
-  self.drNowNext = nn;
+  BBCSchedule * nn = [[BBCSchedule alloc] initUsingService:[[self currentStation] valueForKey:@"key"] 
+                                                    outlet:[[self currentStation] valueForKey:@"outlet"]];
+  self.bbcSchedule = nn;
   
-  if (!drNowNext.display_title) {
-    drNowNext.display_title = [[self currentStation] valueForKey:@"label"];
+  if (!bbcSchedule.display_title) {
+    bbcSchedule.display_title = [[self currentStation] valueForKey:@"label"];
   }
-  if (!drNowNext.display_title) {
-    drNowNext.short_synopsis = @"";
+  if (!bbcSchedule.display_title) {
+    bbcSchedule.short_synopsis = @"";
   }
   
   [nn release];

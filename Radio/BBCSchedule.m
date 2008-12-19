@@ -1,14 +1,14 @@
 //
-//  BBCNowNext.m
+//  BBCSchedule.m
 //  Radio
 //
 //  Created by Duncan Robertson on 18/12/2008.
 //  Copyright 2008 Whomwah. All rights reserved.
 //
 
-#import "BBCNowNext.h"
+#import "BBCSchedule.h"
 
-@implementation BBCNowNext
+@implementation BBCSchedule
 
 @synthesize receivedData;
 @synthesize display_title;
@@ -16,29 +16,31 @@
 
 -(id)init
 {
-  // Dog does not respond to this initializer
-  NSAssert( false, @"BBCNowNext classes must use one of the designated initializers." );
-  
-  [self autorelease];
+  [self dealloc];
+  @throw [NSException exceptionWithName:@"DSRBadInitCall" 
+                                 reason:@"Initialize BBCSchedule with initUsingService:outlet:" 
+                               userInfo:nil];
   return nil;
 }
 
 - (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
 {
-  if( (self = [super init]) ) {
-    NSString * outlet;
-    NSString * service = sv;
+  if (![super init])
+    return nil;
+  
+  NSString * outlet;
+  NSString * service = sv;
     
-    if (ol) {
-      outlet = [NSString stringWithFormat:@"%@/", ol];
-    } else {
-      outlet = @"";
-    }
-    
-    NSString * urlString = [NSString stringWithFormat:@"http://www.bbc.co.uk/%@/programmes/schedules/%@upcoming.xml", service, outlet];
-    NSLog(@"NowNext: %@", urlString);
-    [self fetch:[NSURL URLWithString:urlString]];
+  if (ol) {
+    outlet = [NSString stringWithFormat:@"%@/", ol];
+  } else {
+    outlet = @"";
   }
+    
+  NSString * urlString = [NSString stringWithFormat:@"http://www.bbc.co.uk/%@/programmes/schedules/%@upcoming.xml", service, outlet];
+  NSLog(@"NowNext: %@", urlString);
+  [self fetch:[NSURL URLWithString:urlString]];
+  
   return self;
 }
 
