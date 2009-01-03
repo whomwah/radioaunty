@@ -8,17 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
-#import <Growl/Growl.h>
 
 @class Preloader;
 
 @interface EmpViewController : NSViewController {
-  IBOutlet WebView * empView;
-  IBOutlet Preloader * preloaderView;
-  IBOutlet NSProgressIndicator * spinner;
+  IBOutlet WebView              *empView;
+  IBOutlet Preloader            *preloaderView;
+  NSURL                         *currentURL;
+  NSDictionary                  *station;
 }
 
-- (void)loadUrl:(NSDictionary *)station;
+@property (retain) NSURL *currentURL;
+@property (retain) NSDictionary *station;
+
+- (void)loadUrl:(NSDictionary *)stationData;
+- (void)makeURLRequest;
 - (void)fetchErrorMessage:(WebView *)sender;
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame;

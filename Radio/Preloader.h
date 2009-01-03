@@ -10,10 +10,11 @@
 
 
 @interface Preloader : NSView {
-  NSBezierPath * path;
+  NSProgressIndicator *spinner;
+  NSBezierPath *path;
 }
 
-@property (retain) NSBezierPath * path;
+@property (retain) NSBezierPath *path;
 
 - (void)positionInCenterOf:(NSView *)view;
 

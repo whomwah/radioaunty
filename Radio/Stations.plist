@@ -3,21 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>DefaultStation</key>
-	<dict>
-		<key>id</key>
-		<integer>8</integer>
-		<key>key</key>
-		<string>6music</string>
-		<key>label</key>
-		<string>6 Music</string>
-		<key>blurb</key>
-		<string>Closer to the music that you love.</string>
-	</dict>
+	<integer>7</integer>
 	<key>Stations</key>
 	<array>
 		<dict>
-			<key>id</key>
-			<integer>1</integer>
 			<key>key</key>
 			<string>radio1</string>
 			<key>label</key>
@@ -26,8 +15,6 @@
 			<string>The best new music and entertainment.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>2</integer>
 			<key>key</key>
 			<string>1xtra</string>
 			<key>label</key>
@@ -36,8 +23,6 @@
 			<string>Love black music, love 1Xtra.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>3</integer>
 			<key>key</key>
 			<string>radio2</string>
 			<key>label</key>
@@ -46,8 +31,6 @@
 			<string>The most listened-to station in the UK.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>4</integer>
 			<key>key</key>
 			<string>radio3</string>
 			<key>label</key>
@@ -56,8 +39,6 @@
 			<string>Live music and the arts.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>5</integer>
 			<key>key</key>
 			<string>radio4</string>
 			<key>label</key>
@@ -68,8 +49,6 @@
 			<string>fm</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>6</integer>
 			<key>key</key>
 			<string>fivelive</string>
 			<key>label</key>
@@ -78,8 +57,6 @@
 			<string>The UK&apos;s home of live news and live sport.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>7</integer>
 			<key>key</key>
 			<string>5livesportsextra</string>
 			<key>label</key>
@@ -88,8 +65,6 @@
 			<string>More live sport. Pure live sport.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>8</integer>
 			<key>key</key>
 			<string>6music</string>
 			<key>label</key>
@@ -98,8 +73,6 @@
 			<string>Closer to the music that you love.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>9</integer>
 			<key>key</key>
 			<string>bbc7</string>
 			<key>label</key>
@@ -108,8 +81,6 @@
 			<string>Unadulterated entertainment.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>10</integer>
 			<key>key</key>
 			<string>asiannetwork</string>
 			<key>label</key>
@@ -118,8 +89,6 @@
 			<string>The New Sound of Asian Britain.</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<integer>11</integer>
 			<key>key</key>
 			<string>worldservice</string>
 			<key>label</key>

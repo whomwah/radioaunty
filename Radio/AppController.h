@@ -13,14 +13,10 @@
 @class PreferencesWindowController;
 
 @interface AppController : NSObject <GrowlApplicationBridgeDelegate> {
-  IBOutlet NSMenu * listenMenu;
-  NSTimer * repeatingTimer;
-	MainWindowController * drMainWindowController;
-  PreferencesWindowController * preferencesWindowController;
+	MainWindowController *drMainWindowController;
+  PreferencesWindowController *preferencesWindowController;
 }
 
-- (void)buildMenu;
-- (IBAction)changeStation:(id)sender;
 - (IBAction)refreshStation:(id)sender;
 - (IBAction)displayPreferenceWindow:(id)sender;
 

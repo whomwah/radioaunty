@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Growl/Growl.h>
 
 extern NSString * const DSRDefaultStation;
 extern NSString * const DSRStations;
@@ -15,19 +16,27 @@ extern NSString * const DSRStations;
 @class BBCSchedule;
 
 @interface MainWindowController : NSWindowController {
-	IBOutlet NSView * drMainView;
-  BBCSchedule * bbcSchedule;
-  EmpViewController * drEmpViewController;
-  NSDictionary * currentStation;
-  NSArray * stations;
+  NSDockTile        *dockTile;
+	IBOutlet NSView   *drMainView;
+  NSDictionary      *currentStation;
+  NSArray           *stations;
+  BBCSchedule       *currentSchedule;
+  EmpViewController *drEmpViewController;
 }
 
-@property (retain) NSDictionary * currentStation;
-@property (retain) NSArray * stations;
-@property (retain) BBCSchedule * bbcSchedule;
+@property (retain) NSDictionary *currentStation;
+@property (retain) BBCSchedule *currentSchedule;
+@property (retain) NSArray *stations;
+@property (retain) NSDockTile *dockTile;
 
-- (NSDictionary *)findStationForId:(int)key;
 - (void)setAndLoadStation:(NSDictionary *)station;
-- (void)setNowPlaying;
+- (void)changeStation:(id)sender;
+- (void)fetchAOD:(id)sender;
+- (void)buildStationsMenu;
+- (void)buildScheduleMenu;
+- (void)clearMenu:(NSMenu *)menu;
+- (void)registerCurrentScheduleAsObserverForKey:(NSString *)key;
+- (void)unregisterCurrentScheduleForChangeNotificationForKey:(NSString *)key;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 
 @end

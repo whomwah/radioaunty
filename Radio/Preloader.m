@@ -23,15 +23,16 @@
 }
 
 - (void)drawRect:(NSRect)rect {
-  NSColor * background = [NSColor colorWithCalibratedRed:0.8 green: 0.8  blue: 0.8  alpha:1.0];
+  NSColor *background = [NSColor colorWithCalibratedRed:0.8 green: 0.8  blue: 0.8  alpha:1.0];
   [background set];
   [[self path] fill];
+  [spinner startAnimation:self];
 }
 
 - (void)positionInCenterOf:(NSView *)view
 {
   [self setFrameOrigin:NSMakePoint([view bounds].size.width / 2 - [self bounds].size.width / 2, 
-                                   ([view bounds].size.height / 2 - [self bounds].size.height / 2) + 30)]; 
+                                   ([view bounds].size.height / 2 - [self bounds].size.height / 2) + 30)];
 }
 
 @end

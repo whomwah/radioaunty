@@ -13,24 +13,22 @@
 
 @implementation EmpViewController
 
-- (void)loadUrl:(NSDictionary *)station
+@synthesize currentURL;
+@synthesize station;
+
+- (void)loadUrl:(NSDictionary *)stationData
 {
-  NSString * console = CONSOLE_URL;
-  NSString * urlString = [console stringByAppendingString:[station valueForKey:@"key"]]; 
-  NSURL * URL = [NSURL URLWithString:urlString];
-  
-  [GrowlApplicationBridge notifyWithTitle:[station valueForKey:@"label"]
-                              description:[station valueForKey:@"blurb"]
-                         notificationName:@"Station about to play"
-                                 iconData:nil
-                                 priority:1
-                                 isSticky:NO
-                             clickContext:nil];
-  
-  [empView addSubview:preloaderView];
-  [preloaderView positionInCenterOf:empView];
-  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:URL]]; 
-  NSLog(@"Loading: %@", URL);
+  NSString *console = CONSOLE_URL;
+  [self setStation:stationData];
+  NSString *urlString = [console stringByAppendingString:[station valueForKey:@"key"]]; 
+  [self setCurrentURL:[NSURL URLWithString:urlString]];
+  [self makeURLRequest];
+}
+
+- (void)makeURLRequest
+{
+  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:currentURL]]; 
+  NSLog(@"Loading: %@", currentURL);
 }
 
 #pragma mark URL load Delegates
@@ -38,13 +36,18 @@
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
   NSLog(@"Started to load the page");
+  if ([[empView subviews] indexOfObject:preloaderView] == NSNotFound) {
+    [empView addSubview:preloaderView];
+    [preloaderView positionInCenterOf:empView];
+  }
   [preloaderView setHidden:NO];
-  [spinner startAnimation:(id)sender];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
   NSLog(@"Finshed loading page");
+  [[[[NSApp mainWindow] windowController] dockTile] setBadgeLabel:@"live"];
+  [[[[NSApp mainWindow] windowController] dockTile] display];
   [preloaderView setHidden:YES];
 }
 
@@ -62,12 +65,13 @@
 
 - (void)fetchErrorMessage:(WebView *)sender
 {
-  [preloaderView setHidden:YES];
+  [preloaderView removeFromSuperview];
   NSAlert *alert = [[NSAlert alloc] init];
-  [alert addButtonWithTitle:@"ok"];
-  [alert setMessageText:@"Error fetching the page"];
-  [alert setInformativeText:@"Check you are connected to the internet?"];
+  [alert addButtonWithTitle:@"try again?"];
+  [alert setMessageText:[NSString stringWithFormat:@"Error fetching %@", [station valueForKey:@"label"]]];
+  [alert setInformativeText:@"Check you are connected to the Internet? \nand try again..."];
   [alert setAlertStyle:NSWarningAlertStyle];
+  [alert setIcon:[NSImage imageNamed:[station valueForKey:@"key"]]];
   [alert beginSheetModalForWindow:[empView window]
                     modalDelegate:self 
                    didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) 
@@ -78,6 +82,7 @@
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
   if (returnCode == NSAlertFirstButtonReturn) {
+    return [self makeURLRequest];
   }
 }
 

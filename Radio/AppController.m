@@ -29,23 +29,18 @@
     [errorDesc release];
   }
   
-  [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:DSRDefaultStation];
   [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
+  [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:DSRDefaultStation];
   
   [defaults registerDefaults:defaultValues];
-  NSLog(@"registered defaults: %@", defaultValues);
 }
 
 - (void)awakeFromNib
 {
+  [GrowlApplicationBridge setGrowlDelegate:self];
   drMainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
 	[[drMainWindowController window] makeMainWindow];
 	[[drMainWindowController window] makeKeyAndOrderFront:self];
-  
-  [self buildMenu];
-  [GrowlApplicationBridge setGrowlDelegate:self];
-  [drMainWindowController setAndLoadStation:[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation]]; 
-  [drMainWindowController setNowPlaying];
 }
 
 - (void)dealloc
@@ -58,51 +53,10 @@
   return YES;
 }
 
-- (IBAction)changeStation:(id)sender
-{
-  NSDictionary * station = [drMainWindowController findStationForId:[sender tag]];
-  NSString * title = [station valueForKey:@"label"];
-  
-  [[[sender menu] itemWithTitle:[[drMainWindowController currentStation] valueForKey:@"label"]] setState:NSOffState];
-  
-  [sender setState:NSOnState];
-  [drMainWindowController setAndLoadStation:station];
-  [drMainWindowController setNowPlaying];
-  NSLog(@"changing to: %@", title);
-}
-
 - (IBAction)refreshStation:(id)sender
 {
   [drMainWindowController setAndLoadStation:[drMainWindowController currentStation]];
 }
-
-#pragma mark Build Listen menu
-
--(void)buildMenu
-{
-  NSEnumerator * enumerator = [[drMainWindowController stations] objectEnumerator];
-  
-  for (NSDictionary * station in enumerator) {  
-    NSMenuItem * newItem;    
-    newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
-                                                                   action:@selector(changeStation:) 
-                                                            keyEquivalent:@""];
-    NSString * dStation = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:DSRDefaultStation] valueForKey:@"key"];
-    
-    if ([dStation isEqualToString:[station valueForKey:@"key"]]) {
-      [newItem setState:NSOnState]; 
-    }
-    [newItem setEnabled:YES];
-    [newItem setTag:[[station valueForKey:@"id"] intValue]];
-    [newItem setTarget:self];
-    [listenMenu addItem:newItem];
-    [newItem release];
-  }
-  
-  NSLog(@"Listen menu completed: %@", listenMenu);
-}
-
-#pragma mark PreferencesWindowController
 
 - (void)displayPreferenceWindow:(id)sender
 {
@@ -111,6 +65,5 @@
 	}
 	[preferencesWindowController showWindow:self];
 }
-
 
 @end

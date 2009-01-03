@@ -24,11 +24,23 @@
 		AE73A04F0EF957B200AB9578 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AE73A04B0EF957A200AB9578 /* Growl.framework */; };
 		AEA0B43D0EF7EFCE00137DAA /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B43C0EF7EFCE00137DAA /* Preferences.xib */; };
 		AEA0B4410EF7F01600137DAA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
-		AEA0B44D0EF7F03300137DAA /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEA0B4520EF7F09400137DAA /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA0B4510EF7F09400137DAA /* PreferencesWindowController.m */; };
 		AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */; };
 		AEA0B48A0EF7F3D200137DAA /* radio.icns in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4890EF7F3D200137DAA /* radio.icns */; };
 		AEA0B5530EF8055B00137DAA /* Preloader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA0B5520EF8055B00137DAA /* Preloader.m */; };
+		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
+		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
+		AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */; };
+		AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16980F0BEFF3009F81AD /* 6music.png */; };
+		AEDD16A40F0BEFF4009F81AD /* asiannetwork.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16990F0BEFF4009F81AD /* asiannetwork.png */; };
+		AEDD16A50F0BEFF4009F81AD /* bbc7.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169A0F0BEFF4009F81AD /* bbc7.png */; };
+		AEDD16A60F0BEFF4009F81AD /* fivelive.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169B0F0BEFF4009F81AD /* fivelive.png */; };
+		AEDD16A70F0BEFF4009F81AD /* radio1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169C0F0BEFF4009F81AD /* radio1.png */; };
+		AEDD16A80F0BEFF4009F81AD /* radio2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169D0F0BEFF4009F81AD /* radio2.png */; };
+		AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169E0F0BEFF4009F81AD /* radio3.png */; };
+		AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169F0F0BEFF4009F81AD /* radio4.png */; };
+		AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16A00F0BEFF4009F81AD /* worldservice.png */; };
+		AEED013C0F066FD40022205D /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AEED013B0F066FD30022205D /* NSString-Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,7 +51,16 @@
 			dstSubfolderSpec = 10;
 			files = (
 				AE73A04F0EF957B200AB9578 /* Growl.framework in CopyFiles */,
-				AEA0B44D0EF7F03300137DAA /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEB914C80EFBF7CE0074754A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +98,19 @@
 		AEA0B4890EF7F3D200137DAA /* radio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio.icns; sourceTree = "<group>"; };
 		AEA0B5510EF8055B00137DAA /* Preloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preloader.h; sourceTree = "<group>"; };
 		AEA0B5520EF8055B00137DAA /* Preloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preloader.m; sourceTree = "<group>"; };
+		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
+		AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5livesportsextra.png; sourceTree = "<group>"; };
+		AEDD16980F0BEFF3009F81AD /* 6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6music.png; sourceTree = "<group>"; };
+		AEDD16990F0BEFF4009F81AD /* asiannetwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asiannetwork.png; sourceTree = "<group>"; };
+		AEDD169A0F0BEFF4009F81AD /* bbc7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc7.png; sourceTree = "<group>"; };
+		AEDD169B0F0BEFF4009F81AD /* fivelive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fivelive.png; sourceTree = "<group>"; };
+		AEDD169C0F0BEFF4009F81AD /* radio1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio1.png; sourceTree = "<group>"; };
+		AEDD169D0F0BEFF4009F81AD /* radio2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio2.png; sourceTree = "<group>"; };
+		AEDD169E0F0BEFF4009F81AD /* radio3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio3.png; sourceTree = "<group>"; };
+		AEDD169F0F0BEFF4009F81AD /* radio4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio4.png; sourceTree = "<group>"; };
+		AEDD16A00F0BEFF4009F81AD /* worldservice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldservice.png; sourceTree = "<group>"; };
+		AEED013A0F066FD30022205D /* NSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-Utilities.h"; sourceTree = "<group>"; };
+		AEED013B0F066FD30022205D /* NSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString-Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +174,8 @@
 		29B97314FDCFA39411CA2CEA /* Radio */ = {
 			isa = PBXGroup;
 			children = (
+				AEDD16C40F0BF062009F81AD /* Images */,
+				AEED013E0F066FF20022205D /* Categories */,
 				AEA0B0F50EF7B44F00137DAA /* Models */,
 				AEA0B0F40EF7B44600137DAA /* Views */,
 				080E96DDFE201D6D7F000001 /* Controllers */,
@@ -204,6 +240,33 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		AEDD16C40F0BF062009F81AD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AEDD16960F0BEFF3009F81AD /* 1xtra.png */,
+				AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */,
+				AEDD16980F0BEFF3009F81AD /* 6music.png */,
+				AEDD16990F0BEFF4009F81AD /* asiannetwork.png */,
+				AEDD169A0F0BEFF4009F81AD /* bbc7.png */,
+				AEDD169B0F0BEFF4009F81AD /* fivelive.png */,
+				AEDD169C0F0BEFF4009F81AD /* radio1.png */,
+				AEDD169D0F0BEFF4009F81AD /* radio2.png */,
+				AEDD169E0F0BEFF4009F81AD /* radio3.png */,
+				AEDD169F0F0BEFF4009F81AD /* radio4.png */,
+				AEDD16A00F0BEFF4009F81AD /* worldservice.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		AEED013E0F066FF20022205D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				AEED013A0F066FD30022205D /* NSString-Utilities.h */,
+				AEED013B0F066FD30022205D /* NSString-Utilities.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +278,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				AEA0B44F0EF7F03D00137DAA /* CopyFiles */,
+				AEB914C80EFBF7CE0074754A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -257,6 +321,17 @@
 				AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */,
 				AEA0B48A0EF7F3D200137DAA /* radio.icns in Resources */,
 				AE73A0030EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict in Resources */,
+				AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */,
+				AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */,
+				AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */,
+				AEDD16A40F0BEFF4009F81AD /* asiannetwork.png in Resources */,
+				AEDD16A50F0BEFF4009F81AD /* bbc7.png in Resources */,
+				AEDD16A60F0BEFF4009F81AD /* fivelive.png in Resources */,
+				AEDD16A70F0BEFF4009F81AD /* radio1.png in Resources */,
+				AEDD16A80F0BEFF4009F81AD /* radio2.png in Resources */,
+				AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */,
+				AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */,
+				AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +349,7 @@
 				AEA0B4520EF7F09400137DAA /* PreferencesWindowController.m in Sources */,
 				AEA0B5530EF8055B00137DAA /* Preloader.m in Sources */,
 				AE0E9C240EFA3B460024215E /* BBCSchedule.m in Sources */,
+				AEED013C0F066FD40022205D /* NSString-Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

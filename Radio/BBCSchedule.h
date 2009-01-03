@@ -10,17 +10,37 @@
 
 
 @interface BBCSchedule : NSObject {
-  NSString * display_title;
-  NSString * short_synopsis;
-  NSMutableData * receivedData;
+  NSMutableData *receivedData;
+  NSXMLDocument *xmlDocument;
+  float expectedLength;
+  NSString *serviceKey;
+  NSString *outletKey;
+  NSString *displayTitle;
+  NSString *displaySynopsis;
+  NSArray *broadcasts;
+  NSDictionary *service;
+  NSDate *lastUpdated;
+  NSDictionary *currentBroadcast;
 }
 
-@property (retain) NSMutableData * receivedData;
-@property (retain) NSString * display_title;
-@property (retain) NSString * short_synopsis;
+@property (retain) NSMutableData *receivedData;
+@property (retain) NSString *displayTitle;
+@property (retain) NSString *displaySynopsis;
+@property (retain) NSDate *lastUpdated;
+@property (retain) NSArray *broadcasts;
+@property (retain) NSDictionary *currentBroadcast;
+@property (readonly) NSDictionary *service;
 
 - (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
+- (NSURL *)buildUrl;
 - (void)fetch:(NSURL *)url;
+
+- (void)setServiceData;
+- (void)setBroadcastData;
+- (void)setCurrentBroadcastData;
+
+- (NSString *)serviceDisplayTitle;
+- (NSDate *)fetchDateForXPath:(NSString *)string withNode:(NSXMLNode *)node;
 
 // delagates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
