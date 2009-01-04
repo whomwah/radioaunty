@@ -177,6 +177,7 @@
       [self fetchDateForXPath:@"end" withNode:broadcast], @"end",
       [self fetchDateForXPath:@"media[@format=\"audio\"]/expires" withNode:prog], @"available",
       [NSString stringForXPath:@"media[@format=\"audio\"]/availability" ofNode:prog], @"availableText",
+      [service valueForKey:@"serviceKey"], @"key",
       nil];
     
     [temp addObject:broadcastDict];

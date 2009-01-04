@@ -62,7 +62,7 @@ NSString * const DSRStations = @"Stations";
   
   NSLog(@"setAndLoadStation:%@", station);
   [self setCurrentStation:station];
-  [drEmpViewController loadUrl:[self currentStation]];
+  [drEmpViewController loadLiveStation:[self currentStation]];
   
 	NSRect frame = NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height);
 	dockImageView = [[NSImageView alloc] initWithFrame: frame];
@@ -200,7 +200,7 @@ NSString * const DSRStations = @"Stations";
 
 - (void)fetchAOD:(id)sender
 {
-  // NOTE READY YET!
+  [drEmpViewController loadAOD:[[currentSchedule broadcasts] objectAtIndex:[sender tag]]];
 }
 
 @end

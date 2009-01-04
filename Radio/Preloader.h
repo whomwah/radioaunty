@@ -10,7 +10,7 @@
 
 
 @interface Preloader : NSView {
-  NSProgressIndicator *spinner;
+  IBOutlet NSProgressIndicator *spinner;
   NSBezierPath *path;
 }
 

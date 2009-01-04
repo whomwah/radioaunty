@@ -14,14 +14,17 @@
 @interface EmpViewController : NSViewController {
   IBOutlet WebView              *empView;
   IBOutlet Preloader            *preloaderView;
-  NSURL                         *currentURL;
-  NSDictionary                  *station;
+  NSURL                         *url; 
+  NSString                      *title;
+  NSString                      *key;
 }
 
-@property (retain) NSURL *currentURL;
-@property (retain) NSDictionary *station;
+@property (retain) NSURL *url;
+@property (retain) NSString *title;
+@property (retain) NSString *key;
 
-- (void)loadUrl:(NSDictionary *)stationData;
+- (void)loadLiveStation:(NSDictionary *)stationData;
+- (void)loadAOD:(NSDictionary *)broadcast;
 - (void)makeURLRequest;
 - (void)fetchErrorMessage:(WebView *)sender;
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;

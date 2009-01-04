@@ -13,22 +13,31 @@
 
 @implementation EmpViewController
 
-@synthesize currentURL;
-@synthesize station;
+@synthesize url, title, key;
 
-- (void)loadUrl:(NSDictionary *)stationData
+- (void)loadLiveStation:(NSDictionary *)stationData
 {
   NSString *console = CONSOLE_URL;
-  [self setStation:stationData];
-  NSString *urlString = [console stringByAppendingString:[station valueForKey:@"key"]]; 
-  [self setCurrentURL:[NSURL URLWithString:urlString]];
+  [self setTitle:[stationData valueForKey:@"label"]];
+  [self setKey:[stationData valueForKey:@"key"]];
+  NSString *urlString = [console stringByAppendingString:key]; 
+  [self setUrl:[NSURL URLWithString:urlString]];
   [self makeURLRequest];
+}
+
+- (void)loadAOD:(NSDictionary *)broadcast
+{
+  NSString *console = CONSOLE_URL;
+  [self setTitle:[broadcast valueForKey:@"key"]];
+  NSString *urlString = [console stringByAppendingString:[broadcast valueForKey:@"pid"]]; 
+  [self setUrl:[NSURL URLWithString:urlString]];
+  [self makeURLRequest];  
 }
 
 - (void)makeURLRequest
 {
-  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:currentURL]]; 
-  NSLog(@"Loading: %@", currentURL);
+  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]]; 
+  NSLog(@"Loading: %@", url);
 }
 
 #pragma mark URL load Delegates
@@ -68,10 +77,10 @@
   [preloaderView removeFromSuperview];
   NSAlert *alert = [[NSAlert alloc] init];
   [alert addButtonWithTitle:@"try again?"];
-  [alert setMessageText:[NSString stringWithFormat:@"Error fetching %@", [station valueForKey:@"label"]]];
+  [alert setMessageText:[NSString stringWithFormat:@"Error fetching %@", title]];
   [alert setInformativeText:@"Check you are connected to the Internet? \nand try again..."];
   [alert setAlertStyle:NSWarningAlertStyle];
-  [alert setIcon:[NSImage imageNamed:[station valueForKey:@"key"]]];
+  [alert setIcon:[NSImage imageNamed:key]];
   [alert beginSheetModalForWindow:[empView window]
                     modalDelegate:self 
                    didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) 
