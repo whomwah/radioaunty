@@ -38,7 +38,7 @@
 			<object class="NSWindowTemplate" id="1005">
 				<int key="NSWindowStyleMask">7</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{311, 388}, {330, 143}}</string>
+				<string key="NSWindowRect">{{810, 421}, {330, 143}}</string>
 				<int key="NSWTFlags">536870912</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -93,15 +93,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">displayPatternTitle1: currentSchedule.displayTitle</string>
+						<string key="label">displayPatternTitle1: currentSchedule.serviceTitle</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="1005"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">displayPatternTitle1: currentSchedule.displayTitle</string>
+							<string key="NSLabel">displayPatternTitle1: currentSchedule.serviceTitle</string>
 							<string key="NSBinding">displayPatternTitle1</string>
-							<string key="NSKeyPath">currentSchedule.displayTitle</string>
+							<string key="NSKeyPath">currentSchedule.serviceTitle</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSDisplayPattern</string>
 								<string key="NS.object.0">%{title1}@</string>
@@ -109,7 +109,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">92</int>
+					<int key="connectionID">93</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -217,7 +217,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">92</int>
+			<int key="maxID">93</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -225,6 +225,19 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">MainWindowController</string>
 					<string key="superclassName">NSWindowController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>changeStation:</string>
+							<string>fetchAOD:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">drMainView</string>
 						<string key="NS.object.0">NSView</string>

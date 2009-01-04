@@ -16,6 +16,7 @@
   NSString *serviceKey;
   NSString *outletKey;
   NSString *displayTitle;
+  NSString *serviceTitle;
   NSString *displaySynopsis;
   NSArray *broadcasts;
   NSDictionary *service;
@@ -25,6 +26,7 @@
 
 @property (retain) NSMutableData *receivedData;
 @property (retain) NSString *displayTitle;
+@property (retain) NSString *serviceTitle;
 @property (retain) NSString *displaySynopsis;
 @property (retain) NSDate *lastUpdated;
 @property (retain) NSArray *broadcasts;
@@ -39,7 +41,6 @@
 - (void)setBroadcastData;
 - (void)setCurrentBroadcastData;
 
-- (NSString *)serviceDisplayTitle;
 - (NSDate *)fetchDateForXPath:(NSString *)string withNode:(NSXMLNode *)node;
 
 // delagates

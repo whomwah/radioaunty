@@ -110,7 +110,7 @@ NSString * const DSRStations = @"Stations";
 {
   [self buildScheduleMenu];
   if ([currentSchedule currentBroadcast]) {
-    [GrowlApplicationBridge notifyWithTitle:[currentSchedule valueForKey:@"serviceDisplayTitle"]
+    [GrowlApplicationBridge notifyWithTitle:[currentSchedule serviceTitle]
                               description:[[currentSchedule currentBroadcast] valueForKey:@"displayTitle"]
                          notificationName:@"Station about to play"
                                  iconData:[NSData dataWithData:[[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]
@@ -200,7 +200,15 @@ NSString * const DSRStations = @"Stations";
 
 - (void)fetchAOD:(id)sender
 {
-  [drEmpViewController loadAOD:[[currentSchedule broadcasts] objectAtIndex:[sender tag]]];
+  NSDictionary *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
+  [drEmpViewController loadAOD:broadcast];
+  [GrowlApplicationBridge notifyWithTitle:[currentSchedule serviceTitle]
+                              description:[broadcast valueForKey:@"displayTitle"]
+                         notificationName:@"Station about to play"
+                                 iconData:[NSData dataWithData:[[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]
+                                 priority:1
+                                 isSticky:NO
+                             clickContext:nil];
 }
 
 @end

@@ -22,6 +22,7 @@
   [self setKey:[stationData valueForKey:@"key"]];
   NSString *urlString = [console stringByAppendingString:key]; 
   [self setUrl:[NSURL URLWithString:urlString]];
+  [[[[NSApp mainWindow] windowController] dockTile] setBadgeLabel:@"live"];
   [self makeURLRequest];
 }
 
@@ -31,12 +32,14 @@
   [self setTitle:[broadcast valueForKey:@"key"]];
   NSString *urlString = [console stringByAppendingString:[broadcast valueForKey:@"pid"]]; 
   [self setUrl:[NSURL URLWithString:urlString]];
-  [self makeURLRequest];  
+  [[[[NSApp mainWindow] windowController] dockTile] setBadgeLabel:@"replay"];
+  [self makeURLRequest];
 }
 
 - (void)makeURLRequest
 {
-  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]]; 
+  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+  [[[[NSApp mainWindow] windowController] dockTile] display];
   NSLog(@"Loading: %@", url);
 }
 
@@ -55,8 +58,6 @@
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
   NSLog(@"Finshed loading page");
-  [[[[NSApp mainWindow] windowController] dockTile] setBadgeLabel:@"live"];
-  [[[[NSApp mainWindow] windowController] dockTile] display];
   [preloaderView setHidden:YES];
 }
 

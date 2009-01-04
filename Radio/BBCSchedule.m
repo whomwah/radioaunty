@@ -15,6 +15,7 @@
 
 @synthesize receivedData;
 @synthesize displayTitle;
+@synthesize serviceTitle;
 @synthesize displaySynopsis;
 @synthesize lastUpdated;
 @synthesize service;
@@ -115,7 +116,7 @@
   xmlDocument = doc;
   [self setServiceData];
   [self setBroadcastData];
-  [self setDisplayTitle:[self serviceDisplayTitle]];
+  [self setDisplayTitle:[self serviceTitle]];
   [self setLastUpdated:[NSDate date]];
   
   [doc release];
@@ -138,17 +139,8 @@
                       [NSString stringForXPath:@"outlet/title" ofNode:node], @"outletTitle",
                       [NSString stringForXPath:@"outlet/@key" ofNode:node], @"outletKey",
                       nil];
+  [self setServiceTitle:[dict valueForKey:@"serviceTitle"]];
   service = dict;
-}
-
-- (NSString *)serviceDisplayTitle
-{
-  if ([service valueForKey:@"outletTitle"] == nil)
-    return [service valueForKey:@"serviceTitle"]; 
-    
-  return [NSString stringWithFormat:@"%@ %@", 
-          [service valueForKey:@"serviceTitle"],
-          [service valueForKey:@"outletTitle"]];
 }
 
 #pragma mark broadcasts
