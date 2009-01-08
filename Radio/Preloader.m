@@ -16,7 +16,7 @@
 - (id)initWithFrame:(NSRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.path = [NSBezierPath bezierPath];
+    [self setPath:[NSBezierPath bezierPath]];
     [[self path] appendBezierPathWithRoundedRect:[self bounds] xRadius:15 yRadius:15];
   }
   return self;

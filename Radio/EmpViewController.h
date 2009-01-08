@@ -16,16 +16,15 @@
   IBOutlet Preloader            *preloaderView;
   NSURL                         *url; 
   NSString                      *title;
-  NSString                      *key;
+  NSString                      *serviceKey;
 }
 
-@property (retain) NSURL *url;
-@property (retain) NSString *title;
-@property (retain) NSString *key;
+@property (retain) NSURL  *url;
+@property (copy) NSString *title;
+@property (copy) NSString *serviceKey;
 
-- (void)loadLiveStation:(NSDictionary *)stationData;
-- (void)loadAOD:(NSDictionary *)broadcast;
-- (void)makeURLRequest;
+- (void)fetchEmp:(NSString *)keyString;
+- (void)makeRequest;
 - (void)fetchErrorMessage:(WebView *)sender;
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame;

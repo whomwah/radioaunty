@@ -13,34 +13,20 @@
 
 @implementation EmpViewController
 
-@synthesize url, title, key;
+@synthesize url, title, serviceKey;
 
-- (void)loadLiveStation:(NSDictionary *)stationData
+- (void)fetchEmp:(NSString *)keyString
 {
   NSString *console = CONSOLE_URL;
-  [self setTitle:[stationData valueForKey:@"label"]];
-  [self setKey:[stationData valueForKey:@"key"]];
-  NSString *urlString = [console stringByAppendingString:key]; 
+  NSString *urlString = [console stringByAppendingString:keyString]; 
   [self setUrl:[NSURL URLWithString:urlString]];
-  [[[[NSApp mainWindow] windowController] dockTile] setBadgeLabel:@"live"];
-  [self makeURLRequest];
+  [self makeRequest];
 }
 
-- (void)loadAOD:(NSDictionary *)broadcast
+- (void)makeRequest
 {
-  NSString *console = CONSOLE_URL;
-  [self setTitle:[broadcast valueForKey:@"key"]];
-  NSString *urlString = [console stringByAppendingString:[broadcast valueForKey:@"pid"]]; 
-  [self setUrl:[NSURL URLWithString:urlString]];
-  [[[[NSApp mainWindow] windowController] dockTile] setBadgeLabel:@"replay"];
-  [self makeURLRequest];
-}
-
-- (void)makeURLRequest
-{
-  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-  [[[[NSApp mainWindow] windowController] dockTile] display];
   NSLog(@"Loading: %@", url);
+  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];  
 }
 
 #pragma mark URL load Delegates
@@ -77,11 +63,12 @@
 {
   [preloaderView removeFromSuperview];
   NSAlert *alert = [[NSAlert alloc] init];
-  [alert addButtonWithTitle:@"try again?"];
+  [alert addButtonWithTitle:@"Try again?"];
+  [alert addButtonWithTitle:@"Quit"];
   [alert setMessageText:[NSString stringWithFormat:@"Error fetching %@", title]];
   [alert setInformativeText:@"Check you are connected to the Internet? \nand try again..."];
   [alert setAlertStyle:NSWarningAlertStyle];
-  [alert setIcon:[NSImage imageNamed:key]];
+  [alert setIcon:[NSImage imageNamed:serviceKey]];
   [alert beginSheetModalForWindow:[empView window]
                     modalDelegate:self 
                    didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) 
@@ -92,7 +79,9 @@
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
   if (returnCode == NSAlertFirstButtonReturn) {
-    return [self makeURLRequest];
+    return [self makeRequest];
+  } else if (returnCode == NSAlertSecondButtonReturn) {
+    return [NSApp terminate:self]; 
   }
 }
 

@@ -8,41 +8,27 @@
 
 #import "MainWindowController.h"
 #import "EmpViewController.h"
-#import "BBCSchedule.h"
+#import "Broadcast.h"
+#import "Schedule.h"
 
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
+#define EMP_WIDTH 512.0
+#define EMP_HEIGHT 271.0
 
 @implementation MainWindowController
 
-@synthesize currentStation;
-@synthesize currentSchedule;
+@synthesize currentStation, currentSchedule;
 @synthesize stations;
-@synthesize dockTile;
+@synthesize dockView;
 
 - (void)windowDidLoad
 {
- 	self.dockTile = [NSApp dockTile];
+ 	dockTile = [NSApp dockTile];
   drEmpViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
-  self.stations = [[NSUserDefaults standardUserDefaults] arrayForKey:DSRStations];
-  self.currentStation = [stations objectAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:DSRDefaultStation]];
-  
-  NSView *aEmpView = [drEmpViewController view];
-  NSSize currentSize = [drMainView frame].size; 
-  NSSize newSize = [aEmpView frame].size;
-  float deltaWidth = newSize.width - currentSize.width;
-  float deltaHeight = newSize.height - currentSize.height;
-  
-  NSWindow *w = [drMainView window];
-  NSRect windowFrame = [w frame];
-  windowFrame.size.width += deltaWidth;
-  windowFrame.size.height += deltaHeight;
-  windowFrame.origin.x -= deltaWidth/2;
-  windowFrame.origin.y -= deltaHeight/2;
-  
-  [w setFrame:windowFrame display:YES animate:YES];
-  
-	[drMainView addSubview:aEmpView];
+  [self setStations:[[NSUserDefaults standardUserDefaults] arrayForKey:DSRStations]];
+  [self setCurrentStation:[stations objectAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:DSRDefaultStation]]];
+  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
   [self buildStationsMenu];
   [self setAndLoadStation:currentStation];
 }
@@ -54,34 +40,64 @@ NSString * const DSRStations = @"Stations";
 	[super dealloc];
 }
 
+- (void)resizeEmpTo:(NSSize)size
+{
+  NSView *aEmpView = [drEmpViewController view];
+  [aEmpView removeFromSuperview];
+  
+  NSSize currentSize = [drMainView frame].size; 
+  float deltaWidth = size.width - currentSize.width;
+  float deltaHeight = size.height - currentSize.height;
+  
+  NSWindow *w = [drMainView window];
+  NSRect windowFrame = [w frame];
+  windowFrame.size.width += deltaWidth;
+  windowFrame.size.height += deltaHeight;
+  windowFrame.origin.x -= deltaWidth/2;
+  windowFrame.origin.y -= deltaHeight/2;
+  
+  [w setFrame:windowFrame display:YES animate:YES];
+	[drMainView addSubview:aEmpView];
+}
+
 - (void)setAndLoadStation:(NSDictionary *)station
 {  
-  NSImage *img;
-  NSImageView *dockImageView;
-  BBCSchedule *cSchedule;
+  Schedule *cSchedule;
   
   NSLog(@"setAndLoadStation:%@", station);
   [self setCurrentStation:station];
-  [drEmpViewController loadLiveStation:[self currentStation]];
+  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
+  [dockTile setBadgeLabel:@"live"];
+  [dockTile display];
+  [drEmpViewController setTitle:[station valueForKey:@"label"]];
+  [drEmpViewController setServiceKey:[station valueForKey:@"key"]];
+  [drEmpViewController fetchEmp:[station valueForKey:@"key"]];
   
-	NSRect frame = NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height);
-	dockImageView = [[NSImageView alloc] initWithFrame: frame];
-  img = [[NSImage alloc] initWithData:[NSData dataWithData:[[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]];
-  [img setSize:NSMakeSize(dockTile.size.width/1.5, dockTile.size.height/1.5)];
-	[dockImageView setImage:img];
-	[dockTile setContentView: dockImageView];
+  [self buildDockTileForKey:[currentStation valueForKey:@"key"]];
+	[dockTile setContentView:dockView];
   [dockTile setBadgeLabel:@"live"];
 	[dockTile display];
   
   [self unregisterCurrentScheduleForChangeNotificationForKey:@"currentBroadcast"];
-  cSchedule = [[BBCSchedule alloc] initUsingService:[[self currentStation] valueForKey:@"key"] 
-                                             outlet:[[self currentStation] valueForKey:@"outlet"]];
+  cSchedule = [[Schedule alloc] initUsingService:[currentStation valueForKey:@"key"] 
+                                          outlet:[currentStation valueForKey:@"outlet"]];
   [self setCurrentSchedule:cSchedule];
   [self registerCurrentScheduleAsObserverForKey:@"currentBroadcast"];
   
-  [img release];
-  [dockImageView release];  
   [cSchedule release];
+}
+
+- (void)buildDockTileForKey:(NSString *)key
+{
+  NSRect frame = NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height);
+	NSImageView *dockImageView = [[NSImageView alloc] initWithFrame: frame];
+  NSImage *img = [[NSImage alloc] initWithData:
+                  [NSData dataWithData:[[NSImage imageNamed:key] TIFFRepresentation]]];
+  [img setSize:NSMakeSize(dockTile.size.width/1.5, dockTile.size.height/1.5)];
+	[dockImageView setImage:img];
+  [self setDockView:dockImageView];
+  [img release];
+  [dockImageView release];
 }
 
 - (void)changeStation:(id)sender
@@ -110,10 +126,11 @@ NSString * const DSRStations = @"Stations";
 {
   [self buildScheduleMenu];
   if ([currentSchedule currentBroadcast]) {
-    [GrowlApplicationBridge notifyWithTitle:[currentSchedule serviceTitle]
-                              description:[[currentSchedule currentBroadcast] valueForKey:@"displayTitle"]
+    [GrowlApplicationBridge notifyWithTitle:[[currentSchedule service] displayTitle]
+                              description:[[currentSchedule currentBroadcast] displayTitle]
                          notificationName:@"Station about to play"
-                                 iconData:[NSData dataWithData:[[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]
+                                 iconData:[NSData dataWithData:
+                                           [[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]
                                  priority:1
                                  isSticky:NO
                              clickContext:nil];
@@ -137,7 +154,8 @@ NSString * const DSRStations = @"Stations";
     if ([currentStation isEqualTo:station] == YES)
       [newItem setState:NSOnState];
     [newItem setEnabled:YES];
-    NSImage *img = [[NSImage alloc] initWithData:[NSData dataWithData:[[NSImage imageNamed:[station valueForKey:@"key"]] TIFFRepresentation]]];
+    NSImage *img = [[NSImage alloc] initWithData:[NSData dataWithData:
+                                                  [[NSImage imageNamed:[station valueForKey:@"key"]] TIFFRepresentation]]];
     [img setSize:NSMakeSize(20.0, 20.0)];
     [newItem setImage:img];
     [newItem setTag:count];
@@ -168,14 +186,15 @@ NSString * const DSRStations = @"Stations";
   [self clearMenu:scheduleMenu];
   int count = 0;
   
-  for (NSDictionary *broadcast in enumerator) {  
-    start = [[broadcast valueForKey:@"start"] descriptionWithCalendarFormat:@"%H:%M" 
-                                                                   timeZone:nil 
-                                                                     locale:nil];
-    label = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast valueForKey:@"displayTitle"]];
+  for (Broadcast *broadcast in enumerator) {
     
-    if ([broadcast valueForKey:@"availableText"]) {
-      [label appendFormat:@" (%@)", [broadcast valueForKey:@"availableText"]];
+    start = [[broadcast bStart] descriptionWithCalendarFormat:@"%H:%M" 
+                                                     timeZone:nil 
+                                                       locale:nil];
+    label = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast displayTitle]];
+    
+    if ([broadcast availableText]) {
+      [label appendFormat:@" (%@)", [broadcast availableText]];
       newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:label 
                                                                      action:@selector(fetchAOD:) 
                                                               keyEquivalent:@""];
@@ -200,12 +219,19 @@ NSString * const DSRStations = @"Stations";
 
 - (void)fetchAOD:(id)sender
 {
-  NSDictionary *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
-  [drEmpViewController loadAOD:broadcast];
-  [GrowlApplicationBridge notifyWithTitle:[currentSchedule serviceTitle]
-                              description:[broadcast valueForKey:@"displayTitle"]
+  Broadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
+  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
+  [dockTile setBadgeLabel:@"replay"];
+  [dockTile display];
+  [drEmpViewController setTitle:[broadcast displayTitle]];
+  [drEmpViewController setServiceKey:[[currentSchedule service] key]];
+  [drEmpViewController fetchEmp:[broadcast pid]];
+  
+  [GrowlApplicationBridge notifyWithTitle:[[currentSchedule service] displayTitle]
+                              description:[broadcast displayTitle]
                          notificationName:@"Station about to play"
-                                 iconData:[NSData dataWithData:[[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]
+                                 iconData:[NSData dataWithData:
+                                           [[NSImage imageNamed:[[currentSchedule service] key]] TIFFRepresentation]]
                                  priority:1
                                  isSticky:NO
                              clickContext:nil];

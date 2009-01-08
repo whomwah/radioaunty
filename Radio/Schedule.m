@@ -1,26 +1,24 @@
 //
-//  BBCSchedule.m
+//  Schedule.m
 //  Radio
 //
 //  Created by Duncan Robertson on 18/12/2008.
 //  Copyright 2008 Whomwah. All rights reserved.
 //
 
-#import "BBCSchedule.h"
+#import "Broadcast.h"
+#import "Service.h"
+#import "Schedule.h"
 #import "NSString-Utilities.h"
 
 #define API_URL @"http://www.bbc.co.uk/%@programmes/schedules%@.xml";
 
-@implementation BBCSchedule
+@implementation Schedule
 
-@synthesize receivedData;
-@synthesize displayTitle;
-@synthesize serviceTitle;
-@synthesize displaySynopsis;
 @synthesize lastUpdated;
 @synthesize service;
-@synthesize broadcasts;
-@synthesize currentBroadcast;
+@synthesize displayTitle, displaySynopsis;
+@synthesize broadcasts, currentBroadcast;
 
 -(id)init
 {
@@ -38,7 +36,6 @@
   
   outletKey = ol;
   serviceKey = sv;
-    
   [self fetch:[self buildUrl]];
   
   return self;
@@ -68,9 +65,9 @@
 
   NSURLConnection * theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
   if (theConnection) {
-    self.receivedData = [[NSMutableData data] retain];
+    receivedData = [[NSMutableData data] retain];
   } else {
-    // inform the user that the download could not be made
+    [theConnection release];
     NSLog(@"download failed!");
   }
 }
@@ -116,7 +113,7 @@
   xmlDocument = doc;
   [self setServiceData];
   [self setBroadcastData];
-  [self setDisplayTitle:[self serviceTitle]];
+  [self setDisplayTitle:[service displayTitle]];
   [self setLastUpdated:[NSDate date]];
   
   [doc release];
@@ -132,15 +129,9 @@
   if (error != nil)
     NSLog(@"An Error occured: %@", error);
   
-  NSXMLNode *node = [data objectAtIndex:0];
-  NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                      [NSString stringForXPath:@"title" ofNode:node], @"serviceTitle",
-                      [NSString stringForXPath:@"@key" ofNode:node], @"serviceKey",
-                      [NSString stringForXPath:@"outlet/title" ofNode:node], @"outletTitle",
-                      [NSString stringForXPath:@"outlet/@key" ofNode:node], @"outletKey",
-                      nil];
-  [self setServiceTitle:[dict valueForKey:@"serviceTitle"]];
-  service = dict;
+  Service *s = [[Service alloc] initUsingServiceXML:data];
+  [self setService:s];
+  [s release];
 }
 
 #pragma mark broadcasts
@@ -156,23 +147,10 @@
   NSEnumerator *enumerator = [data objectEnumerator];
   NSMutableArray *temp = [NSMutableArray array];
   
-  for (NSXMLNode *broadcast in enumerator) {
-    NSXMLNode *prog = [[broadcast nodesForXPath:@".//programme[@type=\"episode\"]" 
-                                        error:nil] objectAtIndex:0];
-    NSDictionary *broadcastDict = [NSDictionary dictionaryWithObjectsAndKeys:
-      [NSString stringForXPath:@"display_titles/title" ofNode:prog], @"displayTitle",
-      [NSString stringForXPath:@"display_titles/subtitle" ofNode:prog], @"displaySubTitle",
-      [NSString stringForXPath:@"short_synopsis" ofNode:prog], @"shortSynopsis",
-      [NSString stringForXPath:@"pid" ofNode:prog], @"pid",
-      [NSString stringForXPath:@"duration" ofNode:broadcast] , @"duration",
-      [self fetchDateForXPath:@"start" withNode:broadcast], @"start",
-      [self fetchDateForXPath:@"end" withNode:broadcast], @"end",
-      [self fetchDateForXPath:@"media[@format=\"audio\"]/expires" withNode:prog], @"available",
-      [NSString stringForXPath:@"media[@format=\"audio\"]/availability" ofNode:prog], @"availableText",
-      [service valueForKey:@"serviceKey"], @"key",
-      nil];
-    
-    [temp addObject:broadcastDict];
+  for (NSXMLNode *broadcast in enumerator) {    
+    Broadcast *b = [[Broadcast alloc] initUsingBroadcastXML:broadcast];
+    [temp addObject:b];
+    [b release];
   }
   
   [self setBroadcasts:temp];
@@ -185,26 +163,14 @@
   NSDate *now = [NSDate date];
   [self setCurrentBroadcast:nil];
   
-  for (NSDictionary *broadcast in enumerator) {
-    NSDate *start = [broadcast valueForKey:@"start"];
-    NSDate *end = [broadcast valueForKey:@"end"];
-    if (([now compare:start] == NSOrderedDescending) && ([now compare:end] == NSOrderedAscending)) {
+  for (Broadcast *broadcast in enumerator) {
+    if (([now compare:[broadcast bStart]] == NSOrderedDescending) && 
+        ([now compare:[broadcast bEnd]] == NSOrderedAscending)) {
       [self setCurrentBroadcast:broadcast];
-      NSLog(@"setCurrentBroadcast: %@", currentBroadcast);
+      NSLog(@"currentBroadcast: %@", currentBroadcast);
       break;
     }
   }
-}
-
-- (NSDate *)fetchDateForXPath:(NSString *)string withNode:(NSXMLNode *)node
-{
-  NSString *stringValue = [NSString stringForXPath:string ofNode:node];
-  
-  if (stringValue == nil)
-    return nil;
-  
-  NSDate *date = [NSDate dateWithNaturalLanguageString:stringValue]; 
-  return date;
 }
 
 @end

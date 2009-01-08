@@ -1,5 +1,5 @@
 //
-//  BBCSchedule.h
+//  Schedule.h
 //  Radio
 //
 //  Created by Duncan Robertson on 18/12/2008.
@@ -8,30 +8,32 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Service;
+@class Broadcast;
 
-@interface BBCSchedule : NSObject {
+@interface Schedule : NSObject {
+  float expectedLength;
+  
   NSMutableData *receivedData;
   NSXMLDocument *xmlDocument;
-  float expectedLength;
+  
+  NSDate *lastUpdated;
   NSString *serviceKey;
   NSString *outletKey;
   NSString *displayTitle;
-  NSString *serviceTitle;
   NSString *displaySynopsis;
   NSArray *broadcasts;
-  NSDictionary *service;
-  NSDate *lastUpdated;
-  NSDictionary *currentBroadcast;
+  
+  Broadcast *currentBroadcast;
+  Service *service;
 }
 
-@property (retain) NSMutableData *receivedData;
-@property (retain) NSString *displayTitle;
-@property (retain) NSString *serviceTitle;
-@property (retain) NSString *displaySynopsis;
+@property (copy) NSString *displayTitle;
+@property (copy) NSString *displaySynopsis;
 @property (retain) NSDate *lastUpdated;
 @property (retain) NSArray *broadcasts;
-@property (retain) NSDictionary *currentBroadcast;
-@property (readonly) NSDictionary *service;
+@property (retain) Broadcast *currentBroadcast;
+@property (retain) Service *service;
 
 - (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
 - (NSURL *)buildUrl;
@@ -40,8 +42,6 @@
 - (void)setServiceData;
 - (void)setBroadcastData;
 - (void)setCurrentBroadcastData;
-
-- (NSDate *)fetchDateForXPath:(NSString *)string withNode:(NSXMLNode *)node;
 
 // delagates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;

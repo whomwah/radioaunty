@@ -13,27 +13,30 @@ extern NSString * const DSRDefaultStation;
 extern NSString * const DSRStations;
 
 @class EmpViewController;
-@class BBCSchedule;
+@class Schedule;
 
 @interface MainWindowController : NSWindowController {
   NSDockTile        *dockTile;
+  NSImageView       *dockView;
 	IBOutlet NSView   *drMainView;
   NSDictionary      *currentStation;
   NSArray           *stations;
-  BBCSchedule       *currentSchedule;
+  Schedule          *currentSchedule;
   EmpViewController *drEmpViewController;
 }
 
+@property (retain) NSImageView *dockView;
 @property (retain) NSDictionary *currentStation;
-@property (retain) BBCSchedule *currentSchedule;
+@property (retain) Schedule *currentSchedule;
 @property (retain) NSArray *stations;
-@property (retain) NSDockTile *dockTile;
 
 - (void)setAndLoadStation:(NSDictionary *)station;
 - (void)changeStation:(id)sender;
 - (void)fetchAOD:(id)sender;
+- (void)resizeEmpTo:(NSSize)size;
 - (void)buildStationsMenu;
 - (void)buildScheduleMenu;
+- (void)buildDockTileForKey:(NSString *)key;
 - (void)clearMenu:(NSMenu *)menu;
 - (void)registerCurrentScheduleAsObserverForKey:(NSString *)key;
 - (void)unregisterCurrentScheduleForChangeNotificationForKey:(NSString *)key;

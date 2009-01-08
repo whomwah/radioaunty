@@ -11,7 +11,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		AE0E9C240EFA3B460024215E /* BBCSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0E9C230EFA3B460024215E /* BBCSchedule.m */; };
+		AE0E9C240EFA3B460024215E /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0E9C230EFA3B460024215E /* Schedule.m */; };
 		AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE333BBA0EF798740077A647 /* WebKit.framework */; };
 		AE333BDC0EF79B4B0077A647 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Stations.plist */; };
 		AE6966580EF6ABF200B029FE /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966570EF6ABF200B029FE /* AppController.m */; };
@@ -29,11 +29,13 @@
 		AEA0B48A0EF7F3D200137DAA /* radio.icns in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4890EF7F3D200137DAA /* radio.icns */; };
 		AEA0B5530EF8055B00137DAA /* Preloader.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA0B5520EF8055B00137DAA /* Preloader.m */; };
 		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
+		AEC7925D0F1346B8000098B1 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC7925C0F1346B8000098B1 /* Service.m */; };
+		AEC793EB0F13A2CB000098B1 /* Broadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC793EA0F13A2CB000098B1 /* Broadcast.m */; };
 		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
 		AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */; };
 		AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16980F0BEFF3009F81AD /* 6music.png */; };
 		AEDD16A40F0BEFF4009F81AD /* asiannetwork.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16990F0BEFF4009F81AD /* asiannetwork.png */; };
-		AEDD16A50F0BEFF4009F81AD /* bbc7.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169A0F0BEFF4009F81AD /* bbc7.png */; };
+		AEDD16A50F0BEFF4009F81AD /* radio7.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169A0F0BEFF4009F81AD /* radio7.png */; };
 		AEDD16A60F0BEFF4009F81AD /* fivelive.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169B0F0BEFF4009F81AD /* fivelive.png */; };
 		AEDD16A70F0BEFF4009F81AD /* radio1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169C0F0BEFF4009F81AD /* radio1.png */; };
 		AEDD16A80F0BEFF4009F81AD /* radio2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169D0F0BEFF4009F81AD /* radio2.png */; };
@@ -76,8 +78,8 @@
 		32CA4F630368D1EE00C91783 /* Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* RadioAunty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAunty.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE0E9C220EFA3B460024215E /* BBCSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCSchedule.h; sourceTree = "<group>"; };
-		AE0E9C230EFA3B460024215E /* BBCSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCSchedule.m; sourceTree = "<group>"; };
+		AE0E9C220EFA3B460024215E /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
+		AE0E9C230EFA3B460024215E /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		AE6966560EF6ABF200B029FE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -98,11 +100,15 @@
 		AEA0B4890EF7F3D200137DAA /* radio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio.icns; sourceTree = "<group>"; };
 		AEA0B5510EF8055B00137DAA /* Preloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preloader.h; sourceTree = "<group>"; };
 		AEA0B5520EF8055B00137DAA /* Preloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Preloader.m; sourceTree = "<group>"; };
+		AEC7925B0F1346B8000098B1 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		AEC7925C0F1346B8000098B1 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
+		AEC793E90F13A2CB000098B1 /* Broadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcast.h; sourceTree = "<group>"; };
+		AEC793EA0F13A2CB000098B1 /* Broadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcast.m; sourceTree = "<group>"; };
 		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
 		AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5livesportsextra.png; sourceTree = "<group>"; };
 		AEDD16980F0BEFF3009F81AD /* 6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6music.png; sourceTree = "<group>"; };
 		AEDD16990F0BEFF4009F81AD /* asiannetwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asiannetwork.png; sourceTree = "<group>"; };
-		AEDD169A0F0BEFF4009F81AD /* bbc7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc7.png; sourceTree = "<group>"; };
+		AEDD169A0F0BEFF4009F81AD /* radio7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio7.png; sourceTree = "<group>"; };
 		AEDD169B0F0BEFF4009F81AD /* fivelive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fivelive.png; sourceTree = "<group>"; };
 		AEDD169C0F0BEFF4009F81AD /* radio1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio1.png; sourceTree = "<group>"; };
 		AEDD169D0F0BEFF4009F81AD /* radio2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio2.png; sourceTree = "<group>"; };
@@ -234,8 +240,12 @@
 		AEA0B0F50EF7B44F00137DAA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AE0E9C220EFA3B460024215E /* BBCSchedule.h */,
-				AE0E9C230EFA3B460024215E /* BBCSchedule.m */,
+				AEC793E90F13A2CB000098B1 /* Broadcast.h */,
+				AEC793EA0F13A2CB000098B1 /* Broadcast.m */,
+				AE0E9C220EFA3B460024215E /* Schedule.h */,
+				AE0E9C230EFA3B460024215E /* Schedule.m */,
+				AEC7925B0F1346B8000098B1 /* Service.h */,
+				AEC7925C0F1346B8000098B1 /* Service.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -247,7 +257,7 @@
 				AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */,
 				AEDD16980F0BEFF3009F81AD /* 6music.png */,
 				AEDD16990F0BEFF4009F81AD /* asiannetwork.png */,
-				AEDD169A0F0BEFF4009F81AD /* bbc7.png */,
+				AEDD169A0F0BEFF4009F81AD /* radio7.png */,
 				AEDD169B0F0BEFF4009F81AD /* fivelive.png */,
 				AEDD169C0F0BEFF4009F81AD /* radio1.png */,
 				AEDD169D0F0BEFF4009F81AD /* radio2.png */,
@@ -325,7 +335,7 @@
 				AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */,
 				AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */,
 				AEDD16A40F0BEFF4009F81AD /* asiannetwork.png in Resources */,
-				AEDD16A50F0BEFF4009F81AD /* bbc7.png in Resources */,
+				AEDD16A50F0BEFF4009F81AD /* radio7.png in Resources */,
 				AEDD16A60F0BEFF4009F81AD /* fivelive.png in Resources */,
 				AEDD16A70F0BEFF4009F81AD /* radio1.png in Resources */,
 				AEDD16A80F0BEFF4009F81AD /* radio2.png in Resources */,
@@ -348,8 +358,10 @@
 				AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */,
 				AEA0B4520EF7F09400137DAA /* PreferencesWindowController.m in Sources */,
 				AEA0B5530EF8055B00137DAA /* Preloader.m in Sources */,
-				AE0E9C240EFA3B460024215E /* BBCSchedule.m in Sources */,
+				AE0E9C240EFA3B460024215E /* Schedule.m in Sources */,
 				AEED013C0F066FD40022205D /* NSString-Utilities.m in Sources */,
+				AEC7925D0F1346B8000098B1 /* Service.m in Sources */,
+				AEC793EB0F13A2CB000098B1 /* Broadcast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

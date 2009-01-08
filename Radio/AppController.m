@@ -14,16 +14,17 @@
 
 + (void)initialize
 {
-  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-  NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
-  NSString * errorDesc = nil;
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+  NSString *errorDesc = nil;
   NSPropertyListFormat format;
-  NSString * plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
-  NSData * plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
-  NSDictionary * temp = (NSDictionary *)[NSPropertyListSerialization
+  NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
+  NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
+  NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
                                          propertyListFromData:plistXML
                                          mutabilityOption:NSPropertyListMutableContainersAndLeaves
-                                         format:&format errorDescription:&errorDesc];
+                                         format:&format 
+                                         errorDescription:&errorDesc];
   if (!temp) {
     NSLog(errorDesc);
     [errorDesc release];
@@ -31,7 +32,6 @@
   
   [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
   [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:DSRDefaultStation];
-  
   [defaults registerDefaults:defaultValues];
 }
 

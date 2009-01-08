@@ -63,6 +63,13 @@
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 			</object>
+			<object class="NSUserDefaultsController" id="178881245">
+				<object class="NSMutableArray" key="NSDeclaredKeys">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>currentSchedule.service.displayTitle</string>
+				</object>
+				<bool key="NSSharedInstance">YES</bool>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -93,15 +100,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">displayPatternTitle1: currentSchedule.serviceTitle</string>
+						<string key="label">displayPatternTitle1: currentSchedule.service.displayTitle</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="1005"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">displayPatternTitle1: currentSchedule.serviceTitle</string>
+							<string key="NSLabel">displayPatternTitle1: currentSchedule.service.displayTitle</string>
 							<string key="NSBinding">displayPatternTitle1</string>
-							<string key="NSKeyPath">currentSchedule.serviceTitle</string>
+							<string key="NSKeyPath">currentSchedule.service.displayTitle</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSDisplayPattern</string>
 								<string key="NS.object.0">%{title1}@</string>
@@ -109,7 +116,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">93</int>
+					<int key="connectionID">99</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -164,6 +171,11 @@
 						<reference key="object" ref="438117435"/>
 						<reference key="parent" ref="1006"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">95</int>
+						<reference key="object" ref="178881245"/>
+						<reference key="parent" ref="1002"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -217,7 +229,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">93</int>
+			<int key="maxID">99</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
