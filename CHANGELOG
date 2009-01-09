@@ -1,3 +1,10 @@
+*1.5* (Jan 9th, 2009)
+
+* move links into menu bar
+* remove any javascript
+* update stream urls
+* app can now be hidden and minimized properly
+
 *1.4* (Jan 5th, 2009)
 
 * Add Current Schedule support via http://www.bbc.co.uk/programmes

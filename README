@@ -1,3 +1,9 @@
 RadioAunty
 
-A simple cocoa app that allows you to listen to BBC Radio
+A simple Mac app that allows you to listen to Live and Catchup BBC Radio
+
+Requires: 
+
+OSX Leopard 10.5
+Real Player plugin [http://www.real.com/mac/realplayer]
+Flash plugin [http://www.adobe.com/products/flashplayer]
