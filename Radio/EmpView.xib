@@ -77,12 +77,18 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<string>WebKitDefaultFixedFontSize</string>
 									<string>WebKitDefaultFontSize</string>
+									<string>WebKitJavaEnabled</string>
+									<string>WebKitJavaScriptCanOpenWindowsAutomatically</string>
+									<string>WebKitJavaScriptEnabled</string>
 									<string>WebKitMinimumFontSize</string>
 								</object>
 								<object class="NSMutableArray" key="dict.values">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<integer value="12" id="694811501"/>
 									<reference ref="694811501"/>
+									<boolean value="NO" id="6"/>
+									<reference ref="6"/>
+									<reference ref="6"/>
 									<reference ref="9"/>
 								</object>
 							</object>

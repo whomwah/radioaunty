@@ -8,7 +8,7 @@
 	<array>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio1/realaudio/media/r1live.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r1.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_one</string>
 			<key>key</key>
@@ -18,7 +18,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/1xtra/realmedia/1xtralive.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r1x.ram</string>
 			<key>empKey</key>
 			<string>bbc_1xtra</string>
 			<key>key</key>
@@ -28,7 +28,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio2/realmedia/fmg2.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r2.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_two</string>
 			<key>key</key>
@@ -48,7 +48,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio4/realplayer/media/fmg2.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r4.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_four</string>
 			<key>key</key>
@@ -60,7 +60,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/fivelive/live/surestream.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r5l.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_five_live</string>
 			<key>key</key>
@@ -70,7 +70,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/fivelive/live/surestream_sportsextra.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r5lsp.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_five_live_sports_extra</string>
 			<key>key</key>
@@ -90,7 +90,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/bbc7/realplayer/dsatg2.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/r7.ram</string>
 			<key>empKey</key>
 			<string>bbc_7</string>
 			<key>key</key>
@@ -100,7 +100,7 @@
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/asiannetwork/rams/asiannetwork.ram</string>
+			<string>http://www.bbc.co.uk/radio/listen/live/ran.ram</string>
 			<key>empKey</key>
 			<string>bbc_asian_network</string>
 			<key>key</key>
