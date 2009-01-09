@@ -49,13 +49,32 @@
 	[super dealloc];
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)app {
-  return YES;
-}
-
 - (IBAction)refreshStation:(id)sender
 {
   [drMainWindowController setAndLoadStation:[drMainWindowController currentStation]];
+}
+
+- (void)applicationDidUnhide:(NSNotification *)aNotification
+{
+  [drMainWindowController redrawEmp];
+}
+
+- (IBAction)visitIplayerSite:(id)sender
+{
+  NSURL *url = [NSURL URLWithString:@"http://www.bbc.co.uk/iplayer"];
+  [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+- (IBAction)visitTermsAndCondSite:(id)sender
+{
+  NSURL *url = [NSURL URLWithString:@"http://iplayerhelp.external.bbc.co.uk/help/about_iplayer/termscon"];
+  [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+- (IBAction)visitHelpSite:(id)sender
+{
+  NSURL *url = [NSURL URLWithString:@"http://iplayerhelp.external.bbc.co.uk/help/"];
+  [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 - (void)displayPreferenceWindow:(id)sender

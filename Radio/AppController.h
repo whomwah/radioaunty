@@ -19,5 +19,8 @@
 
 - (IBAction)refreshStation:(id)sender;
 - (IBAction)displayPreferenceWindow:(id)sender;
+- (IBAction)visitIplayerSite:(id)sender;
+- (IBAction)visitTermsAndCondSite:(id)sender;
+- (IBAction)visitHelpSite:(id)sender;
 
 @end

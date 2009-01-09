@@ -7,94 +7,116 @@
 	<key>Stations</key>
 	<array>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/radio1/realaudio/media/r1live.ram</string>
+			<key>empKey</key>
+			<string>bbc_radio_one</string>
 			<key>key</key>
 			<string>radio1</string>
 			<key>label</key>
 			<string>Radio 1</string>
-			<key>blurb</key>
-			<string>The best new music and entertainment.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/1xtra/realmedia/1xtralive.ram</string>
+			<key>empKey</key>
+			<string>bbc_1xtra</string>
 			<key>key</key>
 			<string>1xtra</string>
 			<key>label</key>
 			<string>1xtra</string>
-			<key>blurb</key>
-			<string>Love black music, love 1Xtra.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/radio2/realmedia/fmg2.ram</string>
+			<key>empKey</key>
+			<string>bbc_radio_two</string>
 			<key>key</key>
 			<string>radio2</string>
 			<key>label</key>
 			<string>Radio 2</string>
-			<key>blurb</key>
-			<string>The most listened-to station in the UK.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/radio3/ram/r3g2.ram</string>
+			<key>empKey</key>
+			<string>bbc_radio_three</string>
 			<key>key</key>
 			<string>radio3</string>
 			<key>label</key>
 			<string>Radio 3</string>
-			<key>blurb</key>
-			<string>Live music and the arts.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/radio4/realplayer/media/fmg2.ram</string>
+			<key>empKey</key>
+			<string>bbc_radio_four</string>
 			<key>key</key>
 			<string>radio4</string>
 			<key>label</key>
 			<string>Radio 4 FM</string>
-			<key>blurb</key>
-			<string>UK Radio Station of the Year 2008.</string>
 			<key>outlet</key>
 			<string>fm</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/fivelive/live/surestream.ram</string>
+			<key>empKey</key>
+			<string>bbc_radio_five_live</string>
 			<key>key</key>
 			<string>fivelive</string>
 			<key>label</key>
 			<string>Radio 5 live</string>
-			<key>blurb</key>
-			<string>The UK&apos;s home of live news and live sport.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/fivelive/live/surestream_sportsextra.ram</string>
+			<key>empKey</key>
+			<string>bbc_radio_five_live_sports_extra</string>
 			<key>key</key>
 			<string>5livesportsextra</string>
 			<key>label</key>
 			<string>Radio 5 live sports extra</string>
-			<key>blurb</key>
-			<string>More live sport. Pure live sport.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/6music/ram/dsatg2.ram</string>
+			<key>empKey</key>
+			<string>bbc_6music</string>
 			<key>key</key>
 			<string>6music</string>
 			<key>label</key>
 			<string>6 Music</string>
-			<key>blurb</key>
-			<string>Closer to the music that you love.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/bbc7/realplayer/dsatg2.ram</string>
+			<key>empKey</key>
+			<string>bbc_7</string>
 			<key>key</key>
 			<string>radio7</string>
 			<key>label</key>
 			<string>Radio 7</string>
-			<key>blurb</key>
-			<string>Unadulterated entertainment.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/asiannetwork/rams/asiannetwork.ram</string>
+			<key>empKey</key>
+			<string>bbc_asian_network</string>
 			<key>key</key>
 			<string>asiannetwork</string>
 			<key>label</key>
 			<string>Asian Network</string>
-			<key>blurb</key>
-			<string>The New Sound of Asian Britain.</string>
 		</dict>
 		<dict>
+			<key>realStreamUrl</key>
+			<string>http://www.bbc.co.uk/worldservice/meta/tx/nb/live_eneuk_au_nb.ram</string>
+			<key>empKey</key>
+			<string>bbc_world_service</string>
 			<key>key</key>
 			<string>worldservice</string>
 			<key>label</key>
 			<string>World Service</string>
-			<key>blurb</key>
-			<string>Impartial news and reports from around the world.</string>
 		</dict>
 	</array>
 </dict>

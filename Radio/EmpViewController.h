@@ -14,17 +14,22 @@
 @interface EmpViewController : NSViewController {
   IBOutlet WebView              *empView;
   IBOutlet Preloader            *preloaderView;
-  NSURL                         *url; 
   NSString                      *title;
   NSString                      *serviceKey;
+  NSString                      *playbackFormat;
+  NSString                      *playbackKey;
+  NSString                      *streamUrl;
 }
 
-@property (retain) NSURL  *url;
 @property (copy) NSString *title;
 @property (copy) NSString *serviceKey;
+@property (copy) NSString *playbackFormat;
+@property (copy) NSString *playbackKey;
+@property (copy) NSString *streamUrl;
 
 - (void)fetchEmp:(NSString *)keyString;
 - (void)makeRequest;
+- (NSString *)buildEmpHtml;
 - (void)fetchErrorMessage:(WebView *)sender;
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame;

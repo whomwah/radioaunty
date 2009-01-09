@@ -12,6 +12,8 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		AE0E9C240EFA3B460024215E /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0E9C230EFA3B460024215E /* Schedule.m */; };
+		AE1BFB940F173B8A006ED3DF /* live.html in Resources */ = {isa = PBXBuildFile; fileRef = AE1BFB920F173B8A006ED3DF /* live.html */; };
+		AE1BFB950F173B8A006ED3DF /* emp.html in Resources */ = {isa = PBXBuildFile; fileRef = AE1BFB930F173B8A006ED3DF /* emp.html */; };
 		AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE333BBA0EF798740077A647 /* WebKit.framework */; };
 		AE333BDC0EF79B4B0077A647 /* Stations.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Stations.plist */; };
 		AE6966580EF6ABF200B029FE /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966570EF6ABF200B029FE /* AppController.m */; };
@@ -80,6 +82,8 @@
 		8D1107320486CEB800E47090 /* RadioAunty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAunty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0E9C220EFA3B460024215E /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
 		AE0E9C230EFA3B460024215E /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
+		AE1BFB920F173B8A006ED3DF /* live.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = live.html; sourceTree = "<group>"; };
+		AE1BFB930F173B8A006ED3DF /* emp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = emp.html; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Stations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Stations.plist; sourceTree = "<group>"; };
 		AE6966560EF6ABF200B029FE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AE1BFB920F173B8A006ED3DF /* live.html */,
+				AE1BFB930F173B8A006ED3DF /* emp.html */,
 				AEA0B4890EF7F3D200137DAA /* radio.icns */,
 				AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */,
 				AE333BDB0EF79B4B0077A647 /* Stations.plist */,
@@ -342,6 +348,8 @@
 				AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */,
 				AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */,
 				AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */,
+				AE1BFB940F173B8A006ED3DF /* live.html in Resources */,
+				AE1BFB950F173B8A006ED3DF /* emp.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

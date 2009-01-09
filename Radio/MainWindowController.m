@@ -14,7 +14,7 @@
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
 #define EMP_WIDTH 512.0
-#define EMP_HEIGHT 271.0
+#define EMP_HEIGHT 243.0
 
 @implementation MainWindowController
 
@@ -44,6 +44,8 @@ NSString * const DSRStations = @"Stations";
 {
   NSView *aEmpView = [drEmpViewController view];
   [aEmpView removeFromSuperview];
+  [aEmpView setFrameSize:size];
+  [aEmpView setNeedsDisplay:YES];
   
   NSSize currentSize = [drMainView frame].size; 
   float deltaWidth = size.width - currentSize.width;
@@ -67,11 +69,11 @@ NSString * const DSRStations = @"Stations";
   NSLog(@"setAndLoadStation:%@", station);
   [self setCurrentStation:station];
   [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
-  [dockTile setBadgeLabel:@"live"];
-  [dockTile display];
   [drEmpViewController setTitle:[station valueForKey:@"label"]];
   [drEmpViewController setServiceKey:[station valueForKey:@"key"]];
-  [drEmpViewController fetchEmp:[station valueForKey:@"key"]];
+  [drEmpViewController setPlaybackFormat:@"live"];
+  [drEmpViewController setStreamUrl:[station valueForKey:@"realStreamUrl"]];
+  [drEmpViewController fetchEmp:[station valueForKey:@"empKey"]];
   
   [self buildDockTileForKey:[currentStation valueForKey:@"key"]];
 	[dockTile setContentView:dockView];
@@ -151,6 +153,8 @@ NSString * const DSRStations = @"Stations";
                                                                    action:@selector(changeStation:) 
                                                             keyEquivalent:@""];
     
+    //[self setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+    
     if ([currentStation isEqualTo:station] == YES)
       [newItem setState:NSOnState];
     [newItem setEnabled:YES];
@@ -220,11 +224,13 @@ NSString * const DSRStations = @"Stations";
 - (void)fetchAOD:(id)sender
 {
   Broadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
-  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
+  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, 233.0)];
   [dockTile setBadgeLabel:@"replay"];
   [dockTile display];
   [drEmpViewController setTitle:[broadcast displayTitle]];
   [drEmpViewController setServiceKey:[[currentSchedule service] key]];
+  [drEmpViewController setPlaybackFormat:@"emp"];
+  [drEmpViewController setStreamUrl:nil];
   [drEmpViewController fetchEmp:[broadcast pid]];
   
   [GrowlApplicationBridge notifyWithTitle:[[currentSchedule service] displayTitle]
@@ -235,6 +241,11 @@ NSString * const DSRStations = @"Stations";
                                  priority:1
                                  isSticky:NO
                              clickContext:nil];
+}
+
+- (void)redrawEmp
+{
+  [[drEmpViewController view] setNeedsDisplay:YES];  
 }
 
 @end

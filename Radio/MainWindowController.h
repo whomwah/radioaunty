@@ -33,6 +33,7 @@ extern NSString * const DSRStations;
 - (void)setAndLoadStation:(NSDictionary *)station;
 - (void)changeStation:(id)sender;
 - (void)fetchAOD:(id)sender;
+- (void)redrawEmp;
 - (void)resizeEmpTo:(NSSize)size;
 - (void)buildStationsMenu;
 - (void)buildScheduleMenu;

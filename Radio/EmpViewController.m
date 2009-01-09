@@ -9,24 +9,38 @@
 #import "EmpViewController.h"
 #import "Preloader.h"
 
-#define CONSOLE_URL @"http://www.bbc.co.uk/iplayer/console/";
-
 @implementation EmpViewController
 
-@synthesize url, title, serviceKey;
+@synthesize title, serviceKey, playbackFormat, playbackKey, streamUrl;
 
 - (void)fetchEmp:(NSString *)keyString
 {
-  NSString *console = CONSOLE_URL;
-  NSString *urlString = [console stringByAppendingString:keyString]; 
-  [self setUrl:[NSURL URLWithString:urlString]];
+  [self setPlaybackKey:keyString];
   [self makeRequest];
 }
 
 - (void)makeRequest
 {
-  NSLog(@"Loading: %@", url);
-  [[empView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];  
+	[[empView mainFrame] loadHTMLString:[self buildEmpHtml] baseURL:nil];
+}
+
+- (NSString *)buildEmpHtml
+{
+  NSLog(@"StreamURL: %@", [self streamUrl]);
+  NSLog(@"playbackKey: %@", [self playbackKey]);
+  NSBundle *thisBundle = [NSBundle mainBundle];
+  NSString *html = [NSString stringWithContentsOfFile:[thisBundle pathForResource:[self playbackFormat] ofType:@"html"]
+                                             encoding:NSUTF8StringEncoding
+                                                error:nil];
+  NSString *markup;
+  if ([self streamUrl]) {
+    markup = [NSString stringWithFormat:html, [self playbackKey], 
+                      [self playbackKey], [self streamUrl], [self streamUrl]];
+  } else {
+    markup = [NSString stringWithFormat:html, [self playbackKey], [self playbackKey]];
+  }
+  
+  return markup;
 }
 
 #pragma mark URL load Delegates
