@@ -17,7 +17,7 @@ extern NSString * const DSRStations;
 
 @interface MainWindowController : NSWindowController {
   NSDockTile        *dockTile;
-  NSImageView       *dockView;
+  NSView            *dockView;
 	IBOutlet NSView   *drMainView;
   NSDictionary      *currentStation;
   NSArray           *stations;
@@ -25,8 +25,9 @@ extern NSString * const DSRStations;
   EmpViewController *drEmpViewController;
 }
 
-@property (retain) NSImageView *dockView;
+@property (retain) NSView *dockView;
 @property (retain) NSDictionary *currentStation;
+@property (retain) EmpViewController *drEmpViewController;
 @property (retain) Schedule *currentSchedule;
 @property (retain) NSArray *stations;
 

@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.5 (Application tweaks)</title>
+            <title>Version 1.6 (Cosmetic tweaks)</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 9 Jan 2009 20:24:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/master/releases/1.0/RadioAunty.dmg" sparkle:version="1.5" length="907178" type="application/octet-stream" sparkle:dsaSignature="MC0CFFGf5DJUzp+3CncY8RyLcdp6J9bdAhUAkuYqKZISkZglh761XCOTEfrPF3k=" />
+            <pubDate>Tue, 13 Jan 2009 21:00:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/1.6/releases/1.0/RadioAunty.dmg" sparkle:version="1.6" length="791678" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCB6e2DxPwNklPyEdMKt90bCHYkswIUKtlbo3NdCVgbB3OO8yjtNCJAfNE=" />
          </item>
    </channel>
 </rss>

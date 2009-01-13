@@ -11,7 +11,7 @@
 
 @implementation EmpViewController
 
-@synthesize title, serviceKey, playbackFormat, playbackKey, streamUrl;
+@synthesize displayTitle, serviceKey, playbackFormat, playbackKey, streamUrl;
 
 - (void)fetchEmp:(NSString *)keyString
 {
@@ -79,7 +79,7 @@
   NSAlert *alert = [[NSAlert alloc] init];
   [alert addButtonWithTitle:@"Try again?"];
   [alert addButtonWithTitle:@"Quit"];
-  [alert setMessageText:[NSString stringWithFormat:@"Error fetching %@", title]];
+  [alert setMessageText:[NSString stringWithFormat:@"Error fetching %@", displayTitle]];
   [alert setInformativeText:@"Check you are connected to the Internet? \nand try again..."];
   [alert setAlertStyle:NSWarningAlertStyle];
   [alert setIcon:[NSImage imageNamed:serviceKey]];
