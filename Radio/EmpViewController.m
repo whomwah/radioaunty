@@ -21,7 +21,7 @@
 
 - (void)makeRequest
 {
-	[[empView mainFrame] loadHTMLString:[self buildEmpHtml] baseURL:nil];
+	[[empView mainFrame] loadHTMLString:[self buildEmpHtml] baseURL:[NSURL URLWithString:@"http://www.bbc.co.uk/"]];
 }
 
 - (NSString *)buildEmpHtml
