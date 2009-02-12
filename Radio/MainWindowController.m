@@ -13,8 +13,10 @@
 
 NSString * const DSRDefaultStation = @"DefaultStation";
 NSString * const DSRStations = @"Stations";
+NSString * const DSRQuality = @"Quality";
+
 #define EMP_WIDTH 512.0
-#define EMP_HEIGHT 243.0
+#define EMP_HEIGHT 233.0
 
 @implementation MainWindowController
 
@@ -66,16 +68,20 @@ NSString * const DSRStations = @"Stations";
 - (void)setAndLoadStation:(NSDictionary *)station
 {  
   Schedule *cSchedule;
+  int quality = [[NSUserDefaults standardUserDefaults] integerForKey:DSRQuality];
   
-  NSLog(@"setAndLoadStation:%@", station);
   [self setCurrentStation:station];
-  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
+  if (quality != 1 || [station valueForKey:@"only_real_available"]) {
+    [drEmpViewController setPlaybackFormat:@"liveReal"];
+    [drEmpViewController setStreamUrl:[station valueForKey:@"realStreamUrl"]];
+    [self resizeEmpTo:NSMakeSize(EMP_WIDTH, 243.0)];
+  } else {
+    [drEmpViewController setPlaybackFormat:@"live"];
+    [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
+  }
   [drEmpViewController setDisplayTitle:@"BBC Radio"];
   [drEmpViewController setServiceKey:[station valueForKey:@"key"]];
-  [drEmpViewController setPlaybackFormat:@"live"];
-  [drEmpViewController setStreamUrl:[station valueForKey:@"realStreamUrl"]];
   [drEmpViewController fetchEmp:[station valueForKey:@"empKey"]];
-  
   [self buildDockTileForKey:[currentStation valueForKey:@"key"]];
 	[dockTile setContentView:dockView];
 	[dockTile display];
@@ -239,7 +245,7 @@ NSString * const DSRStations = @"Stations";
 - (void)fetchAOD:(id)sender
 {
   Broadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
-  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, 233.0)];
+  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
   [dockTile display];
   [drEmpViewController setDisplayTitle:[broadcast displayTitle]];
   [drEmpViewController setServiceKey:[[currentSchedule service] key]];

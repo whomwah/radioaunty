@@ -32,6 +32,7 @@
   
   [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
   [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:DSRDefaultStation];
+  [defaultValues setObject:[temp objectForKey:@"DefaultQuality"] forKey:DSRQuality];
   [defaults registerDefaults:defaultValues];
 }
 

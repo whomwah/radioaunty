@@ -12,20 +12,20 @@
 @class Preloader;
 
 @interface EmpViewController : NSViewController {
-  IBOutlet WebView              *empView;
-  IBOutlet Preloader            *preloaderView;
-  NSString                      *displayTitle;
-  NSString                      *serviceKey;
-  NSString                      *playbackFormat;
-  NSString                      *playbackKey;
-  NSString                      *streamUrl;
+  IBOutlet WebView      *empView;
+  IBOutlet Preloader    *preloaderView;
+  NSString              *displayTitle;
+  NSString              *serviceKey;
+  NSString              *playbackFormat;
+  NSString              *playbackKey;
+  NSString              *streamUrl;
 }
 
-@property (copy) NSString *displayTitle;
-@property (copy) NSString *serviceKey;
-@property (copy) NSString *playbackFormat;
-@property (copy) NSString *playbackKey;
-@property (copy) NSString *streamUrl;
+@property (nonatomic, copy) NSString *displayTitle;
+@property (nonatomic, copy) NSString *serviceKey;
+@property (nonatomic, copy) NSString *playbackFormat;
+@property (nonatomic, copy) NSString *playbackKey;
+@property (nonatomic, copy) NSString *streamUrl;
 
 - (void)fetchEmp:(NSString *)keyString;
 - (void)makeRequest;

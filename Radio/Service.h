@@ -19,13 +19,13 @@
   NSString *displayTitle;
 }
 
-@property(copy) NSString *key;
-@property(copy) NSString *title;
-@property(copy) NSString *desc;
-@property(copy) NSString *outletKey;
-@property(copy) NSString *outletTitle;
-@property(copy) NSString *outletDesc;
-@property(copy) NSString *displayTitle;
+@property(nonatomic, copy) NSString *key;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *desc;
+@property(nonatomic, copy) NSString *outletKey;
+@property(nonatomic, copy) NSString *outletTitle;
+@property(nonatomic, copy) NSString *outletDesc;
+@property(nonatomic, copy) NSString *displayTitle;
 
 - (id)initUsingServiceXML:(NSArray *)data;
 

@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.7 (Radio 2 and 4 now working)</title>
+            <title>Version 1.8 (New high quality live streams)</title>
 						<sparkle:releaseNotesLink>
-              http://github.com/whomwah/radioaunty/raw/1.7/CHANGELOG
+              http://github.com/whomwah/radioaunty/raw/1.8/CHANGELOG
 						</sparkle:releaseNotesLink>
-            <pubDate>Tue, 15 Jan 2009 10:42:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/1.7/releases/1.0/RadioAunty.dmg" sparkle:version="1.7" length="791632" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCjBWvV7DMfl4GuHAdAjwe10PmB6gIUD3zZrAUmHjhWmL8rnFQ4iGyxnQQ=" />
+            <pubDate>Thu, 12 Feb 2009 14:37:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/1.8/releases/1.0/RadioAunty.dmg" sparkle:version="1.8" length="1137737" type="application/octet-stream" sparkle:dsaSignature="MCwCFFofvdmUK/7BNYazKkvcEHjpPbnrAhQP+wthjh6SWUtAOe0lhblGyLp7Og==" />
          </item>
    </channel>
 </rss>

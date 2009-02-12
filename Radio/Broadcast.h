@@ -23,17 +23,17 @@
   NSString *availableText;
 }
 
-@property(copy) NSString *title;
-@property(copy) NSString *subtitle;
-@property(copy) NSString *displayTitle;
-@property(copy) NSString *displaySubtitle;
-@property(copy) NSString *shortSynopsis;
-@property(copy) NSString *pid;
-@property(copy) NSString *duration;
-@property(retain) NSDate *bStart;
-@property(retain) NSDate *bEnd;
-@property(retain) NSDate *available;
-@property(copy) NSString *availableText;
+@property(nonatomic, copy) NSString *title;
+@property(nonatomic, copy) NSString *subtitle;
+@property(nonatomic, copy) NSString *displayTitle;
+@property(nonatomic, copy) NSString *displaySubtitle;
+@property(nonatomic, copy) NSString *shortSynopsis;
+@property(nonatomic, copy) NSString *pid;
+@property(nonatomic, copy) NSString *duration;
+@property(nonatomic, retain) NSDate *bStart;
+@property(nonatomic, retain) NSDate *bEnd;
+@property(nonatomic, retain) NSDate *available;
+@property(nonatomic, copy) NSString *availableText;
 
 - (id)initUsingBroadcastXML:(NSXMLNode *)node;
 - (NSDate *)fetchDateForXPath:(NSString *)string withNode:(NSXMLNode *)node;

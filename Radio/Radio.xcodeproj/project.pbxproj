@@ -45,6 +45,7 @@
 		AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169F0F0BEFF4009F81AD /* radio4.png */; };
 		AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16A00F0BEFF4009F81AD /* worldservice.png */; };
 		AEED013C0F066FD40022205D /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AEED013B0F066FD30022205D /* NSString-Utilities.m */; };
+		AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */ = {isa = PBXBuildFile; fileRef = AEF9A56F0F438C7500E9D841 /* liveReal.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,6 +122,7 @@
 		AEDD16A00F0BEFF4009F81AD /* worldservice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldservice.png; sourceTree = "<group>"; };
 		AEED013A0F066FD30022205D /* NSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-Utilities.h"; sourceTree = "<group>"; };
 		AEED013B0F066FD30022205D /* NSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString-Utilities.m"; sourceTree = "<group>"; };
+		AEF9A56F0F438C7500E9D841 /* liveReal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = liveReal.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				AE630BAB0F1CDC7200905968 /* radio_icon.icns */,
+				AEF9A56F0F438C7500E9D841 /* liveReal.html */,
 				AE1BFB920F173B8A006ED3DF /* live.html */,
 				AE1BFB930F173B8A006ED3DF /* emp.html */,
 				AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */,
@@ -350,6 +353,7 @@
 				AE1BFB940F173B8A006ED3DF /* live.html in Resources */,
 				AE1BFB950F173B8A006ED3DF /* emp.html in Resources */,
 				AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */,
+				AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

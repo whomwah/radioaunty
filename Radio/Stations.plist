@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>DefaultQuality</key>
+	<integer>0</integer>
 	<key>DefaultStation</key>
 	<integer>7</integer>
 	<key>Stations</key>
@@ -109,6 +111,8 @@
 			<string>Asian Network</string>
 		</dict>
 		<dict>
+			<key>only_real_available</key>
+			<integer>1</integer>
 			<key>realStreamUrl</key>
 			<string>http://www.bbc.co.uk/worldservice/meta/tx/nb/live_eneuk_au_nb.ram</string>
 			<key>empKey</key>

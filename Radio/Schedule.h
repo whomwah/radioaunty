@@ -28,12 +28,12 @@
   Service *service;
 }
 
-@property (copy) NSString *displayTitle;
-@property (copy) NSString *displaySynopsis;
-@property (retain) NSDate *lastUpdated;
-@property (retain) NSArray *broadcasts;
-@property (retain) Broadcast *currentBroadcast;
-@property (retain) Service *service;
+@property (nonatomic, copy) NSString *displayTitle;
+@property (nonatomic, copy) NSString *displaySynopsis;
+@property (nonatomic, retain) NSDate *lastUpdated;
+@property (nonatomic, retain) NSArray *broadcasts;
+@property (nonatomic, retain) Broadcast *currentBroadcast;
+@property (nonatomic, retain) Service *service;
 
 - (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
 - (NSURL *)buildUrl;

@@ -26,7 +26,6 @@
 
 - (NSString *)buildEmpHtml
 {
-  NSLog(@"StreamURL: %@", [self streamUrl]);
   NSLog(@"playbackKey: %@", [self playbackKey]);
   NSBundle *thisBundle = [NSBundle mainBundle];
   NSString *html = [NSString stringWithContentsOfFile:[thisBundle pathForResource:[self playbackFormat] ofType:@"html"]
@@ -34,9 +33,11 @@
                                                 error:nil];
   NSString *markup;
   if ([self streamUrl]) {
+    // REAL PLAYER
     markup = [NSString stringWithFormat:html, [self playbackKey], 
-                      [self playbackKey], [self streamUrl], [self streamUrl]];
+              [self playbackKey], [self streamUrl], [self streamUrl]];
   } else {
+    // FLASH PLAYER
     markup = [NSString stringWithFormat:html, [self playbackKey], [self playbackKey]];
   }
   

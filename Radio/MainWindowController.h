@@ -11,6 +11,7 @@
 
 extern NSString * const DSRDefaultStation;
 extern NSString * const DSRStations;
+extern NSString * const DSRQuality;
 
 @class EmpViewController;
 @class Schedule;
@@ -25,11 +26,11 @@ extern NSString * const DSRStations;
   EmpViewController *drEmpViewController;
 }
 
-@property (retain) NSView *dockView;
-@property (retain) NSDictionary *currentStation;
-@property (retain) EmpViewController *drEmpViewController;
-@property (retain) Schedule *currentSchedule;
-@property (retain) NSArray *stations;
+@property (nonatomic, retain) NSView *dockView;
+@property (nonatomic, retain) NSDictionary *currentStation;
+@property (nonatomic, retain) EmpViewController *drEmpViewController;
+@property (nonatomic, retain) Schedule *currentSchedule;
+@property (nonatomic, retain) NSArray *stations;
 
 - (void)setAndLoadStation:(NSDictionary *)station;
 - (void)changeStation:(id)sender;
