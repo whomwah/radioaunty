@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="1" id="9"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -36,9 +36,9 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSWindowTemplate" id="1005">
-				<int key="NSWindowStyleMask">5</int>
+				<int key="NSWindowStyleMask">271</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{810, 421}, {330, 143}}</string>
+				<string key="NSWindowRect">{{50, 50}, {330, 143}}</string>
 				<int key="NSWTFlags">536870912</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -96,15 +96,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">displayPatternTitle1: drEmpViewController.displayTitle</string>
+						<string key="label">displayPatternTitle1: windowTitle</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="1005"/>
 							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">displayPatternTitle1: drEmpViewController.displayTitle</string>
+							<string key="NSLabel">displayPatternTitle1: windowTitle</string>
 							<string key="NSBinding">displayPatternTitle1</string>
-							<string key="NSKeyPath">drEmpViewController.displayTitle</string>
+							<string key="NSKeyPath">windowTitle</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSDisplayPattern</string>
 								<string key="NS.object.0">%{title1}@</string>
@@ -112,7 +112,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">102</int>
+					<int key="connectionID">105</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -187,6 +187,8 @@
 					<string>1.NSWindowTemplate.visibleAtLaunch</string>
 					<string>1.WindowOrigin</string>
 					<string>1.editorWindowContentRectSynchronizationRect</string>
+					<string>1.windowTemplate.hasMaxSize</string>
+					<string>1.windowTemplate.maxSize</string>
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
 				</object>
@@ -195,12 +197,14 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{541, 525}, {330, 143}}</string>
+					<string>{{385, 522}, {330, 143}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{541, 525}, {330, 143}}</string>
-					<reference ref="9"/>
+					<string>{{385, 522}, {330, 143}}</string>
+					<integer value="1"/>
 					<string>{196, 240}</string>
 					<string>{{202, 428}, {480, 270}}</string>
+					<boolean value="NO"/>
+					<string>{512, 243}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 				</object>
@@ -225,7 +229,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">102</int>
+			<int key="maxID">105</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -239,9 +243,15 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>changeStation:</string>
 							<string>fetchAOD:</string>
+							<string>fetchNewSchedule:</string>
+							<string>refreshStation:</string>
+							<string>tweet:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>

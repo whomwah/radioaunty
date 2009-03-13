@@ -10,155 +10,217 @@
 #import "EmpViewController.h"
 #import "Broadcast.h"
 #import "Schedule.h"
-
-NSString * const DSRDefaultStation = @"DefaultStation";
-NSString * const DSRStations = @"Stations";
-NSString * const DSRQuality = @"Quality";
-
-#define EMP_WIDTH 512.0
-#define EMP_HEIGHT 233.0
+#import "DockView.h"
+#import "PWord.h"
 
 @implementation MainWindowController
 
-@synthesize currentStation, currentSchedule;
-@synthesize stations;
-@synthesize dockView;
-@synthesize drEmpViewController;
+@synthesize currentSchedule, windowTitle, scheduleTimer;
+
+- (void)awakeFromNib
+{
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+  dockTile = [NSApp dockTile];
+  stations = [ud arrayForKey:@"Stations"];
+  currentStation = [stations objectAtIndex:[ud integerForKey:@"DefaultStation"]];
+  dockIconView = [[DockView alloc] initWithFrame:
+                          NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height) 
+                                                 withKey:[currentStation objectForKey:@"key"]];
+  [dockTile setContentView:dockIconView];
+	[dockTile display];
+  
+  empViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
+  [[empViewController view] setFrameSize:[drMainView frame].size];
+  [drMainView addSubview:[empViewController view]];
+  [self fetchRADIO:currentStation];
+  
+  NSRect rect = NSMakeRect([ud integerForKey:@"DefaultEmpOriginX"], 
+                           [ud integerForKey:@"DefaultEmpOriginY"],
+                           [empViewController windowSize].width, 
+                           [empViewController windowSize].height);
+
+  [[self window] setFrame:rect display:NO];
+}
 
 - (void)windowDidLoad
 {
- 	dockTile = [NSApp dockTile];
-  self.drEmpViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
-  [self setStations:[[NSUserDefaults standardUserDefaults] arrayForKey:DSRStations]];
-  [self setCurrentStation:[stations objectAtIndex:[[NSUserDefaults standardUserDefaults] integerForKey:DSRDefaultStation]]];
-  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
+  [self setNextResponder:empViewController];
+  [empViewController handleResizeIcon];
   [self buildStationsMenu];
-  [self setAndLoadStation:currentStation];
+  self.windowTitle = @"BBC Radio";
+  
+  NSString *username = TWITTER_USER;
+  NSString *password = TWITTER_PASS;
+  
+  twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
+  [twitterEngine setUsername:username password:password];
+  [twitterEngine setClientName:@"RadioAunty" 
+                       version:@"1.9" 
+                           URL:@"http://whomwah.github.com/radioaunty" 
+                         token:@"radioaunty"];
 }
 
 - (void)dealloc
 {
+  [dockIconView release];
   [currentSchedule release];
-	[drEmpViewController release];
+	[empViewController release];
+  [twitterEngine release];
 	[super dealloc];
 }
 
-- (void)resizeEmpTo:(NSSize)size
-{
-  NSView *aEmpView = [drEmpViewController view];
-  [aEmpView removeFromSuperview];
-  [aEmpView setFrameSize:size];
-  [aEmpView setNeedsDisplay:YES];
-  
-  NSSize currentSize = [drMainView frame].size; 
-  float deltaWidth = size.width - currentSize.width;
-  float deltaHeight = size.height - currentSize.height;
-  
-  NSWindow *w = [drMainView window];
-  NSRect windowFrame = [w frame];
-  windowFrame.size.width += deltaWidth;
-  windowFrame.size.height += deltaHeight;
-  windowFrame.origin.x -= deltaWidth/2;
-  windowFrame.origin.y -= deltaHeight/2;
-  
-  [w setFrame:windowFrame display:YES animate:YES];
-	[drMainView addSubview:aEmpView];
-}
-
-- (void)setAndLoadStation:(NSDictionary *)station
+- (void)fetchRADIO:(NSDictionary *)station
 {  
-  Schedule *cSchedule;
-  int quality = [[NSUserDefaults standardUserDefaults] integerForKey:DSRQuality];
-  
-  [self setCurrentStation:station];
-  if (quality != 1 || [station valueForKey:@"only_real_available"]) {
-    [drEmpViewController setPlaybackFormat:@"liveReal"];
-    [drEmpViewController setStreamUrl:[station valueForKey:@"realStreamUrl"]];
-    [self resizeEmpTo:NSMakeSize(EMP_WIDTH, 243.0)];
-  } else {
-    [drEmpViewController setPlaybackFormat:@"live"];
-    [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
-  }
-  [drEmpViewController setDisplayTitle:@"BBC Radio"];
-  [drEmpViewController setServiceKey:[station valueForKey:@"key"]];
-  [drEmpViewController fetchEmp:[station valueForKey:@"empKey"]];
-  [self buildDockTileForKey:[currentStation valueForKey:@"key"]];
-	[dockTile setContentView:dockView];
+  currentStation = station;
+  self.windowTitle = @"Loading...";
+  [empViewController fetchEMP:currentStation];
+  [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
+  [self fetchNewSchedule:nil];
+}
+
+- (void)fetchAOD:(id)sender
+{
+  [self stopScheduleTimer];
+  Broadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
+  currentBroadcast = broadcast;  
+  self.windowTitle = [currentSchedule broadcastTitleWithServiceForIndex:[sender tag]];
+  [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
+  [empViewController fetchAOD:[broadcast pid]];
+  [self growl];
+}
+
+- (void)changeDockNetworkIconTo:(NSString *)service
+{
+  NSImage *img = [NSImage imageNamed:service];
+  [dockIconView setNetworkIcon:img];
 	[dockTile display];
-  
-  [self unregisterCurrentScheduleForChangeNotificationForKey:@"currentBroadcast"];
-  cSchedule = [[Schedule alloc] initUsingService:[currentStation valueForKey:@"key"] 
-                                          outlet:[currentStation valueForKey:@"outlet"]];
-  [self setCurrentSchedule:cSchedule];
-  [self registerCurrentScheduleAsObserverForKey:@"currentBroadcast"];
-  
-  [cSchedule release];
 }
 
-- (void)buildDockTileForKey:(NSString *)key
+- (void)fetchNewSchedule:(id)sender
 {
-  NSRect dockFrame = NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height);
-  NSView *dockIconView = [[NSView alloc] initWithFrame:dockFrame];
-  
-  NSImageView *serviceIconView = [[NSImageView alloc] initWithFrame: 
-                                  NSMakeRect(15, 0, dockTile.size.width, dockTile.size.height-10.0)];
-  NSImage *serviceImg = [[NSImage alloc] initWithData:
-                         [NSData dataWithData:[[NSImage imageNamed:key] TIFFRepresentation]]];
-  [serviceIconView setImage:serviceImg];
-  [serviceIconView setImageAlignment:NSImageAlignTopLeft];
-  
-	NSImageView *appIconView = [[NSImageView alloc] initWithFrame:dockFrame];
-  NSImage *appIcon = [[NSImage alloc] initWithData:
-                      [NSData dataWithData:[[NSImage imageNamed:@"radio_icon"] TIFFRepresentation]]];  
-  [appIconView setImage:appIcon];
-  
-  [dockIconView addSubview:appIconView];
-  [dockIconView addSubview:serviceIconView];
-  [self setDockView:dockIconView];
-  
-  [dockIconView release];
-  [serviceImg release];
-  [appIcon release];
-  [appIconView release];
-}
-
-- (void)changeStation:(id)sender
-{
-  [[[sender menu] itemWithTitle:[currentStation valueForKey:@"label"]] setState:NSOffState];
-  [sender setState:NSOnState];
-  [self setAndLoadStation:[stations objectAtIndex:[sender tag]]];
-}
-
-- (void)registerCurrentScheduleAsObserverForKey:(NSString *)key
-{
+  [currentSchedule removeObserver:self forKeyPath:@"broadcasts"];
+  Schedule *sc = [[Schedule alloc] initUsingService:[currentStation objectForKey:@"key"] 
+                                             outlet:[currentStation objectForKey:@"outlet"]];
+  self.currentSchedule = sc;
   [currentSchedule addObserver:self
-                    forKeyPath:key
+                    forKeyPath:@"broadcasts"
                        options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
                        context:NULL];
-}
-
-- (void)unregisterCurrentScheduleForChangeNotificationForKey:(NSString *)key
-{
-  [currentSchedule removeObserver:self forKeyPath:key];
+  [sc release];  
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object 
                         change:(NSDictionary *)change 
                        context:(void *)context
 {
-  [self buildScheduleMenu];
-  if ([currentSchedule currentBroadcast]) {
-    NSString *stitle = [[currentSchedule service] displayTitle];
-    [drEmpViewController setDisplayTitle:stitle];
-    [GrowlApplicationBridge notifyWithTitle:stitle
-                              description:[[currentSchedule currentBroadcast] displayTitle]
-                         notificationName:@"Station about to play"
-                                 iconData:[NSData dataWithData:
-                                           [[NSImage imageNamed:[currentStation valueForKey:@"key"]] TIFFRepresentation]]
+  if ([currentSchedule currBroadcast]) {
+    currentBroadcast = [currentSchedule currBroadcast];
+    self.windowTitle = [currentSchedule nowOnInFull];
+    [self buildScheduleMenu];
+    [self startScheduleTimer];
+    [self growl];
+  }
+}
+
+- (void)growl
+{
+  NSImage *img = [[NSImage alloc] initWithData:[dockIconView dataWithPDFInsideRect:[dockIconView frame]]];
+  [GrowlApplicationBridge notifyWithTitle:[[currentSchedule service] displayTitle]
+                              description:[currentBroadcast displayTitle]
+                         notificationName:@"Now playing"
+                                 iconData:[img TIFFRepresentation]
                                  priority:1
                                  isSticky:NO
                              clickContext:nil];
+  [img release];
+  
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultSendToTwitter"] == YES) {
+    NSDictionary *dict = [NSDictionary dictionaryWithObject:[self createTweet] 
+                                                     forKey:@"tweet"];
+    [NSTimer scheduledTimerWithTimeInterval:300.0 // 5 minutes
+                                     target:self
+                                   selector:@selector(tweet:)
+                                   userInfo:dict
+                                    repeats:NO];
   }
+}
+
+- (NSString *)createTweet
+{
+  return [NSString stringWithFormat:@"%@ is %@ %@ on %@ %@", 
+              [self realOrTwitterName], 
+              [self liveOrNotText], 
+              [currentBroadcast displayTitle], 
+              [[currentSchedule service] displayTitle], 
+              [currentBroadcast programmesUrl]];
+}
+
+- (void)tweet:(id)sender
+{
+  NSString *oldTweet = [[sender userInfo] valueForKey:@"tweet"];
+  NSString *newTweet = [self createTweet];
+  NSLog(@"checking");
+  if ([newTweet isEqualToString:oldTweet]) {
+    NSLog(@"tweeting");
+    [twitterEngine sendUpdate:newTweet];
+    NSImage *twitter_logo = [NSImage imageNamed:@"robot"];
+    [GrowlApplicationBridge notifyWithTitle:@"Send to Twitter"
+                                description:@"Letting them know what you're listening to"
+                           notificationName:@"Tweet my listening"
+                                   iconData:[twitter_logo TIFFRepresentation]
+                                   priority:1
+                                   isSticky:NO
+                               clickContext:nil];
+  } else {
+    NSLog(@"No tweet, you changed channels");
+  }
+}
+
+- (NSString *)liveOrNotText
+{
+  if ([empViewController isLive]) {
+    return @"listening to";
+  } else {
+    return @"catching up with"; 
+  }
+}
+
+- (NSString *)realOrTwitterName
+{
+  NSString *uname = [[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultTwitterUsername"];
+  if ([uname isEqualToString:@""] == YES) {
+    return NSFullUserName();
+  }  else {
+    return [NSString stringWithFormat:@"@%@", uname];
+  }  
+}
+
+- (void)stopScheduleTimer
+{
+  [scheduleTimer invalidate];
+  self.scheduleTimer = nil;  
+}
+
+- (void)startScheduleTimer
+{
+  [self stopScheduleTimer];
+  NSTimer *timer = [[NSTimer alloc] initWithFireDate:[currentBroadcast bEnd]
+                                            interval:0.0
+                                              target:self
+                                            selector:@selector(fetchNewSchedule:)
+                                            userInfo:nil
+                                             repeats:NO];
+  NSLog(@"Timer started and will be fired again at %@", [currentBroadcast bEnd]);
+  NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+  [runLoop addTimer:timer forMode:NSDefaultRunLoopMode];
+  self.scheduleTimer = timer;
+}
+
+- (void)changeStation:(id)sender
+{
+  [[[sender menu] itemWithTitle:[currentStation objectForKey:@"label"]] setState:NSOffState];
+  [sender setState:NSOnState];
+  [self fetchRADIO:[stations objectAtIndex:[sender tag]]];
 }
 
 #pragma mark Build Listen menu
@@ -167,10 +229,9 @@ NSString * const DSRQuality = @"Quality";
 {
   NSMenuItem *newItem;
   NSMenu *listenMenu = [[[NSApp mainMenu] itemWithTitle:@"Listen"] submenu];
-  NSEnumerator *enumerator = [stations objectEnumerator];
   int count = 0;
   
-  for (NSDictionary *station in enumerator) {      
+  for (NSDictionary *station in stations) {      
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
                                                                    action:@selector(changeStation:) 
                                                             keyEquivalent:@""];
@@ -178,24 +239,22 @@ NSString * const DSRQuality = @"Quality";
       [newItem setState:NSOnState];
     
     [newItem setEnabled:YES];
-    NSImage *img = [[NSImage alloc] initWithData:[NSData dataWithData:
-                   [[NSImage imageNamed:[station valueForKey:@"key"]] TIFFRepresentation]]];
-    [img setSize:NSMakeSize(20.0, 20.0)];
+    NSImage *img = [[NSImage imageNamed:[station valueForKey:@"key"]] copyWithZone:NULL];
+    [img setSize:NSMakeSize(28.0, 28.0)];
     [newItem setImage:img];
     [newItem setTag:count];
     [newItem setTarget:self];
-    [listenMenu addItem:newItem];
+    [listenMenu insertItem:newItem atIndex:count+2];
     
-    [img release];
     [newItem release];
+    [img release];
     count++;
   }
 }
 
 - (void)clearMenu:(NSMenu *)menu
 {
-  NSEnumerator *enumerator = [[menu itemArray] objectEnumerator];
-  for (NSMenuItem *item in enumerator) {  
+  for (NSMenuItem *item in [menu itemArray]) {  
     [menu removeItem:item];
   }
 }
@@ -206,20 +265,18 @@ NSString * const DSRQuality = @"Quality";
   NSString *start;
   NSMutableString *label;
   NSMenu *scheduleMenu = [[[NSApp mainMenu] itemWithTitle:@"Schedule"] submenu];  
-  NSEnumerator *enumerator = [[currentSchedule broadcasts] objectEnumerator];
   NSFont *font = [NSFont userFontOfSize:13.0];
   NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
   [self clearMenu:scheduleMenu];
   int count = 0;
   
-  for (Broadcast *broadcast in enumerator) {
+  for (Broadcast *broadcast in [currentSchedule broadcasts]) {
     
     start = [[broadcast bStart] descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil];
     label = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast displayTitle]];
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"" 
                                                                    action:NULL 
                                                             keyEquivalent:@""];
-    
     if ([broadcast availableText]) {
       [label appendFormat:@" (%@)", [broadcast availableText]];
       [newItem setAction:@selector(fetchAOD:)];
@@ -231,8 +288,9 @@ NSString * const DSRQuality = @"Quality";
     [newItem setAttributedTitle:attrString];
     [newItem setEnabled:YES];
     [newItem setTag:count];
-    if ([broadcast isEqual:[currentSchedule currentBroadcast]] == YES)
+    if ([broadcast isEqual:currentBroadcast] == YES) {
       [newItem setState:NSOnState];
+    }
     [newItem setEnabled:YES];
     [newItem setTarget:self];
     [scheduleMenu addItem:newItem];
@@ -242,30 +300,113 @@ NSString * const DSRQuality = @"Quality";
   }
 }
 
-- (void)fetchAOD:(id)sender
-{
-  Broadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
-  [self resizeEmpTo:NSMakeSize(EMP_WIDTH, EMP_HEIGHT)];
-  [dockTile display];
-  [drEmpViewController setDisplayTitle:[broadcast displayTitle]];
-  [drEmpViewController setServiceKey:[[currentSchedule service] key]];
-  [drEmpViewController setPlaybackFormat:@"emp"];
-  [drEmpViewController setStreamUrl:nil];
-  [drEmpViewController fetchEmp:[broadcast pid]];
-  
-  [GrowlApplicationBridge notifyWithTitle:[[currentSchedule service] displayTitle]
-                              description:[broadcast displayTitle]
-                         notificationName:@"Station about to play"
-                                 iconData:[NSData dataWithData:
-                                           [[NSImage imageNamed:[[currentSchedule service] key]] TIFFRepresentation]]
-                                 priority:1
-                                 isSticky:NO
-                             clickContext:nil];
-}
-
 - (void)redrawEmp
 {
-  [[drEmpViewController view] setNeedsDisplay:YES];  
+  [[empViewController view] setNeedsDisplay:YES];  
+}
+
+- (IBAction)refreshStation:(id)sender
+{
+  [self fetchRADIO:currentStation];
+}
+
+#pragma mark Main Window delegate
+
+- (NSSize)windowWillResize:(NSWindow *)window toSize:(NSSize)proposedFrameSize
+{
+  NSSize pfs = proposedFrameSize;
+  if ([empViewController isMinimized] == YES && [empViewController isReal] == NO) {
+    pfs.height = [empViewController minimizedSize].height;
+    if (pfs.width < 300.0)
+      pfs.width = 300.0;
+    if (pfs.width > 600.0)
+      pfs.width = 600.0;      
+    return pfs;
+  } else {
+    return [empViewController windowSize];
+  }
+}
+
+- (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)proposedFrame
+{
+  if ([empViewController isReal] == YES) {
+    return NO;
+  } else {
+    return YES;
+  }
+}
+
+- (NSRect)windowWillUseStandardFrame:(NSWindow *)window defaultFrame:(NSRect)defaultFrame
+{ 
+  NSRect result;
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+  result = [[self window] frame];
+  
+  if ([empViewController isMinimized] == YES) {
+    [ud setBool:NO forKey:@"DefaultEmpMinimized"];
+    [empViewController setIsMinimized:NO];
+    result.origin.y = result.origin.y - [empViewController windowSize].height + 
+                                        [empViewController minimizedSize].height;
+  } else {
+    result.origin.y = result.origin.y + [empViewController windowSize].height - 
+                                        [empViewController minimizedSize].height;
+    [ud setBool:YES forKey:@"DefaultEmpMinimized"];
+    [empViewController setIsMinimized:YES];
+  }
+
+  [empViewController handleResizeIcon];
+  result.size = [empViewController windowSize];
+  return result;
+}
+
+#pragma mark MGTwitterEngineDelegate methods
+
+- (void)requestSucceeded:(NSString *)connectionIdentifier
+{
+  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
+}
+
+- (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error
+{
+  NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
+        connectionIdentifier, 
+        [error localizedDescription], 
+        [error userInfo]);
+}
+
+- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier
+{
+  NSLog(@"Got statuses for %@:\r%@", connectionIdentifier, statuses);
+}
+
+- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)connectionIdentifier
+{
+  NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
+}
+
+- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier
+{
+  NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
+}
+
+- (void)miscInfoReceived:(NSArray *)miscInfo forRequest:(NSString *)connectionIdentifier
+{
+	NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
+}
+
+- (void)searchResultsReceived:(NSArray *)searchResults forRequest:(NSString *)connectionIdentifier
+{
+	NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
+}
+
+- (void)imageReceived:(NSImage *)image forRequest:(NSString *)connectionIdentifier
+{
+  NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
+}
+
+- (void)connectionFinished
+{
+  NSLog(@"Connection finished");
 }
 
 @end

@@ -18,7 +18,7 @@
   NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
   NSString *errorDesc = nil;
   NSPropertyListFormat format;
-  NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Stations" ofType:@"plist"];
+  NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Defaults" ofType:@"plist"];
   NSData *plistXML = [[NSFileManager defaultManager] contentsAtPath:plistPath];
   NSDictionary *temp = (NSDictionary *)[NSPropertyListSerialization
                                          propertyListFromData:plistXML
@@ -30,9 +30,16 @@
     [errorDesc release];
   }
   
-  [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:DSRStations];
-  [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:DSRDefaultStation];
-  [defaultValues setObject:[temp objectForKey:@"DefaultQuality"] forKey:DSRQuality];
+  [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:@"Stations"];
+  [defaultValues setObject:[temp objectForKey:@"EmpSizes"] forKey:@"EmpSizes"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:@"DefaultStation"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultQuality"] forKey:@"DefaultQuality"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultEmpSize"] forKey:@"DefaultEmpSize"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultEmpMinimized"] forKey:@"DefaultEmpMinimized"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultEmpOriginX"] forKey:@"DefaultEmpOriginX"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultEmpOriginY"] forKey:@"DefaultEmpOriginY"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultSendToTwitter"] forKey:@"DefaultSendToTwitter"];  
+  [defaultValues setObject:[temp objectForKey:@"DefaultTwitterUsername"] forKey:@"DefaultTwitterUsername"];  
   [defaults registerDefaults:defaultValues];
 }
 
@@ -50,14 +57,32 @@
 	[super dealloc];
 }
 
-- (IBAction)refreshStation:(id)sender
-{
-  [drMainWindowController setAndLoadStation:[drMainWindowController currentStation]];
-}
-
 - (void)applicationDidUnhide:(NSNotification *)aNotification
 {
   [drMainWindowController redrawEmp];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+  NSRect wf = [[drMainWindowController window] frame];
+  
+  [ud setInteger:wf.origin.x forKey:@"DefaultEmpOriginX"];
+  [ud setInteger:wf.origin.y forKey:@"DefaultEmpOriginY"];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)sender
+{
+	return YES;
+}
+
+- (void)displayPreferenceWindow:(id)sender
+{
+	if (!preferencesWindowController) {
+    preferencesWindowController = [[PreferencesWindowController alloc] init];
+	}
+	[preferencesWindowController showWindow:self];
 }
 
 - (IBAction)visitIplayerSite:(id)sender
@@ -76,14 +101,6 @@
 {
   NSURL *url = [NSURL URLWithString:@"http://iplayerhelp.external.bbc.co.uk/help/"];
   [[NSWorkspace sharedWorkspace] openURL:url];
-}
-
-- (void)displayPreferenceWindow:(id)sender
-{
-	if (!preferencesWindowController) {
-    preferencesWindowController = [[PreferencesWindowController alloc] init];
-	}
-	[preferencesWindowController showWindow:self];
 }
 
 @end

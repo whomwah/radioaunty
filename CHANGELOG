@@ -1,3 +1,37 @@
+*1.9* (March 13th, 2009)
+
+* In a similar fashion to iTunes, you can 
+  now minimize (Zoom) the Radio via 
+  the Window menu or shortcut ^ CMD Z
+  This only works for NON-RealPlayer streams
+  The minimized version has resizable width
+* Twitter support. Via the preferences menu
+  You can now choose to post your listening 
+  habits to the @radioandtvbot account 
+  on twitter.com. You can optionally 
+  provide your twitter username and 
+  this will be in the tweet otherwise 
+  your Mac login fullname will
+  be used. There are growl notifications
+  for this. The App will only tweet if you
+  have been listening to the same show
+  for over 5 mins
+* The red close button now displayed. 
+  It will quit the App
+* The title in the window is now more
+  useful, displaying what show you are 
+  listening to. Especially useful when 
+  the app is zoomed.
+* The schedule stays up-to-date. This means
+  that when the shows change and become 
+  available to listen again, the app knows.
+  It also means that the title and tweeting
+  happens as you listen throughout the day.
+* I've chopped out 20% of the codebase :)
+  The more you read the documentation, the
+  more you see how much Cocoa can do
+* I've removed the extra preload window
+
 *1.8* (Feb 12th, 2009)
 
 * Now using high quality iPlayer Flash AAC streams 

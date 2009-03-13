@@ -4,7 +4,8 @@
 <dict>
 	<key>AllNotifications</key>
 	<array>
-		<string>Station about to play</string>
+		<string>Now playing</string>
+		<string>Send to Twitter</string>
 	</array>
 	<key>TicketVersion</key>
 	<integer>1</integer>

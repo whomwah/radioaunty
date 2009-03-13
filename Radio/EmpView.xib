@@ -9,7 +9,6 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="1" id="9"/>
-			<integer value="10"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -60,6 +59,7 @@
 								<string>NeXT Rich Text Format v1.0 pasteboard type</string>
 								<string>NeXT TIFF v4.0 pasteboard type</string>
 								<string>WebURLsWithTitlesPboardType</string>
+								<string>public.png</string>
 								<string>public.url</string>
 								<string>public.url-name</string>
 							</object>
@@ -77,18 +77,12 @@
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<string>WebKitDefaultFixedFontSize</string>
 									<string>WebKitDefaultFontSize</string>
-									<string>WebKitJavaEnabled</string>
-									<string>WebKitJavaScriptCanOpenWindowsAutomatically</string>
-									<string>WebKitJavaScriptEnabled</string>
 									<string>WebKitMinimumFontSize</string>
 								</object>
 								<object class="NSMutableArray" key="dict.values">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<integer value="12" id="694811501"/>
 									<reference ref="694811501"/>
-									<boolean value="NO" id="6"/>
-									<reference ref="6"/>
-									<reference ref="6"/>
 									<reference ref="9"/>
 								</object>
 							</object>
@@ -100,26 +94,6 @@
 				<string key="NSFrameSize">{312, 190}</string>
 				<reference key="NSSuperview"/>
 				<string key="NSClassName">NSView</string>
-			</object>
-			<object class="NSCustomView" id="175608649">
-				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">268</int>
-				<object class="NSMutableArray" key="NSSubviews">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="NSProgressIndicator" id="881990234">
-						<reference key="NSNextResponder" ref="175608649"/>
-						<int key="NSvFlags">1280</int>
-						<object class="NSPSMatrix" key="NSDrawMatrix"/>
-						<string key="NSFrame">{{21, 21}, {32, 32}}</string>
-						<reference key="NSSuperview" ref="175608649"/>
-						<int key="NSpiFlags">20490</int>
-						<double key="NSMinValue">1.600000e+01</double>
-						<double key="NSMaxValue">1.000000e+02</double>
-					</object>
-				</object>
-				<string key="NSFrameSize">{75, 75}</string>
-				<reference key="NSSuperview"/>
-				<string key="NSClassName">Preloader</string>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -148,22 +122,6 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">9</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">preloaderView</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="175608649"/>
-					</object>
-					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">spinner</string>
-						<reference key="source" ref="175608649"/>
-						<reference key="destination" ref="881990234"/>
-					</object>
-					<int key="connectionID">17</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -209,21 +167,6 @@
 						<reference key="object" ref="903010950"/>
 						<reference key="parent" ref="1005"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">10</int>
-						<reference key="object" ref="175608649"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="881990234"/>
-						</object>
-						<reference key="parent" ref="1002"/>
-						<string key="objectName">Preload</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">11</int>
-						<reference key="object" ref="881990234"/>
-						<reference key="parent" ref="175608649"/>
-					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -237,9 +180,6 @@
 					<string>1.IBPluginDependency</string>
 					<string>1.WindowOrigin</string>
 					<string>1.editorWindowContentRectSynchronizationRect</string>
-					<string>10.IBEditorWindowLastContentRect</string>
-					<string>10.IBPluginDependency</string>
-					<string>11.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
@@ -251,9 +191,6 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>
-					<string>{{297, 681}, {75, 75}}</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.WebKitIBPlugin</string>
 				</object>
 			</object>
@@ -290,41 +227,12 @@
 						<string key="NS.object.0">WebView</string>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSMutableArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>empView</string>
-							<string>preloaderView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>WebView</string>
-							<string>Preloader</string>
-						</object>
+						<string key="NS.key.0">empView</string>
+						<string key="NS.object.0">WebView</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">EmpViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">Preloader</string>
-					<string key="superclassName">NSView</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">spinner</string>
-						<string key="NS.object.0">NSProgressIndicator</string>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Preloader.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">Preloader</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
 					</object>
 				</object>
 			</object>

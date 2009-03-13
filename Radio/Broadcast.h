@@ -35,6 +35,7 @@
 @property(nonatomic, retain) NSDate *available;
 @property(nonatomic, copy) NSString *availableText;
 
+- (NSString *)programmesUrl;
 - (id)initUsingBroadcastXML:(NSXMLNode *)node;
 - (NSDate *)fetchDateForXPath:(NSString *)string withNode:(NSXMLNode *)node;
 

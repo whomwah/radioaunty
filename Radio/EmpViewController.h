@@ -9,27 +9,29 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 
-@class Preloader;
-
 @interface EmpViewController : NSViewController {
-  IBOutlet WebView      *empView;
-  IBOutlet Preloader    *preloaderView;
-  NSString              *displayTitle;
-  NSString              *serviceKey;
-  NSString              *playbackFormat;
-  NSString              *playbackKey;
-  NSString              *streamUrl;
+  IBOutlet WebView *empView;
+  NSDictionary *data;
+  NSString *markup;
+  BOOL isMinimized;
 }
 
-@property (nonatomic, copy) NSString *displayTitle;
-@property (nonatomic, copy) NSString *serviceKey;
-@property (nonatomic, copy) NSString *playbackFormat;
-@property (nonatomic, copy) NSString *playbackKey;
-@property (nonatomic, copy) NSString *streamUrl;
+@property (nonatomic) BOOL isMinimized;
 
-- (void)fetchEmp:(NSString *)keyString;
+
+- (void)handleResizeIcon;
+- (BOOL)isLive;
 - (void)makeRequest;
-- (NSString *)buildEmpHtml;
+- (BOOL)isHighQuality;
+- (BOOL)isReal;
+- (NSSize)minimizedSize;
+- (NSSize)windowSize;
+- (NSString *)playbackFormat;
+- (NSSize)sizeForEmp:(int)index;
+- (void)resizeEmpTo:(NSSize)size;
+- (void)fetchEMP:(NSDictionary *)d;
+- (void)fetchAOD:(NSString *)s;
+- (void)displayEmpForKey:(NSString *)urlkey;
 - (void)fetchErrorMessage:(WebView *)sender;
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame;

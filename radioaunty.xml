@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.8 (New high quality live streams)</title>
+            <title>Version 1.9 (Twitter support, and much more)</title>
 						<sparkle:releaseNotesLink>
-              http://github.com/whomwah/radioaunty/raw/1.8/CHANGELOG
+              http://github.com/whomwah/radioaunty/raw/1.9/CHANGELOG
 						</sparkle:releaseNotesLink>
-            <pubDate>Thu, 12 Feb 2009 14:37:00 +0000</pubDate>
-            <enclosure url="http://github.com/whomwah/radioaunty/raw/1.8/releases/1.0/RadioAunty.dmg" sparkle:version="1.8" length="1137737" type="application/octet-stream" sparkle:dsaSignature="MCwCFFofvdmUK/7BNYazKkvcEHjpPbnrAhQP+wthjh6SWUtAOe0lhblGyLp7Og==" />
+            <pubDate>Fri, 13 Mar 2009 14:37:00 +0000</pubDate>
+            <enclosure url="http://github.com/whomwah/radioaunty/raw/1.9/releases/1.0/RadioAunty.dmg" sparkle:version="1.9" length="" type="application/octet-stream" sparkle:dsaSignature="" />
          </item>
    </channel>
 </rss>

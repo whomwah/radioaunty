@@ -11,9 +11,8 @@
 
 @implementation Broadcast
 
-@synthesize title, subtitle, displayTitle, displaySubtitle;
-@synthesize shortSynopsis, pid, duration;
-@synthesize bStart, bEnd, available, availableText;
+@synthesize title, subtitle, displayTitle, displaySubtitle, shortSynopsis, 
+            pid, duration, bStart, bEnd, available, availableText;
 
 -(id)init
 {
@@ -61,9 +60,15 @@
   return date;
 }
 
+- (NSString *)programmesUrl
+{
+  return [NSString stringWithFormat:@"http://bbc.co.uk/programmes/%@", self.pid];
+}
+
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"\ntitle:%@\npid:%@\nstart:%@", displayTitle, pid, bStart];
+  return [NSString stringWithFormat:@"\ntitle:%@\npid:%@\nstart:%@\nend:%@\navailableText:%@", 
+          displayTitle, pid, bStart, bEnd, availableText];
 }
 
 @end

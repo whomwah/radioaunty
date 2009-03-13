@@ -15,10 +15,7 @@
 
 @implementation Schedule
 
-@synthesize lastUpdated;
-@synthesize service;
-@synthesize displayTitle, displaySynopsis;
-@synthesize broadcasts, currentBroadcast;
+@synthesize lastUpdated, service, displayTitle, displaySynopsis, broadcasts;
 
 -(id)init
 {
@@ -84,8 +81,6 @@
 {
   [receivedData appendData:data];
   float percentComplete = ([receivedData length]/expectedLength)*100.0;
-  
-  [self setDisplayTitle:[NSString stringWithFormat:@"Loading Schedule %1.0f%%", percentComplete]];
   NSLog(@"data is being fetched: %1.0f%%", percentComplete);
 }
 
@@ -144,33 +139,65 @@
   if (error != nil)
     NSLog(@"An Error occured: %@", error);
   
-  NSEnumerator *enumerator = [data objectEnumerator];
   NSMutableArray *temp = [NSMutableArray array];
   
-  for (NSXMLNode *broadcast in enumerator) {    
+  for (NSXMLNode *broadcast in data) {    
     Broadcast *b = [[Broadcast alloc] initUsingBroadcastXML:broadcast];
     [temp addObject:b];
     [b release];
   }
   
   [self setBroadcasts:temp];
-  [self setCurrentBroadcastData];
 }
 
-- (void)setCurrentBroadcastData
+- (Broadcast *)currBroadcast
 {
-  NSEnumerator *enumerator = [broadcasts objectEnumerator];
   NSDate *now = [NSDate date];
-  [self setCurrentBroadcast:nil];
   
-  for (Broadcast *broadcast in enumerator) {
+  for (Broadcast *broadcast in broadcasts) {
     if (([now compare:[broadcast bStart]] == NSOrderedDescending) && 
         ([now compare:[broadcast bEnd]] == NSOrderedAscending)) {
-      [self setCurrentBroadcast:broadcast];
-      NSLog(@"currentBroadcast: %@", currentBroadcast);
-      break;
+      return broadcast;
     }
   }
+  return nil;
+}
+
+- (Broadcast *)nextBroadcast
+{
+  int index = [broadcasts indexOfObject:[self currBroadcast]];
+  
+  if (index != NSNotFound && index+1 <= [broadcasts count]) {
+    index++;
+  }
+  
+  return [broadcasts objectAtIndex:index];
+}
+
+- (Broadcast *)prevBroadcast
+{
+  int index = [broadcasts indexOfObject:[self currBroadcast]];
+  
+  if (index != NSNotFound && index-1 >= 0) {
+    index++;
+  }
+  
+  return [broadcasts objectAtIndex:index];
+}
+
+- (NSString *)nowOnInFull
+{
+  return [NSString stringWithFormat:@"%@ - %@", 
+                              [[self service] displayTitle],
+                              [[self currBroadcast] displayTitle]];
+}
+
+- (NSString *)broadcastTitleWithServiceForIndex:(NSUInteger)index
+{
+  ;
+  return [NSString stringWithFormat:@"%@ - %@", 
+          [[self service] displayTitle],
+          [[[self broadcasts] objectAtIndex:index] displayTitle]];
 }
 
 @end

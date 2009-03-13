@@ -20,7 +20,12 @@
 
 - (void)windowDidLoad
 {
-	NSLog(@"Nib file loaded");
+	NSLog(@"Preferences Nib file loaded");
+}
+
+- (void)windowWillClose:(NSNotification *)notification
+{
+  [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

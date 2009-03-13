@@ -32,16 +32,18 @@
 @property (nonatomic, copy) NSString *displaySynopsis;
 @property (nonatomic, retain) NSDate *lastUpdated;
 @property (nonatomic, retain) NSArray *broadcasts;
-@property (nonatomic, retain) Broadcast *currentBroadcast;
 @property (nonatomic, retain) Service *service;
 
 - (id)initUsingService:(NSString *)sv outlet:(NSString *)ol;
 - (NSURL *)buildUrl;
 - (void)fetch:(NSURL *)url;
-
+- (NSString *)nowOnInFull;
+- (NSString *)broadcastTitleWithServiceForIndex:(NSUInteger)index;
 - (void)setServiceData;
 - (void)setBroadcastData;
-- (void)setCurrentBroadcastData;
+- (Broadcast *)currBroadcast;
+- (Broadcast *)nextBroadcast;
+- (Broadcast *)prevBroadcast;
 
 // delagates
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;

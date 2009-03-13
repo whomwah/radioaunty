@@ -2,8 +2,47 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>EmpSizes</key>
+	<array>
+		<dict>
+			<key>label</key>
+			<string>Minimized</string>
+			<key>width</key>
+			<integer>512</integer>
+			<key>height</key>
+			<integer>35</integer>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>Normal</string>
+			<key>width</key>
+			<integer>512</integer>
+			<key>height</key>
+			<integer>233</integer>
+		</dict>
+		<dict>
+			<key>label</key>
+			<string>RealPlayer</string>
+			<key>width</key>
+			<integer>512</integer>
+			<key>height</key>
+			<integer>243</integer>
+		</dict>
+	</array>
+	<key>DefaultEmpOriginX</key>
+	<integer>200</integer>
+	<key>DefaultEmpOriginY</key>
+	<integer>200</integer>
+	<key>DefaultEmpSize</key>
+	<integer>1</integer>
+	<key>DefaultEmpMinimized</key>
+	<false/>
+	<key>DefaultSendToTwitter</key>
+	<false/>
+	<key>DefaultTwitterUsername</key>
+	<string></string>
 	<key>DefaultQuality</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>DefaultStation</key>
 	<integer>7</integer>
 	<key>Stations</key>

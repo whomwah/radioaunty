@@ -11,9 +11,7 @@
 
 @implementation Service
 
-@synthesize key, title, desc;
-@synthesize outletKey, outletTitle, outletDesc;
-@synthesize displayTitle;
+@synthesize key, title, desc, outletKey, outletTitle, outletDesc, displayTitle;
 
 -(id)init
 {

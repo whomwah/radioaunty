@@ -8,41 +8,49 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
-
-extern NSString * const DSRDefaultStation;
-extern NSString * const DSRStations;
-extern NSString * const DSRQuality;
+#import "MGTwitterEngine.h"
 
 @class EmpViewController;
 @class Schedule;
+@class Broadcast;
+@class DockView;
 
-@interface MainWindowController : NSWindowController {
-  NSDockTile        *dockTile;
-  NSView            *dockView;
-	IBOutlet NSView   *drMainView;
-  NSDictionary      *currentStation;
-  NSArray           *stations;
-  Schedule          *currentSchedule;
-  EmpViewController *drEmpViewController;
+@interface MainWindowController : NSWindowController <MGTwitterEngineDelegate> {
+	IBOutlet NSView *drMainView;
+  NSDockTile *dockTile;
+  NSDictionary *currentStation;
+  NSArray *stations;
+  NSString *windowTitle;
+  Schedule *currentSchedule;
+  Broadcast *currentBroadcast;
+  EmpViewController *empViewController;
+  NSTimer *scheduleTimer;
+  DockView *dockIconView;
+  MGTwitterEngine *twitterEngine;
 }
 
-@property (nonatomic, retain) NSView *dockView;
-@property (nonatomic, retain) NSDictionary *currentStation;
-@property (nonatomic, retain) EmpViewController *drEmpViewController;
+@property (nonatomic, assign) NSTimer *scheduleTimer;
+@property (nonatomic, copy) NSString *windowTitle;
 @property (nonatomic, retain) Schedule *currentSchedule;
-@property (nonatomic, retain) NSArray *stations;
 
-- (void)setAndLoadStation:(NSDictionary *)station;
-- (void)changeStation:(id)sender;
+- (NSString *)createTweet;
+- (void)tweet:(id)sender;
+- (NSString *)realOrTwitterName;
+- (NSString *)liveOrNotText;
+- (void)growl;
+- (void)changeDockNetworkIconTo:(NSString *)service;
+- (void)stopScheduleTimer;
+- (void)startScheduleTimer;
+- (void)refreshStation:(id)sender;
+- (void)fetchRADIO:(NSDictionary *)station;
 - (void)fetchAOD:(id)sender;
+- (void)changeStation:(id)sender;
 - (void)redrawEmp;
-- (void)resizeEmpTo:(NSSize)size;
 - (void)buildStationsMenu;
 - (void)buildScheduleMenu;
-- (void)buildDockTileForKey:(NSString *)key;
+- (void)fetchNewSchedule:(id)sender;
 - (void)clearMenu:(NSMenu *)menu;
-- (void)registerCurrentScheduleAsObserverForKey:(NSString *)key;
-- (void)unregisterCurrentScheduleForChangeNotificationForKey:(NSString *)key;
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object 
+                        change:(NSDictionary *)change context:(void *)context;
 
 @end
