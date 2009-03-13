@@ -164,9 +164,9 @@
     NSLog(@"tweeting");
     [twitterEngine sendUpdate:newTweet];
     NSImage *twitter_logo = [NSImage imageNamed:@"robot"];
-    [GrowlApplicationBridge notifyWithTitle:@"Send to Twitter"
+    [GrowlApplicationBridge notifyWithTitle:@"Sending to Twitter"
                                 description:@"Letting them know what you're listening to"
-                           notificationName:@"Tweet my listening"
+                           notificationName:@"Send to Twitter"
                                    iconData:[twitter_logo TIFFRepresentation]
                                    priority:1
                                    isSticky:NO
