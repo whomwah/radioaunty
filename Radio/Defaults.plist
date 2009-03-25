@@ -7,32 +7,24 @@
 		<dict>
 			<key>label</key>
 			<string>Minimized</string>
-			<key>width</key>
-			<integer>512</integer>
-			<key>height</key>
-			<integer>35</integer>
+			<key>size</key>
+			<string>{352, 35}</string>
 		</dict>
 		<dict>
 			<key>label</key>
 			<string>Normal</string>
-			<key>width</key>
-			<integer>512</integer>
-			<key>height</key>
-			<integer>233</integer>
+			<key>size</key>
+			<string>{352, 233}</string>
 		</dict>
 		<dict>
 			<key>label</key>
 			<string>RealPlayer</string>
-			<key>width</key>
-			<integer>512</integer>
-			<key>height</key>
-			<integer>243</integer>
+			<key>size</key>
+			<string>{512, 243}</string>
 		</dict>
 	</array>
-	<key>DefaultEmpOriginX</key>
-	<integer>200</integer>
-	<key>DefaultEmpOriginY</key>
-	<integer>200</integer>
+	<key>DefaultEmpOrigin</key>
+	<string>{200, 200}</string>
 	<key>DefaultEmpSize</key>
 	<integer>1</integer>
 	<key>DefaultEmpMinimized</key>

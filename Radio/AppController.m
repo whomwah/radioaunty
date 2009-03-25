@@ -36,8 +36,7 @@
   [defaultValues setObject:[temp objectForKey:@"DefaultQuality"] forKey:@"DefaultQuality"];
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpSize"] forKey:@"DefaultEmpSize"];
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpMinimized"] forKey:@"DefaultEmpMinimized"];
-  [defaultValues setObject:[temp objectForKey:@"DefaultEmpOriginX"] forKey:@"DefaultEmpOriginX"];
-  [defaultValues setObject:[temp objectForKey:@"DefaultEmpOriginY"] forKey:@"DefaultEmpOriginY"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultEmpOrigin"] forKey:@"DefaultEmpOrigin"];
   [defaultValues setObject:[temp objectForKey:@"DefaultSendToTwitter"] forKey:@"DefaultSendToTwitter"];  
   [defaultValues setObject:[temp objectForKey:@"DefaultTwitterUsername"] forKey:@"DefaultTwitterUsername"];  
   [defaults registerDefaults:defaultValues];
@@ -66,9 +65,7 @@
 {
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
   NSRect wf = [[drMainWindowController window] frame];
-  
-  [ud setInteger:wf.origin.x forKey:@"DefaultEmpOriginX"];
-  [ud setInteger:wf.origin.y forKey:@"DefaultEmpOriginY"];
+  [ud setValue:NSStringFromPoint(wf.origin) forKey:@"DefaultEmpOrigin"];
   [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

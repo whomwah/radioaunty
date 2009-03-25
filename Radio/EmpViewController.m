@@ -10,11 +10,17 @@
 
 @implementation EmpViewController
 
-@synthesize isMinimized;
+@synthesize isMinimized, viewSizes;
 
 - (void)awakeFromNib
 {
   self.isMinimized = [[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultEmpMinimized"];
+  NSArray *sizes = [[NSUserDefaults standardUserDefaults] arrayForKey:@"EmpSizes"];
+  NSMutableArray *arry = [NSMutableArray array];
+  for (NSDictionary *d in sizes) {
+    [arry addObject:[d objectForKey:@"size"]];
+  }
+  self.viewSizes = arry;
 }
 
 - (void)fetchEMP:(NSDictionary *)d
@@ -131,12 +137,10 @@
 }
 
 - (NSSize)sizeForEmp:(int)index
-{
-  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-  NSDictionary *s = [[ud arrayForKey:@"EmpSizes"] objectAtIndex:index];
-  int w = [[s objectForKey:@"width"] intValue];
-  int h = [[s objectForKey:@"height"] intValue];
-  return NSMakeSize(w,h + 22.0);  
+{  
+  NSSize size = NSSizeFromString([viewSizes objectAtIndex:index]);
+  size.height = size.height + 25.0;
+  return size;
 }
 
 - (void)resizeEmpTo:(NSSize)size

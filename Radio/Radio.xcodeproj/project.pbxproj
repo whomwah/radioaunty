@@ -11,12 +11,12 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		AE0E9C240EFA3B460024215E /* Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0E9C230EFA3B460024215E /* Schedule.m */; };
 		AE1BFB940F173B8A006ED3DF /* live.html in Resources */ = {isa = PBXBuildFile; fileRef = AE1BFB920F173B8A006ED3DF /* live.html */; };
-		AE1BFB950F173B8A006ED3DF /* emp.html in Resources */ = {isa = PBXBuildFile; fileRef = AE1BFB930F173B8A006ED3DF /* emp.html */; };
 		AE326E600F6A671A00815B36 /* robot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AE326E5F0F6A671A00815B36 /* robot.jpg */; };
 		AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE333BBA0EF798740077A647 /* WebKit.framework */; };
 		AE333BDC0EF79B4B0077A647 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Defaults.plist */; };
+		AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */; };
+		AE3FF5440F7A216E006C8B21 /* DRNSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */; };
 		AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE630BAB0F1CDC7200905968 /* radio_icon.icns */; };
 		AE6966580EF6ABF200B029FE /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966570EF6ABF200B029FE /* AppController.m */; };
 		AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */; };
@@ -41,8 +41,9 @@
 		AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */; };
 		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEC16F210F68334800A38C90 /* DockView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC16F200F68334800A38C90 /* DockView.m */; };
-		AEC7925D0F1346B8000098B1 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC7925C0F1346B8000098B1 /* Service.m */; };
-		AEC793EB0F13A2CB000098B1 /* Broadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC793EA0F13A2CB000098B1 /* Broadcast.m */; };
+		AECC40AB0F7999B400804741 /* BBCBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40A60F7999B400804741 /* BBCBroadcast.m */; };
+		AECC40AC0F7999B400804741 /* BBCSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40A80F7999B400804741 /* BBCSchedule.m */; };
+		AECC40AD0F7999B400804741 /* BBCService.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40AA0F7999B400804741 /* BBCService.m */; };
 		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
 		AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */; };
 		AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16980F0BEFF3009F81AD /* 6music.png */; };
@@ -54,7 +55,6 @@
 		AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169E0F0BEFF4009F81AD /* radio3.png */; };
 		AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169F0F0BEFF4009F81AD /* radio4.png */; };
 		AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16A00F0BEFF4009F81AD /* worldservice.png */; };
-		AEED013C0F066FD40022205D /* NSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AEED013B0F066FD30022205D /* NSString-Utilities.m */; };
 		AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */ = {isa = PBXBuildFile; fileRef = AEF9A56F0F438C7500E9D841 /* liveReal.html */; };
 /* End PBXBuildFile section */
 
@@ -91,14 +91,13 @@
 		32CA4F630368D1EE00C91783 /* Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* RadioAunty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAunty.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE0E9C220EFA3B460024215E /* Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Schedule.h; sourceTree = "<group>"; };
-		AE0E9C230EFA3B460024215E /* Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Schedule.m; sourceTree = "<group>"; };
 		AE1BFB920F173B8A006ED3DF /* live.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = live.html; sourceTree = "<group>"; };
-		AE1BFB930F173B8A006ED3DF /* emp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = emp.html; sourceTree = "<group>"; };
-		AE326D3C0F69935E00815B36 /* PWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWord.h; sourceTree = "<group>"; };
 		AE326E5F0F6A671A00815B36 /* robot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = robot.jpg; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		AE3FF5420F7A216E006C8B21 /* DRNSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DRNSString-Utilities.h"; sourceTree = "<group>"; };
+		AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DRNSString-Utilities.m"; sourceTree = "<group>"; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966560EF6ABF200B029FE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		AE6966570EF6ABF200B029FE /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -139,10 +138,13 @@
 		AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		AEC16F1F0F68334800A38C90 /* DockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockView.h; sourceTree = "<group>"; };
 		AEC16F200F68334800A38C90 /* DockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockView.m; sourceTree = "<group>"; };
-		AEC7925B0F1346B8000098B1 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
-		AEC7925C0F1346B8000098B1 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
-		AEC793E90F13A2CB000098B1 /* Broadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Broadcast.h; sourceTree = "<group>"; };
-		AEC793EA0F13A2CB000098B1 /* Broadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Broadcast.m; sourceTree = "<group>"; };
+		AECC40A50F7999B400804741 /* BBCBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCBroadcast.h; sourceTree = "<group>"; };
+		AECC40A60F7999B400804741 /* BBCBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCBroadcast.m; sourceTree = "<group>"; };
+		AECC40A70F7999B400804741 /* BBCSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCSchedule.h; sourceTree = "<group>"; };
+		AECC40A80F7999B400804741 /* BBCSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCSchedule.m; sourceTree = "<group>"; };
+		AECC40A90F7999B400804741 /* BBCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCService.h; sourceTree = "<group>"; };
+		AECC40AA0F7999B400804741 /* BBCService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCService.m; sourceTree = "<group>"; };
+		AECC40AE0F7999BA00804741 /* pw_TvAndRadioBotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pw_TvAndRadioBotPassword.h; path = "../../code.whomwah.com/public/objective-c/pw_TvAndRadioBotPassword.h"; sourceTree = SOURCE_ROOT; };
 		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
 		AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5livesportsextra.png; sourceTree = "<group>"; };
 		AEDD16980F0BEFF3009F81AD /* 6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6music.png; sourceTree = "<group>"; };
@@ -154,8 +156,6 @@
 		AEDD169E0F0BEFF4009F81AD /* radio3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio3.png; sourceTree = "<group>"; };
 		AEDD169F0F0BEFF4009F81AD /* radio4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio4.png; sourceTree = "<group>"; };
 		AEDD16A00F0BEFF4009F81AD /* worldservice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldservice.png; sourceTree = "<group>"; };
-		AEED013A0F066FD30022205D /* NSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-Utilities.h"; sourceTree = "<group>"; };
-		AEED013B0F066FD30022205D /* NSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString-Utilities.m"; sourceTree = "<group>"; };
 		AEF9A56F0F438C7500E9D841 /* liveReal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = liveReal.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,8 +222,6 @@
 			children = (
 				AE71F9F50F694D1A00577A56 /* Classes */,
 				AEDD16C40F0BF062009F81AD /* Images */,
-				AEED013E0F066FF20022205D /* Categories */,
-				AEA0B0F50EF7B44F00137DAA /* Models */,
 				AEA0B0F40EF7B44600137DAA /* Views */,
 				080E96DDFE201D6D7F000001 /* Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -249,7 +247,6 @@
 				AE630BAB0F1CDC7200905968 /* radio_icon.icns */,
 				AEF9A56F0F438C7500E9D841 /* liveReal.html */,
 				AE1BFB920F173B8A006ED3DF /* live.html */,
-				AE1BFB930F173B8A006ED3DF /* emp.html */,
 				AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */,
 				AE333BDB0EF79B4B0077A647 /* Defaults.plist */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -259,6 +256,7 @@
 				AE69668E0EF6AF3D00B029FE /* EmpView.xib */,
 				AEA0B43C0EF7EFCE00137DAA /* Preferences.xib */,
 				AE73A0020EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict */,
+				AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -272,11 +270,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE3FF5410F7A216E006C8B21 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				AE3FF5420F7A216E006C8B21 /* DRNSString-Utilities.h */,
+				AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */,
+			);
+			name = Categories;
+			path = "../../code.whomwah.com/public/objective-c/BBCProgrammes/Categories";
+			sourceTree = SOURCE_ROOT;
+		};
 		AE71F9F50F694D1A00577A56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AE3FF5410F7A216E006C8B21 /* Categories */,
+				AECC40AE0F7999BA00804741 /* pw_TvAndRadioBotPassword.h */,
+				AECC40A40F7999B400804741 /* BBCProgrammes */,
 				AE71F9F60F694D2400577A56 /* MATwitterEngine */,
-				AE326D3C0F69935E00815B36 /* PWord.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -335,18 +345,19 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		AEA0B0F50EF7B44F00137DAA /* Models */ = {
+		AECC40A40F7999B400804741 /* BBCProgrammes */ = {
 			isa = PBXGroup;
 			children = (
-				AEC793E90F13A2CB000098B1 /* Broadcast.h */,
-				AEC793EA0F13A2CB000098B1 /* Broadcast.m */,
-				AE0E9C220EFA3B460024215E /* Schedule.h */,
-				AE0E9C230EFA3B460024215E /* Schedule.m */,
-				AEC7925B0F1346B8000098B1 /* Service.h */,
-				AEC7925C0F1346B8000098B1 /* Service.m */,
+				AECC40A50F7999B400804741 /* BBCBroadcast.h */,
+				AECC40A60F7999B400804741 /* BBCBroadcast.m */,
+				AECC40A70F7999B400804741 /* BBCSchedule.h */,
+				AECC40A80F7999B400804741 /* BBCSchedule.m */,
+				AECC40A90F7999B400804741 /* BBCService.h */,
+				AECC40AA0F7999B400804741 /* BBCService.m */,
 			);
-			name = Models;
-			sourceTree = "<group>";
+			name = BBCProgrammes;
+			path = "../../code.whomwah.com/public/objective-c/BBCProgrammes";
+			sourceTree = SOURCE_ROOT;
 		};
 		AEDD16C40F0BF062009F81AD /* Images */ = {
 			isa = PBXGroup;
@@ -365,15 +376,6 @@
 				AEDD16A00F0BEFF4009F81AD /* worldservice.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		AEED013E0F066FF20022205D /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				AEED013A0F066FD30022205D /* NSString-Utilities.h */,
-				AEED013B0F066FD30022205D /* NSString-Utilities.m */,
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,10 +443,10 @@
 				AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */,
 				AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */,
 				AE1BFB940F173B8A006ED3DF /* live.html in Resources */,
-				AE1BFB950F173B8A006ED3DF /* emp.html in Resources */,
 				AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */,
 				AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */,
 				AE326E600F6A671A00815B36 /* robot.jpg in Resources */,
+				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,10 +462,6 @@
 				AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */,
 				AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */,
 				AEA0B4520EF7F09400137DAA /* PreferencesWindowController.m in Sources */,
-				AE0E9C240EFA3B460024215E /* Schedule.m in Sources */,
-				AEED013C0F066FD40022205D /* NSString-Utilities.m in Sources */,
-				AEC7925D0F1346B8000098B1 /* Service.m in Sources */,
-				AEC793EB0F13A2CB000098B1 /* Broadcast.m in Sources */,
 				AEC16F210F68334800A38C90 /* DockView.m in Sources */,
 				AE71FA270F694D2400577A56 /* MGTwitterEngine.m in Sources */,
 				AE71FA280F694D2400577A56 /* MGTwitterHTTPURLConnection.m in Sources */,
@@ -474,6 +472,10 @@
 				AE71FA320F694D2400577A56 /* MGTwitterMiscParser.m in Sources */,
 				AE71FA390F694D2400577A56 /* NSString+UUID.m in Sources */,
 				AE71FA3A0F694D2400577A56 /* NSData+Base64.m in Sources */,
+				AECC40AB0F7999B400804741 /* BBCBroadcast.m in Sources */,
+				AECC40AC0F7999B400804741 /* BBCSchedule.m in Sources */,
+				AECC40AD0F7999B400804741 /* BBCService.m in Sources */,
+				AE3FF5440F7A216E006C8B21 /* DRNSString-Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

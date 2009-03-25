@@ -1,3 +1,14 @@
+*1.10* (March 25th, 2009)
+
+* Fix memory leak
+* A bit of code optimisation learnt
+  from TellyBox
+* Change player layout to very simple
+  until something better comes along 
+* Move BBC programmes libs to shared
+  location away from the app and namespace. 
+  They are now shared with TellyBox
+
 *1.9* (March 13th, 2009)
 
 * In a similar fashion to iTunes, you can 

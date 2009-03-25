@@ -1,6 +1,6 @@
 //
 //  DockView.m
-//  Radio
+//  RadioAunty
 //
 //  Created by Duncan Robertson on 11/03/2009.
 //  Copyright 2009 Whomwah. All rights reserved.
@@ -25,22 +25,21 @@
 
 - (void)drawRect:(NSRect)rect
 {
-  NSImageView *serviceIconView = [[NSImageView alloc] initWithFrame: 
-                                  NSMakeRect(15, rect.size.height - [networkIcon size].height - 5, 
-                                             [networkIcon size].width, 
-                                             [networkIcon size].height)];
-  
-  [serviceIconView setImage:networkIcon];
-  [serviceIconView setImageAlignment:NSImageAlignTopLeft];
-  
-  NSRect dockFrame = NSMakeRect(0, 0, rect.size.width, rect.size.height);
-  NSImageView *appIconView = [[NSImageView alloc] initWithFrame:dockFrame];
-  
+  [self setSubviews:[NSArray array]];
+   
+  NSImageView *appIconView = [[NSImageView alloc] initWithFrame:rect];
   [appIconView setImage:appIcon];
   [self addSubview:appIconView];
-  [self addSubview:serviceIconView];
-  
-  [serviceIconView release];
+
+  if (networkIcon) {
+    NSImageView *serviceIconView = [[NSImageView alloc] initWithFrame: 
+                                    NSMakeRect(15, rect.size.height - [networkIcon size].height - 5, 
+                                               [networkIcon size].width, [networkIcon size].height)];
+    [serviceIconView setImage:networkIcon];
+    [self addSubview:serviceIconView];
+    [serviceIconView release];
+  }  
+
   [appIconView release];
 }
 

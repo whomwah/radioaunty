@@ -14,9 +14,11 @@
   NSDictionary *data;
   NSString *markup;
   BOOL isMinimized;
+  NSMutableArray *viewSizes;
 }
 
 @property (nonatomic) BOOL isMinimized;
+@property (nonatomic, retain) NSMutableArray *viewSizes;
 
 
 - (void)handleResizeIcon;

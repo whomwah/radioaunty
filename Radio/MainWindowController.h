@@ -11,8 +11,8 @@
 #import "MGTwitterEngine.h"
 
 @class EmpViewController;
-@class Schedule;
-@class Broadcast;
+@class BBCSchedule;
+@class BBCBroadcast;
 @class DockView;
 
 @interface MainWindowController : NSWindowController <MGTwitterEngineDelegate> {
@@ -21,8 +21,8 @@
   NSDictionary *currentStation;
   NSArray *stations;
   NSString *windowTitle;
-  Schedule *currentSchedule;
-  Broadcast *currentBroadcast;
+  BBCSchedule *currentSchedule;
+  BBCBroadcast *currentBroadcast;
   EmpViewController *empViewController;
   NSTimer *scheduleTimer;
   DockView *dockIconView;
@@ -31,7 +31,7 @@
 
 @property (nonatomic, assign) NSTimer *scheduleTimer;
 @property (nonatomic, copy) NSString *windowTitle;
-@property (nonatomic, retain) Schedule *currentSchedule;
+@property (nonatomic, retain) BBCSchedule *currentSchedule;
 
 - (NSString *)createTweet;
 - (void)tweet:(id)sender;

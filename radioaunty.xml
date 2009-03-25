@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.9 (Twitter support, and much more)</title>
+            <title>Version 1.10 (Simpler interface view, fixes)</title>
 						<sparkle:releaseNotesLink>
-              http://github.com/whomwah/radioaunty/raw/1.9/CHANGELOG
+              http://github.com/whomwah/radioaunty/raw/master/CHANGELOG 
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 13 Mar 2009 23:37:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.9.dmg" sparkle:version="1.9" length="932895" type="application/octet-stream" sparkle:dsaSignature="MC4CFQDDDG/gKyXvp8dpx594aF2maEKNSgIVALTjImwTGHlpJg+Gc1DSvwpa45pW" />
+            <pubDate>Wed, 25 Mar 2009 10:00:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.10.dmg" sparkle:version="1.10" length="922532" type="application/octet-stream" sparkle:dsaSignature="MCwCFD8EKOeptAh4IfY6peZmShdizwUSAhRBHvYAYdbDEmSk7YBWMfrAPQDsGQ==" />
          </item>
    </channel>
 </rss>

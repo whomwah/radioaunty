@@ -8,10 +8,10 @@
 
 #import "MainWindowController.h"
 #import "EmpViewController.h"
-#import "Broadcast.h"
-#import "Schedule.h"
+#import "BBCBroadcast.h"
+#import "BBCSchedule.h"
 #import "DockView.h"
-#import "PWord.h"
+#import "pw_TvAndRadioBotPassword.h"
 
 @implementation MainWindowController
 
@@ -34,8 +34,8 @@
   [drMainView addSubview:[empViewController view]];
   [self fetchRADIO:currentStation];
   
-  NSRect rect = NSMakeRect([ud integerForKey:@"DefaultEmpOriginX"], 
-                           [ud integerForKey:@"DefaultEmpOriginY"],
+  NSPoint point = NSPointFromString([ud stringForKey:@"DefaultEmpOrigin"]);
+  NSRect rect = NSMakeRect(point.x, point.y,
                            [empViewController windowSize].width, 
                            [empViewController windowSize].height);
 
@@ -81,9 +81,9 @@
 - (void)fetchAOD:(id)sender
 {
   [self stopScheduleTimer];
-  Broadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
+  BBCBroadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
   currentBroadcast = broadcast;  
-  self.windowTitle = [currentSchedule broadcastTitleWithServiceForIndex:[sender tag]];
+  self.windowTitle = [currentSchedule broadcastDisplayTitleForIndex:[sender tag]];
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [empViewController fetchAOD:[broadcast pid]];
   [self growl];
@@ -99,8 +99,10 @@
 - (void)fetchNewSchedule:(id)sender
 {
   [currentSchedule removeObserver:self forKeyPath:@"broadcasts"];
-  Schedule *sc = [[Schedule alloc] initUsingService:[currentStation objectForKey:@"key"] 
+  BBCSchedule *sc = [[BBCSchedule alloc] initUsingService:[currentStation objectForKey:@"key"] 
                                              outlet:[currentStation objectForKey:@"outlet"]];
+  [sc fetchScheduleForDate:[NSDate date]];
+  
   self.currentSchedule = sc;
   [currentSchedule addObserver:self
                     forKeyPath:@"broadcasts"
@@ -115,7 +117,7 @@
 {
   if ([currentSchedule currBroadcast]) {
     currentBroadcast = [currentSchedule currBroadcast];
-    self.windowTitle = [currentSchedule nowOnInFull];
+    self.windowTitle = [currentSchedule currentBroadcastDisplayTitle];
     [self buildScheduleMenu];
     [self startScheduleTimer];
     [self growl];
@@ -161,12 +163,11 @@
   NSString *oldTweet = [[sender userInfo] valueForKey:@"tweet"];
   NSString *newTweet = [self createTweet];
   NSLog(@"checking");
-  if ([newTweet isEqualToString:oldTweet]) {
-    NSLog(@"tweeting");
+  if ([newTweet isEqualToString:oldTweet] && ((currentBroadcast && [empViewController isLive]) || ![empViewController isLive])) {
     [twitterEngine sendUpdate:newTweet];
     NSImage *twitter_logo = [NSImage imageNamed:@"robot"];
-    [GrowlApplicationBridge notifyWithTitle:@"Sending to Twitter"
-                                description:@"Letting them know what you're listening to"
+    [GrowlApplicationBridge notifyWithTitle:@"Sending to @radioandtvbot"
+                                description:newTweet
                            notificationName:@"Send to Twitter"
                                    iconData:[twitter_logo TIFFRepresentation]
                                    priority:1
@@ -219,6 +220,7 @@
 
 - (void)changeStation:(id)sender
 {
+  [[NSUserDefaults standardUserDefaults] setInteger:[sender tag] forKey:@"DefaultStation"];
   [[[sender menu] itemWithTitle:[currentStation objectForKey:@"label"]] setState:NSOffState];
   [sender setState:NSOnState];
   [self fetchRADIO:[stations objectAtIndex:[sender tag]]];
@@ -271,15 +273,15 @@
   [self clearMenu:scheduleMenu];
   int count = 0;
   
-  for (Broadcast *broadcast in [currentSchedule broadcasts]) {
+  for (BBCBroadcast *broadcast in [currentSchedule broadcasts]) {
     
     start = [[broadcast bStart] descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil];
     label = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast displayTitle]];
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"" 
                                                                    action:NULL 
                                                             keyEquivalent:@""];
-    if ([broadcast availableText]) {
-      [label appendFormat:@" (%@)", [broadcast availableText]];
+    if ([broadcast radioAvailability]) {
+      [label appendFormat:@" (%@)", [broadcast radioAvailability]];
       [newItem setAction:@selector(fetchAOD:)];
     }
     
