@@ -1,3 +1,14 @@
+*1.11* (March 26th, 2009)
+
+* the schedule menu has been updated to
+  correctly display what broadcast you are
+  listening to, live or listen again. Also 
+  if you are listening to a show again 
+  the schedule will indicate this as well 
+  as letting you see and select what is 
+  currently playing live on that particular 
+  network
+
 *1.10* (March 25th, 2009)
 
 * Fix memory leak

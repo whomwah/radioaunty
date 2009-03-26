@@ -55,7 +55,7 @@
   twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
   [twitterEngine setUsername:username password:password];
   [twitterEngine setClientName:@"RadioAunty" 
-                       version:@"1.9" 
+                       version:@"1.11" 
                            URL:@"http://whomwah.github.com/radioaunty" 
                          token:@"radioaunty"];
 }
@@ -84,8 +84,9 @@
   BBCBroadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
   currentBroadcast = broadcast;  
   self.windowTitle = [currentSchedule broadcastDisplayTitleForIndex:[sender tag]];
-  [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [empViewController fetchAOD:[broadcast pid]];
+  [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
+  [self buildScheduleMenu];
   [self growl];
 }
 
@@ -166,7 +167,7 @@
   if ([newTweet isEqualToString:oldTweet] && ((currentBroadcast && [empViewController isLive]) || ![empViewController isLive])) {
     [twitterEngine sendUpdate:newTweet];
     NSImage *twitter_logo = [NSImage imageNamed:@"robot"];
-    [GrowlApplicationBridge notifyWithTitle:@"Sending to @radioandtvbot"
+    [GrowlApplicationBridge notifyWithTitle:@"Sending to @radioandtvbot on Twitter.com"
                                 description:newTweet
                            notificationName:@"Send to Twitter"
                                    iconData:[twitter_logo TIFFRepresentation]
@@ -238,8 +239,9 @@
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
                                                                    action:@selector(changeStation:) 
                                                             keyEquivalent:@""];
-    if ([currentStation isEqualTo:station] == YES)
+    if ([currentStation isEqualTo:station] == YES) {
       [newItem setState:NSOnState];
+    }
     
     [newItem setEnabled:YES];
     NSImage *img = [[NSImage imageNamed:[station valueForKey:@"key"]] copyWithZone:NULL];
@@ -266,39 +268,56 @@
 {
   NSMenuItem *newItem;
   NSString *start;
-  NSMutableString *label;
   NSMenu *scheduleMenu = [[[NSApp mainMenu] itemWithTitle:@"Schedule"] submenu];  
-  NSFont *font = [NSFont userFontOfSize:13.0];
-  NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
   [self clearMenu:scheduleMenu];
   int count = 0;
   
   for (BBCBroadcast *broadcast in [currentSchedule broadcasts]) {
     
     start = [[broadcast bStart] descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil];
-    label = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast displayTitle]];
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"" 
                                                                    action:NULL 
                                                             keyEquivalent:@""];
-    if ([broadcast radioAvailability]) {
-      [label appendFormat:@" (%@)", [broadcast radioAvailability]];
-      [newItem setAction:@selector(fetchAOD:)];
+    NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast displayTitle]];
+    NSString *state = @"";
+    
+    if ([broadcast isEqual:currentBroadcast] == YES) {
+      state = @" NOW PLAYING";
+      [newItem setState:NSOnState];
+    } else if ([broadcast radioAvailability]) {
+      [newItem setAction:@selector(fetchAOD:)]; 
+    } else if ([broadcast isEqual:[currentSchedule currBroadcast]] == YES) {
+      state = @" LIVE";
+      [newItem setAction:@selector(refreshStation:)];
     }
     
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:label
-                                                                     attributes:attrsDictionary];
+    [str appendString:state];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:str];
+
+    [string addAttribute:NSFontAttributeName
+                   value:[NSFont userFontOfSize:13.6]
+                   range:NSMakeRange(0,[start length])];
     
-    [newItem setAttributedTitle:attrString];
+    [string addAttribute:NSFontAttributeName
+                   value:[NSFont userFontOfSize:13.6]
+                   range:NSMakeRange([start length]+1,[[broadcast displayTitle] length])];
+
+    [string addAttribute:NSForegroundColorAttributeName
+                   value:[NSColor lightGrayColor]
+                   range:NSMakeRange(1+[start length]+[[broadcast displayTitle] length],[state length])];
+    
+    [string addAttribute:NSFontAttributeName
+                   value:[NSFont userFontOfSize:9]
+                   range:NSMakeRange(1+[start length]+[[broadcast displayTitle] length],[state length])];
+
+    [newItem setAttributedTitle:string];
     [newItem setEnabled:YES];
     [newItem setTag:count];
-    if ([broadcast isEqual:currentBroadcast] == YES) {
-      [newItem setState:NSOnState];
-    }
     [newItem setEnabled:YES];
     [newItem setTarget:self];
     [scheduleMenu addItem:newItem];
     [newItem release];
-    [attrString release];
+    [string release];
     count++;
   }
 }

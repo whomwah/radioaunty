@@ -991,10 +991,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>changeStation:</string>
 							<string>fetchAOD:</string>
+							<string>fetchNewSchedule:</string>
 							<string>refreshStation:</string>
+							<string>tweet:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
