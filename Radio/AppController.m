@@ -32,6 +32,7 @@
   
   [defaultValues setObject:[temp objectForKey:@"Stations"] forKey:@"Stations"];
   [defaultValues setObject:[temp objectForKey:@"EmpSizes"] forKey:@"EmpSizes"];
+  [defaultValues setObject:[temp objectForKey:@"DefaultAlwaysOnTop"] forKey:@"DefaultAlwaysOnTop"];
   [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:@"DefaultStation"];
   [defaultValues setObject:[temp objectForKey:@"DefaultQuality"] forKey:@"DefaultQuality"];
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpSize"] forKey:@"DefaultEmpSize"];

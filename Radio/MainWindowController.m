@@ -55,7 +55,7 @@
   twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
   [twitterEngine setUsername:username password:password];
   [twitterEngine setClientName:@"RadioAunty" 
-                       version:@"1.11" 
+                       version:@"1.12" 
                            URL:@"http://whomwah.github.com/radioaunty" 
                          token:@"radioaunty"];
 }
@@ -333,6 +333,15 @@
 }
 
 #pragma mark Main Window delegate
+
+- (void)windowDidResignMain:(NSNotification *)notification
+{
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultAlwaysOnTop"] == YES) {
+    [[self window] setLevel:NSMainMenuWindowLevel];
+  } else {
+    [[self window] setLevel:NSNormalWindowLevel];
+  }
+}
 
 - (NSSize)windowWillResize:(NSWindow *)window toSize:(NSSize)proposedFrameSize
 {

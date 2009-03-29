@@ -25,6 +25,8 @@
 	</array>
 	<key>DefaultEmpOrigin</key>
 	<string>{200, 200}</string>
+	<key>DefaultAlwaysOnTop</key>
+	<true/>
 	<key>DefaultEmpSize</key>
 	<integer>1</integer>
 	<key>DefaultEmpMinimized</key>
