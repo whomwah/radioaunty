@@ -284,11 +284,11 @@
     if ([broadcast isEqual:currentBroadcast] == YES) {
       state = @" NOW PLAYING";
       [newItem setState:NSOnState];
-    } else if ([broadcast radioAvailability]) {
-      [newItem setAction:@selector(fetchAOD:)]; 
     } else if ([broadcast isEqual:[currentSchedule currBroadcast]] == YES) {
       state = @" LIVE";
       [newItem setAction:@selector(refreshStation:)];
+    } else if ([broadcast radioAvailability]) {
+      [newItem setAction:@selector(fetchAOD:)]; 
     }
     
     [str appendString:state];
