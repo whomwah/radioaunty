@@ -10,7 +10,7 @@
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG 
 						</sparkle:releaseNotesLink>
-            <pubDate>Sun, 29 Mar 2009 19:00:00 +0000</pubDate>
+            <pubDate>Sun, 11 Oct 2009 17:49:00 +0000</pubDate>
             <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.13.dmg" sparkle:version="1.13" length="919671" type="application/octet-stream" sparkle:dsaSignature="MC4CFQDNvCPL+Wzs9rWcYVDbzsxI4DY/MgIVAKBopZqQM2DcEXnxnrA/2wBm34B9" />
          </item>
    </channel>
