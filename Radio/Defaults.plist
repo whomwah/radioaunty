@@ -144,8 +144,6 @@
 			<string>Asian Network</string>
 		</dict>
 		<dict>
-			<key>only_real_available</key>
-			<integer>1</integer>
 			<key>realStreamUrl</key>
 			<string>http://www.bbc.co.uk/worldservice/meta/tx/nb/live_eneuk_au_nb.ram</string>
 			<key>empKey</key>

@@ -55,7 +55,7 @@
   twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
   [twitterEngine setUsername:username password:password];
   [twitterEngine setClientName:@"RadioAunty" 
-                       version:@"1.12" 
+                       version:@"1.13" 
                            URL:@"http://whomwah.github.com/radioaunty" 
                          token:@"radioaunty"];
 }

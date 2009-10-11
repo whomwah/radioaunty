@@ -14,7 +14,6 @@
 
 + (void)initialize
 {
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
   NSString *errorDesc = nil;
   NSPropertyListFormat format;
@@ -40,7 +39,7 @@
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpOrigin"] forKey:@"DefaultEmpOrigin"];
   [defaultValues setObject:[temp objectForKey:@"DefaultSendToTwitter"] forKey:@"DefaultSendToTwitter"];  
   [defaultValues setObject:[temp objectForKey:@"DefaultTwitterUsername"] forKey:@"DefaultTwitterUsername"];  
-  [defaults registerDefaults:defaultValues];
+  [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 
 - (void)awakeFromNib

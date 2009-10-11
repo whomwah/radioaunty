@@ -44,6 +44,9 @@
 		AECC40AB0F7999B400804741 /* BBCBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40A60F7999B400804741 /* BBCBroadcast.m */; };
 		AECC40AC0F7999B400804741 /* BBCSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40A80F7999B400804741 /* BBCSchedule.m */; };
 		AECC40AD0F7999B400804741 /* BBCService.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40AA0F7999B400804741 /* BBCService.m */; };
+		AED627F20F8132E300E2AC2A /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AED627E40F8132E300E2AC2A /* LICENSE.txt */; };
+		AED627F40F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AED627E70F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m */; };
+		AED627F50F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AED627E90F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m */; };
 		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
 		AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */; };
 		AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16980F0BEFF3009F81AD /* 6music.png */; };
@@ -91,7 +94,7 @@
 		32CA4F630368D1EE00C91783 /* Radio_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radio_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* RadioAunty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioAunty.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE1BFB920F173B8A006ED3DF /* live.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = live.html; sourceTree = "<group>"; };
+		AE1BFB920F173B8A006ED3DF /* live.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = live.html; sourceTree = "<group>"; wrapsLines = 1; };
 		AE326E5F0F6A671A00815B36 /* robot.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = robot.jpg; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
@@ -145,6 +148,11 @@
 		AECC40A90F7999B400804741 /* BBCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCService.h; sourceTree = "<group>"; };
 		AECC40AA0F7999B400804741 /* BBCService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCService.m; sourceTree = "<group>"; };
 		AECC40AE0F7999BA00804741 /* pw_TvAndRadioBotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pw_TvAndRadioBotPassword.h; path = "../../code.whomwah.com/public/objective-c/pw_TvAndRadioBotPassword.h"; sourceTree = SOURCE_ROOT; };
+		AED627E40F8132E300E2AC2A /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		AED627E60F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+ISO8601Parsing.h"; sourceTree = "<group>"; };
+		AED627E70F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+ISO8601Parsing.m"; sourceTree = "<group>"; };
+		AED627E80F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+ISO8601Unparsing.h"; sourceTree = "<group>"; };
+		AED627E90F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+ISO8601Unparsing.m"; sourceTree = "<group>"; };
 		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
 		AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5livesportsextra.png; sourceTree = "<group>"; };
 		AEDD16980F0BEFF3009F81AD /* 6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6music.png; sourceTree = "<group>"; };
@@ -283,6 +291,7 @@
 		AE71F9F50F694D1A00577A56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AED627E30F8132E300E2AC2A /* ISO-8601-parser-0.4 */,
 				AE3FF5410F7A216E006C8B21 /* Categories */,
 				AECC40AE0F7999BA00804741 /* pw_TvAndRadioBotPassword.h */,
 				AECC40A40F7999B400804741 /* BBCProgrammes */,
@@ -357,6 +366,19 @@
 			);
 			name = BBCProgrammes;
 			path = "../../code.whomwah.com/public/objective-c/BBCProgrammes";
+			sourceTree = SOURCE_ROOT;
+		};
+		AED627E30F8132E300E2AC2A /* ISO-8601-parser-0.4 */ = {
+			isa = PBXGroup;
+			children = (
+				AED627E40F8132E300E2AC2A /* LICENSE.txt */,
+				AED627E60F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.h */,
+				AED627E70F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m */,
+				AED627E80F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.h */,
+				AED627E90F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m */,
+			);
+			name = "ISO-8601-parser-0.4";
+			path = "../../code.whomwah.com/public/objective-c/ISO-8601-parser-0.4";
 			sourceTree = SOURCE_ROOT;
 		};
 		AEDD16C40F0BF062009F81AD /* Images */ = {
@@ -447,6 +469,7 @@
 				AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */,
 				AE326E600F6A671A00815B36 /* robot.jpg in Resources */,
 				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
+				AED627F20F8132E300E2AC2A /* LICENSE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +499,8 @@
 				AECC40AC0F7999B400804741 /* BBCSchedule.m in Sources */,
 				AECC40AD0F7999B400804741 /* BBCService.m in Sources */,
 				AE3FF5440F7A216E006C8B21 /* DRNSString-Utilities.m in Sources */,
+				AED627F40F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m in Sources */,
+				AED627F50F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
