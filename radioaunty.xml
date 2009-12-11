@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.13 (make World Service High Quality)</title>
+            <title>Version 1.14 (Fix Radio 1)</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG 
 						</sparkle:releaseNotesLink>
             <pubDate>Sun, 11 Oct 2009 17:49:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.13.dmg" sparkle:version="1.13" length="919671" type="application/octet-stream" sparkle:dsaSignature="MC4CFQDNvCPL+Wzs9rWcYVDbzsxI4DY/MgIVAKBopZqQM2DcEXnxnrA/2wBm34B9" />
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.14.dmg" sparkle:version="1.14" length="919730" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDDvIZcZuV+S0JObRrWbxKRCu1vSgIUSLmt0Pv17pVhJbMqHmOETpcQOwE=" />
          </item>
    </channel>
 </rss>

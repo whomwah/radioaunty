@@ -49,8 +49,8 @@
   [self buildStationsMenu];
   self.windowTitle = @"BBC Radio";
   
-  NSString *username = TWITTER_USER;
-  NSString *password = TWITTER_PASS;
+  NSString *username = RATVB_TWITTER_USER;
+  NSString *password = RATVB_TWITTER_PASS;
   
   twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
   [twitterEngine setUsername:username password:password];

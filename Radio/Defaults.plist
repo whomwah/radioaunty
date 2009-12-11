@@ -50,6 +50,8 @@
 			<string>radio1</string>
 			<key>label</key>
 			<string>Radio 1</string>
+			<key>outlet</key>
+			<string>england</string>
 		</dict>
 		<dict>
 			<key>realStreamUrl</key>
