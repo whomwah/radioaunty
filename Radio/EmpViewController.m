@@ -106,7 +106,7 @@
     html = [NSString stringWithFormat:tmpl, urlkey, urlkey, realUrl, realUrl];
   } else {
     // FLASH PLAYER
-    html = [NSString stringWithFormat:tmpl, urlkey, urlkey];
+    html = [NSString stringWithFormat:tmpl, urlkey, urlkey, urlkey];
   }
   markup = html;
 	

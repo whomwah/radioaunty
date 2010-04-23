@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.14 (Fix Radio 1)</title>
+            <title>Version 1.15 (Fixed 'This content doesn’t seem to be working')</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG 
 						</sparkle:releaseNotesLink>
-            <pubDate>Sun, 11 Oct 2009 17:49:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.14.dmg" sparkle:version="1.14" length="919730" type="application/octet-stream" sparkle:dsaSignature="MC0CFQDDvIZcZuV+S0JObRrWbxKRCu1vSgIUSLmt0Pv17pVhJbMqHmOETpcQOwE=" />
+            <pubDate>Fri, 23 Apr 2010 11:45:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.15.dmg" sparkle:version="1.15" length="919620" type="application/octet-stream" sparkle:dsaSignature="MCwCFEbeeMrpyPYJvHPfycNFUMfGFNeTAhRUyu+Ye+ViYZDoQhbUxZkVl9Sr3A==" />
          </item>
    </channel>
 </rss>
