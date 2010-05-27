@@ -344,27 +344,13 @@
 }
 
 - (NSSize)windowWillResize:(NSWindow *)window toSize:(NSSize)proposedFrameSize
-{
-  NSSize pfs = proposedFrameSize;
-  if ([empViewController isMinimized] == YES && [empViewController isReal] == NO) {
-    pfs.height = [empViewController minimizedSize].height;
-    if (pfs.width < 300.0)
-      pfs.width = 300.0;
-    if (pfs.width > 600.0)
-      pfs.width = 600.0;      
-    return pfs;
-  } else {
-    return [empViewController windowSize];
-  }
+{  
+  return [empViewController windowSize];
 }
 
 - (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)proposedFrame
-{
-  if ([empViewController isReal] == YES) {
-    return NO;
-  } else {
-    return YES;
-  }
+{  
+  return YES;
 }
 
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)window defaultFrame:(NSRect)defaultFrame

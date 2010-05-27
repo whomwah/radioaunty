@@ -17,6 +17,7 @@
 		AE333BDC0EF79B4B0077A647 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Defaults.plist */; };
 		AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */; };
 		AE3FF5440F7A216E006C8B21 /* DRNSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */; };
+		AE49A90011AE65C90049C993 /* aod.html in Resources */ = {isa = PBXBuildFile; fileRef = AE49A8FF11AE65C90049C993 /* aod.html */; };
 		AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE630BAB0F1CDC7200905968 /* radio_icon.icns */; };
 		AE6966580EF6ABF200B029FE /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966570EF6ABF200B029FE /* AppController.m */; };
 		AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */; };
@@ -58,7 +59,6 @@
 		AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169E0F0BEFF4009F81AD /* radio3.png */; };
 		AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169F0F0BEFF4009F81AD /* radio4.png */; };
 		AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16A00F0BEFF4009F81AD /* worldservice.png */; };
-		AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */ = {isa = PBXBuildFile; fileRef = AEF9A56F0F438C7500E9D841 /* liveReal.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -101,6 +101,7 @@
 		AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		AE3FF5420F7A216E006C8B21 /* DRNSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DRNSString-Utilities.h"; sourceTree = "<group>"; };
 		AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DRNSString-Utilities.m"; sourceTree = "<group>"; };
+		AE49A8FF11AE65C90049C993 /* aod.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aod.html; sourceTree = "<group>"; wrapsLines = 1; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966560EF6ABF200B029FE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		AE6966570EF6ABF200B029FE /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -164,7 +165,6 @@
 		AEDD169E0F0BEFF4009F81AD /* radio3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio3.png; sourceTree = "<group>"; };
 		AEDD169F0F0BEFF4009F81AD /* radio4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio4.png; sourceTree = "<group>"; };
 		AEDD16A00F0BEFF4009F81AD /* worldservice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldservice.png; sourceTree = "<group>"; };
-		AEF9A56F0F438C7500E9D841 /* liveReal.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = liveReal.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,8 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				AE630BAB0F1CDC7200905968 /* radio_icon.icns */,
-				AEF9A56F0F438C7500E9D841 /* liveReal.html */,
 				AE1BFB920F173B8A006ED3DF /* live.html */,
+				AE49A8FF11AE65C90049C993 /* aod.html */,
 				AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */,
 				AE333BDB0EF79B4B0077A647 /* Defaults.plist */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -466,10 +466,10 @@
 				AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */,
 				AE1BFB940F173B8A006ED3DF /* live.html in Resources */,
 				AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */,
-				AEF9A5700F438C7500E9D841 /* liveReal.html in Resources */,
 				AE326E600F6A671A00815B36 /* robot.jpg in Resources */,
 				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
 				AED627F20F8132E300E2AC2A /* LICENSE.txt in Resources */,
+				AE49A90011AE65C90049C993 /* aod.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

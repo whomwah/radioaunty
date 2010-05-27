@@ -8,19 +8,13 @@
 			<key>label</key>
 			<string>Minimized</string>
 			<key>size</key>
-			<string>{352, 35}</string>
+			<string>{335, 35}</string>
 		</dict>
 		<dict>
 			<key>label</key>
 			<string>Normal</string>
 			<key>size</key>
-			<string>{352, 233}</string>
-		</dict>
-		<dict>
-			<key>label</key>
-			<string>RealPlayer</string>
-			<key>size</key>
-			<string>{512, 243}</string>
+			<string>{335, 224}</string>
 		</dict>
 	</array>
 	<key>DefaultEmpOrigin</key>
@@ -35,15 +29,11 @@
 	<false/>
 	<key>DefaultTwitterUsername</key>
 	<string></string>
-	<key>DefaultQuality</key>
-	<integer>1</integer>
 	<key>DefaultStation</key>
 	<integer>7</integer>
 	<key>Stations</key>
 	<array>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r1.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_one</string>
 			<key>key</key>
@@ -54,8 +44,6 @@
 			<string>england</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r1x.ram</string>
 			<key>empKey</key>
 			<string>bbc_1xtra</string>
 			<key>key</key>
@@ -64,8 +52,6 @@
 			<string>1xtra</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r2.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_two</string>
 			<key>key</key>
@@ -74,8 +60,6 @@
 			<string>Radio 2</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio3/ram/r3g2.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_three</string>
 			<key>key</key>
@@ -84,8 +68,6 @@
 			<string>Radio 3</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r4.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_four</string>
 			<key>key</key>
@@ -96,8 +78,6 @@
 			<string>fm</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r5l.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_five_live</string>
 			<key>key</key>
@@ -106,8 +86,6 @@
 			<string>Radio 5 live</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r5lsp.ram</string>
 			<key>empKey</key>
 			<string>bbc_radio_five_live_sports_extra</string>
 			<key>key</key>
@@ -116,8 +94,6 @@
 			<string>Radio 5 live sports extra</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/6music/ram/dsatg2.ram</string>
 			<key>empKey</key>
 			<string>bbc_6music</string>
 			<key>key</key>
@@ -126,8 +102,6 @@
 			<string>6 Music</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/r7.ram</string>
 			<key>empKey</key>
 			<string>bbc_7</string>
 			<key>key</key>
@@ -136,8 +110,6 @@
 			<string>Radio 7</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/radio/listen/live/ran.ram</string>
 			<key>empKey</key>
 			<string>bbc_asian_network</string>
 			<key>key</key>
@@ -146,8 +118,6 @@
 			<string>Asian Network</string>
 		</dict>
 		<dict>
-			<key>realStreamUrl</key>
-			<string>http://www.bbc.co.uk/worldservice/meta/tx/nb/live_eneuk_au_nb.ram</string>
 			<key>empKey</key>
 			<string>bbc_world_service</string>
 			<key>key</key>

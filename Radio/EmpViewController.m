@@ -41,7 +41,7 @@
 - (void)handleResizeIcon
 {
   NSWindow *w = [[self view] window];
-  if ([self isMinimized] == NO || [self isReal] == YES) {
+  if ([self isMinimized] == NO) {
     [w setShowsResizeIndicator:NO];    
   } else {
     [w setShowsResizeIndicator:YES];
@@ -59,30 +59,12 @@
 
 - (NSString *)playbackFormat
 {
-  if ([self isHighQuality] == NO || [self isReal] == YES) {
-    return @"liveReal";
-  } else {
-    return @"live";    
-  }
+  return [self isLive] ? @"live" : @"aod";
 }
 
 - (BOOL)isHighQuality
 {
-  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-  
-  if ([ud integerForKey:@"DefaultQuality"] == 1) {
-    return YES;
-  } else {
-    return NO;    
-  }
-}
-
-- (BOOL)isReal
-{
-  if ([self isHighQuality] == NO || [data objectForKey:@"only_real_available"]) {
-    return YES;
-  }
-  return NO;
+  return YES;
 }
 
 - (NSSize)minimizedSize
@@ -98,16 +80,8 @@
   NSString *tmpl = [NSString stringWithContentsOfFile:path
                                              encoding:NSUTF8StringEncoding
                                                 error:nil];
-  NSString *html;
-  if ([self isReal]) {
-    // REAL PLAYER
-    self.isMinimized = NO;
-    NSString *realUrl = [data valueForKey:@"realStreamUrl"];
-    html = [NSString stringWithFormat:tmpl, urlkey, urlkey, realUrl, realUrl];
-  } else {
-    // FLASH PLAYER
-    html = [NSString stringWithFormat:tmpl, urlkey, urlkey, urlkey];
-  }
+  NSString *html = [NSString stringWithFormat:tmpl, urlkey, urlkey, urlkey, urlkey];
+  
   markup = html;
 	
   [self makeRequest];
@@ -122,10 +96,7 @@
 {
   int sizeInt;
   
-  if ([self isReal] == YES) {
-    // RealPlayer
-    sizeInt = 2;
-  } else if ([self isMinimized] == YES) {
+  if ([self isMinimized] == YES) {
     // minimized
     sizeInt = 0;  
   } else {

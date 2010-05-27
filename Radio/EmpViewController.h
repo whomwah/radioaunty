@@ -25,7 +25,6 @@
 - (BOOL)isLive;
 - (void)makeRequest;
 - (BOOL)isHighQuality;
-- (BOOL)isReal;
 - (NSSize)minimizedSize;
 - (NSSize)windowSize;
 - (NSString *)playbackFormat;

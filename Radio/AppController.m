@@ -25,7 +25,7 @@
                                          format:&format 
                                          errorDescription:&errorDesc];
   if (!temp) {
-    NSLog(errorDesc);
+    NSLog(@"Error: %@", errorDesc);
     [errorDesc release];
   }
   
@@ -33,7 +33,6 @@
   [defaultValues setObject:[temp objectForKey:@"EmpSizes"] forKey:@"EmpSizes"];
   [defaultValues setObject:[temp objectForKey:@"DefaultAlwaysOnTop"] forKey:@"DefaultAlwaysOnTop"];
   [defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:@"DefaultStation"];
-  [defaultValues setObject:[temp objectForKey:@"DefaultQuality"] forKey:@"DefaultQuality"];
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpSize"] forKey:@"DefaultEmpSize"];
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpMinimized"] forKey:@"DefaultEmpMinimized"];
   [defaultValues setObject:[temp objectForKey:@"DefaultEmpOrigin"] forKey:@"DefaultEmpOrigin"];
