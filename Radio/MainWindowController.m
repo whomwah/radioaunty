@@ -81,7 +81,7 @@
 - (void)fetchAOD:(id)sender
 {
   [self stopScheduleTimer];
-  BBCBroadcast *broadcast = [[currentSchedule broadcasts] objectAtIndex:[sender tag]];
+  BBCBroadcast *broadcast = [currentSchedule.broadcasts objectAtIndex:[sender tag]];
   currentBroadcast = broadcast;  
   self.windowTitle = [currentSchedule broadcastDisplayTitleForIndex:[sender tag]];
   [empViewController fetchAOD:[broadcast pid]];
@@ -100,11 +100,12 @@
 - (void)fetchNewSchedule:(id)sender
 {
   [currentSchedule removeObserver:self forKeyPath:@"broadcasts"];
-  BBCSchedule *sc = [[BBCSchedule alloc] initUsingService:[currentStation objectForKey:@"key"] 
-                                             outlet:[currentStation objectForKey:@"outlet"]];
-  [sc fetchScheduleForDate:[NSDate date]];
+  BBCSchedule *sc = [[BBCSchedule alloc] initUsingNetwork:[currentStation objectForKey:@"key"] 
+                                                andOutlet:[currentStation objectForKey:@"outlet"]];
   
+  [sc fetchScheduleForDate:[NSDate date]];  
   self.currentSchedule = sc;
+  
   [currentSchedule addObserver:self
                     forKeyPath:@"broadcasts"
                        options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
@@ -116,8 +117,8 @@
                         change:(NSDictionary *)change 
                        context:(void *)context
 {
-  if ([currentSchedule currBroadcast]) {
-    currentBroadcast = [currentSchedule currBroadcast];
+  if (currentSchedule.current_broadcast) {
+    currentBroadcast = currentSchedule.current_broadcast;
     self.windowTitle = [currentSchedule currentBroadcastDisplayTitle];
     [self buildScheduleMenu];
     [self startScheduleTimer];
@@ -128,8 +129,8 @@
 - (void)growl
 {
   NSImage *img = [[NSImage alloc] initWithData:[dockIconView dataWithPDFInsideRect:[dockIconView frame]]];
-  [GrowlApplicationBridge notifyWithTitle:[[currentSchedule service] displayTitle]
-                              description:[currentBroadcast displayTitle]
+  [GrowlApplicationBridge notifyWithTitle:[currentSchedule.service title]
+                              description:[[currentBroadcast display_titles] objectForKey:@"title"]
                          notificationName:@"Now playing"
                                  iconData:[img TIFFRepresentation]
                                  priority:1
@@ -153,9 +154,10 @@
   return [NSString stringWithFormat:@"%@ is %@ %@ on %@ %@", 
               [self realOrTwitterName], 
               [self liveOrNotText], 
-              [currentBroadcast displayTitle], 
-              [[currentSchedule service] displayTitle], 
-              [currentBroadcast programmesUrl]];
+              [currentBroadcast.display_titles objectForKey:@"title"], 
+              [currentSchedule.service title], 
+              currentBroadcast.programme_url
+              ];
 }
 
 
@@ -207,13 +209,13 @@
 - (void)startScheduleTimer
 {
   [self stopScheduleTimer];
-  NSTimer *timer = [[NSTimer alloc] initWithFireDate:[currentBroadcast bEnd]
+  NSTimer *timer = [[NSTimer alloc] initWithFireDate:currentBroadcast.end
                                             interval:0.0
                                               target:self
                                             selector:@selector(fetchNewSchedule:)
                                             userInfo:nil
                                              repeats:NO];
-  NSLog(@"Timer started and will be fired again at %@", [currentBroadcast bEnd]);
+  NSLog(@"Timer started and will be fired again at %@", currentBroadcast.end);
   NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
   [runLoop addTimer:timer forMode:NSDefaultRunLoopMode];
   self.scheduleTimer = timer;
@@ -274,41 +276,42 @@
   
   for (BBCBroadcast *broadcast in [currentSchedule broadcasts]) {
     
-    start = [[broadcast bStart] descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil];
+    start = [broadcast.start descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil];
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:@"" 
                                                                    action:NULL 
                                                             keyEquivalent:@""];
-    NSMutableString *str = [NSMutableString stringWithFormat:@"%@ %@", start, [broadcast displayTitle]];
+    NSMutableString *str = [NSMutableString stringWithFormat:@"%@  %@", start, [broadcast.display_titles objectForKey:@"title"]];
     NSString *state = @"";
     
     if ([broadcast isEqual:currentBroadcast] == YES) {
       state = @" NOW PLAYING";
       [newItem setState:NSOnState];
-    } else if ([broadcast isEqual:[currentSchedule currBroadcast]] == YES) {
+    } else if ([broadcast isEqual:currentSchedule.current_broadcast] == YES) {
       state = @" LIVE";
       [newItem setAction:@selector(refreshStation:)];
-    } else if ([broadcast radioAvailability]) {
+    } else if (broadcast.media && [[broadcast.media objectForKey:@"format"] isEqualToString:@"audio"]) {
       [newItem setAction:@selector(fetchAOD:)]; 
     }
     
     [str appendString:state];
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:str];
-
+    NSString *display_title = [broadcast.display_titles objectForKey:@"title"];
+    
     [string addAttribute:NSFontAttributeName
                    value:[NSFont userFontOfSize:13.6]
                    range:NSMakeRange(0,[start length])];
     
     [string addAttribute:NSFontAttributeName
                    value:[NSFont userFontOfSize:13.6]
-                   range:NSMakeRange([start length]+1,[[broadcast displayTitle] length])];
+                   range:NSMakeRange([start length]+1,[display_title length])];
 
     [string addAttribute:NSForegroundColorAttributeName
                    value:[NSColor lightGrayColor]
-                   range:NSMakeRange(1+[start length]+[[broadcast displayTitle] length],[state length])];
+                   range:NSMakeRange(2+[start length]+[display_title length],[state length])];
     
     [string addAttribute:NSFontAttributeName
                    value:[NSFont userFontOfSize:9]
-                   range:NSMakeRange(1+[start length]+[[broadcast displayTitle] length],[state length])];
+                   range:NSMakeRange(2+[start length]+[display_title length],[state length])];
 
     [newItem setAttributedTitle:string];
     [newItem setEnabled:YES];

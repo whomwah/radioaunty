@@ -18,6 +18,17 @@
 		AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */; };
 		AE3FF5440F7A216E006C8B21 /* DRNSString-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */; };
 		AE49A90011AE65C90049C993 /* aod.html in Resources */ = {isa = PBXBuildFile; fileRef = AE49A8FF11AE65C90049C993 /* aod.html */; };
+		AE49AA2111AEF8C90049C993 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA1611AEF8C90049C993 /* NSObject+SBJSON.m */; };
+		AE49AA2211AEF8C90049C993 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA1811AEF8C90049C993 /* NSString+SBJSON.m */; };
+		AE49AA2311AEF8C90049C993 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA1A11AEF8C90049C993 /* SBJSON.m */; };
+		AE49AA2411AEF8C90049C993 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA1C11AEF8C90049C993 /* SBJsonBase.m */; };
+		AE49AA2511AEF8C90049C993 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA1E11AEF8C90049C993 /* SBJsonParser.m */; };
+		AE49AA2611AEF8C90049C993 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA2011AEF8C90049C993 /* SBJsonWriter.m */; };
+		AE49AA3711AEFA1B0049C993 /* BBCSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA3611AEFA1B0049C993 /* BBCSchedule.m */; };
+		AE49AA3A11AEFA320049C993 /* BBCBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA3911AEFA320049C993 /* BBCBroadcast.m */; };
+		AE49AA3D11AEFA460049C993 /* BBCService.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA3C11AEFA460049C993 /* BBCService.m */; };
+		AE49ADC911B14C0E0049C993 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */; };
+		AE49ADCC11B14C3C0049C993 /* GDataHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */; };
 		AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE630BAB0F1CDC7200905968 /* radio_icon.icns */; };
 		AE6966580EF6ABF200B029FE /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966570EF6ABF200B029FE /* AppController.m */; };
 		AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */; };
@@ -42,12 +53,6 @@
 		AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */; };
 		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEC16F210F68334800A38C90 /* DockView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC16F200F68334800A38C90 /* DockView.m */; };
-		AECC40AB0F7999B400804741 /* BBCBroadcast.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40A60F7999B400804741 /* BBCBroadcast.m */; };
-		AECC40AC0F7999B400804741 /* BBCSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40A80F7999B400804741 /* BBCSchedule.m */; };
-		AECC40AD0F7999B400804741 /* BBCService.m in Sources */ = {isa = PBXBuildFile; fileRef = AECC40AA0F7999B400804741 /* BBCService.m */; };
-		AED627F20F8132E300E2AC2A /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = AED627E40F8132E300E2AC2A /* LICENSE.txt */; };
-		AED627F40F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AED627E70F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m */; };
-		AED627F50F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m in Sources */ = {isa = PBXBuildFile; fileRef = AED627E90F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m */; };
 		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
 		AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */; };
 		AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16980F0BEFF3009F81AD /* 6music.png */; };
@@ -102,6 +107,29 @@
 		AE3FF5420F7A216E006C8B21 /* DRNSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DRNSString-Utilities.h"; sourceTree = "<group>"; };
 		AE3FF5430F7A216E006C8B21 /* DRNSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DRNSString-Utilities.m"; sourceTree = "<group>"; };
 		AE49A8FF11AE65C90049C993 /* aod.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = aod.html; sourceTree = "<group>"; wrapsLines = 1; };
+		AE49AA1411AEF8C90049C993 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		AE49AA1511AEF8C90049C993 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		AE49AA1611AEF8C90049C993 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		AE49AA1711AEF8C90049C993 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		AE49AA1811AEF8C90049C993 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		AE49AA1911AEF8C90049C993 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		AE49AA1A11AEF8C90049C993 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		AE49AA1B11AEF8C90049C993 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		AE49AA1C11AEF8C90049C993 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		AE49AA1D11AEF8C90049C993 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		AE49AA1E11AEF8C90049C993 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		AE49AA1F11AEF8C90049C993 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		AE49AA2011AEF8C90049C993 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		AE49AA3511AEFA1B0049C993 /* BBCSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCSchedule.h; sourceTree = "<group>"; };
+		AE49AA3611AEFA1B0049C993 /* BBCSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCSchedule.m; sourceTree = "<group>"; };
+		AE49AA3811AEFA320049C993 /* BBCBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCBroadcast.h; sourceTree = "<group>"; };
+		AE49AA3911AEFA320049C993 /* BBCBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCBroadcast.m; sourceTree = "<group>"; };
+		AE49AA3B11AEFA460049C993 /* BBCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCService.h; sourceTree = "<group>"; };
+		AE49AA3C11AEFA460049C993 /* BBCService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCService.m; sourceTree = "<group>"; };
+		AE49ADC711B14C0E0049C993 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
+		AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		AE49ADCA11B14C3C0049C993 /* GDataHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataHTTPFetcher.h; sourceTree = "<group>"; };
+		AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataHTTPFetcher.m; sourceTree = "<group>"; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966560EF6ABF200B029FE /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		AE6966570EF6ABF200B029FE /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -142,18 +170,7 @@
 		AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		AEC16F1F0F68334800A38C90 /* DockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockView.h; sourceTree = "<group>"; };
 		AEC16F200F68334800A38C90 /* DockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockView.m; sourceTree = "<group>"; };
-		AECC40A50F7999B400804741 /* BBCBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCBroadcast.h; sourceTree = "<group>"; };
-		AECC40A60F7999B400804741 /* BBCBroadcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCBroadcast.m; sourceTree = "<group>"; };
-		AECC40A70F7999B400804741 /* BBCSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCSchedule.h; sourceTree = "<group>"; };
-		AECC40A80F7999B400804741 /* BBCSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCSchedule.m; sourceTree = "<group>"; };
-		AECC40A90F7999B400804741 /* BBCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCService.h; sourceTree = "<group>"; };
-		AECC40AA0F7999B400804741 /* BBCService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCService.m; sourceTree = "<group>"; };
 		AECC40AE0F7999BA00804741 /* pw_TvAndRadioBotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pw_TvAndRadioBotPassword.h; path = "../../code.whomwah.com/public/objective-c/pw_TvAndRadioBotPassword.h"; sourceTree = SOURCE_ROOT; };
-		AED627E40F8132E300E2AC2A /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		AED627E60F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+ISO8601Parsing.h"; sourceTree = "<group>"; };
-		AED627E70F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+ISO8601Parsing.m"; sourceTree = "<group>"; };
-		AED627E80F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendarDate+ISO8601Unparsing.h"; sourceTree = "<group>"; };
-		AED627E90F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendarDate+ISO8601Unparsing.m"; sourceTree = "<group>"; };
 		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
 		AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5livesportsextra.png; sourceTree = "<group>"; };
 		AEDD16980F0BEFF3009F81AD /* 6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6music.png; sourceTree = "<group>"; };
@@ -288,13 +305,50 @@
 			path = "../../code.whomwah.com/public/objective-c/BBCProgrammes/Categories";
 			sourceTree = SOURCE_ROOT;
 		};
+		AE49AA1311AEF8C90049C993 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				AE49AA1411AEF8C90049C993 /* JSON.h */,
+				AE49AA1511AEF8C90049C993 /* NSObject+SBJSON.h */,
+				AE49AA1611AEF8C90049C993 /* NSObject+SBJSON.m */,
+				AE49AA1711AEF8C90049C993 /* NSString+SBJSON.h */,
+				AE49AA1811AEF8C90049C993 /* NSString+SBJSON.m */,
+				AE49AA1911AEF8C90049C993 /* SBJSON.h */,
+				AE49AA1A11AEF8C90049C993 /* SBJSON.m */,
+				AE49AA1B11AEF8C90049C993 /* SBJsonBase.h */,
+				AE49AA1C11AEF8C90049C993 /* SBJsonBase.m */,
+				AE49AA1D11AEF8C90049C993 /* SBJsonParser.h */,
+				AE49AA1E11AEF8C90049C993 /* SBJsonParser.m */,
+				AE49AA1F11AEF8C90049C993 /* SBJsonWriter.h */,
+				AE49AA2011AEF8C90049C993 /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		AE49AA3411AEF9FA0049C993 /* BBCProgrammes */ = {
+			isa = PBXGroup;
+			children = (
+				AE49ADCA11B14C3C0049C993 /* GDataHTTPFetcher.h */,
+				AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */,
+				AE49ADC711B14C0E0049C993 /* ISO8601DateFormatter.h */,
+				AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */,
+				AE49AA3511AEFA1B0049C993 /* BBCSchedule.h */,
+				AE49AA3611AEFA1B0049C993 /* BBCSchedule.m */,
+				AE49AA3811AEFA320049C993 /* BBCBroadcast.h */,
+				AE49AA3911AEFA320049C993 /* BBCBroadcast.m */,
+				AE49AA3B11AEFA460049C993 /* BBCService.h */,
+				AE49AA3C11AEFA460049C993 /* BBCService.m */,
+			);
+			name = BBCProgrammes;
+			sourceTree = "<group>";
+		};
 		AE71F9F50F694D1A00577A56 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AED627E30F8132E300E2AC2A /* ISO-8601-parser-0.4 */,
+				AE49AA3411AEF9FA0049C993 /* BBCProgrammes */,
+				AE49AA1311AEF8C90049C993 /* JSON */,
 				AE3FF5410F7A216E006C8B21 /* Categories */,
 				AECC40AE0F7999BA00804741 /* pw_TvAndRadioBotPassword.h */,
-				AECC40A40F7999B400804741 /* BBCProgrammes */,
 				AE71F9F60F694D2400577A56 /* MATwitterEngine */,
 			);
 			name = Classes;
@@ -353,33 +407,6 @@
 			);
 			name = Views;
 			sourceTree = "<group>";
-		};
-		AECC40A40F7999B400804741 /* BBCProgrammes */ = {
-			isa = PBXGroup;
-			children = (
-				AECC40A50F7999B400804741 /* BBCBroadcast.h */,
-				AECC40A60F7999B400804741 /* BBCBroadcast.m */,
-				AECC40A70F7999B400804741 /* BBCSchedule.h */,
-				AECC40A80F7999B400804741 /* BBCSchedule.m */,
-				AECC40A90F7999B400804741 /* BBCService.h */,
-				AECC40AA0F7999B400804741 /* BBCService.m */,
-			);
-			name = BBCProgrammes;
-			path = "../../code.whomwah.com/public/objective-c/BBCProgrammes";
-			sourceTree = SOURCE_ROOT;
-		};
-		AED627E30F8132E300E2AC2A /* ISO-8601-parser-0.4 */ = {
-			isa = PBXGroup;
-			children = (
-				AED627E40F8132E300E2AC2A /* LICENSE.txt */,
-				AED627E60F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.h */,
-				AED627E70F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m */,
-				AED627E80F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.h */,
-				AED627E90F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m */,
-			);
-			name = "ISO-8601-parser-0.4";
-			path = "../../code.whomwah.com/public/objective-c/ISO-8601-parser-0.4";
-			sourceTree = SOURCE_ROOT;
 		};
 		AEDD16C40F0BF062009F81AD /* Images */ = {
 			isa = PBXGroup;
@@ -468,7 +495,6 @@
 				AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */,
 				AE326E600F6A671A00815B36 /* robot.jpg in Resources */,
 				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
-				AED627F20F8132E300E2AC2A /* LICENSE.txt in Resources */,
 				AE49A90011AE65C90049C993 /* aod.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,12 +521,18 @@
 				AE71FA320F694D2400577A56 /* MGTwitterMiscParser.m in Sources */,
 				AE71FA390F694D2400577A56 /* NSString+UUID.m in Sources */,
 				AE71FA3A0F694D2400577A56 /* NSData+Base64.m in Sources */,
-				AECC40AB0F7999B400804741 /* BBCBroadcast.m in Sources */,
-				AECC40AC0F7999B400804741 /* BBCSchedule.m in Sources */,
-				AECC40AD0F7999B400804741 /* BBCService.m in Sources */,
 				AE3FF5440F7A216E006C8B21 /* DRNSString-Utilities.m in Sources */,
-				AED627F40F8132E300E2AC2A /* NSCalendarDate+ISO8601Parsing.m in Sources */,
-				AED627F50F8132E300E2AC2A /* NSCalendarDate+ISO8601Unparsing.m in Sources */,
+				AE49AA2111AEF8C90049C993 /* NSObject+SBJSON.m in Sources */,
+				AE49AA2211AEF8C90049C993 /* NSString+SBJSON.m in Sources */,
+				AE49AA2311AEF8C90049C993 /* SBJSON.m in Sources */,
+				AE49AA2411AEF8C90049C993 /* SBJsonBase.m in Sources */,
+				AE49AA2511AEF8C90049C993 /* SBJsonParser.m in Sources */,
+				AE49AA2611AEF8C90049C993 /* SBJsonWriter.m in Sources */,
+				AE49AA3711AEFA1B0049C993 /* BBCSchedule.m in Sources */,
+				AE49AA3A11AEFA320049C993 /* BBCBroadcast.m in Sources */,
+				AE49AA3D11AEFA460049C993 /* BBCService.m in Sources */,
+				AE49ADC911B14C0E0049C993 /* ISO8601DateFormatter.m in Sources */,
+				AE49ADCC11B14C3C0049C993 /* GDataHTTPFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
