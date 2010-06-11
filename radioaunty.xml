@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.15 (Fixed 'This content doesn’t seem to be working')</title>
+            <title>Version 1.16 (update for iPlayer 3.0)</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG 
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 23 Apr 2010 11:45:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.15.dmg" sparkle:version="1.15" length="919620" type="application/octet-stream" sparkle:dsaSignature="MCwCFEbeeMrpyPYJvHPfycNFUMfGFNeTAhRUyu+Ye+ViYZDoQhbUxZkVl9Sr3A==" />
+            <pubDate>Fri, 9 Jun 2010 11:00:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.16.dmg" sparkle:version="1.16" length="724382" type="application/octet-stream" sparkle:dsaSignature="MCwCFBjYERdhOAAyq9aVkNImN5edPxAhAhQSwMVTC7z7OmpovqUAm3Cxvf6u4Q==" />
          </item>
    </channel>
 </rss>

@@ -1,3 +1,9 @@
+*1.16* (June 11th, 2010)
+
+* Updated player to iPlayer 3 version
+* Changed to use BBC programmes JSON schedule feed 
+* Removed any mention of RealPlayer, yay!
+
 *1.15* (April 23rd, 2010)
 
 * Fix update in player that stopped audio being played 
