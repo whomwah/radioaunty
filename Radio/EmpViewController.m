@@ -10,7 +10,9 @@
 
 @implementation EmpViewController
 
-@synthesize isMinimized, viewSizes;
+@synthesize isMinimized;
+@synthesize hasToolbar;
+@synthesize viewSizes;
 
 - (void)awakeFromNib
 {
@@ -23,12 +25,19 @@
   self.viewSizes = arry;
 }
 
+- (void)dealloc
+{
+  [viewSizes release];
+  
+	[super dealloc];
+}
+
 - (void)fetchEMP:(NSDictionary *)d
 {
   data = d;
   markup = nil;
   [self displayEmpForKey:[data objectForKey:@"empKey"]];
-  [self resizeEmpTo:[self windowSize]];
+  //[self resizeEmpTo:[self windowSize]];
 }
 
 - (void)fetchAOD:(NSString *)s
@@ -98,10 +107,10 @@
   
   if ([self isMinimized] == YES) {
     // minimized
-    sizeInt = 0;  
+    sizeInt  = 0;
   } else {
     // Normal Size
-    sizeInt = 1;
+    sizeInt  = 1;
   }
   
   return [self sizeForEmp:sizeInt]; 
@@ -117,19 +126,26 @@
 - (void)resizeEmpTo:(NSSize)size
 { 
   NSWindow *w = [[self view] window];
-  NSSize currentSize = [w frame].size; 
+  NSSize currentSize = [w frame].size;
   
   if (NSEqualSizes(size,currentSize) == YES)
     return;
+
+  NSLog(@"currentSize: %@", NSStringFromSize(currentSize));
+  NSLog(@"newSize: %@", NSStringFromSize(size));
   
   float deltaWidth = size.width - currentSize.width;
   float deltaHeight = size.height - currentSize.height;
   
   NSRect wf = [w frame];
-  wf.size.width += deltaWidth;
-  wf.size.height += deltaHeight;
+
+  //wf.size.width += deltaWidth;
+  //wf.size.height += deltaHeight;
   wf.origin.x -= deltaWidth/2;
   wf.origin.y -= deltaHeight/2;
+
+  wf.size.width = size.width;
+  wf.size.height = size.height;
   
   [w setFrame:wf display:YES animate:YES];
 }
@@ -170,7 +186,7 @@
                     modalDelegate:self 
                    didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) 
                       contextInfo:nil];
-  [alert release];  
+  [alert release];
 }
 
 - (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo

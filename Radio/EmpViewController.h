@@ -14,12 +14,13 @@
   NSDictionary *data;
   NSString *markup;
   BOOL isMinimized;
+  BOOL hasToolbar;
   NSMutableArray *viewSizes;
 }
 
 @property (nonatomic) BOOL isMinimized;
+@property (nonatomic) BOOL hasToolbar;
 @property (nonatomic, retain) NSMutableArray *viewSizes;
-
 
 - (void)handleResizeIcon;
 - (BOOL)isLive;

@@ -2,17 +2,17 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10D573</string>
-		<string key="IBDocument.InterfaceBuilderVersion">789</string>
+		<string key="IBDocument.SystemVersion">10F569</string>
+		<string key="IBDocument.InterfaceBuilderVersion">804</string>
 		<string key="IBDocument.AppKitVersion">1038.29</string>
-		<string key="IBDocument.HIToolboxVersion">460.00</string>
+		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">789</string>
+			<string key="NS.object.0">804</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="83"/>
+			<integer value="251"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -338,7 +338,7 @@
 											<reference key="NSSuperview" ref="833888532"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="729565462">
-												<int key="NSCellFlags">-2080244224</int>
+												<int key="NSCellFlags">-1543373312</int>
 												<int key="NSCellFlags2">0</int>
 												<string key="NSContents">Tweet what I'm listening to:</string>
 												<reference key="NSSupport" ref="1018782244"/>
@@ -360,7 +360,7 @@
 											<reference key="NSSuperview" ref="833888532"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="1046512406">
-												<int key="NSCellFlags">-1804468671</int>
+												<int key="NSCellFlags">-1267597759</int>
 												<int key="NSCellFlags2">272630784</int>
 												<string key="NSContents"/>
 												<reference key="NSSupport" ref="1018782244"/>
@@ -383,36 +383,13 @@
 											<reference key="NSSuperview" ref="833888532"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="12622094">
-												<int key="NSCellFlags">68288064</int>
+												<int key="NSCellFlags">605158976</int>
 												<int key="NSCellFlags2">272630784</int>
 												<string key="NSContents">Your Twitter username (optional):</string>
 												<reference key="NSSupport" ref="1018782244"/>
 												<reference key="NSControlView" ref="382945216"/>
 												<reference key="NSBackgroundColor" ref="971409735"/>
 												<reference key="NSTextColor" ref="1070431198"/>
-											</object>
-										</object>
-										<object class="NSTextField" id="116959367">
-											<reference key="NSNextResponder" ref="833888532"/>
-											<int key="NSvFlags">268</int>
-											<string key="NSFrame">{{228, 12}, {230, 55}}</string>
-											<reference key="NSSuperview" ref="833888532"/>
-											<bool key="NSEnabled">YES</bool>
-											<object class="NSTextFieldCell" key="NSCell" id="378898908">
-												<int key="NSCellFlags">67239424</int>
-												<int key="NSCellFlags2">205783040</int>
-												<string key="NSContents">By checking the box above, your listening habits will be sent to the @radioandtvbot account on Twitter. If you supply your twitter username, then this will be used in the tweet instead of your Mac login name.</string>
-												<object class="NSFont" key="NSSupport" id="22">
-													<string key="NSName">LucidaGrande</string>
-													<double key="NSSize">9</double>
-													<int key="NSfFlags">3614</int>
-												</object>
-												<reference key="NSControlView" ref="116959367"/>
-												<reference key="NSBackgroundColor" ref="971409735"/>
-												<object class="NSColor" key="NSTextColor">
-													<int key="NSColorSpace">1</int>
-													<bytes key="NSRGB">MC4yOTgwMzkyMyAwLjI5ODAzOTIzIDAuMjk4MDM5MjMAA</bytes>
-												</object>
 											</object>
 										</object>
 									</object>
@@ -482,7 +459,11 @@
 												<int key="NSCellFlags">68288064</int>
 												<int key="NSCellFlags2">272892928</int>
 												<string key="NSContents">Show window above all others</string>
-												<reference key="NSSupport" ref="22"/>
+												<object class="NSFont" key="NSSupport">
+													<string key="NSName">LucidaGrande</string>
+													<double key="NSSize">9</double>
+													<int key="NSfFlags">3614</int>
+												</object>
 												<reference key="NSControlView" ref="412480074"/>
 												<reference key="NSBackgroundColor" ref="971409735"/>
 												<object class="NSColor" key="NSTextColor">
@@ -873,7 +854,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="411773459"/>
 							<reference ref="382945216"/>
-							<reference ref="116959367"/>
 							<reference ref="766043877"/>
 						</object>
 						<reference key="parent" ref="473821838"/>
@@ -919,20 +899,6 @@
 						<int key="objectID">261</int>
 						<reference key="object" ref="12622094"/>
 						<reference key="parent" ref="382945216"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">262</int>
-						<reference key="object" ref="116959367"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="378898908"/>
-						</object>
-						<reference key="parent" ref="796459176"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">263</int>
-						<reference key="object" ref="378898908"/>
-						<reference key="parent" ref="116959367"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">282</int>
@@ -998,8 +964,6 @@
 					<string>259.IBPluginDependency</string>
 					<string>260.IBPluginDependency</string>
 					<string>261.IBPluginDependency</string>
-					<string>262.IBPluginDependency</string>
-					<string>263.IBPluginDependency</string>
 					<string>282.IBPluginDependency</string>
 					<string>283.IBPluginDependency</string>
 					<string>284.IBPluginDependency</string>
@@ -1023,12 +987,10 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{161, 102}, {515, 403}}</string>
+					<string>{{223, 291}, {515, 403}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{161, 102}, {515, 403}}</string>
+					<string>{{223, 291}, {515, 403}}</string>
 					<boolean value="YES"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1086,6 +1048,27 @@
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">../../../svn/googlecode/xmppframework-read-only/AsyncSocket.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">JSON/NSObject+SBJSON.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">JSON/SBJsonWriter.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PreferencesWindowController</string>
 					<string key="superclassName">NSWindowController</string>

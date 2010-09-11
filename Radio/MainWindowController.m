@@ -11,11 +11,29 @@
 #import "BBCBroadcast.h"
 #import "BBCSchedule.h"
 #import "DockView.h"
-#import "pw_TvAndRadioBotPassword.h"
+#import "LiveTextView.h"
+#import "AppDelegate.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "dr_settings.h"
+#import "XMPPCapabilitiesCoreDataStorage.h"
+#import "XMPPCapabilities.h"
+#import "XMPPAdHocCommands.h"
+#import "XMPPPubSub.h"
 
 @implementation MainWindowController
 
-@synthesize currentSchedule, windowTitle, scheduleTimer;
+@synthesize currentSchedule;
+@synthesize windowTitle;
+@synthesize liveTextView;
+@synthesize scheduleTimer;
+@synthesize xmppCapabilities;
+@synthesize pubsub;
+@synthesize anonJID;
+
+- (XMPPStream *)xmppStream
+{
+	return [[NSApp delegate] xmppStream];
+}
 
 - (void)awakeFromNib
 {
@@ -23,41 +41,94 @@
   dockTile = [NSApp dockTile];
   stations = [ud arrayForKey:@"Stations"];
   currentStation = [stations objectAtIndex:[ud integerForKey:@"DefaultStation"]];
+  
+  // sort our the dock view
+  
   dockIconView = [[DockView alloc] initWithFrame:
                           NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height) 
-                                                 withKey:[currentStation objectForKey:@"key"]];
+                          withKey:[currentStation objectForKey:@"key"]];
   [dockTile setContentView:dockIconView];
 	[dockTile display];
   
+  // setup of the ToolBar
+  
+	[toolBar insertItemWithItemIdentifier:@"livetext" atIndex:0];
+  
   empViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
   [[empViewController view] setFrameSize:[drMainView frame].size];
-  [drMainView addSubview:[empViewController view]];
+  [drMainView addSubview:[empViewController view] 
+              positioned:NSWindowBelow
+              relativeTo:nil];
   [self fetchRADIO:currentStation];
   
   NSPoint point = NSPointFromString([ud stringForKey:@"DefaultEmpOrigin"]);
+  
+  // adjust to allow for toolbar
+  int toolBarAdjust = 0;
+  if ([toolBar isVisible]) {    
+    toolBarAdjust = 28;
+  }
+  
   NSRect rect = NSMakeRect(point.x, point.y,
                            [empViewController windowSize].width, 
-                           [empViewController windowSize].height);
+                           [empViewController windowSize].height + toolBarAdjust);
 
   [[self window] setFrame:rect display:NO];
+  
+	// setup connecting to the XMPP host anonomously
+  
+  availableForSubscription = NO;
+	
+	[[self xmppStream] addDelegate:self];
+	[[self xmppStream] setHostName:DR_XMPP_HOST];
+  [[self xmppStream] setMyJID:[XMPPJID jidWithString:DR_XMPP_ANON]];
+  
+  // choose a storage method for xmpp capabilities storage
+  
+  XMPPCapabilitiesCoreDataStorage *cap_core = [[XMPPCapabilitiesCoreDataStorage alloc] init];
+  xmppCapabilities = [[XMPPCapabilities alloc] initWithStream:[self xmppStream] capabilitiesStorage:cap_core];
+  [cap_core release];
+	
+  // add the commands the application supports
+  
+  /*
+  XMPPAdHocCommands *ahc = [[XMPPAdHocCommands alloc] initWithStream:[self xmppStream]];
+  XMPPJID *jid = [XMPPJID jidWithString:@"tv@xmpp.local"];
+  [ahc addCommandWithNode:@"station"          andName:@"Switch to station <key>"             andJID:jid];
+  [ahc addCommandWithNode:@"station-up"       andName:@"Switch to next station"              andJID:jid];
+  [ahc addCommandWithNode:@"station-down"     andName:@"Switch to previous station"          andJID:jid];
+  [ahc addCommandWithNode:@"station-now"      andName:@"What's on the current station now"   andJID:jid];
+  [ahc addCommandWithNode:@"station-next"     andName:@"What's on the current station next"  andJID:jid];
+  [ahc addCommandWithNode:@"station-list"     andName:@"List all available stations"         andJID:jid];
+  [ahc addCommandWithNode:@"station-schedule" andName:@"Schedule for station <key>"          andJID:jid];
+  [ahc addDelegate:self];
+  NSLog(@"commands: %@", [ahc commands]);
+  */
+  
+  // create a pubsub connection
+  
+  pubsub = [[XMPPPubSub alloc] initWithStream:[self xmppStream]];
+  [pubsub setPubsubService:[XMPPJID jidWithString:DR_XMPP_PUBSUB_SERVICE]];
+  [pubsub addDelegate:self];
+   
+	// attempt to connect to your host
+
+	NSError *error = nil;
+  BOOL success;
+  success = [[self xmppStream] connect:&error];
+	
+	if (!success) {
+		NSLog(@"Error! %@", [error localizedDescription]);
+	}
 }
 
 - (void)windowDidLoad
 {
+  self.windowTitle = @"BBC Radio";
+  
   [self setNextResponder:empViewController];
   [empViewController handleResizeIcon];
   [self buildStationsMenu];
-  self.windowTitle = @"BBC Radio";
-  
-  NSString *username = RATVB_TWITTER_USER;
-  NSString *password = RATVB_TWITTER_PASS;
-  
-  twitterEngine = [[MGTwitterEngine alloc] initWithDelegate:self];
-  [twitterEngine setUsername:username password:password];
-  [twitterEngine setClientName:@"RadioAunty" 
-                       version:@"1.13" 
-                           URL:@"http://whomwah.github.com/radioaunty" 
-                         token:@"radioaunty"];
 }
 
 - (void)dealloc
@@ -65,17 +136,91 @@
   [dockIconView release];
   [currentSchedule release];
 	[empViewController release];
-  [twitterEngine release];
+  [xmppCapabilities release];
+  [pubsub release];
+  [liveTextView release];
+  
 	[super dealloc];
 }
 
+
+#pragma mark -
+#pragma mark Live Text support
+#pragma mark -
+
+- (void)subscribeToLiveTextChannel:(NSString*)channel
+{  
+  
+  if ([[self xmppStream] isConnected])
+  {
+    NSString *node = [NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel];
+    
+    [pubsub subscribeToNode:node withOptions:nil];
+    NSLog(@"subscribing to : %@", node);
+  }
+}
+
+- (void)unsubscribeToLiveTextChannel:(NSString*)channel
+{
+  if ([[self xmppStream] isConnected])
+  {
+    NSString *node = [NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel];
+    
+    NSLog(@"unsubscribing from : %@", node);
+    [pubsub unsubscribeFromNode:node];
+  }
+}
+
+- (void)switchSubscriptionFrom:(NSString*)previous to:(NSString*)next
+{
+  if (!availableForSubscription) return;
+  
+  NSLog(@"Switching to previous: %@ next: %@", previous, next);
+  [self unsubscribeToLiveTextChannel:previous];
+  [self subscribeToLiveTextChannel:next];
+}
+
+
+#pragma -
+#pragma NSToolbar delegate
+#pragma -
+
+- (NSToolbarItem *)toolbar:(NSToolbar *)aToolbar 
+     itemForItemIdentifier:(NSString *)itemIdentifier 
+ willBeInsertedIntoToolbar:(BOOL)flag
+{  
+  NSToolbarItem *liveTextToolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier:@"livetext"] autorelease];
+  
+  liveTextView = [[LiveTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 22)];
+  [liveTextToolbarItem setView:liveTextView];
+  
+  // preload livetext
+  [liveTextView.textArea setStringValue:@""];
+  [liveTextView.progressIndictor startAnimation:nil];
+  
+	return liveTextToolbarItem;
+}
+
+
+#pragma mark -
+#pragma mark Emp methods
+#pragma mark -
+
 - (void)fetchRADIO:(NSDictionary *)station
 {  
-  currentStation = station;
-  self.windowTitle = @"Loading...";
+  self.windowTitle = @"Loading Schedule...";
+    
+  [self switchSubscriptionFrom:[currentStation objectForKey:@"livetext_node"] 
+                            to:[station objectForKey:@"livetext_node"]];
+  
+  currentStation = station;  
   [empViewController fetchEMP:currentStation];
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [self fetchNewSchedule:nil];
+  
+  // clear livetext
+  [liveTextView.textArea setStringValue:@""];
+  [liveTextView.progressIndictor startAnimation:nil];
 }
 
 - (void)fetchAOD:(id)sender
@@ -119,7 +264,7 @@
 {
   if (currentSchedule.current_broadcast) {
     currentBroadcast = currentSchedule.current_broadcast;
-    self.windowTitle = [currentSchedule currentBroadcastDisplayTitle];
+    self.windowTitle = [currentSchedule.service title];
     [self buildScheduleMenu];
     [self startScheduleTimer];
     [self growl];
@@ -137,48 +282,6 @@
                                  isSticky:NO
                              clickContext:nil];
   [img release];
-  
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultSendToTwitter"] == YES) {
-    NSDictionary *dict = [NSDictionary dictionaryWithObject:[self createTweet] 
-                                                     forKey:@"tweet"];
-    [NSTimer scheduledTimerWithTimeInterval:300.0 // 5 minutes
-                                     target:self
-                                   selector:@selector(tweet:)
-                                   userInfo:dict
-                                    repeats:NO];
-  }
-}
-
-- (NSString *)createTweet
-{
-  return [NSString stringWithFormat:@"%@ is %@ %@ on %@ %@", 
-              [self realOrTwitterName], 
-              [self liveOrNotText], 
-              [currentBroadcast.display_titles objectForKey:@"title"], 
-              [currentSchedule.service title], 
-              currentBroadcast.programme_url
-              ];
-}
-
-
-- (void)tweet:(id)sender
-{
-  NSString *oldTweet = [[sender userInfo] valueForKey:@"tweet"];
-  NSString *newTweet = [self createTweet];
-  NSLog(@"checking");
-  if ([newTweet isEqualToString:oldTweet] && ((currentBroadcast && [empViewController isLive]) || ![empViewController isLive])) {
-    [twitterEngine sendUpdate:newTweet];
-    NSImage *twitter_logo = [NSImage imageNamed:@"robot"];
-    [GrowlApplicationBridge notifyWithTitle:@"Sending to @radioandtvbot on Twitter.com"
-                                description:newTweet
-                           notificationName:@"Send to Twitter"
-                                   iconData:[twitter_logo TIFFRepresentation]
-                                   priority:1
-                                   isSticky:NO
-                               clickContext:nil];
-  } else {
-    NSLog(@"No tweet, you changed channels");
-  }
 }
 
 - (NSString *)liveOrNotText
@@ -188,16 +291,6 @@
   } else {
     return @"catching up with"; 
   }
-}
-
-- (NSString *)realOrTwitterName
-{
-  NSString *uname = [[NSUserDefaults standardUserDefaults] stringForKey:@"DefaultTwitterUsername"];
-  if ([uname isEqualToString:@""] == YES) {
-    return NSFullUserName();
-  }  else {
-    return [NSString stringWithFormat:@"@%@", uname];
-  }  
 }
 
 - (void)stopScheduleTimer
@@ -237,7 +330,7 @@
   NSMenu *listenMenu = [[[NSApp mainMenu] itemWithTitle:@"Listen"] submenu];
   int count = 0;
   
-  for (NSDictionary *station in stations) {      
+  for (NSDictionary *station in stations) {   
     newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] initWithTitle:[station valueForKey:@"label"] 
                                                                    action:@selector(changeStation:) 
                                                             keyEquivalent:@""];
@@ -367,7 +460,7 @@
     [empViewController setIsMinimized:NO];
     result.origin.y = result.origin.y - [empViewController windowSize].height + 
                                         [empViewController minimizedSize].height;
-  } else {
+  } else {    
     result.origin.y = result.origin.y + [empViewController windowSize].height - 
                                         [empViewController minimizedSize].height;
     [ud setBool:YES forKey:@"DefaultEmpMinimized"];
@@ -376,57 +469,194 @@
 
   [empViewController handleResizeIcon];
   result.size = [empViewController windowSize];
+  
+  // adjust to allow for toolbar
+  if ([toolBar isVisible]) {    
+    result.size.height = result.size.height + 28;
+  }
+  
   return result;
 }
 
-#pragma mark MGTwitterEngineDelegate methods
 
-- (void)requestSucceeded:(NSString *)connectionIdentifier
+#pragma mark -
+#pragma mark Presence Management
+#pragma mark -
+
+- (void)goOnline
 {
-  NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
+	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
+  NSXMLElement *status = [NSXMLElement elementWithName:@"status"];
+  [status setStringValue:@"RadioAunty is Ready..."];
+  [presence addChild:status];
+  
+	[[self xmppStream] sendElement:presence];
 }
 
-- (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error
+
+- (void)goOffline
 {
-  NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
-        connectionIdentifier, 
-        [error localizedDescription], 
-        [error userInfo]);
+	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
+	[presence addAttributeWithName:@"type" stringValue:@"unavailable"];
+	
+	[[self xmppStream] sendElement:presence];
 }
 
-- (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier
-{
-  NSLog(@"Got statuses for %@:\r%@", connectionIdentifier, statuses);
+
+#pragma mark -
+#pragma mark XMPPClient Delegate Methods
+#pragma mark -
+
+- (void)xmppStreamDidConnect:(XMPPStream *)sender
+{	
+  NSLog(@"Attempting to Authorise Anonymously...");
+  
+	NSError *error = nil;
+	BOOL success;
+	success = [[self xmppStream] authenticateAnonymously:&error];
+	
+	if (!success) {
+		NSLog(@"Error! %@", [error localizedDescription]);
+	}
 }
 
-- (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)connectionIdentifier
-{
-  NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
+{	
+  NSLog(@"Authenticated ok");
+  
+  // Send presence
+  
+	[self goOnline];
+  
+  // unsubscribe subscribe to the livetext node of the current station
+  // TODO This is clearly messy and needs to be done properly
+  
+  [self subscribeToLiveTextChannel:[currentStation objectForKey:@"livetext_node"]];
+  availableForSubscription = YES;
 }
 
-- (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier
-{
-  NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
+- (void)xmppStreamDidDisconnect:(XMPPStream *)sender
+{	
+  NSLog(@"XMPP Connection has disconnected");
 }
 
-- (void)miscInfoReceived:(NSArray *)miscInfo forRequest:(NSString *)connectionIdentifier
+
+#pragma mark -
+#pragma mark XMPPAdHocCommands Delegate Methods
+#pragma mark -
+
+- (void)xmppAdHocCommands:(XMPPAdHocCommands *)sender didReceiveCommand:(NSString*)command forIQ:(XMPPIQ *)iq
 {
-	NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
+  // handle all incoming commands
+  //
+  // <iq type='set' to='responder@domain' id='exec1'>
+  //   <command xmlns='http://jabber.org/protocol/commands' node='list' action='execute'/>
+  // </iq>
+  
+  if ([iq isResultIQ] && [command isEqualToString:@"station"] == YES) {
+    
+    // return a list of stations as part 1 of a multistage command
+
+    XMPPIQ *iqRes = [XMPPIQ iqWithType:@"result" to:[iq from] elementID:[iq elementID]];
+    NSXMLElement *cmdElement = [NSXMLElement elementWithName:@"command" xmlns:@"http://jabber.org/protocol/commands"];
+    [cmdElement addAttributeWithName:@"node" stringValue:@"command"];
+    [cmdElement addAttributeWithName:@"sessionid" stringValue:[XMPPStream generateUUID]];
+    [cmdElement addAttributeWithName:@"status" stringValue:@"executing"];
+    
+    NSXMLElement *xForm = [NSXMLElement elementWithName:@"x" xmlns:@"jabber:x:data"];
+    [cmdElement addAttributeWithName:@"type" stringValue:@"result"];
+    
+    NSXMLElement *title = [NSXMLElement elementWithName:@"title"];
+    [title setStringValue:@"Available Stations"];
+    [xForm addChild:title];
+    
+    // actually add the stations
+    
+    int count = 0;
+    for (NSDictionary *station in stations) {
+      NSXMLElement *field = [NSXMLElement elementWithName:@"field"];
+      [field addAttributeWithName:@"var" stringValue:[NSString stringWithFormat:@"%i", count]];
+      [field addAttributeWithName:@"label" stringValue:[station valueForKey:@"label"]];
+      [xForm addChild:field];
+      count++;
+    }
+    
+    [cmdElement addChild:xForm];
+    [iq addChild:cmdElement];
+
+    NSLog(@"Sending return command");
+    [[sender xmppStream] sendElement:iqRes];
+  }
+  
+  NSLog(@"command %@", command);
 }
 
-- (void)searchResultsReceived:(NSArray *)searchResults forRequest:(NSString *)connectionIdentifier
+
+#pragma mark -
+#pragma mark XMPPPubSub Delegate Methods
+#pragma mark -
+
+- (void)xmppPubSub:(XMPPPubSub *)sender didSubscribe:(XMPPIQ *)iq
 {
-	NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
+  NSLog(@"pubsub subscribed");
 }
 
-- (void)imageReceived:(NSImage *)image forRequest:(NSString *)connectionIdentifier
+- (void)xmppPubSub:(XMPPPubSub *)sender didCreateNode:(NSString*)node withIQ:(XMPPIQ *)iq
 {
-  NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
+  NSLog(@"pubsub created node");
 }
 
-- (void)connectionFinished
+- (void)xmppPubSub:(XMPPPubSub *)sender didReceiveError:(XMPPIQ *)iq
 {
-  NSLog(@"Connection finished");
+  NSLog(@"pubsub error");
 }
+
+- (void)xmppPubSub:(XMPPPubSub *)sender didReceiveResult:(XMPPIQ *)iq
+{
+  NSLog(@"pubsub result");
+}
+
+- (void)xmppPubSub:(XMPPPubSub *)sender didReceiveMessage:(XMPPMessage *)message
+{
+  if ([message elementForName:@"delay"]) return;
+  
+  NSString *txt = [[[[[message elementForName:@"event"] 
+                               elementForName:@"items"] 
+                               elementForName:@"item"] 
+                               elementForName:@"text"] stringValue];
+  
+  NSString *match = @"Now playing: ";
+  if ([txt hasPrefix:match])
+  {
+    // first remove the now playing bit
+    NSString *string = [txt stringByReplacingOccurrencesOfString:match withString:@""];
+    NSRange split = [string rangeOfString:@" by "];
+    NSString *track  = [string substringWithRange:NSMakeRange(0,split.location)];
+    NSString *artist = [string substringWithRange:NSMakeRange(split.location+split.length,
+                                                              [string length]-split.location-split.length-1)];
+      
+    // growl the now playing information
+    NSImage *img = [[NSImage alloc] initWithData:[dockIconView dataWithPDFInsideRect:[dockIconView frame]]];
+    [GrowlApplicationBridge notifyWithTitle:@"Now Playing:"
+                                description:[NSString stringWithFormat:@"%@ by %@", track, artist]
+                           notificationName:@"Now playing"
+                                   iconData:[img TIFFRepresentation]
+                                   priority:1
+                                   isSticky:NO
+                               clickContext:nil];
+    [img release];
+  }
+  
+  NSLog(@"Message: %@", txt);
+  
+  // display information
+  
+  [liveTextView.progressIndictor stopAnimation:nil];
+  
+  if (liveTextView) {
+    [liveTextView.textArea setStringValue:txt];
+  }
+}
+
 
 @end
