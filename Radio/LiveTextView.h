@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface LiveTextView : NSView {
   NSTextField *textArea;
   NSProgressIndicator *progressIndictor;

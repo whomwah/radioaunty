@@ -15,7 +15,7 @@
 		AE2B0F931234EC460028D2D1 /* RFSRVResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B0F921234EC460028D2D1 /* RFSRVResolver.m */; };
 		AE2B0FB51234ED170028D2D1 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B0FB41234ED170028D2D1 /* libresolv.dylib */; };
 		AE2B1612123A125E0028D2D1 /* LiveTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B1611123A125E0028D2D1 /* LiveTextView.m */; };
-		AE2B19DD123BE59A0028D2D1 /* XMPPPubSub.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B19DC123BE59A0028D2D1 /* XMPPPubSub.m */; };
+		AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */; };
 		AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE333BBA0EF798740077A647 /* WebKit.framework */; };
 		AE333BDC0EF79B4B0077A647 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Defaults.plist */; };
 		AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */; };
@@ -132,8 +132,8 @@
 		AE2B0FB41234ED170028D2D1 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		AE2B1610123A125E0028D2D1 /* LiveTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveTextView.h; sourceTree = "<group>"; };
 		AE2B1611123A125E0028D2D1 /* LiveTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTextView.m; sourceTree = "<group>"; };
-		AE2B19DB123BE59A0028D2D1 /* XMPPPubSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMPPPubSub.h; path = "../../../svn/googlecode/xmppframework-read-only/XMPPPubSub.h"; sourceTree = SOURCE_ROOT; };
-		AE2B19DC123BE59A0028D2D1 /* XMPPPubSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMPPPubSub.m; path = "../../../svn/googlecode/xmppframework-read-only/XMPPPubSub.m"; sourceTree = SOURCE_ROOT; };
+		AE2B1AF6123E1CEE0028D2D1 /* XMPPPubSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPPubSub.h; sourceTree = "<group>"; };
+		AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPPubSub.m; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -427,8 +427,8 @@
 		AE50433812243E100000D1BC /* XEP-0060 */ = {
 			isa = PBXGroup;
 			children = (
-				AE2B19DB123BE59A0028D2D1 /* XMPPPubSub.h */,
-				AE2B19DC123BE59A0028D2D1 /* XMPPPubSub.m */,
+				AE2B1AF6123E1CEE0028D2D1 /* XMPPPubSub.h */,
+				AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */,
 			);
 			name = "XEP-0060";
 			sourceTree = "<group>";
@@ -800,7 +800,7 @@
 				AE801A3B11F6D41D00C914F4 /* XMPPAdHocCommands.m in Sources */,
 				AE2B0F931234EC460028D2D1 /* RFSRVResolver.m in Sources */,
 				AE2B1612123A125E0028D2D1 /* LiveTextView.m in Sources */,
-				AE2B19DD123BE59A0028D2D1 /* XMPPPubSub.m in Sources */,
+				AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,6 +38,14 @@
     return self;
 }
 
+- (void)dealloc
+{
+  [progressIndictor release];
+  [textArea release];
+  
+	[super dealloc];
+}
+
 - (void)drawRect:(NSRect)rect
 {
 }
