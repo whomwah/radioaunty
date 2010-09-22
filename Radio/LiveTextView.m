@@ -22,7 +22,7 @@
       textArea = [[NSTextField alloc] initWithFrame:frame];
       [textArea setBordered:NO];
       [textArea setDrawsBackground:NO];
-      [textArea setFont:[NSFont boldSystemFontOfSize:9.0]];
+      [textArea setFont:[NSFont boldSystemFontOfSize:10.0]];
       [[textArea cell] setBackgroundStyle:NSBackgroundStyleRaised];
       [textArea setFocusRingType:NSFocusRingTypeNone];
       

@@ -23,6 +23,8 @@
     [arry addObject:[d objectForKey:@"size"]];
   }
   self.viewSizes = arry;
+  
+  [[[self view] window] setShowsResizeIndicator:NO];
 }
 
 - (void)dealloc
@@ -37,7 +39,6 @@
   data = d;
   markup = nil;
   [self displayEmpForKey:[data objectForKey:@"empKey"]];
-  //[self resizeEmpTo:[self windowSize]];
 }
 
 - (void)fetchAOD:(NSString *)s
@@ -45,16 +46,6 @@
   data = nil;
   markup = nil;
   [self displayEmpForKey:s];
-}
-
-- (void)handleResizeIcon
-{
-  NSWindow *w = [[self view] window];
-  if ([self isMinimized] == NO) {
-    [w setShowsResizeIndicator:NO];    
-  } else {
-    [w setShowsResizeIndicator:YES];
-  } 
 }
 
 - (BOOL)isLive
@@ -83,7 +74,6 @@
 
 - (void)displayEmpForKey:(NSString *)urlkey
 {
-  [self handleResizeIcon];
   NSString *path = [[NSBundle mainBundle] pathForResource:[self playbackFormat] 
                                                    ofType:@"html"];
   NSString *tmpl = [NSString stringWithContentsOfFile:path
@@ -119,35 +109,9 @@
 - (NSSize)sizeForEmp:(int)index
 {  
   NSSize size = NSSizeFromString([viewSizes objectAtIndex:index]);
-  size.height = size.height + 25.0;
+  size.height += 25.0;  
+  
   return size;
-}
-
-- (void)resizeEmpTo:(NSSize)size
-{ 
-  NSWindow *w = [[self view] window];
-  NSSize currentSize = [w frame].size;
-  
-  if (NSEqualSizes(size,currentSize) == YES)
-    return;
-
-  NSLog(@"currentSize: %@", NSStringFromSize(currentSize));
-  NSLog(@"newSize: %@", NSStringFromSize(size));
-  
-  float deltaWidth = size.width - currentSize.width;
-  float deltaHeight = size.height - currentSize.height;
-  
-  NSRect wf = [w frame];
-
-  //wf.size.width += deltaWidth;
-  //wf.size.height += deltaHeight;
-  wf.origin.x -= deltaWidth/2;
-  wf.origin.y -= deltaHeight/2;
-
-  wf.size.width = size.width;
-  wf.size.height = size.height;
-  
-  [w setFrame:wf display:YES animate:YES];
 }
 
 #pragma mark URL load Delegates

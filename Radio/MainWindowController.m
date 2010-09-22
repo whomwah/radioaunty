@@ -20,6 +20,9 @@
 #import "XMPPAdHocCommands.h"
 #import "XMPPPubSub.h"
 
+#define DR_CONTENT_UNAVAILABLE @"Livetext currently unavailable"
+#define DR_CONTENT_AWAITING    @"Awaiting livetext..."
+
 @implementation MainWindowController
 
 @synthesize currentSchedule;
@@ -29,10 +32,16 @@
 @synthesize xmppCapabilities;
 @synthesize pubsub;
 @synthesize anonJID;
+@synthesize scrobbleTimer;
 
 - (XMPPStream *)xmppStream
 {
 	return [[NSApp delegate] xmppStream];
+}
+
+- (Scrobble *)scrobbler
+{
+	return [[NSApp delegate] scrobbler];
 }
 
 - (void)awakeFromNib
@@ -66,7 +75,7 @@
   // adjust to allow for toolbar
   int toolBarAdjust = 0;
   if ([toolBar isVisible]) {    
-    toolBarAdjust = 28;
+    toolBarAdjust = 25;
   }
   
   NSRect rect = NSMakeRect(point.x, point.y,
@@ -127,7 +136,6 @@
   self.windowTitle = @"BBC Radio";
   
   [self setNextResponder:empViewController];
-  [empViewController handleResizeIcon];
   [self buildStationsMenu];
 }
 
@@ -139,6 +147,7 @@
   [xmppCapabilities release];
   [pubsub release];
   [liveTextView release];
+  [scrobbleTimer release];
   
 	[super dealloc];
 }
@@ -150,34 +159,36 @@
 
 - (void)subscribeToLiveTextChannel:(NSString*)channel
 {  
+  NSString *node = [NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel];
   
-  if ([[self xmppStream] isConnected])
-  {
-    NSString *node = [NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel];
-    
-    [pubsub subscribeToNode:node withOptions:nil];
-    NSLog(@"subscribing to : %@", node);
-  }
+  [pubsub subscribeToNode:node withOptions:nil];
+  NSLog(@"subscribing to : %@", node);  
+  
+  [liveTextView.textArea setStringValue:@""];
+  [liveTextView.progressIndictor startAnimation:nil];
 }
 
 - (void)unsubscribeToLiveTextChannel:(NSString*)channel
 {
-  if ([[self xmppStream] isConnected])
-  {
-    NSString *node = [NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel];
-    
-    NSLog(@"unsubscribing from : %@", node);
-    [pubsub unsubscribeFromNode:node];
-  }
+  NSString *node = [NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel];
+  
+  [pubsub unsubscribeFromNode:node];
+  NSLog(@"unsubscribing from : %@", node);
+  
+  [liveTextView.textArea setStringValue:@""];
+  [liveTextView.progressIndictor stopAnimation:nil];
 }
 
 - (void)switchSubscriptionFrom:(NSString*)previous to:(NSString*)next
 {
-  if (!availableForSubscription) return;
-  
-  NSLog(@"Switching to previous: %@ next: %@", previous, next);
-  [self unsubscribeToLiveTextChannel:previous];
-  [self subscribeToLiveTextChannel:next];
+  if ([[self xmppStream] isConnected])
+  {
+    if (!availableForSubscription) return;
+    
+    NSLog(@"Switching to previous: %@ next: %@", previous, next);
+    [self unsubscribeToLiveTextChannel:previous];
+    [self subscribeToLiveTextChannel:next];
+  }
 }
 
 
@@ -191,7 +202,7 @@
 {  
   NSToolbarItem *liveTextToolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier:@"livetext"] autorelease];
   
-  liveTextView = [[LiveTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 22)];
+  liveTextView = [[LiveTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 26)];
   [liveTextToolbarItem setView:liveTextView];
   
   // preload livetext
@@ -209,7 +220,11 @@
 - (void)fetchRADIO:(NSDictionary *)station
 {  
   self.windowTitle = @"Loading Schedule...";
-    
+  
+  // clear livetext
+  [liveTextView.textArea setStringValue:@""];
+  [liveTextView.progressIndictor startAnimation:nil];
+  
   [self switchSubscriptionFrom:[currentStation objectForKey:@"livetext_node"] 
                             to:[station objectForKey:@"livetext_node"]];
   
@@ -217,14 +232,13 @@
   [empViewController fetchEMP:currentStation];
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [self fetchNewSchedule:nil];
-  
-  // clear livetext
-  [liveTextView.textArea setStringValue:@""];
-  [liveTextView.progressIndictor startAnimation:nil];
 }
 
 - (void)fetchAOD:(id)sender
 {
+  [liveTextView.textArea setStringValue:@"Livetext not available"];
+  [liveTextView.progressIndictor stopAnimation:nil];
+  
   [self stopScheduleTimer];
   BBCBroadcast *broadcast = [currentSchedule.broadcasts objectAtIndex:[sender tag]];
   currentBroadcast = broadcast;  
@@ -441,7 +455,7 @@
 
 - (NSSize)windowWillResize:(NSWindow *)window toSize:(NSSize)proposedFrameSize
 {  
-  return [empViewController windowSize];
+  return [window frame].size;
 }
 
 - (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)proposedFrame
@@ -454,7 +468,7 @@
   NSRect result;
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
   result = [[self window] frame];
-  
+
   if ([empViewController isMinimized] == YES) {
     [ud setBool:NO forKey:@"DefaultEmpMinimized"];
     [empViewController setIsMinimized:NO];
@@ -467,12 +481,13 @@
     [empViewController setIsMinimized:YES];
   }
 
-  [empViewController handleResizeIcon];
   result.size = [empViewController windowSize];
   
   // adjust to allow for toolbar
   if ([toolBar isVisible]) {    
     result.size.height = result.size.height + 28;
+  } else {
+    result.size.height = result.size.height - 3;
   }
   
   return result;
@@ -538,6 +553,31 @@
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender
 {	
   NSLog(@"XMPP Connection has disconnected");
+  [liveTextView.progressIndictor stopAnimation:nil];
+  [liveTextView.textArea setStringValue:DR_CONTENT_UNAVAILABLE];
+}
+
+- (void)xmppStreamWasToldToDisconnect:(XMPPStream *)sender
+{
+  NSLog(@"XMPP Connection told to disconnected");
+}
+
+- (void)xmppStream:(XMPPStream *)sender didNotConnect:(NSError *)error
+{
+  NSLog(@"XMPP Connection did not even connect?");
+}
+
+
+#pragma mark -
+#pragma mark Scrobble stuff
+#pragma mark -
+
+- (void)scrobble:(id)sender
+{
+  NSString *track  = [[sender userInfo] valueForKey:@"track"];
+  NSString *artist = [[sender userInfo] valueForKey:@"artist"];
+
+  [[self scrobbler] scrobbleTrack:track andArtist:artist];
 }
 
 
@@ -618,12 +658,14 @@
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveMessage:(XMPPMessage *)message
 {
-  if ([message elementForName:@"delay"]) return;
+  //if ([message elementForName:@"delay"]) return;
   
   NSString *txt = [[[[[message elementForName:@"event"] 
                                elementForName:@"items"] 
                                elementForName:@"item"] 
                                elementForName:@"text"] stringValue];
+  
+  if (!txt) return;
   
   NSString *match = @"Now playing: ";
   if ([txt hasPrefix:match])
@@ -645,6 +687,34 @@
                                    isSticky:NO
                                clickContext:nil];
     [img release];
+    
+    // scrobble if we have a sessionToken
+    if ([[self scrobbler] isAuthorised]) {
+      
+      // cancel any timer currently running
+      if (scrobbleTimer != nil) {
+        if ([scrobbleTimer isValid]) [scrobbleTimer invalidate];
+        self.scrobbleTimer = nil;
+      }
+      
+      // send now playing information
+      [[self scrobbler] sendNowPlayingArtist:artist andTrack:track];
+      
+      // Send the actual played track after a period of time.
+      // we currently don't know how long a track is so we have to
+      // go buy the 240 limit requested by lastFM. I have rounded this
+      // down, due to radio edits generally being 3 minutes of less
+      
+      NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                            track, @"track",
+                            artist, @"artist",
+                            nil];
+      self.scrobbleTimer = [NSTimer scheduledTimerWithTimeInterval:120.0 // 2.5 minutes
+                                                            target:self
+                                                          selector:@selector(scrobble:)
+                                                          userInfo:dict
+                                                           repeats:NO];
+    }
   }
   
   NSLog(@"Message: %@", txt);
@@ -657,6 +727,5 @@
     [liveTextView.textArea setStringValue:txt];
   }
 }
-
 
 @end

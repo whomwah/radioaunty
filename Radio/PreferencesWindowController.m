@@ -7,8 +7,13 @@
 //
 
 #import "PreferencesWindowController.h"
+#import "Scrobble.h"
 
 @implementation PreferencesWindowController
+
+@synthesize scrobbler;
+@synthesize authButton;
+@synthesize lastFMLabel;
 
 - (id)init
 {
@@ -18,9 +23,60 @@
 	return self;
 }
 
-- (void)windowDidLoad
+- (void)dealloc
 {
-	NSLog(@"Preferences Nib file loaded");
+	[scrobbler release];
+  [authButton release];
+  [lastFMLabel release];
+	
+	[super dealloc];
+}
+
+- (IBAction)authorise:(id)sender
+{
+  if ([[authButton title] isEqualToString:@"Continue"]) {
+    [scrobbler fetchWebServiceSession];
+  } else if ([[authButton title] isEqualToString:@"Un-Authorise"]) {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setValue:@"" forKey:@"DefaultLastFMSession"];
+    [ud setValue:@"" forKey:@"DefaultLastFMUser"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.authButton setTitle:@"Authorise"];
+    
+    // You can now send the user off to unauthorise
+    NSURL *url = [NSURL URLWithString:[scrobbler urlToUnAuthoriseUser]];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+    
+    // oh and clear the token from scrobbler
+    [scrobbler setSessionToken:nil];
+  } else {
+    [scrobbler fetchRequestToken];
+  }
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{  
+  NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+  NSString *session = [ud objectForKey:@"DefaultLastFMSession"];
+  
+  // if we have a non empty session token just show how to un-auth
+  if (![session isEqual:@""]) {
+    [self.authButton setTitle:@"Un-Authorise"];
+    [self.lastFMLabel setStringValue:@"Click to un-authorise this application"];
+  }
+  
+  // other options
+  if ([[authButton title] isEqualToString:@"Authorise"]) 
+  {
+    [self.lastFMLabel setStringValue:@"Click to authorise this application"];
+  } else if ([[authButton title] isEqualToString:@"Continue"])
+  {
+    [self.lastFMLabel setStringValue:@"Let's just finalise the setup."];
+  } else if ([[authButton title] isEqualToString:@"Un-Authorise"])
+  {
+    [self.lastFMLabel setStringValue:@"Click to un-authorise this application"];
+  }
 }
 
 - (void)windowWillClose:(NSNotification *)notification

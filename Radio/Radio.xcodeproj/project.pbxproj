@@ -31,6 +31,7 @@
 		AE49AA3D11AEFA460049C993 /* BBCService.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AA3C11AEFA460049C993 /* BBCService.m */; };
 		AE49ADC911B14C0E0049C993 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */; };
 		AE49ADCC11B14C3C0049C993 /* GDataHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */; };
+		AE5E3C9512477ACC00C15403 /* Scrobble.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5E3C9412477ACC00C15403 /* Scrobble.m */; };
 		AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE630BAB0F1CDC7200905968 /* radio_icon.icns */; };
 		AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */; };
 		AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */; };
@@ -161,6 +162,8 @@
 		AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
 		AE49ADCA11B14C3C0049C993 /* GDataHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataHTTPFetcher.h; sourceTree = "<group>"; };
 		AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataHTTPFetcher.m; sourceTree = "<group>"; };
+		AE5E3C9312477ACC00C15403 /* Scrobble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrobble.h; sourceTree = "<group>"; };
+		AE5E3C9412477ACC00C15403 /* Scrobble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scrobble.m; sourceTree = "<group>"; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966590EF6AC0300B029FE /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		AE69665A0EF6AC0300B029FE /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
@@ -334,10 +337,8 @@
 		29B97314FDCFA39411CA2CEA /* Radio */ = {
 			isa = PBXGroup;
 			children = (
-				AE8574A111CBA7B600691F4B /* XMPP */,
-				AE85749E11CBA7B600691F4B /* TCP */,
-				AE85749B11CBA7B600691F4B /* Utilities */,
-				AE71F9F50F694D1A00577A56 /* Classes */,
+				AE5E3C8812475FE200C15403 /* Libraries */,
+				AE71F9F50F694D1A00577A56 /* Settings */,
 				AEDD16C40F0BF062009F81AD /* Images */,
 				AEA0B0F40EF7B44600137DAA /* Views */,
 				080E96DDFE201D6D7F000001 /* Controllers */,
@@ -410,8 +411,8 @@
 		AE49AA3411AEF9FA0049C993 /* BBCProgrammes */ = {
 			isa = PBXGroup;
 			children = (
-				AE49ADCA11B14C3C0049C993 /* GDataHTTPFetcher.h */,
-				AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */,
+				AEE2781B11CA5248008D9EC3 /* DRNSString-Utilities.h */,
+				AEE2781C11CA5248008D9EC3 /* DRNSString-Utilities.m */,
 				AE49ADC711B14C0E0049C993 /* ISO8601DateFormatter.h */,
 				AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */,
 				AE49AA3511AEFA1B0049C993 /* BBCSchedule.h */,
@@ -433,16 +434,44 @@
 			name = "XEP-0060";
 			sourceTree = "<group>";
 		};
-		AE71F9F50F694D1A00577A56 /* Classes */ = {
+		AE5E3C8712475FC100C15403 /* Google */ = {
 			isa = PBXGroup;
 			children = (
-				AEE2781B11CA5248008D9EC3 /* DRNSString-Utilities.h */,
-				AEE2781C11CA5248008D9EC3 /* DRNSString-Utilities.m */,
-				AEE2781D11CA5248008D9EC3 /* dr_settings.h */,
-				AE49AA3411AEF9FA0049C993 /* BBCProgrammes */,
-				AE49AA1311AEF8C90049C993 /* JSON */,
+				AE49ADCA11B14C3C0049C993 /* GDataHTTPFetcher.h */,
+				AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */,
 			);
-			name = Classes;
+			name = Google;
+			sourceTree = "<group>";
+		};
+		AE5E3C8812475FE200C15403 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3C9212477AB200C15403 /* lastFM */,
+				AE85749B11CBA7B600691F4B /* Utilities */,
+				AE49AA1311AEF8C90049C993 /* JSON */,
+				AE49AA3411AEF9FA0049C993 /* BBCProgrammes */,
+				AE85749E11CBA7B600691F4B /* TCP */,
+				AE8574A111CBA7B600691F4B /* XMPP */,
+				AE5E3C8712475FC100C15403 /* Google */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		AE5E3C9212477AB200C15403 /* lastFM */ = {
+			isa = PBXGroup;
+			children = (
+				AE5E3C9312477ACC00C15403 /* Scrobble.h */,
+				AE5E3C9412477ACC00C15403 /* Scrobble.m */,
+			);
+			name = lastFM;
+			sourceTree = "<group>";
+		};
+		AE71F9F50F694D1A00577A56 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AEE2781D11CA5248008D9EC3 /* dr_settings.h */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		AE801A3811F6D3DA00C914F4 /* XEP-0050 */ = {
@@ -801,6 +830,7 @@
 				AE2B0F931234EC460028D2D1 /* RFSRVResolver.m in Sources */,
 				AE2B1612123A125E0028D2D1 /* LiveTextView.m in Sources */,
 				AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */,
+				AE5E3C9512477ACC00C15403 /* Scrobble.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

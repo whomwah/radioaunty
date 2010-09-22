@@ -8,7 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Scrobble;
+
 @interface PreferencesWindowController : NSWindowController {
+  Scrobble *scrobbler;
+  IBOutlet NSButton *authButton;
+  IBOutlet NSTextField *lastFMLabel;
 }
+
+@property (nonatomic, retain) Scrobble *scrobbler;
+@property (nonatomic, retain) NSButton *authButton;
+@property (nonatomic, retain) NSTextField *lastFMLabel;
+
+- (IBAction)authorise:(id)sender;
 
 @end

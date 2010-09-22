@@ -39,15 +39,18 @@
   
   XMPPCapabilities *xmppCapabilities;
   XMPPPubSub *pubsub;
+  
+  NSTimer *scrobbleTimer;
 }
 
-@property (nonatomic, assign) NSTimer *scheduleTimer;
+@property (nonatomic, retain) NSTimer *scheduleTimer;
 @property (nonatomic, copy) NSString *windowTitle;
 @property (nonatomic, retain) LiveTextView *liveTextView;
 @property (nonatomic, retain) BBCSchedule *currentSchedule;
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, retain) XMPPPubSub *pubsub;
 @property (nonatomic, copy) NSString *anonJID;
+@property (nonatomic, retain) NSTimer *scrobbleTimer;
 
 - (NSString *)liveOrNotText;
 - (void)growl;

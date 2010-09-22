@@ -8,7 +8,7 @@
 			<key>label</key>
 			<string>Minimized</string>
 			<key>size</key>
-			<string>{335, 35}</string>
+			<string>{335, 38}</string>
 		</dict>
 		<dict>
 			<key>label</key>
@@ -25,9 +25,9 @@
 	<integer>1</integer>
 	<key>DefaultEmpMinimized</key>
 	<false/>
-	<key>DefaultSendToTwitter</key>
-	<true/>
-	<key>DefaultTwitterUsername</key>
+	<key>DefaultLastFMUser</key>
+	<string></string>
+	<key>DefaultLastFMSession</key>
 	<string></string>
 	<key>DefaultStation</key>
 	<integer>7</integer>

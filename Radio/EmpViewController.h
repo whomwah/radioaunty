@@ -22,7 +22,6 @@
 @property (nonatomic) BOOL hasToolbar;
 @property (nonatomic, retain) NSMutableArray *viewSizes;
 
-- (void)handleResizeIcon;
 - (BOOL)isLive;
 - (void)makeRequest;
 - (BOOL)isHighQuality;
@@ -30,7 +29,6 @@
 - (NSSize)windowSize;
 - (NSString *)playbackFormat;
 - (NSSize)sizeForEmp:(int)index;
-- (void)resizeEmpTo:(NSSize)size;
 - (void)fetchEMP:(NSDictionary *)d;
 - (void)fetchAOD:(NSString *)s;
 - (void)displayEmpForKey:(NSString *)urlkey;
