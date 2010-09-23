@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 1.16 (update for iPlayer 3.0)</title>
+            <title>Version 2.0 (BBC LiveText and LastFM support)</title>
 						<sparkle:releaseNotesLink>
               http://github.com/whomwah/radioaunty/raw/master/CHANGELOG 
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 9 Jun 2010 11:00:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_1.16.dmg" sparkle:version="1.16" length="724382" type="application/octet-stream" sparkle:dsaSignature="MCwCFBjYERdhOAAyq9aVkNImN5edPxAhAhQSwMVTC7z7OmpovqUAm3Cxvf6u4Q==" />
+            <pubDate>Thu, 23 Sept 2010 22:00:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.0.dmg" sparkle:version="2.0" length="945605" type="application/octet-stream" sparkle:dsaSignature="MC0CFB7fLBkMT/MjlD8pFfrojpY1O0PXAhUAyqOPQsQK8rPNWHh8PMspATU4Z/w=" />
          </item>
    </channel>
 </rss>

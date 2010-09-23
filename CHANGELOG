@@ -1,3 +1,21 @@
+*2.0.0* (Sept 23rd, 2010)
+
+* Added BBC LiveText support
+  In the application status bar, you will now see the same liveText that appears 
+  on your DAB radio, and other places. This contains show, upcoming, and now 
+  playing information. You can hide this via a toggle on the window. Please note, 
+  you need direct access to the internet for this feature, as it will currently 
+  not work through a proxy. In other words it's a bit experimental.
+* Added LastFM scrobble support
+  With the liveText support comes Now Playing information, so you can now choose 
+  to auto-scrobble this. You can disable this when ever you need. Note, not 
+  all Now Playing information is sent by the BBC, so the app cannot guarantee 
+  that all tracks will be scrobbled.
+* Removed Twitter support
+  This may come back into the app at some point, but I stopped using Twitter 
+  some time ago, and have no motivation to impliment the OAuth authentication 
+  required to use their api currently.
+
 *1.16* (June 11th, 2010)
 
 * Updated player to iPlayer 3 version
