@@ -52,6 +52,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
     // lastFM defaults
 		[defaultValues setObject:[temp objectForKey:@"DefaultLastFMUser"] forKey:@"DefaultLastFMUser"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultLastFMSession"] forKey:@"DefaultLastFMSession"];
+		[defaultValues setObject:[temp objectForKey:@"DefaultLastFMEnabled"] forKey:@"DefaultLastFMEnabled"];
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 		[ud registerDefaults:defaultValues];
@@ -191,6 +192,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
   // adjust the preferences to reflect authorisation
   [[preferencesWindowController authButton] setTitle:@"Un-Authorise"];
   [[preferencesWindowController lastFMLabel] setStringValue:@"Click to un-authorise this application"];
+  [[preferencesWindowController lastFMEnabled] setEnabled:YES]; 
 }
 
 - (void)scrobble:(Scrobble*)sender didNotGetSessionToken:(NSError*)error
@@ -208,6 +210,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
   
   // adjust the preferences to reflect authorisation
   [[preferencesWindowController authButton] setTitle:@"Authorise"];
+  [[preferencesWindowController lastFMEnabled] setEnabled:NO];
 }
 
 - (void)scrobble:(Scrobble*)sender didSendNowPlaying:(NSDictionary*)response

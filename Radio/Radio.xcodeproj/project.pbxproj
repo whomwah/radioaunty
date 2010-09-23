@@ -32,6 +32,7 @@
 		AE49ADC911B14C0E0049C993 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */; };
 		AE49ADCC11B14C3C0049C993 /* GDataHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */; };
 		AE5E3C9512477ACC00C15403 /* Scrobble.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5E3C9412477ACC00C15403 /* Scrobble.m */; };
+		AE5E4259124AA3AF00C15403 /* lastFM.png in Resources */ = {isa = PBXBuildFile; fileRef = AE5E4258124AA3AF00C15403 /* lastFM.png */; };
 		AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE630BAB0F1CDC7200905968 /* radio_icon.icns */; };
 		AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */; };
 		AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */; };
@@ -164,6 +165,7 @@
 		AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataHTTPFetcher.m; sourceTree = "<group>"; };
 		AE5E3C9312477ACC00C15403 /* Scrobble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrobble.h; sourceTree = "<group>"; };
 		AE5E3C9412477ACC00C15403 /* Scrobble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scrobble.m; sourceTree = "<group>"; };
+		AE5E4258124AA3AF00C15403 /* lastFM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastFM.png; sourceTree = "<group>"; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966590EF6AC0300B029FE /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		AE69665A0EF6AC0300B029FE /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 		AEDD16C40F0BF062009F81AD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AE5E4258124AA3AF00C15403 /* lastFM.png */,
 				AEDD16960F0BEFF3009F81AD /* 1xtra.png */,
 				AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */,
 				AEDD16980F0BEFF3009F81AD /* 6music.png */,
@@ -770,6 +773,7 @@
 				AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */,
 				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
 				AE49A90011AE65C90049C993 /* aod.html in Resources */,
+				AE5E4259124AA3AF00C15403 /* lastFM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

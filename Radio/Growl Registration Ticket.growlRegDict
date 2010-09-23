@@ -5,7 +5,7 @@
 	<key>AllNotifications</key>
 	<array>
 		<string>Now playing</string>
-		<string>Send to Twitter</string>
+		<string>Now on air</string>
 	</array>
 	<key>TicketVersion</key>
 	<integer>1</integer>

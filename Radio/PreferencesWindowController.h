@@ -14,11 +14,13 @@
   Scrobble *scrobbler;
   IBOutlet NSButton *authButton;
   IBOutlet NSTextField *lastFMLabel;
+  IBOutlet NSButton *lastFMEnabled;
 }
 
 @property (nonatomic, retain) Scrobble *scrobbler;
 @property (nonatomic, retain) NSButton *authButton;
 @property (nonatomic, retain) NSTextField *lastFMLabel;
+@property (nonatomic, retain) NSButton *lastFMEnabled;
 
 - (IBAction)authorise:(id)sender;
 

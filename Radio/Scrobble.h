@@ -12,7 +12,6 @@
 @protocol ScrobbleDelegate;
 
 @interface Scrobble : NSObject {
-  BOOL handshake;
   NSString *protocolVersion;
   NSString *clientId;
   NSString *clientVersion;
@@ -27,7 +26,7 @@
 }
 
 @property (nonatomic, assign) id <ScrobbleDelegate> delegate;
-@property (nonatomic, copy) NSString *protocolVersion;
+@property (nonatomic, copy, readonly) NSString *protocolVersion;
 @property (nonatomic, copy) NSString *clientId;
 @property (nonatomic, copy) NSString *clientVersion;
 @property (nonatomic, copy) NSString *user;
@@ -38,12 +37,13 @@
 @property (nonatomic, copy, readonly) NSString *sessionUser;
 
 - (id)initWithApiKey:(NSString *)apikey andSecret:(NSString *)secret;
+- (id)initWithApiKey:(NSString *)apikey andSecret:(NSString *)secret andSession:(NSString*)session;
 - (void)fetchRequestToken;
 - (void)fetchWebServiceSession;
 - (NSString*)urlToAuthoriseUser;
 - (NSString*)urlToUnAuthoriseUser;
 - (BOOL)isAuthorised;
-- (void)sendNowPlayingArtist:(NSString*)artist andTrack:(NSString*)track;
+- (void)sendNowPlayingTrack:(NSString*)track andArtist:(NSString*)artist;
 - (void)scrobbleTrack:(NSString*)track andArtist:(NSString*)artist;
 
 @end

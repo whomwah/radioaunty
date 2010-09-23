@@ -12,9 +12,14 @@
 @interface DockView : NSView {
   NSImage *networkIcon;
   NSImage *appIcon;
+  
+  NSImage *lastFMicon;
+  BOOL showLastFM;
 }
 
 @property (nonatomic, retain) NSImage *networkIcon;
+@property (nonatomic, retain) NSImage *lastFMicon;
+@property (nonatomic, assign) BOOL showLastFM;
 
 - (id)initWithFrame:(NSRect)frame withKey:(NSString *)key;
 

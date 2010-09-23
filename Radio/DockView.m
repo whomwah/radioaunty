@@ -12,6 +12,8 @@
 @implementation DockView
 
 @synthesize networkIcon;
+@synthesize lastFMicon;
+@synthesize showLastFM;
 
 - (id)initWithFrame:(NSRect)frame withKey:(NSString *)key 
 {
@@ -19,6 +21,9 @@
   if (self) {
     self.networkIcon = [NSImage imageNamed:key];
     appIcon = [NSImage imageNamed:@"radio_icon"];
+    
+    self.lastFMicon = [NSImage imageNamed:@"lastFM"];
+    showLastFM = NO;
   }
   return self;
 }
@@ -38,7 +43,16 @@
     [serviceIconView setImage:networkIcon];
     [self addSubview:serviceIconView];
     [serviceIconView release];
-  }  
+  }
+  
+  if (showLastFM) {
+    NSImageView *lastfmIconView = [[NSImageView alloc] initWithFrame: 
+                                    NSMakeRect(60, rect.size.height - [lastFMicon size].height - 5, 
+                                               [lastFMicon size].width, [lastFMicon size].height)];
+    [lastfmIconView setImage:lastFMicon];
+    [self addSubview:lastfmIconView];
+    [lastfmIconView release];
+  }
 
   [appIconView release];
 }

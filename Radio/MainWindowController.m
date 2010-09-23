@@ -230,8 +230,12 @@
   
   currentStation = station;  
   [empViewController fetchEMP:currentStation];
+  
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [self fetchNewSchedule:nil];
+  
+  // cancel and scrobble timers
+  [self cancelScrobble];
 }
 
 - (void)fetchAOD:(id)sender
@@ -244,15 +248,26 @@
   currentBroadcast = broadcast;  
   self.windowTitle = [currentSchedule broadcastDisplayTitleForIndex:[sender tag]];
   [empViewController fetchAOD:[broadcast pid]];
+  
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [self buildScheduleMenu];
   [self growl];
+  
+  // cancel and scrobble timers
+  [self cancelScrobble];
 }
 
 - (void)changeDockNetworkIconTo:(NSString *)service
 {
   NSImage *img = [NSImage imageNamed:service];
   [dockIconView setNetworkIcon:img];
+  
+  if ([[self scrobbler] isAuthorised]) {
+    [dockIconView setShowLastFM:YES];
+  } else {
+    [dockIconView setShowLastFM:NO];
+  }
+  
 	[dockTile display];
 }
 
@@ -290,7 +305,7 @@
   NSImage *img = [[NSImage alloc] initWithData:[dockIconView dataWithPDFInsideRect:[dockIconView frame]]];
   [GrowlApplicationBridge notifyWithTitle:[currentSchedule.service title]
                               description:[[currentBroadcast display_titles] objectForKey:@"title"]
-                         notificationName:@"Now playing"
+                         notificationName:@"Now on air"
                                  iconData:[img TIFFRepresentation]
                                  priority:1
                                  isSticky:NO
@@ -580,6 +595,15 @@
   [[self scrobbler] scrobbleTrack:track andArtist:artist];
 }
 
+- (void)cancelScrobble
+{
+  // cancel any timer currently running
+  if (scrobbleTimer != nil) {
+    if ([scrobbleTimer isValid]) [scrobbleTimer invalidate];
+    self.scrobbleTimer = nil;
+  }
+}
+
 
 #pragma mark -
 #pragma mark XMPPAdHocCommands Delegate Methods
@@ -689,16 +713,14 @@
     [img release];
     
     // scrobble if we have a sessionToken
-    if ([[self scrobbler] isAuthorised]) {
+    if ([[self scrobbler] isAuthorised] && 
+        ([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultLastFMEnabled"] == YES)) {
       
       // cancel any timer currently running
-      if (scrobbleTimer != nil) {
-        if ([scrobbleTimer isValid]) [scrobbleTimer invalidate];
-        self.scrobbleTimer = nil;
-      }
+      [self cancelScrobble];
       
       // send now playing information
-      [[self scrobbler] sendNowPlayingArtist:artist andTrack:track];
+      [[self scrobbler] sendNowPlayingTrack:track andArtist:artist];
       
       // Send the actual played track after a period of time.
       // we currently don't know how long a track is so we have to
@@ -709,7 +731,7 @@
                             track, @"track",
                             artist, @"artist",
                             nil];
-      self.scrobbleTimer = [NSTimer scheduledTimerWithTimeInterval:120.0 // 2.5 minutes
+      self.scrobbleTimer = [NSTimer scheduledTimerWithTimeInterval:120.0 // 2 minutes
                                                             target:self
                                                           selector:@selector(scrobble:)
                                                           userInfo:dict

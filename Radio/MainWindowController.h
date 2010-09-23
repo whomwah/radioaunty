@@ -60,6 +60,7 @@
 - (void)refreshStation:(id)sender;
 - (void)fetchRADIO:(NSDictionary *)station;
 - (void)fetchAOD:(id)sender;
+- (void)cancelScrobble;
 - (void)changeStation:(id)sender;
 - (void)redrawEmp;
 - (void)buildStationsMenu;

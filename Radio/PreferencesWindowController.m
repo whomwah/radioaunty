@@ -14,6 +14,7 @@
 @synthesize scrobbler;
 @synthesize authButton;
 @synthesize lastFMLabel;
+@synthesize lastFMEnabled;
 
 - (id)init
 {
@@ -28,15 +29,14 @@
 	[scrobbler release];
   [authButton release];
   [lastFMLabel release];
+  [lastFMEnabled release];
 	
 	[super dealloc];
 }
 
 - (IBAction)authorise:(id)sender
 {
-  if ([[authButton title] isEqualToString:@"Continue"]) {
-    [scrobbler fetchWebServiceSession];
-  } else if ([[authButton title] isEqualToString:@"Un-Authorise"]) {
+  if ([[authButton title] isEqualToString:@"Un-Authorise"]) {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setValue:@"" forKey:@"DefaultLastFMSession"];
     [ud setValue:@"" forKey:@"DefaultLastFMUser"];
@@ -50,6 +50,9 @@
     
     // oh and clear the token from scrobbler
     [scrobbler setSessionToken:nil];
+    
+    // diable the enable button
+    [lastFMEnabled setEnabled:NO];
   } else {
     [scrobbler fetchRequestToken];
   }
@@ -62,6 +65,7 @@
   
   // if we have a non empty session token just show how to un-auth
   if (![session isEqual:@""]) {
+    [lastFMEnabled setEnabled:YES];
     [self.authButton setTitle:@"Un-Authorise"];
     [self.lastFMLabel setStringValue:@"Click to un-authorise this application"];
   }
@@ -72,9 +76,12 @@
     [self.lastFMLabel setStringValue:@"Click to authorise this application"];
   } else if ([[authButton title] isEqualToString:@"Continue"])
   {
-    [self.lastFMLabel setStringValue:@"Let's just finalise the setup."];
+    [scrobbler fetchWebServiceSession];
+    [self.lastFMLabel setStringValue:@"finalising the setup."];
+    [lastFMEnabled setEnabled:NO];
   } else if ([[authButton title] isEqualToString:@"Un-Authorise"])
   {
+    [lastFMEnabled setEnabled:YES];
     [self.lastFMLabel setStringValue:@"Click to un-authorise this application"];
   }
 }

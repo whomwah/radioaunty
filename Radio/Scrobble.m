@@ -64,17 +64,48 @@
 }
 
 
+- (void)commonInit
+{
+  protocolVersion       = @"2.0";
+  self.clientId         = @"tst";
+  self.clientVersion    = @"1.0";
+}
+
+
 - (id)initWithApiKey:(NSString *)apikey andSecret:(NSString *)secret
 {
   if (![super init]) return nil;
   
+  [self commonInit];
+  
+  if (!apikey || [apikey isEqual:@""] || !secret || [secret isEqual:@""]) {
+    @throw [NSException exceptionWithName:@"DSArgumentError" 
+                                   reason:@"initWithApiKey:andSecret: - api_key and secret required" 
+                                 userInfo:nil];    
+  };
+  
   self.apiKey           = apikey; 
   self.apiSecret        = secret;
-  self.protocolVersion  = @"1.2.1";
-  self.clientId         = @"tst";
-  self.clientVersion    = @"1.0";
   
-  handshake = YES;
+  return self;
+}
+
+
+- (id)initWithApiKey:(NSString *)apikey andSecret:(NSString *)secret andSession:(NSString*)session;
+{
+  if (![super init]) return nil;
+
+  [self commonInit];
+
+  if (!apikey || [apikey isEqual:@""] || !secret || [secret isEqual:@""] || !session || [session isEqual:@""]) {
+    @throw [NSException exceptionWithName:@"DSArgumentError" 
+                                   reason:@"initWithApiKey:andSecret:andSession: - api_key, secret and session required" 
+                                 userInfo:nil];    
+  };
+  
+  self.apiKey           = apikey; 
+  self.apiSecret        = secret;
+  self.sessionToken     = session;
   
   return self;
 }
@@ -102,6 +133,12 @@
 
 - (NSString*)sigForMethod:(NSString*)method withOptions:(NSDictionary*)options
 {
+  if (!method || [method isEqual:@""]) {
+    @throw [NSException exceptionWithName:@"DSArgumentError" 
+                                   reason:@"sigForMethod:withOptions:options - Method required" 
+                                 userInfo:nil];
+  }
+  
   // create tmp mutable storage
   NSMutableDictionary *opts = [[NSMutableDictionary alloc] initWithCapacity:2];
   
@@ -124,8 +161,6 @@
   
   // add the secret
   [result appendString:self.apiSecret];
-  
-  NSLog(@"api_sig: %@", result);
   
   // free some memory
   [opts release];
@@ -155,8 +190,18 @@
 
 - (void)scrobbleTrack:(NSString*)track andArtist:(NSString*)artist
 {  
-  // only attempt this is you can
-  if (![self isAuthorised]) return;
+  // A bit of error checking
+  if (![self isAuthorised]) {
+    @throw [NSException exceptionWithName:@"DSAuthorisationError" 
+                                   reason:@"scrobbleTrack:andArtist: - Not Authorised" 
+                                 userInfo:nil];    
+  };
+  
+  if (!track || [track isEqual:@""] || !artist || [artist isEqual:@""]) {
+    @throw [NSException exceptionWithName:@"DSArgumentError" 
+                                   reason:@"scrobbleTrack:andArtist: - Artist and Track required" 
+                                 userInfo:nil];
+  }
   
   // timestamp
   NSString *ts = [NSString stringWithFormat:@"%0.0f", [[NSDate date] timeIntervalSince1970]];
@@ -172,9 +217,24 @@
   // create the signature using the options
   NSString *sig = [self sigForMethod:@"track.scrobble" withOptions:opts]; 
   
+  // urlencode
+  NSString *a = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                    NULL,
+                                                                    (CFStringRef)artist,
+                                                                    NULL,
+                                                                    (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                    kCFStringEncodingUTF8 );
+  
+  NSString *t = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                    NULL,
+                                                                    (CFStringRef)track,
+                                                                    NULL,
+                                                                    (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                    kCFStringEncodingUTF8 );
+  
   // create the url
   NSString *params = [NSString stringWithFormat:LFM_UP_SCROBBLE, self.apiKey, 
-                      artist, track, self.sessionToken, sig, ts];
+                      a, t, self.sessionToken, sig, ts];
   
   // create the request and fetcher
   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:LFM_API_2_0]];
@@ -189,7 +249,6 @@
 
 - (void)scrobbleTrack:(GDataHTTPFetcher *)scrobbleTrack failedWithError:(NSError *)error
 {
-  NSLog(@"scrobbleTrack error: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);
   [[self delegate] scrobble:self didNotScrobble:error];
 }
 
@@ -206,10 +265,20 @@
 }
 
 
-- (void)sendNowPlayingArtist:(NSString*)artist andTrack:(NSString*)track
-{  
-  // only attempt this is you can
-  if (![self isAuthorised]) return;
+- (void)sendNowPlayingTrack:(NSString*)track andArtist:(NSString*)artist
+{    
+  // A bit of error checking
+  if (![self isAuthorised]) {
+    @throw [NSException exceptionWithName:@"DSAuthorisationError" 
+                                   reason:@"sendNowPlayingTrack:andArtist: - Not Authorised" 
+                                 userInfo:nil];    
+  };
+  
+  if (!track || [track isEqual:@""] || !artist || [artist isEqual:@""]) {
+    @throw [NSException exceptionWithName:@"DSArgumentError" 
+                                   reason:@"sendNowPlayingTrack:andArtist: - Artist and Track required" 
+                                 userInfo:nil];
+  }
   
   // create an options dictionary
   NSDictionary *opts = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -221,9 +290,24 @@
   // create the signature using the options
   NSString *sig = [self sigForMethod:@"user.updateNowPlaying" withOptions:opts]; 
   
+  // urlencode
+  NSString *a = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                    NULL,
+                                                                    (CFStringRef)artist,
+                                                                    NULL,
+                                                                    (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                    kCFStringEncodingUTF8 );
+  
+  NSString *t = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+                                                                    NULL,
+                                                                    (CFStringRef)track,
+                                                                    NULL,
+                                                                    (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                    kCFStringEncodingUTF8 );
+  
   // create the url
   NSString *params = [NSString stringWithFormat:LFM_UP_NOWPLAYING, self.apiKey, 
-                      artist, track, self.sessionToken, sig];
+                      a, t, self.sessionToken, sig];
 
   // create the request and fetcher
   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:LFM_API_2_0]];
@@ -238,7 +322,6 @@
 
 - (void)sendNowPlaying:(GDataHTTPFetcher *)sendNowPlaying failedWithError:(NSError *)error
 {
-  NSLog(@"sendNowPlaying error: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);
   [[self delegate] scrobble:self didNotSendNowPlaying:error];
 }
 
@@ -279,7 +362,6 @@
 
 - (void)tokenFetcher:(GDataHTTPFetcher *)tokenFetcher failedWithError:(NSError *)error
 {
-  NSLog(@"fetchRequestToken error: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);
   [[self delegate] scrobble:self didNotGetRequestToken:error];
 }
 
@@ -336,7 +418,6 @@
 
 - (void)sessionFetcher:(GDataHTTPFetcher *)tokenFetcher failedWithError:(NSError *)error
 {
-  NSLog(@"fetchWebServiceSession error: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);
   [[self delegate] scrobble:self didNotGetSessionToken:error];
 }
 
@@ -369,7 +450,9 @@
 - (NSString*)urlToAuthoriseUser
 {
   if (!tmpAuthToken) {
-    NSLog(@"Error: No tmp auth token present");
+    @throw [NSException exceptionWithName:@"DSTokenError" 
+                                   reason:@"urlToAuthoriseUser - No auth token found" 
+                                 userInfo:nil];
   }
   
   return [NSString stringWithFormat:LFM_AUTH, apiKey, tmpAuthToken];

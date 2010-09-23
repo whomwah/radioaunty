@@ -29,6 +29,8 @@
 	<string></string>
 	<key>DefaultLastFMSession</key>
 	<string></string>
+	<key>DefaultLastFMEnabled</key>
+	<true/>
 	<key>DefaultStation</key>
 	<integer>7</integer>
 	<key>Stations</key>
