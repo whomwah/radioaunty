@@ -14,7 +14,7 @@
 #import "LiveTextView.h"
 #import "AppDelegate.h"
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "dr_settings.h"
+#import "settings.h"
 #import "XMPPCapabilitiesCoreDataStorage.h"
 #import "XMPPCapabilities.h"
 #import "XMPPAdHocCommands.h"
@@ -32,7 +32,6 @@
 @synthesize xmppCapabilities;
 @synthesize pubsub;
 @synthesize anonJID;
-@synthesize scrobbleTimer;
 
 - (XMPPStream *)xmppStream
 {
@@ -147,7 +146,6 @@
   [xmppCapabilities release];
   [pubsub release];
   [liveTextView release];
-  [scrobbleTimer release];
   
 	[super dealloc];
 }
@@ -234,8 +232,7 @@
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"key"]];
   [self fetchNewSchedule:nil];
   
-  // cancel and scrobble timers
-  [self cancelScrobble];
+  [[self scrobbler] flushBuffer];
 }
 
 - (void)fetchAOD:(id)sender
@@ -253,8 +250,7 @@
   [self buildScheduleMenu];
   [self growl];
   
-  // cancel and scrobble timers
-  [self cancelScrobble];
+  [[self scrobbler] flushBuffer];
 }
 
 - (void)changeDockNetworkIconTo:(NSString *)service
@@ -584,28 +580,6 @@
 
 
 #pragma mark -
-#pragma mark Scrobble stuff
-#pragma mark -
-
-- (void)scrobble:(id)sender
-{
-  NSString *track  = [[sender userInfo] valueForKey:@"track"];
-  NSString *artist = [[sender userInfo] valueForKey:@"artist"];
-
-  [[self scrobbler] scrobbleTrack:track andArtist:artist];
-}
-
-- (void)cancelScrobble
-{
-  // cancel any timer currently running
-  if (scrobbleTimer != nil) {
-    if ([scrobbleTimer isValid]) [scrobbleTimer invalidate];
-    self.scrobbleTimer = nil;
-  }
-}
-
-
-#pragma mark -
 #pragma mark XMPPAdHocCommands Delegate Methods
 #pragma mark -
 
@@ -712,30 +686,22 @@
                                clickContext:nil];
     [img release];
     
-    // scrobble if we have a sessionToken
-    if ([[self scrobbler] isAuthorised] && 
-        ([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultLastFMEnabled"] == YES)) {
+    // has the user allowed the app to scrobble
+    if (([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultLastFMEnabled"] == YES)
+        && [[self scrobbler] isAuthorised]) {
       
-      // cancel any timer currently running
-      [self cancelScrobble];
+      // scrobble track and artist      
+      NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                              track, @"track",
+                              artist, @"artist",
+                              nil];
       
-      // send now playing information
-      [[self scrobbler] sendNowPlayingTrack:track andArtist:artist];
+      NSError *error = nil;      
+      [[self scrobbler] scrobbleWithParams:params error:&error];
       
-      // Send the actual played track after a period of time.
-      // we currently don't know how long a track is so we have to
-      // go buy the 240 limit requested by lastFM. I have rounded this
-      // down, due to radio edits generally being 3 minutes of less
-      
-      NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-                            track, @"track",
-                            artist, @"artist",
-                            nil];
-      self.scrobbleTimer = [NSTimer scheduledTimerWithTimeInterval:120.0 // 2 minutes
-                                                            target:self
-                                                          selector:@selector(scrobble:)
-                                                          userInfo:dict
-                                                           repeats:NO];
+      if (error) {
+        NSLog(@"Error! %@", [error localizedDescription]);
+      }
     }
   }
   

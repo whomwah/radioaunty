@@ -23,5 +23,6 @@
 @property (nonatomic, retain) NSButton *lastFMEnabled;
 
 - (IBAction)authorise:(id)sender;
+- (IBAction)scrobbleState:(id)sender;
 
 @end

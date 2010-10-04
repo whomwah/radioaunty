@@ -166,6 +166,7 @@
 		AE5E3C9312477ACC00C15403 /* Scrobble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrobble.h; sourceTree = "<group>"; };
 		AE5E3C9412477ACC00C15403 /* Scrobble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scrobble.m; sourceTree = "<group>"; };
 		AE5E4258124AA3AF00C15403 /* lastFM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastFM.png; sourceTree = "<group>"; };
+		AE5E4405124D0F7900C15403 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = settings.h; path = ../../../../configs/settings.h; sourceTree = SOURCE_ROOT; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966590EF6AC0300B029FE /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		AE69665A0EF6AC0300B029FE /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
@@ -265,7 +266,6 @@
 		AEE2780E11CA50A9008D9EC3 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = /usr/lib/libcrypto.dylib; sourceTree = "<absolute>"; };
 		AEE2781B11CA5248008D9EC3 /* DRNSString-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DRNSString-Utilities.h"; sourceTree = "<group>"; };
 		AEE2781C11CA5248008D9EC3 /* DRNSString-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DRNSString-Utilities.m"; sourceTree = "<group>"; };
-		AEE2781D11CA5248008D9EC3 /* dr_settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dr_settings.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,7 +471,7 @@
 		AE71F9F50F694D1A00577A56 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AEE2781D11CA5248008D9EC3 /* dr_settings.h */,
+				AE5E4405124D0F7900C15403 /* settings.h */,
 			);
 			name = Settings;
 			sourceTree = "<group>";

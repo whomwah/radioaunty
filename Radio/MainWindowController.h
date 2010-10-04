@@ -21,7 +21,8 @@
 
 @interface MainWindowController : NSWindowController {
 	IBOutlet NSView *drMainView;
-  IBOutlet NSToolbar *toolBar;
+  IBOutlet NSToolbar *toolBar;  
+  
   LiveTextView *liveTextView;
   
   NSDockTile *dockTile;
@@ -39,8 +40,6 @@
   
   XMPPCapabilities *xmppCapabilities;
   XMPPPubSub *pubsub;
-  
-  NSTimer *scrobbleTimer;
 }
 
 @property (nonatomic, retain) NSTimer *scheduleTimer;
@@ -50,7 +49,6 @@
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, retain) XMPPPubSub *pubsub;
 @property (nonatomic, copy) NSString *anonJID;
-@property (nonatomic, retain) NSTimer *scrobbleTimer;
 
 - (NSString *)liveOrNotText;
 - (void)growl;
@@ -60,7 +58,6 @@
 - (void)refreshStation:(id)sender;
 - (void)fetchRADIO:(NSDictionary *)station;
 - (void)fetchAOD:(id)sender;
-- (void)cancelScrobble;
 - (void)changeStation:(id)sender;
 - (void)redrawEmp;
 - (void)buildStationsMenu;

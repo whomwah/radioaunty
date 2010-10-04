@@ -11,6 +11,7 @@
 #import "PreferencesWindowController.h"
 #import "XMPP.h"
 #import "Scrobble.h"
+#import "settings.h"
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
 // SCNetworkConnectionFlags was renamed to SCNetworkReachabilityFlags in 10.6
@@ -64,9 +65,10 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
     xmppReconnect = [[XMPPReconnect alloc] initWithStream:xmppStream];
     
     // create the lastFM scobbling client
-    scrobbler = [[Scrobble alloc] initWithApiKey:@"88f73b675f92581846cbd666b6a1d861" 
-                                       andSecret:@"f65c9a148a07c9f6cca912890bae1cbd"];
+    scrobbler = [[Scrobble alloc] initWithApiKey:DR_LASTFM_APIKEY andSecret:DR_LASTFM_SECRET];
     [scrobbler setSessionToken:[ud objectForKey:@"DefaultLastFMSession"]];
+    [scrobbler setSessionUser:[ud objectForKey:@"DefaultLastFMUser"]];
+    [scrobbler setClientId:@"aty"];
 	}
 	return self;
 }
@@ -166,8 +168,9 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 
 - (void)scrobbleDidGetRequestToken:(Scrobble*)sender
 {
-  // first set the auth button in preferences to the next state
-  [[preferencesWindowController authButton] setTitle:@"Continue"];
+  // we set the button text so we have a hook when the
+  // response comes back ok
+  [[preferencesWindowController authButton] setTitle:@"loading..."];
   
   // You can now send the user off to authorise
   NSURL *url = [NSURL URLWithString:[sender urlToAuthoriseUser]];
@@ -183,7 +186,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 
 - (void)scrobbleDidGetSessionToken:(Scrobble*)sender
 {  
-  // store them for later use
+  // store the credentials for later use
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
   [ud setValue:sender.sessionToken forKey:@"DefaultLastFMSession"];
   [ud setValue:sender.sessionUser forKey:@"DefaultLastFMUser"];
@@ -201,8 +204,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
   NSString *errorStr = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
   [[preferencesWindowController lastFMLabel] setStringValue:errorStr];
   
-  // reset all the bits and pieces
-  
+  // Clear any stored credentials
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
   [ud setValue:@"" forKey:@"DefaultLastFMSession"];
   [ud setValue:@"" forKey:@"DefaultLastFMUser"];
@@ -210,15 +212,23 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
   
   // adjust the preferences to reflect authorisation
   [[preferencesWindowController authButton] setTitle:@"Authorise"];
+  [[preferencesWindowController lastFMLabel] setStringValue:@"Click to authorise this application"];
   [[preferencesWindowController lastFMEnabled] setEnabled:NO];
 }
 
-- (void)scrobble:(Scrobble*)sender didSendNowPlaying:(NSDictionary*)response
+- (void)scrobble:(Scrobble*)sender didNotDoScrobbleHandshake:(NSError*)error
+{
+  // adjust the preferences to reflect error
+  NSString *errorStr = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
+  NSLog(@"HandshakeError: %@", errorStr);
+}
+
+- (void)scrobble:(Scrobble*)sender didSendNowPlaying:(NSString*)response;
 {
   NSLog(@"NowPlaying: %@", response);
 }
 
-- (void)scrobble:(Scrobble*)sender didScrobble:(NSDictionary*)response
+- (void)scrobble:(Scrobble*)sender didScrobble:(NSString*)response
 {
   NSLog(@"Scrobbled: %@", response);  
 }

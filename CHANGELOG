@@ -1,3 +1,10 @@
+*2.0.1* (Oct 4th, 2010)
+
+* Reverted to using the 1.2.1 lastFM Api
+  The beta version I was using, is not ready for
+  prime time just yet.
+* A few bug fixes
+
 *2.0.0* (Sept 23rd, 2010)
 
 * Added BBC LiveText support
