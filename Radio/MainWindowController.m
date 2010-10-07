@@ -59,7 +59,7 @@
 	[dockTile display];
   
   // setup of the ToolBar
-  
+  liveTextView = [[LiveTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 26)];
 	[toolBar insertItemWithItemIdentifier:@"livetext" atIndex:0];
   
   empViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
@@ -162,8 +162,8 @@
   [pubsub subscribeToNode:node withOptions:nil];
   NSLog(@"subscribing to : %@", node);  
   
-  [liveTextView.textArea setStringValue:@""];
-  [liveTextView.progressIndictor startAnimation:nil];
+  liveTextView.text = nil;
+  [liveTextView progressIndictorOn];
 }
 
 - (void)unsubscribeToLiveTextChannel:(NSString*)channel
@@ -173,8 +173,8 @@
   [pubsub unsubscribeFromNode:node];
   NSLog(@"unsubscribing from : %@", node);
   
-  [liveTextView.textArea setStringValue:@""];
-  [liveTextView.progressIndictor stopAnimation:nil];
+  liveTextView.text = nil;
+  [liveTextView progressIndictorOff];
 }
 
 - (void)switchSubscriptionFrom:(NSString*)previous to:(NSString*)next
@@ -197,18 +197,14 @@
 - (NSToolbarItem *)toolbar:(NSToolbar *)aToolbar 
      itemForItemIdentifier:(NSString *)itemIdentifier 
  willBeInsertedIntoToolbar:(BOOL)flag
-{  
-  NSToolbarItem *liveTextToolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier:@"livetext"] autorelease];
-  
-  liveTextView = [[LiveTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 26)];
+{      
+  NSToolbarItem *liveTextToolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier:@"livetext"] autorelease];  
   [liveTextToolbarItem setView:liveTextView];
-  
-  // preload livetext
-  [liveTextView.textArea setStringValue:@""];
-  [liveTextView.progressIndictor startAnimation:nil];
   
 	return liveTextToolbarItem;
 }
+
+
 
 
 #pragma mark -
@@ -219,9 +215,8 @@
 {  
   self.windowTitle = @"Loading Schedule...";
   
-  // clear livetext
-  [liveTextView.textArea setStringValue:@""];
-  [liveTextView.progressIndictor startAnimation:nil];
+  liveTextView.text = nil;
+  [liveTextView progressIndictorOn];
   
   [self switchSubscriptionFrom:[currentStation objectForKey:@"livetext_node"] 
                             to:[station objectForKey:@"livetext_node"]];
@@ -237,8 +232,8 @@
 
 - (void)fetchAOD:(id)sender
 {
-  [liveTextView.textArea setStringValue:@"Livetext not available"];
-  [liveTextView.progressIndictor stopAnimation:nil];
+  liveTextView.text = @"Livetext not available";
+  [liveTextView progressIndictorOff];
   
   [self stopScheduleTimer];
   BBCBroadcast *broadcast = [currentSchedule.broadcasts objectAtIndex:[sender tag]];
@@ -564,8 +559,8 @@
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender
 {	
   NSLog(@"XMPP Connection has disconnected");
-  [liveTextView.progressIndictor stopAnimation:nil];
-  [liveTextView.textArea setStringValue:DR_CONTENT_UNAVAILABLE];
+  liveTextView.text = DR_CONTENT_UNAVAILABLE;
+  [liveTextView progressIndictorOff];
 }
 
 - (void)xmppStreamWasToldToDisconnect:(XMPPStream *)sender
@@ -674,17 +669,6 @@
     NSString *track  = [string substringWithRange:NSMakeRange(0,split.location)];
     NSString *artist = [string substringWithRange:NSMakeRange(split.location+split.length,
                                                               [string length]-split.location-split.length-1)];
-      
-    // growl the now playing information
-    NSImage *img = [[NSImage alloc] initWithData:[dockIconView dataWithPDFInsideRect:[dockIconView frame]]];
-    [GrowlApplicationBridge notifyWithTitle:@"Now Playing:"
-                                description:[NSString stringWithFormat:@"%@ by %@", track, artist]
-                           notificationName:@"Now playing"
-                                   iconData:[img TIFFRepresentation]
-                                   priority:1
-                                   isSticky:NO
-                               clickContext:nil];
-    [img release];
     
     // has the user allowed the app to scrobble
     if (([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultLastFMEnabled"] == YES)
@@ -694,12 +678,13 @@
       NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                               track, @"track",
                               artist, @"artist",
+                              [currentStation objectForKey:@"key"], @"network",
                               nil];
       
       NSError *error = nil;      
-      [[self scrobbler] scrobbleWithParams:params error:&error];
+      BOOL success = [[self scrobbler] scrobbleWithParams:params error:&error];
       
-      if (error) {
+      if (!success) {
         NSLog(@"Error! %@", [error localizedDescription]);
       }
     }
@@ -707,12 +692,9 @@
   
   NSLog(@"Message: %@", txt);
   
-  // display information
-  
-  [liveTextView.progressIndictor stopAnimation:nil];
-  
   if (liveTextView) {
-    [liveTextView.textArea setStringValue:txt];
+    liveTextView.text = txt;
+    [liveTextView progressIndictorOff];
   }
 }
 

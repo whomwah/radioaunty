@@ -9,12 +9,14 @@
 #import "Scrobble.h"
 #import "JSON.h"
 #import "GDataHTTPFetcher.h"
+#import "Play.h"
 
 #define LFM_HANDSHAKE       @"http://post.audioscrobbler.com/?hs=true&p=%@&c=%@&v=%@&u=%@&t=%@&a=%@&api_key=%@&sk=%@"
 #define LFM_NOWPLAYING      @"s=%@&a=%@&t=%@&b=%@&l=%@&n=%@&m=%@"
 #define LFM_SCROBBLE        @"s=%@&a[0]=%@&t[0]=%@&i[0]=%@&o[0]=%@&r[0]=%@&l[0]=%@&b[0]=%@&n[0]=%@&m[0]=%@"
 #define LFM_REQUEST_TOKEN   @"http://ws.audioscrobbler.com/2.0/?method=auth.gettoken&api_key=%@&api_sig=%@&format=json"
 #define LFM_REQUEST_SESSION @"http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=%@&token=%@&api_sig=%@&format=json"
+#define LFM_ARTIST_DATA     @"http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=%@&artist=%@&username=%@&format=json"
 #define LFM_AUTH            @"http://www.last.fm/api/auth/?api_key=%@&token=%@"
 #define LFM_UNAUTH          @"http://www.last.fm/settings/applications"
 
@@ -33,6 +35,7 @@ enum {
 - (void)sendNowPlaying;
 - (void)scheduleScrobble;
 - (void)sendScrobble:(id)sender;
+- (void)addToHistory:(NSDictionary*)dict;
 @end
 
 @implementation Scrobble
@@ -521,7 +524,6 @@ enum {
   [sendNowPlaying beginFetchWithDelegate:self
                        didFinishSelector:@selector(sendNowPlaying:finishedWithData:)
                          didFailSelector:@selector(sendNowPlaying:failedWithError:)];
-  NSLog(@"Sending Now Playing");
 }
 
 - (void)sendNowPlaying:(GDataHTTPFetcher *)sendNowPlaying failedWithError:(NSError *)error
@@ -575,8 +577,6 @@ enum {
                        didFinishSelector:@selector(sendSubmission:finishedWithData:)
                          didFailSelector:@selector(sendSubmission:failedWithError:)];
   
-  NSLog(@"Sending Scrobble");
-  
   [self clearBuffer];
 }
 
@@ -597,7 +597,7 @@ enum {
   [result_string release];
 }
 
-- (void)scrobbleWithParams:(NSDictionary*)params error:(NSError **)errPtr
+- (BOOL)scrobbleWithParams:(NSDictionary*)params error:(NSError **)errPtr
 {
   if (![self isAuthorised] && errPtr)
   {
@@ -606,7 +606,7 @@ enum {
     
     *errPtr = [NSError errorWithDomain:@"Scrobble" code:-1 userInfo:info];
     
-    return;
+    return NO;
   }
   
   if (!params && errPtr)
@@ -616,7 +616,7 @@ enum {
     
     *errPtr = [NSError errorWithDomain:@"Scrobble" code:-1 userInfo:info];
     
-    return;
+    return NO;
   }
   
   [self flushBuffer];
@@ -625,12 +625,66 @@ enum {
   [buffer addEntriesFromDictionary:params];
   [buffer setObject:[NSDate date] forKey:@"timestamp"];
   self.scrobbleBuffer = buffer;
-  [scrobbleHistory addObject:buffer];
+  [self addToHistory:buffer];
   [buffer release];
   
   [self scheduleScrobble];
   
-  //NSLog(@"history: %@", scrobbleHistory);
+  return YES;
+}
+
+#pragma mark -
+#pragma mark fetch now playing data from lastfm and add to history
+#pragma mark -
+
+- (void)addToHistory:(NSDictionary*)dict
+{
+  NSDictionary *d = [NSDictionary dictionaryWithDictionary:dict];
+  NSString *a = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, 
+                                                                    (CFStringRef)[d objectForKey:@"artist"], NULL, 
+                                                                    (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8 );
+  
+  NSString *urlStr = [NSString stringWithFormat:LFM_ARTIST_DATA, self.apiKey, a, self.sessionUser];
+  NSURL *url = [NSURL URLWithString:urlStr];
+  [a release];
+  
+  NSURLRequest *request = [NSURLRequest requestWithURL:url];
+  GDataHTTPFetcher *fetchInfo = [GDataHTTPFetcher httpFetcherWithRequest:request];
+  [fetchInfo setUserData:d];
+  [fetchInfo beginFetchWithDelegate:self
+                       didFinishSelector:@selector(fetchInfo:finishedWithData:)
+                         didFailSelector:@selector(fetchInfo:failedWithError:)];
+}
+
+- (void)fetchInfo:(GDataHTTPFetcher *)fetchInfo failedWithError:(NSError *)error
+{
+  [[self delegate] scrobble:self didNotAddToHistory:error];
+}
+
+- (void)fetchInfo:(GDataHTTPFetcher *)fetchInfo finishedWithData:(NSData *)retrievedData
+{
+  SBJSON *parser = [[SBJSON alloc] init];
+  NSString *result_string = [[NSString alloc] initWithData:retrievedData encoding:NSUTF8StringEncoding];    
+  NSDictionary *result = [parser objectWithString:result_string error:nil];
+  
+  Play *play = [[Play alloc] init];
+  play.artist = [[fetchInfo userData] objectForKey:@"artist"];
+  play.track = [[fetchInfo userData] objectForKey:@"track"];
+  play.timestamp = [[fetchInfo userData] objectForKey:@"timestamp"];
+  
+  if (result) {
+    NSDictionary *artist = [result objectForKey:@"artist"];
+    NSString *small_image = [[[artist objectForKey:@"image"] objectAtIndex:0] objectForKey:@"#text"];
+    play.small_image = small_image;
+    play.mbid = [artist objectForKey:@"mbid"];
+  }
+  
+  [scrobbleHistory insertObject:play atIndex:0];
+  [[self delegate] scrobble:self didAddToHistory:play];
+  
+  [play release];
+  [parser release];
+  [result_string release];
 }
 
 @end

@@ -3,7 +3,7 @@
 //  Radio
 //
 //  Created by Duncan Robertson on 10/09/2010.
-//  Copyright 2010 whomwah.com All rights reserved.
+//  Copyright 2010 whomwah All rights reserved.
 //
 
 #import "LiveTextView.h"
@@ -13,6 +13,7 @@
 
 @synthesize textArea;
 @synthesize progressIndictor;
+@synthesize text;
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -46,8 +47,25 @@
 	[super dealloc];
 }
 
+- (void)progressIndictorOn
+{
+  [progressIndictor startAnimation:nil];
+  [self setNeedsDisplay:YES];
+}
+
+- (void)progressIndictorOff
+{
+  [progressIndictor stopAnimation:nil];
+  [self setNeedsDisplay:YES];
+}
+
 - (void)drawRect:(NSRect)rect
 {
+  if (text) {
+    [textArea setStringValue:text];
+  } else {
+    [textArea setStringValue:@""];
+  }
 }
 
 @end

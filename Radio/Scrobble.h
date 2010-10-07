@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <CommonCrypto/CommonDigest.h>
 
+@class Play;
+
 @protocol ScrobbleDelegate;
 
 @interface Scrobble : NSObject {
@@ -56,7 +58,7 @@
 - (void)flushBuffer;
 - (void)clearBuffer;
 - (void)clearSession;
-- (void)scrobbleWithParams:(NSDictionary*)params error:(NSError **)errPtr;
+- (BOOL)scrobbleWithParams:(NSDictionary*)params error:(NSError **)errPtr;
 
 @end
 
@@ -71,4 +73,6 @@
 - (void)scrobble:(Scrobble*)sender didScrobble:(NSString*)response;
 - (void)scrobble:(Scrobble*)sender didNotScrobble:(NSError*)error;
 - (void)scrobble:(Scrobble*)sender didNotDoScrobbleHandshake:(NSError*)error;
+- (void)scrobble:(Scrobble*)sender didAddToHistory:(Play*)item;
+- (void)scrobble:(Scrobble*)sender didNotAddToHistory:(NSError*)error;
 @end

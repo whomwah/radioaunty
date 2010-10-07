@@ -9,8 +9,10 @@
 #import "AppDelegate.h"
 #import "MainWindowController.h"
 #import "PreferencesWindowController.h"
+#import "HistoryWindowController.h"
 #import "XMPP.h"
 #import "Scrobble.h"
+#import "Play.h"
 #import "settings.h"
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
@@ -84,7 +86,6 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 	[[drMainWindowController window] makeKeyAndOrderFront:self];
 }
 
-
 - (void)dealloc
 {
 	[drMainWindowController release];
@@ -117,7 +118,6 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 	return YES;
 }
 
-
 - (void)displayPreferenceWindow:(id)sender
 {
 	if (!preferencesWindowController) {
@@ -126,6 +126,18 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
   
   [preferencesWindowController setScrobbler:scrobbler];
 	[preferencesWindowController showWindow:self];
+}
+
+
+- (void)displayHistoryWindow:(id)sender
+{
+	if (!historyWindowController) {
+    historyWindowController = [[HistoryWindowController alloc] init];
+	}
+  
+  historyWindowController.historyItems = scrobbler.scrobbleHistory;
+  [historyWindowController reloadData];  
+	[historyWindowController showWindow:self];
 }
 
 
@@ -231,6 +243,30 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 - (void)scrobble:(Scrobble*)sender didScrobble:(NSString*)response
 {
   NSLog(@"Scrobbled: %@", response);  
+}
+
+- (void)scrobble:(Scrobble*)sender didNotAddToHistory:(NSError*)error
+{
+  NSString *errorStr = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
+  NSLog(@"didNotAddToHistory: %@", errorStr);  
+}
+
+- (void)scrobble:(Scrobble*)sender didAddToHistory:(Play*)play
+{
+  if (historyWindowController) { 
+    historyWindowController.historyItems = scrobbler.scrobbleHistory;
+    [historyWindowController reloadData];
+  }
+  
+  NSImage *img = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:play.small_image]];  
+  [GrowlApplicationBridge notifyWithTitle:play.artist
+                              description:play.track
+                         notificationName:@"Now playing"
+                                 iconData:[img TIFFRepresentation]
+                                 priority:1
+                                 isSticky:NO
+                             clickContext:nil];
+  [img release];
 }
 
 @end

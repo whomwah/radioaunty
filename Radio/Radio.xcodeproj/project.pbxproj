@@ -75,6 +75,10 @@
 		AEA0B4410EF7F01600137DAA /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEA0B4520EF7F09400137DAA /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA0B4510EF7F09400137DAA /* PreferencesWindowController.m */; };
 		AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */; };
+		AEA67EB8125A0BE30038B4C7 /* HistoryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA67EB7125A0BE30038B4C7 /* HistoryWindowController.m */; };
+		AEA67EBA125A0C6B0038B4C7 /* History.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA67EB9125A0C6B0038B4C7 /* History.xib */; };
+		AEA68039125A2DA90038B4C7 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA68038125A2DA90038B4C7 /* MyCell.m */; };
+		AEA685CE125C76660038B4C7 /* Play.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA685CD125C76660038B4C7 /* Play.m */; };
 		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEC16F210F68334800A38C90 /* DockView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC16F200F68334800A38C90 /* DockView.m */; };
 		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
@@ -247,6 +251,13 @@
 		AEA0B4500EF7F09400137DAA /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
 		AEA0B4510EF7F09400137DAA /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
 		AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		AEA67EB6125A0BE30038B4C7 /* HistoryWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryWindowController.h; sourceTree = "<group>"; };
+		AEA67EB7125A0BE30038B4C7 /* HistoryWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryWindowController.m; sourceTree = "<group>"; };
+		AEA67EB9125A0C6B0038B4C7 /* History.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = History.xib; sourceTree = "<group>"; };
+		AEA68037125A2DA90038B4C7 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
+		AEA68038125A2DA90038B4C7 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+		AEA685CC125C76660038B4C7 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
+		AEA685CD125C76660038B4C7 /* Play.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play.m; sourceTree = "<group>"; };
 		AEC16F1F0F68334800A38C90 /* DockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockView.h; sourceTree = "<group>"; };
 		AEC16F200F68334800A38C90 /* DockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockView.m; sourceTree = "<group>"; };
 		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
@@ -299,6 +310,8 @@
 				AE6966700EF6AD1800B029FE /* EmpViewController.m */,
 				AEA0B4500EF7F09400137DAA /* PreferencesWindowController.h */,
 				AEA0B4510EF7F09400137DAA /* PreferencesWindowController.m */,
+				AEA67EB6125A0BE30038B4C7 /* HistoryWindowController.h */,
+				AEA67EB7125A0BE30038B4C7 /* HistoryWindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +387,7 @@
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
 				AE6966850EF6AE9700B029FE /* MainWindow.xib */,
 				AE69668E0EF6AF3D00B029FE /* EmpView.xib */,
+				AEA67EB9125A0C6B0038B4C7 /* History.xib */,
 				AEA0B43C0EF7EFCE00137DAA /* Preferences.xib */,
 				AE73A0020EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict */,
 				AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */,
@@ -462,6 +476,7 @@
 		AE5E3C9212477AB200C15403 /* lastFM */ = {
 			isa = PBXGroup;
 			children = (
+				AEA685CB125C681D0038B4C7 /* Models */,
 				AE5E3C9312477ACC00C15403 /* Scrobble.h */,
 				AE5E3C9412477ACC00C15403 /* Scrobble.m */,
 			);
@@ -671,12 +686,23 @@
 		AEA0B0F40EF7B44600137DAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AEA68037125A2DA90038B4C7 /* MyCell.h */,
+				AEA68038125A2DA90038B4C7 /* MyCell.m */,
 				AEC16F1F0F68334800A38C90 /* DockView.h */,
 				AEC16F200F68334800A38C90 /* DockView.m */,
 				AE2B1610123A125E0028D2D1 /* LiveTextView.h */,
 				AE2B1611123A125E0028D2D1 /* LiveTextView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		AEA685CB125C681D0038B4C7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AEA685CC125C76660038B4C7 /* Play.h */,
+				AEA685CD125C76660038B4C7 /* Play.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		AEDD16C40F0BF062009F81AD /* Images */ = {
@@ -774,6 +800,7 @@
 				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
 				AE49A90011AE65C90049C993 /* aod.html in Resources */,
 				AE5E4259124AA3AF00C15403 /* lastFM.png in Resources */,
+				AEA67EBA125A0C6B0038B4C7 /* History.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +862,9 @@
 				AE2B1612123A125E0028D2D1 /* LiveTextView.m in Sources */,
 				AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */,
 				AE5E3C9512477ACC00C15403 /* Scrobble.m in Sources */,
+				AEA67EB8125A0BE30038B4C7 /* HistoryWindowController.m in Sources */,
+				AEA68039125A2DA90038B4C7 /* MyCell.m in Sources */,
+				AEA685CE125C76660038B4C7 /* Play.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

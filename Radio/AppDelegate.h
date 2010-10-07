@@ -13,6 +13,7 @@
 
 @class MainWindowController;
 @class PreferencesWindowController;
+@class HistoryWindowController;
 @class XMPPReconnect;
 @class XMPPStream;
 @class Scrobble;
@@ -21,6 +22,7 @@
 {
 	MainWindowController *drMainWindowController;
   PreferencesWindowController *preferencesWindowController;
+  HistoryWindowController *historyWindowController;
 	
 	XMPPStream *xmppStream;
 	XMPPReconnect *xmppReconnect;
@@ -32,6 +34,7 @@
 @property (nonatomic, readonly) Scrobble *scrobbler;
 
 - (IBAction)displayPreferenceWindow:(id)sender;
+- (void)displayHistoryWindow:(id)sender;
 - (IBAction)visitIplayerSite:(id)sender;
 - (IBAction)visitTermsAndCondSite:(id)sender;
 - (IBAction)visitHelpSite:(id)sender;
