@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 2.0.1 (lastfm update and bug fixes)</title>
+            <title>Version 2.0.2 (config changes)</title>
 						<sparkle:releaseNotesLink>
               http://whomwah.github.com/radioaunty/changelog.html 
 						</sparkle:releaseNotesLink>
-            <pubDate>Mon, 4 Oct 2010 11:00:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.0.1.dmg" sparkle:shortVersionString="2.0" sparkle:version="2.0.1" length="948893" type="application/octet-stream" sparkle:dsaSignature="MCwCFEmDrZy8nAj9eVJCXqpje6h65mUYAhQWYFNsLVZka2gDAYCaU4zC6TDLDw==" />
+            <pubDate>Fri, 8 Oct 2010 11:00:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.0.2.dmg" sparkle:shortVersionString="2.0" sparkle:version="2.0.2" length="959214" type="application/octet-stream" sparkle:dsaSignature="MCwCFAqfeEVM+L4YRxLxcDlbj1ZryhEfAhQSJqPYMsBrHzkMcsAeeXORwDXHkA==" />
          </item>
    </channel>
 </rss>
