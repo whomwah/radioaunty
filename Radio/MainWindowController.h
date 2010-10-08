@@ -25,7 +25,6 @@
   
   LiveTextView *liveTextView;
   
-  NSDockTile *dockTile;
   NSDictionary *currentStation;
   NSArray *stations;
   NSString *windowTitle;

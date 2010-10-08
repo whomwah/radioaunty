@@ -12,7 +12,7 @@ NSString *const PlayDefaultSmallImage = @"http://cdn.last.fm/flatness/catalogue/
 
 @implementation Play
 
-@synthesize artist, track, mbid, small_image, timestamp;
+@synthesize artist, track, mbid, small_image, timestamp, signature;
 
 - (void)dealloc
 {  

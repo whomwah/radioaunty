@@ -33,20 +33,37 @@
 @synthesize pubsub;
 @synthesize anonJID;
 
+/**
+ * Gives us a hook to the xmmpStream object setup
+ * in the AppDelegate
+ **/
+
 - (XMPPStream *)xmppStream
 {
 	return [[NSApp delegate] xmppStream];
 }
+
+/**
+ * Gives us a hook to the scrobble object setup
+ * in the AppDelegate
+ **/
 
 - (Scrobble *)scrobbler
 {
 	return [[NSApp delegate] scrobbler];
 }
 
+/**
+ * Lots of setup going on here
+ **/
+
 - (void)awakeFromNib
 {
+  // fetch out the user defaults data, as we'll be using it a lot
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-  dockTile = [NSApp dockTile];
+  
+  // give ourself easy access to the dock tile
+  NSDockTile *dockTile = [NSApp dockTile];
   stations = [ud arrayForKey:@"Stations"];
   currentStation = [stations objectAtIndex:[ud integerForKey:@"DefaultStation"]];
   
@@ -55,8 +72,8 @@
   dockIconView = [[DockView alloc] initWithFrame:
                           NSMakeRect(0, 0, dockTile.size.width, dockTile.size.height) 
                           withKey:[currentStation objectForKey:@"key"]];
-  [dockTile setContentView:dockIconView];
-	[dockTile display];
+  [[NSApp dockTile] setContentView:dockIconView];
+	[[NSApp dockTile] display];
   
   // setup of the ToolBar
   liveTextView = [[LiveTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 26)];
@@ -259,7 +276,7 @@
     [dockIconView setShowLastFM:NO];
   }
   
-	[dockTile display];
+	[[NSApp dockTile] display];
 }
 
 - (void)fetchNewSchedule:(id)sender
@@ -641,7 +658,9 @@
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveError:(XMPPIQ *)iq
 {
-  NSLog(@"pubsub error");
+  NSLog(@"pubsub error: %@", iq);
+  liveTextView.text = DR_CONTENT_UNAVAILABLE;
+  [liveTextView progressIndictorOff];
 }
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveResult:(XMPPIQ *)iq

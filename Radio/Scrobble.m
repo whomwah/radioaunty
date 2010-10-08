@@ -671,6 +671,8 @@ enum {
   play.artist = [[fetchInfo userData] objectForKey:@"artist"];
   play.track = [[fetchInfo userData] objectForKey:@"track"];
   play.timestamp = [[fetchInfo userData] objectForKey:@"timestamp"];
+  // simple one based on the artist and track
+  play.signature = [self toMD5:[NSString stringWithFormat:@"%@%@", play.track, play.artist]];
   
   if (result) {
     NSDictionary *artist = [result objectForKey:@"artist"];
@@ -679,7 +681,16 @@ enum {
     play.mbid = [artist objectForKey:@"mbid"];
   }
   
-  [scrobbleHistory insertObject:play atIndex:0];
+  BOOL match = NO;
+  for (Play *p in scrobbleHistory) {
+    if ([p.signature isEqualToString:play.signature]) {
+      match = YES;
+      break;
+    }
+  }
+  
+  if (!match) [scrobbleHistory insertObject:play atIndex:0];
+  
   [[self delegate] scrobble:self didAddToHistory:play];
   
   [play release];

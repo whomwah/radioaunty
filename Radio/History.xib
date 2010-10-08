@@ -208,7 +208,7 @@
 								<int key="NSCellFlags2">268600320</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="26"/>
-								<string key="NSPlaceholderString">add keywords filter results</string>
+								<string key="NSPlaceholderString">type to filter results</string>
 								<reference key="NSControlView" ref="754063160"/>
 								<bool key="NSDrawsBackground">YES</bool>
 								<int key="NSTextBezelStyle">1</int>

@@ -14,6 +14,7 @@
   NSString *track;
   NSString *mbid;
   NSString *small_image;
+  NSString *signature;
   NSDate *timestamp;
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic, copy) NSString *track;
 @property (nonatomic, copy) NSString *mbid;
 @property (nonatomic, copy) NSString *small_image;
+@property (nonatomic, copy) NSString *signature;
 @property (nonatomic, retain) NSDate *timestamp;
 
 @end
