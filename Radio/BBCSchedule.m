@@ -72,6 +72,8 @@
 
 - (void)fetch:(NSURL *)url
 {
+  NSLog(@"url: %@", [url absoluteURL]);
+  
   NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];

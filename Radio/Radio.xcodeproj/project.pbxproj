@@ -16,6 +16,64 @@
 		AE2B0FB51234ED170028D2D1 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B0FB41234ED170028D2D1 /* libresolv.dylib */; };
 		AE2B1612123A125E0028D2D1 /* LiveTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B1611123A125E0028D2D1 /* LiveTextView.m */; };
 		AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */; };
+		AE320D7112674D5800EE3488 /* bbc_1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3812674D5700EE3488 /* bbc_1xtra.png */; };
+		AE320D7212674D5800EE3488 /* bbc_6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3912674D5700EE3488 /* bbc_6music.png */; };
+		AE320D7312674D5800EE3488 /* bbc_7.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3A12674D5700EE3488 /* bbc_7.png */; };
+		AE320D7412674D5800EE3488 /* bbc_asian_network.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3B12674D5700EE3488 /* bbc_asian_network.png */; };
+		AE320D7512674D5800EE3488 /* bbc_london.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3C12674D5700EE3488 /* bbc_london.png */; };
+		AE320D7612674D5800EE3488 /* bbc_radio_berkshire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3D12674D5700EE3488 /* bbc_radio_berkshire.png */; };
+		AE320D7712674D5800EE3488 /* bbc_radio_bristol.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3E12674D5700EE3488 /* bbc_radio_bristol.png */; };
+		AE320D7812674D5800EE3488 /* bbc_radio_cambridge.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3F12674D5700EE3488 /* bbc_radio_cambridge.png */; };
+		AE320D7912674D5800EE3488 /* bbc_radio_cornwall.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4012674D5700EE3488 /* bbc_radio_cornwall.png */; };
+		AE320D7A12674D5800EE3488 /* bbc_radio_coventry_warwickshire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4112674D5700EE3488 /* bbc_radio_coventry_warwickshire.png */; };
+		AE320D7B12674D5800EE3488 /* bbc_radio_cumbria.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4212674D5700EE3488 /* bbc_radio_cumbria.png */; };
+		AE320D7C12674D5800EE3488 /* bbc_radio_cymru.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4312674D5700EE3488 /* bbc_radio_cymru.png */; };
+		AE320D7D12674D5800EE3488 /* bbc_radio_derby.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4412674D5700EE3488 /* bbc_radio_derby.png */; };
+		AE320D7E12674D5800EE3488 /* bbc_radio_devon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4512674D5700EE3488 /* bbc_radio_devon.png */; };
+		AE320D7F12674D5800EE3488 /* bbc_radio_essex.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4612674D5700EE3488 /* bbc_radio_essex.png */; };
+		AE320D8012674D5800EE3488 /* bbc_radio_five_live.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4712674D5700EE3488 /* bbc_radio_five_live.png */; };
+		AE320D8112674D5800EE3488 /* bbc_radio_five_live_sports_extra.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4812674D5700EE3488 /* bbc_radio_five_live_sports_extra.png */; };
+		AE320D8212674D5800EE3488 /* bbc_radio_four.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4912674D5700EE3488 /* bbc_radio_four.png */; };
+		AE320D8312674D5800EE3488 /* bbc_radio_foyle.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4A12674D5700EE3488 /* bbc_radio_foyle.png */; };
+		AE320D8412674D5800EE3488 /* bbc_radio_gloucestershire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4B12674D5700EE3488 /* bbc_radio_gloucestershire.png */; };
+		AE320D8512674D5800EE3488 /* bbc_radio_guernsey.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4C12674D5700EE3488 /* bbc_radio_guernsey.png */; };
+		AE320D8612674D5800EE3488 /* bbc_radio_hereford_worcester.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4D12674D5700EE3488 /* bbc_radio_hereford_worcester.png */; };
+		AE320D8712674D5800EE3488 /* bbc_radio_humberside.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4E12674D5700EE3488 /* bbc_radio_humberside.png */; };
+		AE320D8812674D5800EE3488 /* bbc_radio_jersey.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D4F12674D5700EE3488 /* bbc_radio_jersey.png */; };
+		AE320D8912674D5800EE3488 /* bbc_radio_kent.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5012674D5700EE3488 /* bbc_radio_kent.png */; };
+		AE320D8A12674D5800EE3488 /* bbc_radio_lancashire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5112674D5700EE3488 /* bbc_radio_lancashire.png */; };
+		AE320D8B12674D5800EE3488 /* bbc_radio_leeds.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5212674D5700EE3488 /* bbc_radio_leeds.png */; };
+		AE320D8C12674D5800EE3488 /* bbc_radio_leicester.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5312674D5700EE3488 /* bbc_radio_leicester.png */; };
+		AE320D8D12674D5800EE3488 /* bbc_radio_lincolnshire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5412674D5700EE3488 /* bbc_radio_lincolnshire.png */; };
+		AE320D8E12674D5800EE3488 /* bbc_radio_manchester.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5512674D5700EE3488 /* bbc_radio_manchester.png */; };
+		AE320D8F12674D5800EE3488 /* bbc_radio_merseyside.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5612674D5700EE3488 /* bbc_radio_merseyside.png */; };
+		AE320D9012674D5800EE3488 /* bbc_radio_nan_gaidheal.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5712674D5700EE3488 /* bbc_radio_nan_gaidheal.png */; };
+		AE320D9112674D5800EE3488 /* bbc_radio_newcastle.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5812674D5700EE3488 /* bbc_radio_newcastle.png */; };
+		AE320D9212674D5800EE3488 /* bbc_radio_norfolk.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5912674D5700EE3488 /* bbc_radio_norfolk.png */; };
+		AE320D9312674D5800EE3488 /* bbc_radio_northampton.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5A12674D5700EE3488 /* bbc_radio_northampton.png */; };
+		AE320D9412674D5800EE3488 /* bbc_radio_nottingham.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5B12674D5700EE3488 /* bbc_radio_nottingham.png */; };
+		AE320D9512674D5800EE3488 /* bbc_radio_one.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5C12674D5800EE3488 /* bbc_radio_one.png */; };
+		AE320D9612674D5800EE3488 /* bbc_radio_oxford.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5D12674D5800EE3488 /* bbc_radio_oxford.png */; };
+		AE320D9712674D5800EE3488 /* bbc_radio_scotland.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5E12674D5800EE3488 /* bbc_radio_scotland.png */; };
+		AE320D9812674D5800EE3488 /* bbc_radio_sheffield.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D5F12674D5800EE3488 /* bbc_radio_sheffield.png */; };
+		AE320D9912674D5800EE3488 /* bbc_radio_shropshire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6012674D5800EE3488 /* bbc_radio_shropshire.png */; };
+		AE320D9A12674D5800EE3488 /* bbc_radio_solent.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6112674D5800EE3488 /* bbc_radio_solent.png */; };
+		AE320D9B12674D5800EE3488 /* bbc_radio_somerset_sound.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6212674D5800EE3488 /* bbc_radio_somerset_sound.png */; };
+		AE320D9C12674D5800EE3488 /* bbc_radio_stoke.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6312674D5800EE3488 /* bbc_radio_stoke.png */; };
+		AE320D9D12674D5800EE3488 /* bbc_radio_suffolk.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6412674D5800EE3488 /* bbc_radio_suffolk.png */; };
+		AE320D9E12674D5800EE3488 /* bbc_radio_surrey.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6512674D5800EE3488 /* bbc_radio_surrey.png */; };
+		AE320D9F12674D5800EE3488 /* bbc_radio_sussex.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6612674D5800EE3488 /* bbc_radio_sussex.png */; };
+		AE320DA012674D5800EE3488 /* bbc_radio_three.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6712674D5800EE3488 /* bbc_radio_three.png */; };
+		AE320DA112674D5800EE3488 /* bbc_radio_two.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6812674D5800EE3488 /* bbc_radio_two.png */; };
+		AE320DA212674D5800EE3488 /* bbc_radio_ulster.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6912674D5800EE3488 /* bbc_radio_ulster.png */; };
+		AE320DA312674D5800EE3488 /* bbc_radio_wales.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6A12674D5800EE3488 /* bbc_radio_wales.png */; };
+		AE320DA412674D5800EE3488 /* bbc_radio_wiltshire.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6B12674D5800EE3488 /* bbc_radio_wiltshire.png */; };
+		AE320DA512674D5800EE3488 /* bbc_radio_york.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6C12674D5800EE3488 /* bbc_radio_york.png */; };
+		AE320DA612674D5800EE3488 /* bbc_tees.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6D12674D5800EE3488 /* bbc_tees.png */; };
+		AE320DA712674D5800EE3488 /* bbc_three_counties_radio.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6E12674D5800EE3488 /* bbc_three_counties_radio.png */; };
+		AE320DA812674D5800EE3488 /* bbc_wm.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D6F12674D5800EE3488 /* bbc_wm.png */; };
+		AE320DA912674D5800EE3488 /* bbc_world_service.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D7012674D5800EE3488 /* bbc_world_service.png */; };
+		AE320F5B1267B25A00EE3488 /* ListenMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AE320F5A1267B25A00EE3488 /* ListenMenuItem.m */; };
 		AE333BBB0EF798740077A647 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE333BBA0EF798740077A647 /* WebKit.framework */; };
 		AE333BDC0EF79B4B0077A647 /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE333BDB0EF79B4B0077A647 /* Defaults.plist */; };
 		AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */; };
@@ -32,7 +90,6 @@
 		AE49ADC911B14C0E0049C993 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADC811B14C0E0049C993 /* ISO8601DateFormatter.m */; };
 		AE49ADCC11B14C3C0049C993 /* GDataHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */; };
 		AE5E3C9512477ACC00C15403 /* Scrobble.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5E3C9412477ACC00C15403 /* Scrobble.m */; };
-		AE5E4259124AA3AF00C15403 /* lastFM.png in Resources */ = {isa = PBXBuildFile; fileRef = AE5E4258124AA3AF00C15403 /* lastFM.png */; };
 		AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = AE630BAB0F1CDC7200905968 /* radio_icon.icns */; };
 		AE69665B0EF6AC0300B029FE /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE69665A0EF6AC0300B029FE /* MainWindowController.m */; };
 		AE6966710EF6AD1800B029FE /* EmpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6966700EF6AD1800B029FE /* EmpViewController.m */; };
@@ -81,17 +138,6 @@
 		AEA685CE125C76660038B4C7 /* Play.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA685CD125C76660038B4C7 /* Play.m */; };
 		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEC16F210F68334800A38C90 /* DockView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC16F200F68334800A38C90 /* DockView.m */; };
-		AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16960F0BEFF3009F81AD /* 1xtra.png */; };
-		AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */; };
-		AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16980F0BEFF3009F81AD /* 6music.png */; };
-		AEDD16A40F0BEFF4009F81AD /* asiannetwork.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16990F0BEFF4009F81AD /* asiannetwork.png */; };
-		AEDD16A50F0BEFF4009F81AD /* radio7.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169A0F0BEFF4009F81AD /* radio7.png */; };
-		AEDD16A60F0BEFF4009F81AD /* fivelive.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169B0F0BEFF4009F81AD /* fivelive.png */; };
-		AEDD16A70F0BEFF4009F81AD /* radio1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169C0F0BEFF4009F81AD /* radio1.png */; };
-		AEDD16A80F0BEFF4009F81AD /* radio2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169D0F0BEFF4009F81AD /* radio2.png */; };
-		AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169E0F0BEFF4009F81AD /* radio3.png */; };
-		AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD169F0F0BEFF4009F81AD /* radio4.png */; };
-		AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDD16A00F0BEFF4009F81AD /* worldservice.png */; };
 		AEE2780911CA503F008D9EC3 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2780811CA503F008D9EC3 /* libidn.a */; };
 		AEE2780B11CA5099008D9EC3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2780A11CA5099008D9EC3 /* libxml2.dylib */; };
 		AEE2780D11CA50A1008D9EC3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2780C11CA50A1008D9EC3 /* SystemConfiguration.framework */; };
@@ -140,6 +186,65 @@
 		AE2B1611123A125E0028D2D1 /* LiveTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTextView.m; sourceTree = "<group>"; };
 		AE2B1AF6123E1CEE0028D2D1 /* XMPPPubSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPPubSub.h; sourceTree = "<group>"; };
 		AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPPubSub.m; sourceTree = "<group>"; };
+		AE320D3812674D5700EE3488 /* bbc_1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_1xtra.png; sourceTree = "<group>"; };
+		AE320D3912674D5700EE3488 /* bbc_6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_6music.png; sourceTree = "<group>"; };
+		AE320D3A12674D5700EE3488 /* bbc_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_7.png; sourceTree = "<group>"; };
+		AE320D3B12674D5700EE3488 /* bbc_asian_network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_asian_network.png; sourceTree = "<group>"; };
+		AE320D3C12674D5700EE3488 /* bbc_london.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_london.png; sourceTree = "<group>"; };
+		AE320D3D12674D5700EE3488 /* bbc_radio_berkshire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_berkshire.png; sourceTree = "<group>"; };
+		AE320D3E12674D5700EE3488 /* bbc_radio_bristol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_bristol.png; sourceTree = "<group>"; };
+		AE320D3F12674D5700EE3488 /* bbc_radio_cambridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_cambridge.png; sourceTree = "<group>"; };
+		AE320D4012674D5700EE3488 /* bbc_radio_cornwall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_cornwall.png; sourceTree = "<group>"; };
+		AE320D4112674D5700EE3488 /* bbc_radio_coventry_warwickshire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_coventry_warwickshire.png; sourceTree = "<group>"; };
+		AE320D4212674D5700EE3488 /* bbc_radio_cumbria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_cumbria.png; sourceTree = "<group>"; };
+		AE320D4312674D5700EE3488 /* bbc_radio_cymru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_cymru.png; sourceTree = "<group>"; };
+		AE320D4412674D5700EE3488 /* bbc_radio_derby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_derby.png; sourceTree = "<group>"; };
+		AE320D4512674D5700EE3488 /* bbc_radio_devon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_devon.png; sourceTree = "<group>"; };
+		AE320D4612674D5700EE3488 /* bbc_radio_essex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_essex.png; sourceTree = "<group>"; };
+		AE320D4712674D5700EE3488 /* bbc_radio_five_live.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_five_live.png; sourceTree = "<group>"; };
+		AE320D4812674D5700EE3488 /* bbc_radio_five_live_sports_extra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_five_live_sports_extra.png; sourceTree = "<group>"; };
+		AE320D4912674D5700EE3488 /* bbc_radio_four.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_four.png; sourceTree = "<group>"; };
+		AE320D4A12674D5700EE3488 /* bbc_radio_foyle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_foyle.png; sourceTree = "<group>"; };
+		AE320D4B12674D5700EE3488 /* bbc_radio_gloucestershire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_gloucestershire.png; sourceTree = "<group>"; };
+		AE320D4C12674D5700EE3488 /* bbc_radio_guernsey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_guernsey.png; sourceTree = "<group>"; };
+		AE320D4D12674D5700EE3488 /* bbc_radio_hereford_worcester.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_hereford_worcester.png; sourceTree = "<group>"; };
+		AE320D4E12674D5700EE3488 /* bbc_radio_humberside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_humberside.png; sourceTree = "<group>"; };
+		AE320D4F12674D5700EE3488 /* bbc_radio_jersey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_jersey.png; sourceTree = "<group>"; };
+		AE320D5012674D5700EE3488 /* bbc_radio_kent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_kent.png; sourceTree = "<group>"; };
+		AE320D5112674D5700EE3488 /* bbc_radio_lancashire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_lancashire.png; sourceTree = "<group>"; };
+		AE320D5212674D5700EE3488 /* bbc_radio_leeds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_leeds.png; sourceTree = "<group>"; };
+		AE320D5312674D5700EE3488 /* bbc_radio_leicester.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_leicester.png; sourceTree = "<group>"; };
+		AE320D5412674D5700EE3488 /* bbc_radio_lincolnshire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_lincolnshire.png; sourceTree = "<group>"; };
+		AE320D5512674D5700EE3488 /* bbc_radio_manchester.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_manchester.png; sourceTree = "<group>"; };
+		AE320D5612674D5700EE3488 /* bbc_radio_merseyside.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_merseyside.png; sourceTree = "<group>"; };
+		AE320D5712674D5700EE3488 /* bbc_radio_nan_gaidheal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_nan_gaidheal.png; sourceTree = "<group>"; };
+		AE320D5812674D5700EE3488 /* bbc_radio_newcastle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_newcastle.png; sourceTree = "<group>"; };
+		AE320D5912674D5700EE3488 /* bbc_radio_norfolk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_norfolk.png; sourceTree = "<group>"; };
+		AE320D5A12674D5700EE3488 /* bbc_radio_northampton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_northampton.png; sourceTree = "<group>"; };
+		AE320D5B12674D5700EE3488 /* bbc_radio_nottingham.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_nottingham.png; sourceTree = "<group>"; };
+		AE320D5C12674D5800EE3488 /* bbc_radio_one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_one.png; sourceTree = "<group>"; };
+		AE320D5D12674D5800EE3488 /* bbc_radio_oxford.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_oxford.png; sourceTree = "<group>"; };
+		AE320D5E12674D5800EE3488 /* bbc_radio_scotland.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_scotland.png; sourceTree = "<group>"; };
+		AE320D5F12674D5800EE3488 /* bbc_radio_sheffield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_sheffield.png; sourceTree = "<group>"; };
+		AE320D6012674D5800EE3488 /* bbc_radio_shropshire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_shropshire.png; sourceTree = "<group>"; };
+		AE320D6112674D5800EE3488 /* bbc_radio_solent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_solent.png; sourceTree = "<group>"; };
+		AE320D6212674D5800EE3488 /* bbc_radio_somerset_sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_somerset_sound.png; sourceTree = "<group>"; };
+		AE320D6312674D5800EE3488 /* bbc_radio_stoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_stoke.png; sourceTree = "<group>"; };
+		AE320D6412674D5800EE3488 /* bbc_radio_suffolk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_suffolk.png; sourceTree = "<group>"; };
+		AE320D6512674D5800EE3488 /* bbc_radio_surrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_surrey.png; sourceTree = "<group>"; };
+		AE320D6612674D5800EE3488 /* bbc_radio_sussex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_sussex.png; sourceTree = "<group>"; };
+		AE320D6712674D5800EE3488 /* bbc_radio_three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_three.png; sourceTree = "<group>"; };
+		AE320D6812674D5800EE3488 /* bbc_radio_two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_two.png; sourceTree = "<group>"; };
+		AE320D6912674D5800EE3488 /* bbc_radio_ulster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_ulster.png; sourceTree = "<group>"; };
+		AE320D6A12674D5800EE3488 /* bbc_radio_wales.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_wales.png; sourceTree = "<group>"; };
+		AE320D6B12674D5800EE3488 /* bbc_radio_wiltshire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_wiltshire.png; sourceTree = "<group>"; };
+		AE320D6C12674D5800EE3488 /* bbc_radio_york.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_york.png; sourceTree = "<group>"; };
+		AE320D6D12674D5800EE3488 /* bbc_tees.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_tees.png; sourceTree = "<group>"; };
+		AE320D6E12674D5800EE3488 /* bbc_three_counties_radio.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_three_counties_radio.png; sourceTree = "<group>"; };
+		AE320D6F12674D5800EE3488 /* bbc_wm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_wm.png; sourceTree = "<group>"; };
+		AE320D7012674D5800EE3488 /* bbc_world_service.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_world_service.png; sourceTree = "<group>"; };
+		AE320F591267B25A00EE3488 /* ListenMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListenMenuItem.h; sourceTree = "<group>"; };
+		AE320F5A1267B25A00EE3488 /* ListenMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListenMenuItem.m; sourceTree = "<group>"; };
 		AE333BBA0EF798740077A647 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		AE333BDB0EF79B4B0077A647 /* Defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
 		AE3FF51B0F7A1F4B006C8B21 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
@@ -169,7 +274,6 @@
 		AE49ADCB11B14C3C0049C993 /* GDataHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataHTTPFetcher.m; sourceTree = "<group>"; };
 		AE5E3C9312477ACC00C15403 /* Scrobble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrobble.h; sourceTree = "<group>"; };
 		AE5E3C9412477ACC00C15403 /* Scrobble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scrobble.m; sourceTree = "<group>"; };
-		AE5E4258124AA3AF00C15403 /* lastFM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastFM.png; sourceTree = "<group>"; };
 		AE5E4405124D0F7900C15403 /* settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = settings.h; path = ../../../../configs/settings.h; sourceTree = SOURCE_ROOT; };
 		AE630BAB0F1CDC7200905968 /* radio_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = radio_icon.icns; sourceTree = "<group>"; };
 		AE6966590EF6AC0300B029FE /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
@@ -260,17 +364,6 @@
 		AEA685CD125C76660038B4C7 /* Play.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play.m; sourceTree = "<group>"; };
 		AEC16F1F0F68334800A38C90 /* DockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockView.h; sourceTree = "<group>"; };
 		AEC16F200F68334800A38C90 /* DockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DockView.m; sourceTree = "<group>"; };
-		AEDD16960F0BEFF3009F81AD /* 1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1xtra.png; sourceTree = "<group>"; };
-		AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5livesportsextra.png; sourceTree = "<group>"; };
-		AEDD16980F0BEFF3009F81AD /* 6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6music.png; sourceTree = "<group>"; };
-		AEDD16990F0BEFF4009F81AD /* asiannetwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = asiannetwork.png; sourceTree = "<group>"; };
-		AEDD169A0F0BEFF4009F81AD /* radio7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio7.png; sourceTree = "<group>"; };
-		AEDD169B0F0BEFF4009F81AD /* fivelive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fivelive.png; sourceTree = "<group>"; };
-		AEDD169C0F0BEFF4009F81AD /* radio1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio1.png; sourceTree = "<group>"; };
-		AEDD169D0F0BEFF4009F81AD /* radio2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio2.png; sourceTree = "<group>"; };
-		AEDD169E0F0BEFF4009F81AD /* radio3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio3.png; sourceTree = "<group>"; };
-		AEDD169F0F0BEFF4009F81AD /* radio4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio4.png; sourceTree = "<group>"; };
-		AEDD16A00F0BEFF4009F81AD /* worldservice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldservice.png; sourceTree = "<group>"; };
 		AEE2780811CA503F008D9EC3 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libidn.a; path = libidn/libidn.a; sourceTree = "<group>"; };
 		AEE2780A11CA5099008D9EC3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		AEE2780C11CA50A1008D9EC3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -402,6 +495,70 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE320D3712674D5700EE3488 /* bbc_radio_logos */ = {
+			isa = PBXGroup;
+			children = (
+				AE320D3812674D5700EE3488 /* bbc_1xtra.png */,
+				AE320D3912674D5700EE3488 /* bbc_6music.png */,
+				AE320D3A12674D5700EE3488 /* bbc_7.png */,
+				AE320D3B12674D5700EE3488 /* bbc_asian_network.png */,
+				AE320D3C12674D5700EE3488 /* bbc_london.png */,
+				AE320D3D12674D5700EE3488 /* bbc_radio_berkshire.png */,
+				AE320D3E12674D5700EE3488 /* bbc_radio_bristol.png */,
+				AE320D3F12674D5700EE3488 /* bbc_radio_cambridge.png */,
+				AE320D4012674D5700EE3488 /* bbc_radio_cornwall.png */,
+				AE320D4112674D5700EE3488 /* bbc_radio_coventry_warwickshire.png */,
+				AE320D4212674D5700EE3488 /* bbc_radio_cumbria.png */,
+				AE320D4312674D5700EE3488 /* bbc_radio_cymru.png */,
+				AE320D4412674D5700EE3488 /* bbc_radio_derby.png */,
+				AE320D4512674D5700EE3488 /* bbc_radio_devon.png */,
+				AE320D4612674D5700EE3488 /* bbc_radio_essex.png */,
+				AE320D4712674D5700EE3488 /* bbc_radio_five_live.png */,
+				AE320D4812674D5700EE3488 /* bbc_radio_five_live_sports_extra.png */,
+				AE320D4912674D5700EE3488 /* bbc_radio_four.png */,
+				AE320D4A12674D5700EE3488 /* bbc_radio_foyle.png */,
+				AE320D4B12674D5700EE3488 /* bbc_radio_gloucestershire.png */,
+				AE320D4C12674D5700EE3488 /* bbc_radio_guernsey.png */,
+				AE320D4D12674D5700EE3488 /* bbc_radio_hereford_worcester.png */,
+				AE320D4E12674D5700EE3488 /* bbc_radio_humberside.png */,
+				AE320D4F12674D5700EE3488 /* bbc_radio_jersey.png */,
+				AE320D5012674D5700EE3488 /* bbc_radio_kent.png */,
+				AE320D5112674D5700EE3488 /* bbc_radio_lancashire.png */,
+				AE320D5212674D5700EE3488 /* bbc_radio_leeds.png */,
+				AE320D5312674D5700EE3488 /* bbc_radio_leicester.png */,
+				AE320D5412674D5700EE3488 /* bbc_radio_lincolnshire.png */,
+				AE320D5512674D5700EE3488 /* bbc_radio_manchester.png */,
+				AE320D5612674D5700EE3488 /* bbc_radio_merseyside.png */,
+				AE320D5712674D5700EE3488 /* bbc_radio_nan_gaidheal.png */,
+				AE320D5812674D5700EE3488 /* bbc_radio_newcastle.png */,
+				AE320D5912674D5700EE3488 /* bbc_radio_norfolk.png */,
+				AE320D5A12674D5700EE3488 /* bbc_radio_northampton.png */,
+				AE320D5B12674D5700EE3488 /* bbc_radio_nottingham.png */,
+				AE320D5C12674D5800EE3488 /* bbc_radio_one.png */,
+				AE320D5D12674D5800EE3488 /* bbc_radio_oxford.png */,
+				AE320D5E12674D5800EE3488 /* bbc_radio_scotland.png */,
+				AE320D5F12674D5800EE3488 /* bbc_radio_sheffield.png */,
+				AE320D6012674D5800EE3488 /* bbc_radio_shropshire.png */,
+				AE320D6112674D5800EE3488 /* bbc_radio_solent.png */,
+				AE320D6212674D5800EE3488 /* bbc_radio_somerset_sound.png */,
+				AE320D6312674D5800EE3488 /* bbc_radio_stoke.png */,
+				AE320D6412674D5800EE3488 /* bbc_radio_suffolk.png */,
+				AE320D6512674D5800EE3488 /* bbc_radio_surrey.png */,
+				AE320D6612674D5800EE3488 /* bbc_radio_sussex.png */,
+				AE320D6712674D5800EE3488 /* bbc_radio_three.png */,
+				AE320D6812674D5800EE3488 /* bbc_radio_two.png */,
+				AE320D6912674D5800EE3488 /* bbc_radio_ulster.png */,
+				AE320D6A12674D5800EE3488 /* bbc_radio_wales.png */,
+				AE320D6B12674D5800EE3488 /* bbc_radio_wiltshire.png */,
+				AE320D6C12674D5800EE3488 /* bbc_radio_york.png */,
+				AE320D6D12674D5800EE3488 /* bbc_tees.png */,
+				AE320D6E12674D5800EE3488 /* bbc_three_counties_radio.png */,
+				AE320D6F12674D5800EE3488 /* bbc_wm.png */,
+				AE320D7012674D5800EE3488 /* bbc_world_service.png */,
+			);
+			path = bbc_radio_logos;
 			sourceTree = "<group>";
 		};
 		AE49AA1311AEF8C90049C993 /* JSON */ = {
@@ -692,6 +849,8 @@
 				AEC16F200F68334800A38C90 /* DockView.m */,
 				AE2B1610123A125E0028D2D1 /* LiveTextView.h */,
 				AE2B1611123A125E0028D2D1 /* LiveTextView.m */,
+				AE320F591267B25A00EE3488 /* ListenMenuItem.h */,
+				AE320F5A1267B25A00EE3488 /* ListenMenuItem.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -708,18 +867,7 @@
 		AEDD16C40F0BF062009F81AD /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				AE5E4258124AA3AF00C15403 /* lastFM.png */,
-				AEDD16960F0BEFF3009F81AD /* 1xtra.png */,
-				AEDD16970F0BEFF3009F81AD /* 5livesportsextra.png */,
-				AEDD16980F0BEFF3009F81AD /* 6music.png */,
-				AEDD16990F0BEFF4009F81AD /* asiannetwork.png */,
-				AEDD169A0F0BEFF4009F81AD /* radio7.png */,
-				AEDD169B0F0BEFF4009F81AD /* fivelive.png */,
-				AEDD169C0F0BEFF4009F81AD /* radio1.png */,
-				AEDD169D0F0BEFF4009F81AD /* radio2.png */,
-				AEDD169E0F0BEFF4009F81AD /* radio3.png */,
-				AEDD169F0F0BEFF4009F81AD /* radio4.png */,
-				AEDD16A00F0BEFF4009F81AD /* worldservice.png */,
+				AE320D3712674D5700EE3488 /* bbc_radio_logos */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -784,23 +932,68 @@
 				AEA0B43D0EF7EFCE00137DAA /* Preferences.xib in Resources */,
 				AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */,
 				AE73A0030EF950EA00AB9578 /* Growl Registration Ticket.growlRegDict in Resources */,
-				AEDD16A10F0BEFF4009F81AD /* 1xtra.png in Resources */,
-				AEDD16A20F0BEFF4009F81AD /* 5livesportsextra.png in Resources */,
-				AEDD16A30F0BEFF4009F81AD /* 6music.png in Resources */,
-				AEDD16A40F0BEFF4009F81AD /* asiannetwork.png in Resources */,
-				AEDD16A50F0BEFF4009F81AD /* radio7.png in Resources */,
-				AEDD16A60F0BEFF4009F81AD /* fivelive.png in Resources */,
-				AEDD16A70F0BEFF4009F81AD /* radio1.png in Resources */,
-				AEDD16A80F0BEFF4009F81AD /* radio2.png in Resources */,
-				AEDD16A90F0BEFF4009F81AD /* radio3.png in Resources */,
-				AEDD16AA0F0BEFF4009F81AD /* radio4.png in Resources */,
-				AEDD16AB0F0BEFF4009F81AD /* worldservice.png in Resources */,
 				AE1BFB940F173B8A006ED3DF /* live.html in Resources */,
 				AE630BAC0F1CDC7200905968 /* radio_icon.icns in Resources */,
 				AE3FF51C0F7A1F4B006C8B21 /* Credits.rtf in Resources */,
 				AE49A90011AE65C90049C993 /* aod.html in Resources */,
-				AE5E4259124AA3AF00C15403 /* lastFM.png in Resources */,
 				AEA67EBA125A0C6B0038B4C7 /* History.xib in Resources */,
+				AE320D7112674D5800EE3488 /* bbc_1xtra.png in Resources */,
+				AE320D7212674D5800EE3488 /* bbc_6music.png in Resources */,
+				AE320D7312674D5800EE3488 /* bbc_7.png in Resources */,
+				AE320D7412674D5800EE3488 /* bbc_asian_network.png in Resources */,
+				AE320D7512674D5800EE3488 /* bbc_london.png in Resources */,
+				AE320D7612674D5800EE3488 /* bbc_radio_berkshire.png in Resources */,
+				AE320D7712674D5800EE3488 /* bbc_radio_bristol.png in Resources */,
+				AE320D7812674D5800EE3488 /* bbc_radio_cambridge.png in Resources */,
+				AE320D7912674D5800EE3488 /* bbc_radio_cornwall.png in Resources */,
+				AE320D7A12674D5800EE3488 /* bbc_radio_coventry_warwickshire.png in Resources */,
+				AE320D7B12674D5800EE3488 /* bbc_radio_cumbria.png in Resources */,
+				AE320D7C12674D5800EE3488 /* bbc_radio_cymru.png in Resources */,
+				AE320D7D12674D5800EE3488 /* bbc_radio_derby.png in Resources */,
+				AE320D7E12674D5800EE3488 /* bbc_radio_devon.png in Resources */,
+				AE320D7F12674D5800EE3488 /* bbc_radio_essex.png in Resources */,
+				AE320D8012674D5800EE3488 /* bbc_radio_five_live.png in Resources */,
+				AE320D8112674D5800EE3488 /* bbc_radio_five_live_sports_extra.png in Resources */,
+				AE320D8212674D5800EE3488 /* bbc_radio_four.png in Resources */,
+				AE320D8312674D5800EE3488 /* bbc_radio_foyle.png in Resources */,
+				AE320D8412674D5800EE3488 /* bbc_radio_gloucestershire.png in Resources */,
+				AE320D8512674D5800EE3488 /* bbc_radio_guernsey.png in Resources */,
+				AE320D8612674D5800EE3488 /* bbc_radio_hereford_worcester.png in Resources */,
+				AE320D8712674D5800EE3488 /* bbc_radio_humberside.png in Resources */,
+				AE320D8812674D5800EE3488 /* bbc_radio_jersey.png in Resources */,
+				AE320D8912674D5800EE3488 /* bbc_radio_kent.png in Resources */,
+				AE320D8A12674D5800EE3488 /* bbc_radio_lancashire.png in Resources */,
+				AE320D8B12674D5800EE3488 /* bbc_radio_leeds.png in Resources */,
+				AE320D8C12674D5800EE3488 /* bbc_radio_leicester.png in Resources */,
+				AE320D8D12674D5800EE3488 /* bbc_radio_lincolnshire.png in Resources */,
+				AE320D8E12674D5800EE3488 /* bbc_radio_manchester.png in Resources */,
+				AE320D8F12674D5800EE3488 /* bbc_radio_merseyside.png in Resources */,
+				AE320D9012674D5800EE3488 /* bbc_radio_nan_gaidheal.png in Resources */,
+				AE320D9112674D5800EE3488 /* bbc_radio_newcastle.png in Resources */,
+				AE320D9212674D5800EE3488 /* bbc_radio_norfolk.png in Resources */,
+				AE320D9312674D5800EE3488 /* bbc_radio_northampton.png in Resources */,
+				AE320D9412674D5800EE3488 /* bbc_radio_nottingham.png in Resources */,
+				AE320D9512674D5800EE3488 /* bbc_radio_one.png in Resources */,
+				AE320D9612674D5800EE3488 /* bbc_radio_oxford.png in Resources */,
+				AE320D9712674D5800EE3488 /* bbc_radio_scotland.png in Resources */,
+				AE320D9812674D5800EE3488 /* bbc_radio_sheffield.png in Resources */,
+				AE320D9912674D5800EE3488 /* bbc_radio_shropshire.png in Resources */,
+				AE320D9A12674D5800EE3488 /* bbc_radio_solent.png in Resources */,
+				AE320D9B12674D5800EE3488 /* bbc_radio_somerset_sound.png in Resources */,
+				AE320D9C12674D5800EE3488 /* bbc_radio_stoke.png in Resources */,
+				AE320D9D12674D5800EE3488 /* bbc_radio_suffolk.png in Resources */,
+				AE320D9E12674D5800EE3488 /* bbc_radio_surrey.png in Resources */,
+				AE320D9F12674D5800EE3488 /* bbc_radio_sussex.png in Resources */,
+				AE320DA012674D5800EE3488 /* bbc_radio_three.png in Resources */,
+				AE320DA112674D5800EE3488 /* bbc_radio_two.png in Resources */,
+				AE320DA212674D5800EE3488 /* bbc_radio_ulster.png in Resources */,
+				AE320DA312674D5800EE3488 /* bbc_radio_wales.png in Resources */,
+				AE320DA412674D5800EE3488 /* bbc_radio_wiltshire.png in Resources */,
+				AE320DA512674D5800EE3488 /* bbc_radio_york.png in Resources */,
+				AE320DA612674D5800EE3488 /* bbc_tees.png in Resources */,
+				AE320DA712674D5800EE3488 /* bbc_three_counties_radio.png in Resources */,
+				AE320DA812674D5800EE3488 /* bbc_wm.png in Resources */,
+				AE320DA912674D5800EE3488 /* bbc_world_service.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +1058,7 @@
 				AEA67EB8125A0BE30038B4C7 /* HistoryWindowController.m in Sources */,
 				AEA68039125A2DA90038B4C7 /* MyCell.m in Sources */,
 				AEA685CE125C76660038B4C7 /* Play.m in Sources */,
+				AE320F5B1267B25A00EE3488 /* ListenMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,6 +1092,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../MacLibs/BWToolkit\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -928,6 +1123,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../../MacLibs/BWToolkit\"",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)\"";
 				GCC_C_LANGUAGE_STANDARD = c99;

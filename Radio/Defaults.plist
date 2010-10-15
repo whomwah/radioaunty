@@ -33,122 +33,222 @@
 	<true/>
 	<key>DefaultStation</key>
 	<integer>7</integer>
-	<key>Stations</key>
+	<key>Services</key>
 	<array>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_radio_one</string>
 			<key>key</key>
 			<string>radio1</string>
-			<key>label</key>
-			<string>Radio 1</string>
-			<key>outlet</key>
-			<string>england</string>
-			<key>livetext_node</key>
-			<string>radio1</string>
+			<key>title</key>
+			<string>BBC Radio 1</string>
+			<key>subtype</key>
+			<string>national</string>
+			<key>outlets</key>
+			<array>
+				<dict>
+					<key>id</key>
+					<string>bbc_radio_one_england</string>
+					<key>key</key>
+					<string>england</string>
+					<key>title</key>
+					<string>Radio 1 England</string>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>bbc_radio_one_northern_ireland</string>
+					<key>key</key>
+					<string>northernireland</string>
+					<key>title</key>
+					<string>Radio 1 N. Ireland</string>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>bbc_radio_one_scotland</string>
+					<key>key</key>
+					<string>scotland</string>
+					<key>title</key>
+					<string>Radio 1 Scotland</string>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>bbc_radio_one_wales</string>
+					<key>key</key>
+					<string>wales</string>
+					<key>title</key>
+					<string>Radio 1 Wales</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_1xtra</string>
 			<key>key</key>
 			<string>1xtra</string>
-			<key>label</key>
-			<string>1xtra</string>
-			<key>livetext_node</key>
-			<string>1xtra</string>
+			<key>title</key>
+			<string>BBC 1Xtra</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_radio_two</string>
 			<key>key</key>
 			<string>radio2</string>
-			<key>label</key>
-			<string>Radio 2</string>
-			<key>livetext_node</key>
-			<string>radio2</string>
+			<key>title</key>
+			<string>BBC Radio 2</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_radio_three</string>
 			<key>key</key>
 			<string>radio3</string>
-			<key>label</key>
-			<string>Radio 3</string>
-			<key>livetext_node</key>
-			<string>radio3</string>
+			<key>title</key>
+			<string>BBC Radio 3</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_radio_four</string>
 			<key>key</key>
 			<string>radio4</string>
-			<key>label</key>
-			<string>Radio 4 FM</string>
-			<key>outlet</key>
-			<string>fm</string>
-			<key>livetext_node</key>
-			<string>radio4</string>
+			<key>title</key>
+			<string>BBC Radio 4</string>
+			<key>subtype</key>
+			<string>national</string>
+			<key>outlets</key>
+			<array>
+				<dict>
+					<key>id</key>
+					<string>bbc_radio_fourfm</string>
+					<key>key</key>
+					<string>fm</string>
+					<key>title</key>
+					<string>FM</string>
+				</dict>
+				<dict>
+					<key>id</key>
+					<string>bbc_radio_fourlw</string>
+					<key>key</key>
+					<string>lw</string>
+					<key>title</key>
+					<string>LW</string>
+				</dict>
+			</array>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_radio_five_live</string>
 			<key>key</key>
-			<string>fivelive</string>
-			<key>label</key>
-			<string>Radio 5 live</string>
-			<key>livetext_node</key>
-			<string>radio5live</string>
+			<string>5live</string>
+			<key>title</key>
+			<string>BBC Radio 5 live</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_radio_five_live_sports_extra</string>
 			<key>key</key>
 			<string>5livesportsextra</string>
-			<key>label</key>
-			<string>Radio 5 live sports extra</string>
-			<key>livetext_node</key>
-			<string>sportsextra</string>
+			<key>title</key>
+			<string>BBC Radio 5 live sports extra</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_6music</string>
 			<key>key</key>
 			<string>6music</string>
-			<key>label</key>
-			<string>6 Music</string>
-			<key>livetext_node</key>
-			<string>6music</string>
+			<key>title</key>
+			<string>BBC 6 Music</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_7</string>
 			<key>key</key>
 			<string>radio7</string>
-			<key>label</key>
-			<string>Radio 7</string>
-			<key>livetext_node</key>
-			<string>bbc7</string>
+			<key>title</key>
+			<string>BBC Radio 7</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_asian_network</string>
 			<key>key</key>
 			<string>asiannetwork</string>
-			<key>label</key>
-			<string>Asian Network</string>
-			<key>livetext_node</key>
-			<string>asiannetwork</string>
+			<key>title</key>
+			<string>BBC Asian Network</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 		<dict>
-			<key>empKey</key>
+			<key>id</key>
 			<string>bbc_world_service</string>
 			<key>key</key>
 			<string>worldservice</string>
-			<key>label</key>
-			<string>World Service</string>
-			<key>livetext_node</key>
-			<string>worldservice</string>
+			<key>title</key>
+			<string>BBC World Service</string>
+			<key>subtype</key>
+			<string>national</string>
 		</dict>
 	</array>
+	<key>ServiceSelection</key>
+	<dict>
+		<key>bbc_radio_one</key>
+		<string>bbc_radio_one_england</string>
+		<key>bbc_1xtra</key>
+		<string></string>
+		<key>bbc_radio_two</key>
+		<string></string>
+		<key>bbc_radio_three</key>
+		<string></string>
+		<key>bbc_radio_four</key>
+		<string>bbc_radio_fourfm</string>
+		<key>bbc_radio_five_live</key>
+		<string></string>
+		<key>bbc_radio_five_live_sports_extra</key>
+		<string></string>
+		<key>bbc_6music</key>
+		<string></string>
+		<key>bbc_7</key>
+		<string></string>
+		<key>bbc_asian_network</key>
+		<string></string>
+		<key>bbc_world_service</key>
+		<string></string>
+	</dict>
+	<key>LiveText</key>
+	<dict>
+		<key>radio1</key>
+		<string>radio1</string>
+		<key>1xtra</key>
+		<string>1xtra</string>
+		<key>radio2</key>
+		<string>radio2</string>
+		<key>radio3</key>
+		<string>radio3</string>
+		<key>radio4</key>
+		<string>radio4</string>
+		<key>5live</key>
+		<string>radio5live</string>
+		<key>5livesportsextra</key>
+		<string>sportsextra</string>
+		<key>6music</key>
+		<string>6music</string>
+		<key>radio7</key>
+		<string>bbc7</string>
+		<key>asiannetwork</key>
+		<string>asiannetwork</string>
+		<key>worldservice</key>
+		<string>worldservice</string>
+	</dict>
 </dict>
 </plist>

@@ -121,8 +121,16 @@
 		[trackAttr setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName];
 		[lastplayedAttr setValue:[NSColor grayColor] forKey:NSForegroundColorAttributeName];
 	}
+  
+  [NSGraphicsContext saveGraphicsState];
+  NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:iconBox xRadius:2 yRadius:2];
+  [path addClip];
+  [icon drawInRect:iconBox 
+          fromRect:NSZeroRect 
+          operation:NSCompositeSourceOver 
+          fraction:1.0];
+  [NSGraphicsContext restoreGraphicsState];
 	
-	[icon drawInRect:iconBox fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
 	[artistLabel drawInRect:artistBox withAttributes:artistAttr];
 	[trackLabel drawInRect:trackBox withAttributes:trackAttr];
 	[lastplayedLabel drawInRect:lastplayedBox withAttributes:lastplayedAttr];

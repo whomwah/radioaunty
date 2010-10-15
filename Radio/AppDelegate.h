@@ -20,9 +20,11 @@
 
 @interface AppDelegate : NSObject <GrowlApplicationBridgeDelegate, ScrobbleDelegate>
 {
-	MainWindowController *drMainWindowController;
+	MainWindowController *mainWindowController;
   PreferencesWindowController *preferencesWindowController;
   HistoryWindowController *historyWindowController;
+  
+  NSDictionary *livetextLookup;
 	
 	XMPPStream *xmppStream;
 	XMPPReconnect *xmppReconnect;
@@ -32,6 +34,8 @@
 @property (nonatomic, readonly) XMPPStream *xmppStream;
 @property (nonatomic, readonly) XMPPReconnect *xmppReconnect;
 @property (nonatomic, readonly) Scrobble *scrobbler;
+@property (nonatomic, readonly) NSDictionary *livetextLookup;
+@property (nonatomic, readonly) MainWindowController *mainWindowController;
 
 - (IBAction)displayPreferenceWindow:(id)sender;
 - (void)displayHistoryWindow:(id)sender;

@@ -48,8 +48,8 @@
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, retain) XMPPPubSub *pubsub;
 @property (nonatomic, copy) NSString *anonJID;
+@property (nonatomic, retain) NSDictionary *currentStation;
 
-- (NSString *)liveOrNotText;
 - (void)growl;
 - (void)changeDockNetworkIconTo:(NSString *)service;
 - (void)stopScheduleTimer;

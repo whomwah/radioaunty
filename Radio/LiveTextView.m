@@ -49,12 +49,14 @@
 
 - (void)progressIndictorOn
 {
+  self.text = nil;
   [progressIndictor startAnimation:nil];
   [self setNeedsDisplay:YES];
 }
 
 - (void)progressIndictorOff
 {
+  self.text = nil;
   [progressIndictor stopAnimation:nil];
   [self setNeedsDisplay:YES];
 }

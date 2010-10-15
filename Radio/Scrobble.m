@@ -553,12 +553,24 @@ enum {
   
   NSDictionary *opts = sender ? [sender userInfo] : self.scrobbleBuffer;
   
+  Play *lastScrobble = [scrobbleHistory objectAtIndex:0];
+  if (lastScrobble) {
+    NSString *lastScrobbleSig = lastScrobble.signature;
+    NSString *sig = [self toMD5:[NSString stringWithFormat:@"%@%@", 
+                              [opts objectForKey:@"track"], 
+                              [opts objectForKey:@"artist"]]];
+    if ([lastScrobbleSig isEqual:sig]) {
+      NSLog(@"Warning: Attempted to scrobble the same track again");
+      return;
+    }
+  }
+  
   NSString *a = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, 
-                                                                    (CFStringRef)[scrobbleBuffer objectForKey:@"artist"], NULL, 
+                                                                    (CFStringRef)[opts objectForKey:@"artist"], NULL, 
                                                                     (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8 );
   
   NSString *t = (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, 
-                                                                    (CFStringRef)[scrobbleBuffer objectForKey:@"track"], NULL,
+                                                                    (CFStringRef)[opts objectForKey:@"track"], NULL,
                                                                     (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8 );
   
   NSString *timestamp = [NSString stringWithFormat:@"%0.0f", [[opts objectForKey:@"timestamp"] timeIntervalSince1970]];

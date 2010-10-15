@@ -15,12 +15,19 @@
   IBOutlet NSButton *authButton;
   IBOutlet NSTextField *lastFMLabel;
   IBOutlet NSButton *lastFMEnabled;
+  IBOutlet NSOutlineView *outlineView;
+  IBOutlet NSTabView *tabView;
+  
+  NSArray *radioServices;
+  NSMutableDictionary *radioServicesFavs;
 }
 
 @property (nonatomic, retain) Scrobble *scrobbler;
 @property (nonatomic, retain) NSButton *authButton;
 @property (nonatomic, retain) NSTextField *lastFMLabel;
 @property (nonatomic, retain) NSButton *lastFMEnabled;
+@property (nonatomic, retain) NSArray *radioServices;
+@property (nonatomic, retain) NSMutableDictionary *radioServicesFavs;
 
 - (IBAction)authorise:(id)sender;
 - (IBAction)scrobbleState:(id)sender;

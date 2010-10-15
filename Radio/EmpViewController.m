@@ -38,7 +38,7 @@
 {
   data = d;
   markup = nil;
-  [self displayEmpForKey:[data objectForKey:@"empKey"]];
+  [self displayEmpForKey:[data objectForKey:@"id"]];
 }
 
 - (void)fetchAOD:(NSString *)s

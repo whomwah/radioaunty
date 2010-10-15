@@ -25,10 +25,12 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 @synthesize xmppStream;
 @synthesize xmppReconnect;
 @synthesize scrobbler;
+@synthesize livetextLookup;
+@synthesize mainWindowController;
 
 - (id)init
 {
-	if((self = [super init]))
+	if (self = [super init])
 	{
 		NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
 		NSString *errorDesc = nil;
@@ -44,22 +46,27 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 			NSLog(@"Error: %@", errorDesc);
 			[errorDesc release];
 		}
-		
-		[defaultValues setObject:[temp objectForKey:@"Stations"] forKey:@"Stations"];
+    
+		[defaultValues setObject:[temp objectForKey:@"Services"] forKey:@"Services"];
+		[defaultValues setObject:[temp objectForKey:@"ServiceSelection"] forKey:@"ServiceSelection"];
 		[defaultValues setObject:[temp objectForKey:@"EmpSizes"] forKey:@"EmpSizes"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultAlwaysOnTop"] forKey:@"DefaultAlwaysOnTop"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultStation"] forKey:@"DefaultStation"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultEmpSize"] forKey:@"DefaultEmpSize"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultEmpMinimized"] forKey:@"DefaultEmpMinimized"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultEmpOrigin"] forKey:@"DefaultEmpOrigin"];
+
     // lastFM defaults
 		[defaultValues setObject:[temp objectForKey:@"DefaultLastFMUser"] forKey:@"DefaultLastFMUser"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultLastFMSession"] forKey:@"DefaultLastFMSession"];
 		[defaultValues setObject:[temp objectForKey:@"DefaultLastFMEnabled"] forKey:@"DefaultLastFMEnabled"];
     
+    // livetext
+    livetextLookup = [[temp objectForKey:@"LiveText"] retain];
+    
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 		[ud registerDefaults:defaultValues];
-		
+    
 		// create the main XMPP object
 		xmppStream  = [[XMPPStream alloc] init];
     
@@ -81,18 +88,19 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
   [GrowlApplicationBridge setGrowlDelegate:self];
   [scrobbler setDelegate:self];
   
-  drMainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
-	[[drMainWindowController window] makeMainWindow];
-	[[drMainWindowController window] makeKeyAndOrderFront:self];
+  mainWindowController = [[MainWindowController alloc] initWithWindowNibName:@"MainWindow"];
+	[[mainWindowController window] makeMainWindow];
+	[[mainWindowController window] makeKeyAndOrderFront:self];
 }
 
 - (void)dealloc
 {
-	[drMainWindowController release];
+	[mainWindowController release];
 	[xmppStream release];
   [xmppReconnect release];
   [scrobbler release];
 	[preferencesWindowController release];
+  [livetextLookup release];
 	
 	[super dealloc];
 }
@@ -100,16 +108,16 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 
 - (void)applicationDidUnhide:(NSNotification *)aNotification
 {
-  [drMainWindowController redrawEmp];
+  [mainWindowController redrawEmp];
 }
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
   NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-  NSRect wf = [[drMainWindowController window] frame];
+  NSRect wf = [[mainWindowController window] frame];
   [ud setValue:NSStringFromPoint(wf.origin) forKey:@"DefaultEmpOrigin"];
-  [[NSUserDefaults standardUserDefaults] synchronize];
+  [ud synchronize];
 }
 
 
@@ -258,15 +266,38 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
     [historyWindowController reloadData];
   }
   
-  NSImage *img = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:play.small_image]];  
+  float resizeWidth  = 100.0;
+  float resizeHeight = 100.0;
+  
+  NSImage *sourceImage  = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:play.small_image]];
+  NSImage *resizedImage = [[NSImage alloc] initWithSize: NSMakeSize(resizeWidth, resizeHeight)];
+  
+  NSSize originalSize = [sourceImage size];
+  
+  [NSGraphicsContext saveGraphicsState];
+  [resizedImage lockFocus];
+  
+  NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(0, 0, resizeWidth, resizeHeight)
+                                                       xRadius:10
+                                                       yRadius:10];
+  [path addClip];
+  [sourceImage drawInRect:NSMakeRect(0, 0, resizeWidth, resizeHeight)
+                 fromRect:NSMakeRect(0, 0, originalSize.width, originalSize.height) 
+                operation:NSCompositeSourceOver 
+                 fraction:1.0];
+  
+  [resizedImage unlockFocus];
+  [NSGraphicsContext restoreGraphicsState];
+  
   [GrowlApplicationBridge notifyWithTitle:play.artist
                               description:play.track
                          notificationName:@"Now playing"
-                                 iconData:[img TIFFRepresentation]
+                                 iconData:[resizedImage TIFFRepresentation]
                                  priority:1
                                  isSticky:NO
                              clickContext:nil];
-  [img release];
+  [sourceImage release];
+  [resizedImage release];
 }
 
 @end

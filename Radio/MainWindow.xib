@@ -45,7 +45,7 @@
 						<characters key="NS.bytes">25399F01-6038-4050-8C13-50C23CD0BE90</characters>
 					</object>
 					<nil key="NSToolbarDelegate"/>
-					<bool key="NSToolbarPrefersToBeShown">YES</bool>
+					<bool key="NSToolbarPrefersToBeShown">NO</bool>
 					<bool key="NSToolbarShowsBaselineSeparator">NO</bool>
 					<bool key="NSToolbarAllowsUserCustomization">NO</bool>
 					<bool key="NSToolbarAutosavesConfiguration">YES</bool>
@@ -554,9 +554,9 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{316, 482}, {330, 143}}</string>
+					<string>{{316, 501}, {330, 143}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{316, 482}, {330, 143}}</string>
+					<string>{{316, 501}, {330, 143}}</string>
 					<integer value="1"/>
 					<string>{196, 240}</string>
 					<string>{{202, 428}, {480, 270}}</string>
