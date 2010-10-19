@@ -6,6 +6,7 @@
 //  Copyright 2008 Whomwah. All rights reserved.
 //
 
+#import "settings.h"
 #import "MainWindowController.h"
 #import "EmpViewController.h"
 #import "BBCBroadcast.h"
@@ -13,23 +14,20 @@
 #import "DockView.h"
 #import "LiveTextView.h"
 #import "ListenMenuItem.h"
+#import "ScheduleMenuItem.h"
+#import "ScheduleMenuListItem.h"
 #import "AppDelegate.h"
 #import <SystemConfiguration/SystemConfiguration.h>
-#import "settings.h"
 #import "XMPPCapabilitiesCoreDataStorage.h"
 #import "XMPPCapabilities.h"
-#import "XMPPAdHocCommands.h"
 #import "XMPPPubSub.h"
-
-#define DR_CONTENT_UNAVAILABLE @"Livetext currently unavailable"
-#define DR_CONTENT_AWAITING    @"Awaiting livetext..."
 
 @implementation MainWindowController
 
-@synthesize currentSchedule;
 @synthesize windowTitle;
 @synthesize liveTextView;
 @synthesize scheduleTimer;
+@synthesize schedules;
 @synthesize xmppCapabilities;
 @synthesize pubsub;
 @synthesize anonJID;
@@ -93,8 +91,8 @@
   
   // create our emp controller which handles the playing of audio
   empViewController = [[EmpViewController alloc] initWithNibName:@"EmpView" bundle:nil];
-  [[empViewController view] setFrameSize:[drMainView frame].size];
-  [drMainView addSubview:[empViewController view] 
+  [[empViewController view] setFrameSize:[mainView frame].size];
+  [mainView addSubview:[empViewController view] 
               positioned:NSWindowBelow
               relativeTo:nil];
   
@@ -115,7 +113,6 @@
   [[self window] setFrame:rect display:NO];
   
 	// setup connecting to the XMPP host anonomously
-  availableForSubscription = NO;
 	[[self xmppStream] addDelegate:self];
 	[[self xmppStream] setHostName:DR_XMPP_HOST];
   [[self xmppStream] setMyJID:[XMPPJID jidWithString:DR_XMPP_ANON]];
@@ -124,33 +121,21 @@
   XMPPCapabilitiesCoreDataStorage *cap_core = [[XMPPCapabilitiesCoreDataStorage alloc] init];
   xmppCapabilities = [[XMPPCapabilities alloc] initWithStream:[self xmppStream] capabilitiesStorage:cap_core];
   [cap_core release];
-	
-  /*
-  TODO - Impliment the Ad-Hoc Commands work
-   
-  XMPPAdHocCommands *ahc = [[XMPPAdHocCommands alloc] initWithStream:[self xmppStream]];
-  XMPPJID *jid = [XMPPJID jidWithString:@"tv@xmpp.local"];
-  [ahc addCommandWithNode:@"station"          andName:@"Switch to station <key>"             andJID:jid];
-  [ahc addCommandWithNode:@"station-up"       andName:@"Switch to next station"              andJID:jid];
-  [ahc addCommandWithNode:@"station-down"     andName:@"Switch to previous station"          andJID:jid];
-  [ahc addCommandWithNode:@"station-now"      andName:@"What's on the current station now"   andJID:jid];
-  [ahc addCommandWithNode:@"station-next"     andName:@"What's on the current station next"  andJID:jid];
-  [ahc addCommandWithNode:@"station-list"     andName:@"List all available stations"         andJID:jid];
-  [ahc addCommandWithNode:@"station-schedule" andName:@"Schedule for station <key>"          andJID:jid];
-  [ahc addDelegate:self];
-  */
   
   // create a pubsub connection
   pubsub = [[XMPPPubSub alloc] initWithStream:[self xmppStream]];
   [pubsub setPubsubService:[XMPPJID jidWithString:DR_XMPP_PUBSUB_SERVICE]];
   [pubsub addDelegate:self];
+  
+  // setup somewhere to store the subscriptions
+  subscriptions = [[NSMutableArray arrayWithCapacity:1] retain];
    
 	// attempt to connect to the xmpp host
 	NSError *error = nil;
   BOOL success = [[self xmppStream] connect:&error];
 	
 	if (!success) {
-		NSLog(@"Error! %@", [error localizedDescription]);
+		DLog(@"Error! %@", [error localizedDescription]);
 	}
 }
 
@@ -175,12 +160,12 @@
 - (void)dealloc
 {
   [dockIconView release];
-  [currentSchedule release];
 	[empViewController release];
   [xmppCapabilities release];
   [pubsub release];
   [liveTextView release];
   [currentStation release];
+  [schedules release];
   
 	[super dealloc];
 }
@@ -191,46 +176,63 @@
 #pragma mark -
 
 /**
- * A series of methods that help when switching stations and
- * handling the livetext subscriptions.
+ * Will attempt to unsubscibe to all livetext streams
  **/
 
-- (void)subscribeToLiveTextChannel:(NSString*)channel
-{  
-  // fail if no channel
-  if (!channel) return;
-  
-  // subscribe to the specified station
-  [pubsub subscribeToNode:[NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel] 
-              withOptions:nil];
-  
-  // make sure we clear the liveTextField and then start the progress indicator
-  [liveTextView progressIndictorOn];
-}
-
-- (void)unsubscribeToLiveTextChannel:(NSString*)channel
+- (void)unsubscribeFromLiveTextChannels
 {
-  // fail if no channel
-  if (!channel) return;
+  // fail if no subscriptions or not connected
+  if (([subscriptions count] < 1) || ![[self xmppStream] isConnected]) return;
   
-  // unsubscribe to the specified station
-  [pubsub unsubscribeFromNode:[NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel]];
+  // unsubsubscribe from all subscritions
+  for (NSString *channel in subscriptions) {
+    // unsubscribe to the specified station
+    [pubsub unsubscribeFromNode:[NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, channel]];
+    
+    DLog(@"unsubscribing to channel: %@", channel);
+  }
+  
+  // clear subscriptions
+  [subscriptions removeAllObjects];
   
   // clear the liveTextField and turn the progress indictor off
   [liveTextView progressIndictorOff];
 }
 
-- (void)switchSubscriptionFrom:(NSString*)previous to:(NSString*)next
-{  
-  // decide whether to switch subscription or not
-  if ([[self xmppStream] isConnected]) {
-    if (!availableForSubscription) return;
-    
-    if (previous) [self unsubscribeToLiveTextChannel:previous];
-    if (next) [self subscribeToLiveTextChannel:next];
-  }
-}
+/**
+ * Will attempt to subscibe to passedin channel
+ **/
 
+- (void)subscribeToLiveTextChannel:(NSString*)channel
+{    
+  // fail if no channel or not connected
+  if (!channel || ![[self xmppStream] isConnected]) return;
+  
+  // fetch the livetext key for this channel
+  NSString *key = [[self livetextLookup] objectForKey:channel];
+  
+  // return if we are already subscribed to the channel provided
+  if (!key || ([subscriptions indexOfObject:channel] != NSNotFound)) return;
+  
+  // we should only be subscribed to one channel at a time,
+  // so let's unsubscribe the rest
+  [self unsubscribeFromLiveTextChannels];
+  
+  DLog(@"subscribing to channel: %@", key);
+  
+  // turn the liveText progress indicator on
+  [liveTextView progressIndictorOn];
+  
+  // subscribe to the specified station
+  [pubsub subscribeToNode:[NSString stringWithFormat:@"%@%@", DR_XMPP_PUBSUB_NODE, key] 
+              withOptions:nil];
+  
+  // add out channel to the subscriptions list
+  [subscriptions addObject:key];
+  
+  // make sure we clear the liveTextField and then start the progress indicator
+  [liveTextView progressIndictorOn];
+}
 
 #pragma -
 #pragma NSToolbar delegate
@@ -266,35 +268,33 @@
   // set some kind of preload text
   self.windowTitle = @"Loading Schedule...";
 
-  // fetch out the current station key for reuse
-  NSString *currentStationKey = [currentStation objectForKey:@"key"];
+  // fetch out the station key for reuse
+  NSString *stationKey = [station objectForKey:@"key"];
+  
+  // logging
+  DLog(@"Fetching LIVE: %@", stationKey);
   
   // if the channel we're switching to does not support
   // livetext, then hide the toolbar and do our
   // best to unsubscribe to any current livetext
-  if ([[self livetextLookup] objectForKey:[station objectForKey:@"key"]]) {
+  if ([[self livetextLookup] objectForKey:stationKey]) {
     
-    [[self window] setShowsToolbarButton:YES];
-    [toolBar setVisible:YES];
-    
-    // turn the liveText progress indicator on
-    [liveTextView progressIndictorOn];
-    
-    // switch subscriptions from any previous station to the new one
-    [self switchSubscriptionFrom:[[self livetextLookup] objectForKey:currentStationKey] 
-                              to:[[self livetextLookup] objectForKey:[station objectForKey:@"key"]]];
+    // subscribe to the new station
+    [self subscribeToLiveTextChannel:stationKey];
+
   } else {
     
+    // clear the subscriptions
     [[self window] setShowsToolbarButton:NO];
     [toolBar setVisible:NO];
-    [self unsubscribeToLiveTextChannel:[[self livetextLookup] objectForKey:currentStationKey]];
+    [self unsubscribeFromLiveTextChannels];
   }
 
   // re-set the current station
   self.currentStation = station;
   
   // go and fetch the new schedule for this station 
-  [self fetchNewSchedule:nil];
+  [self prepareSchedules:nil];
   
   // switch the app icon to reflect the new station
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"id"]];
@@ -312,17 +312,31 @@
  **/
 
 - (void)fetchAOD:(id)sender
-{
+{    
+  BBCSchedule *s;
+  
+  // set the tag
+  int tag = [[sender performSelector:@selector(parentItem)] tag];
+  if (tag < 1) {
+    // set the current schedule
+    s = [self currentSchedule];
+  } else {
+    // set one of the 7 day catchup
+    s = [schedules objectAtIndex:(tag/100)];
+  }
+  
   // set the window title to something sane
-  self.windowTitle = [currentSchedule broadcastDisplayTitleForIndex:[sender tag]];
+  self.windowTitle = [s broadcastDisplayTitleForIndex:[sender tag]];
   
   // hide the toolbar and any chance of revealing it
   [[self window] setShowsToolbarButton:NO];
   [toolBar setVisible:NO];
 
   // unsubscribe from the current livetext channel
-  NSString *key = [[self livetextLookup] objectForKey:[currentStation objectForKey:@"key"]];
-  if (key) [self unsubscribeToLiveTextChannel:key];
+  [self unsubscribeFromLiveTextChannels];
+  
+  // logging
+  DLog(@"Fetching AOD: %@", [currentStation objectForKey:@"key"]);
   
   // clear any progress indictors
   [liveTextView progressIndictorOff];
@@ -331,7 +345,7 @@
   [self stopScheduleTimer];
   
   // fetch out broadcast information based on the selected item in the menu
-  BBCBroadcast *broadcast = [currentSchedule.broadcasts objectAtIndex:[sender tag]];
+  BBCBroadcast *broadcast = [s.broadcasts objectAtIndex:[sender tag]];
   
   // set the above as the current broadcast
   currentBroadcast = broadcast;  
@@ -340,7 +354,7 @@
   [self changeDockNetworkIconTo:[currentStation objectForKey:@"id"]];
   
   // rebuild schedule menu to reflect the AODness
-  [self buildScheduleMenu];
+  [self buildSchedule];
   
   // growl what we're listening to
   [self growl];
@@ -369,89 +383,6 @@
 }
 
 /**
- * Fetches a new schedule from the BBC
- **/
-
-- (void)fetchNewSchedule:(id)sender
-{  
-  // stop observing the broadcasts instance variable
-  [currentSchedule removeObserver:self forKeyPath:@"broadcasts"];
-  
-  // fetch the user defined stations
-  NSDictionary *serviceSelection = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServiceSelection"];
-  
-  // decide which outlet is used, if any
-  NSArray *outlets = [currentStation objectForKey:@"outlets"];
-  NSString *outlet = nil;
-  
-  if (outlets) {
-    
-    // loop through outlets and choose which one matches
-    // the one in our selections.
-    for (NSDictionary *ol in outlets) {
-      NSString *match = [serviceSelection objectForKey:[currentStation objectForKey:@"id"]];
-      if (match && [match isEqual:[ol objectForKey:@"id"]]) {
-        outlet = [ol objectForKey:@"key"];
-        break;
-      }
-    }
-    
-    // if none match, select the first
-    if (!outlet) {
-      outlet = [[outlets objectAtIndex:0] objectForKey:@"key"];
-    }
-    
-  }
-  
-  // create a new schedule object using the current outlet and key
-  BBCSchedule *sc = [[BBCSchedule alloc] initUsingNetwork:[currentStation objectForKey:@"key"] 
-                                                andOutlet:outlet];
-  
-  // make the call to fetch the data
-  [sc fetchScheduleForDate:[NSDate date]];
-  
-  // set this instance to the current schedule
-  self.currentSchedule = sc;
-  
-  // add an observer that watches to see when we have new broadcasts
-  [currentSchedule addObserver:self
-                    forKeyPath:@"broadcasts"
-                       options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
-                       context:NULL];
-  
-  // free some memory
-  [sc release];  
-}
-
-/**
- * any observers will call this method if something changes. We can then find
- * out what changed and decide the next move
- **/
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object 
-                        change:(NSDictionary *)change 
-                       context:(void *)context
-{
-  // do we have a current_broadcast, probably a new one
-  if (currentSchedule.current_broadcast) {
-    // set the newly changed broadcast
-    currentBroadcast = currentSchedule.current_broadcast;
-    
-    // update the window title
-    self.windowTitle = [currentSchedule.service title];
-    
-    // update the schedule menu
-    [self buildScheduleMenu];
-    
-    // start the schedule timer
-    [self startScheduleTimer];
-    
-    // tell everyone
-    [self growl];
-  }
-}
-
-/**
  * Fires off a growl message that let's people know which station and show
  * we are listening to.
  **/
@@ -462,7 +393,7 @@
   NSImage *img = [[NSImage alloc] initWithData:[dockIconView dataWithPDFInsideRect:[dockIconView frame]]];
 
   // fire off the message
-  [GrowlApplicationBridge notifyWithTitle:[currentSchedule.service title]
+  [GrowlApplicationBridge notifyWithTitle:[[self currentSchedule].service title]
                               description:[[currentBroadcast display_titles] objectForKey:@"title"]
                          notificationName:@"Now on air"
                                  iconData:[img TIFFRepresentation]
@@ -471,46 +402,6 @@
                              clickContext:nil];
   // free some memory
   [img release];
-}
-
-/**
- * stop the schedule timer that adjusts to which show is live
- **/
-
-- (void)stopScheduleTimer
-{
-  [scheduleTimer invalidate];
-  self.scheduleTimer = nil;  
-}
-
-/**
- * start the schedule timer and invalidate any that are running. This
- * method is used to update the schedule when ever a show comes to the
- * end. It calls fetchNewBroadcast, which in turn makes sure the UI
- * reflects the new schedule data
- **/
-
-- (void)startScheduleTimer
-{
-  // stop the timer, just in case it's running
-  [self stopScheduleTimer];
-  
-  // set a timer that loads the schedule again when the 
-  // current broadcast has finshed
-  NSTimer *timer = [[NSTimer alloc] initWithFireDate:currentBroadcast.end
-                                            interval:0.0
-                                              target:self
-                                            selector:@selector(fetchNewSchedule:)
-                                            userInfo:nil
-                                             repeats:NO];
-  
-  // add the timer to the current run loop
-  NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-  [runLoop addTimer:timer forMode:NSDefaultRunLoopMode];
-  
-  // assign the timer to something so we can turn it off
-  // when we need to
-  self.scheduleTimer = timer;
 }
 
 /**
@@ -533,37 +424,6 @@
 #pragma mark -
 #pragma mark Build Listen menu
 #pragma mark -
-
-
-// How about just passing in the station and index and infuring the rest ????
-
-- (NSMenuItem*)createStation:(NSDictionary*)station 
-                   withTitle:(NSAttributedString*)title
-                      andKey:(NSString*)key 
-                    forIndex:(int)index
-{  
-  // create a new menu item with the station name as the title
-  ListenMenuItem *menuItem = [[[ListenMenuItem allocWithZone:[NSMenu menuZone]] init] autorelease];
-  
-  // set it to enable if it's the current station
-  if ([currentStation isEqualTo:station] == YES) {
-    [menuItem setState:NSOnState];
-  }
-  
-  // create the station image used in the menu
-  NSImage *img = [NSImage imageNamed:[station objectForKey:@"id"]];
-  [img setSize:NSMakeSize(50.0, 28.0)];
-  [menuItem setImage:img];
-  
-  // set a bunch other object attributes
-  [menuItem setAttributedTitle:title];
-  [menuItem setAction:@selector(changeStation:)];
-  [menuItem setEnabled:YES];
-  [menuItem setTag:index];
-  [menuItem setTarget:self];
-  
-  return menuItem;
-}
 
 /**
  * Build the station list you see in the Listen menu bar
@@ -607,7 +467,7 @@
           if ([[outlet objectForKey:@"id"] isEqual:selectionKey]) {
             
             // create a new menu item
-            ListenMenuItem *menuItem = [[[ListenMenuItem allocWithZone:[NSMenu menuZone]] init] autorelease];
+            ListenMenuItem *menuItem = [[ListenMenuItem allocWithZone:[NSMenu menuZone]] init];
             
             // set it to enable if it's the current station
             if ([currentStation isEqualTo:station] == YES) {
@@ -625,6 +485,7 @@
             // add the menuitem to our menu
             [listenMenu insertItem:menuItem atIndex:count+skipToAllowForExtraItems];
 
+            [menuItem release];
             count++;          
           }
         }
@@ -632,7 +493,7 @@
       } else {
         
         // create a new menu item
-        ListenMenuItem *menuItem = [[[ListenMenuItem allocWithZone:[NSMenu menuZone]] init] autorelease];
+        ListenMenuItem *menuItem = [[ListenMenuItem allocWithZone:[NSMenu menuZone]] init];
         
         // set it to enable if it's the current station
         if ([currentStation isEqualTo:station] == YES) {
@@ -649,6 +510,7 @@
         // add the menuitem to our menu
         [listenMenu insertItem:menuItem atIndex:count+skipToAllowForExtraItems];
         
+        [menuItem release];
         count++;
       }
     }
@@ -656,99 +518,357 @@
   }
 }
 
+#pragma mark -
+#pragma mark Build Schedule menu
+#pragma mark -
+
 /**
- * Clears the menu passed in
+ * Fetch the first item in the schedules array as
+ * this will be the current day
  **/
 
-- (void)clearMenu:(NSMenu *)menu
+- (BBCSchedule*)currentSchedule
 {
-  for (NSMenuItem *item in [menu itemArray]) {  
-    [menu removeItem:item];
+  if (schedules) {
+    return [schedules objectAtIndex:0];
   }
+  return nil;
+}
+
+/**
+ * Fetches a new schedule from the BBC
+ **/
+
+- (void)prepareSchedules:(id)sender
+{   
+  // fetch the user defined stations
+  NSDictionary *serviceSelection = [[NSUserDefaults standardUserDefaults] objectForKey:@"ServiceSelection"];
+  
+  // decide which outlet is used, if any
+  NSArray *outlets = [currentStation objectForKey:@"outlets"];
+  NSString *outlet = nil;
+  
+  if (outlets) {
+    
+    // loop through outlets and choose which one matches
+    // the one in our selections.
+    for (NSDictionary *ol in outlets) {
+      NSString *match = [serviceSelection objectForKey:[currentStation objectForKey:@"id"]];
+      if (match && [match isEqual:[ol objectForKey:@"id"]]) {
+        outlet = [ol objectForKey:@"key"];
+        break;
+      }
+    }
+    
+    // if none match, select the first
+    if (!outlet) {
+      outlet = [[outlets objectAtIndex:0] objectForKey:@"key"];
+    }
+    
+  }
+  
+  // if we have created schedules before we would have
+  // added many observers, which we need to remove
+  if (schedules) {
+    for (BBCSchedule *s in schedules) {
+      [s removeObserver:self forKeyPath:@"broadcasts"];     
+    }
+  }
+  
+  // how far do we want to go back based
+  // on the 7 day window for AOD
+  int noDaysToShow = 8;
+
+  // create our schedules array
+  self.schedules = [NSMutableArray arrayWithCapacity:noDaysToShow];
+  
+  // set a initial date of now
+  NSDate *d = [NSDate date];
+  
+  // set up date components
+  NSDateComponents *components = [[NSDateComponents alloc] init];
+
+  // create a calendar
+  NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  
+  // loop through and create the schedules
+  for (int i=0; i<noDaysToShow; i++) {
+    
+    // create a new schedule object
+    BBCSchedule *sc = [[BBCSchedule alloc] initUsingNetwork:[currentStation objectForKey:@"key"] 
+                                                  andOutlet:outlet];
+    sc.date = d;
+    
+    // only actually fetch the current schedule
+    //if (i < 1) [sc fetch];
+    [sc fetch];
+    
+    // add an observer that watches to see when we have new broadcasts
+    [sc addObserver:self
+         forKeyPath:@"broadcasts"
+            options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)
+            context:NULL];
+    
+    // add the schedule to the list
+    [schedules addObject:sc];
+    
+    // free me
+    [sc release];
+    
+    // increment the date by -1 day
+    [components setDay:-1];
+    d = [gregorian dateByAddingComponents:components toDate:d options:0];
+  }
+  
+  [components release];
+  [gregorian release];
+}
+
+/**
+ * any observers will call this method if something changes. We can then find
+ * out what changed and decide the next move
+ **/
+
+- (void)observeValueForKeyPath:(NSString *)keyPath 
+                      ofObject:(id)object 
+                        change:(NSDictionary *)change 
+                       context:(void *)context
+{  
+  // if we're not dealing with a BBCSchedule, return;
+  if (![object isKindOfClass:[BBCSchedule class]]) {
+    return;
+  }
+  
+  // do we have a current_broadcast, probably a new one
+  if ([object isEqual:[self currentSchedule]] &&
+      [self currentSchedule].current_broadcast) {
+    
+    // set the newly changed broadcast
+    currentBroadcast = [self currentSchedule].current_broadcast;
+    
+    // update the window title
+    self.windowTitle = [[self currentSchedule].service title];
+    
+    // update the schedule menu
+    [self buildSchedule];
+    
+    // start the schedule timer
+    [self startScheduleTimer];
+    
+    // tell everyone
+    [self growl];
+  } else {
+    // rebuild the schedules menu
+    // TODO: This is overkill at the moment as we erbuild
+    // the whole schedule menu rather than the one that has changed
+    [self buildSchedule];
+  }
+
+}
+
+/**
+ * stop the schedule timer that adjusts to which show is live
+ **/
+
+- (void)stopScheduleTimer
+{
+  [scheduleTimer invalidate];
+  self.scheduleTimer = nil;  
+}
+
+/**
+ * start the schedule timer and invalidate any that are running. This
+ * method is used to update the schedule when ever a show comes to the
+ * end. It calls fetchNewBroadcast, which in turn makes sure the UI
+ * reflects the new schedule data
+ **/
+
+- (void)startScheduleTimer
+{
+  // stop the timer, just in case it's running
+  [self stopScheduleTimer];
+  
+  // set a timer that loads the schedule again when the 
+  // current broadcast has finshed
+  NSTimer *timer = [[NSTimer alloc] initWithFireDate:currentBroadcast.end
+                                            interval:0.0
+                                              target:self
+                                            selector:@selector(prepareSchedules:)
+                                            userInfo:nil
+                                             repeats:NO];
+  
+  // add the timer to the current run loop
+  NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+  [runLoop addTimer:timer forMode:NSDefaultRunLoopMode];
+  
+  // assign the timer to something so we can turn it off
+  // when we need to
+  self.scheduleTimer = timer;
+}
+
+/**
+ * Constructs and returns an NSMenuItem containing an NSMenu
+ * of schedule menuitems for a specified day
+ **/
+
+- (NSMenuItem*)constructScheduleMenu:(BBCSchedule*)schedule
+{
+  // format the schedule date into a readable date string for the menu title
+  NSString *day = [schedule.date descriptionWithCalendarFormat:@"%A %d %B" timeZone:nil locale:nil];
+  
+  // create a menu item that will act as the entry poiny for the submenu
+  ScheduleMenuListItem *scheduleMenuItem = [[[ScheduleMenuListItem alloc] init] autorelease];
+  scheduleMenuItem.title = day;
+  [scheduleMenuItem setTag:[schedules indexOfObject:schedule]*100];
+  [scheduleMenuItem createLabel];
+  
+  // create the submenu to hold all the schedule items
+  NSMenu *subMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] init];
+  
+  // set a counter
+  int count = 0;
+  
+  // loop through all the broadcasts and add them to the submenu
+  ScheduleMenuItem *mitem;
+  for (BBCBroadcast *broadcast in schedule.broadcasts) {
+    
+    // create a new menu item
+    mitem = [[ScheduleMenuItem alloc] init];
+    mitem.start = broadcast.start;
+    mitem.title = [broadcast.display_titles objectForKey:@"title"];
+    mitem.availability = broadcast.availability;
+    mitem.short_synopsis = broadcast.short_synopsis;
+    [mitem setTarget:self];
+    
+    if ([broadcast isEqual:currentBroadcast]) {
+      mitem.currentState = @"NOW PLAYING";
+      [mitem setState:NSOnState];
+      [mitem setAction:NULL];
+      
+      // display so you know that the parent has an active child
+      [scheduleMenuItem setState:NSMixedState];
+      
+    } else if (broadcast.media && [[broadcast.media objectForKey:@"format"] isEqualToString:@"audio"]) {
+      [mitem setAction:@selector(fetchAOD:)];
+    }
+    
+    [mitem createLabel];
+    [mitem setEnabled:YES];
+    [mitem setTag:count];
+    [mitem setEnabled:YES];
+    [subMenu addItem:mitem];
+    [mitem release];
+    
+    count++;
+  }
+  
+  // add the submenu to the menu item
+  [scheduleMenuItem setSubmenu:subMenu];
+  [subMenu release];
+  
+  return scheduleMenuItem;
 }
 
 /**
  * Build the menu used to display the schedule
+ * NOTE: Not used yet
  **/
 
-- (void)buildScheduleMenu
+- (void)menuWillOpen:(NSMenu *)menu
+{
+}
+
+/**
+ * Creates the schedule menu you see in the main menu of the applications
+ **/
+
+- (void)buildSchedule
 {
   // fetch out the 'Schedule' menu, ready to build
   NSMenu *scheduleMenu = [[[NSApp mainMenu] itemWithTitle:@"Schedule"] submenu];  
+
+  int count = 0;
   
   // clear the current menu
-  [self clearMenu:scheduleMenu];
+  for (NSMenuItem *item in [scheduleMenu itemArray]) {  
+    [scheduleMenu removeItem:item];
+  }
+  
+  // add previous schedules
+  for (BBCSchedule *s in schedules) {    
+    if (count > 0) {    
+      [scheduleMenu addItem:[self constructScheduleMenu:s]];
+    }
+    
+    count++;
+  }
+
+  // add the separator between days and the current schedule
+  [scheduleMenu addItem:[NSMenuItem separatorItem]];
   
   // loop through all the broadcasts
-  int count = 0;
-  NSMenuItem *newItem;
-  NSString *start;
-  for (BBCBroadcast *broadcast in [currentSchedule broadcasts]) {
- 
-    // create a string of the start time in HH:MM
-    start = [broadcast.start descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil];
-    
+  count = 0;
+  ScheduleMenuItem *newItem;
+  for (BBCBroadcast *broadcast in [self currentSchedule].broadcasts) {
+     
     // create a new menu item
-    newItem = [[NSMenuItem allocWithZone:[NSMenu menuZone]] init];
+    newItem = [[ScheduleMenuItem alloc] init];
+    newItem.start = broadcast.start;
+    newItem.title = [broadcast.display_titles objectForKey:@"title"];
+    newItem.availability = broadcast.availability;
+    newItem.short_synopsis = broadcast.short_synopsis;
+    [newItem setTarget:self];
     
-    NSMutableString *str = [NSMutableString stringWithFormat:@"%@  %@", start, 
-                            [broadcast.display_titles objectForKey:@"title"]];
-    
-    NSString *state = @"";
-    if ([broadcast isEqual:currentBroadcast] == YES) {
-      state = @" NOW PLAYING";
+    if ([broadcast isEqual:currentBroadcast]) {
+      newItem.currentState = @"NOW PLAYING";
       [newItem setState:NSOnState];
       [newItem setAction:NULL];
-    } else if ([broadcast isEqual:currentSchedule.current_broadcast] == YES) {
-      state = @" LIVE";
+    } else if ([broadcast isEqual:[self currentSchedule].current_broadcast]) {
+      newItem.currentState = @"LIVE";
       [newItem setAction:@selector(refreshStation:)];
     } else if (broadcast.media && [[broadcast.media objectForKey:@"format"] isEqualToString:@"audio"]) {
       [newItem setAction:@selector(fetchAOD:)];
     }
     
-    [str appendString:state];
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:str];
-    NSString *display_title = [broadcast.display_titles objectForKey:@"title"];
-    
-    [string addAttribute:NSFontAttributeName
-                   value:[NSFont userFontOfSize:13.6]
-                   range:NSMakeRange(0,[start length])];
-    
-    [string addAttribute:NSFontAttributeName
-                   value:[NSFont userFontOfSize:13.6]
-                   range:NSMakeRange([start length]+1,[display_title length])];
-
-    [string addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor lightGrayColor]
-                   range:NSMakeRange(2+[start length]+[display_title length],[state length])];
-    
-    [string addAttribute:NSFontAttributeName
-                   value:[NSFont userFontOfSize:9]
-                   range:NSMakeRange(2+[start length]+[display_title length],[state length])];
-
-    [newItem setAttributedTitle:string];
+    [newItem createLabel];
     [newItem setEnabled:YES];
     [newItem setTag:count];
     [newItem setEnabled:YES];
-    [newItem setTarget:self];
     [scheduleMenu addItem:newItem];
     [newItem release];
-    [string release];
+    
     count++;
   }
 }
+
+/**
+ * Causes the emp view to redraw itself
+ **/
 
 - (void)redrawEmp
 {
   [[empViewController view] setNeedsDisplay:YES];  
 }
 
+/**
+ * behaves as though you have choosen another station. This is
+ * a bit of a helper if the station does not load as expected. It's
+ * like pressing the refresh/reload button in your browser
+ **/
+
 - (IBAction)refreshStation:(id)sender
 {
   [self fetchRADIO:currentStation];
 }
 
+#pragma mark -
 #pragma mark Main Window delegate
+#pragma mark -
+
+/**
+ * called when you click away from the application. It is here
+ * we attempt to keep the app at the top of the window stack
+ **/
 
 - (void)windowDidResignMain:(NSNotification *)notification
 {
@@ -830,20 +950,23 @@
 
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {	
-  NSLog(@"Attempting to Authorise Anonymously...");
+  DLog(@"Attempting to Authorise Anonymously...");
   
 	NSError *error = nil;
 	BOOL success;
 	success = [[self xmppStream] authenticateAnonymously:&error];
 	
 	if (!success) {
-		NSLog(@"Error! %@", [error localizedDescription]);
+		DLog(@"Error! %@", [error localizedDescription]);
+    [liveTextView progressIndictorOff];
+    [[self window] setShowsToolbarButton:NO];
+    [toolBar setVisible:NO];
 	}
 }
 
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {	
-  NSLog(@"Authenticated ok");
+  DLog(@"Authenticated ok");
   
   // Send presence
   
@@ -852,79 +975,29 @@
   // unsubscribe subscribe to the livetext node of the current station
   // TODO This is clearly messy and needs to be done properly
   
-  NSString *key = [[self livetextLookup] objectForKey:[currentStation objectForKey:@"key"]];
-  if (key) [self subscribeToLiveTextChannel:key];
-  availableForSubscription = YES;
+  [self subscribeToLiveTextChannel:[currentStation objectForKey:@"key"]];
 }
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender
 {	
-  NSLog(@"XMPP Connection has disconnected");
+  DLog(@"XMPP Connection has disconnected");
   [liveTextView progressIndictorOff];
-  liveTextView.text = DR_CONTENT_UNAVAILABLE;
+  [[self window] setShowsToolbarButton:NO];
+  [toolBar setVisible:NO];
 }
 
 - (void)xmppStreamWasToldToDisconnect:(XMPPStream *)sender
 {
-  NSLog(@"XMPP Connection told to disconnected");
+  DLog(@"XMPP Connection told to disconnected");
 }
 
 - (void)xmppStream:(XMPPStream *)sender didNotConnect:(NSError *)error
 {
-  NSLog(@"XMPP Connection did not even connect?");
+  DLog(@"XMPP Connection did not even connect?");
+  [liveTextView progressIndictorOff];
+  [[self window] setShowsToolbarButton:NO];
+  [toolBar setVisible:NO];
 }
-
-
-#pragma mark -
-#pragma mark XMPPAdHocCommands Delegate Methods
-#pragma mark -
-
-- (void)xmppAdHocCommands:(XMPPAdHocCommands *)sender didReceiveCommand:(NSString*)command forIQ:(XMPPIQ *)iq
-{
-  // handle all incoming commands
-  //
-  // <iq type='set' to='responder@domain' id='exec1'>
-  //   <command xmlns='http://jabber.org/protocol/commands' node='list' action='execute'/>
-  // </iq>
-  
-  if ([iq isResultIQ] && [command isEqualToString:@"station"] == YES) {
-    
-    // return a list of stations as part 1 of a multistage command
-
-    XMPPIQ *iqRes = [XMPPIQ iqWithType:@"result" to:[iq from] elementID:[iq elementID]];
-    NSXMLElement *cmdElement = [NSXMLElement elementWithName:@"command" xmlns:@"http://jabber.org/protocol/commands"];
-    [cmdElement addAttributeWithName:@"node" stringValue:@"command"];
-    [cmdElement addAttributeWithName:@"sessionid" stringValue:[XMPPStream generateUUID]];
-    [cmdElement addAttributeWithName:@"status" stringValue:@"executing"];
-    
-    NSXMLElement *xForm = [NSXMLElement elementWithName:@"x" xmlns:@"jabber:x:data"];
-    [cmdElement addAttributeWithName:@"type" stringValue:@"result"];
-    
-    NSXMLElement *title = [NSXMLElement elementWithName:@"title"];
-    [title setStringValue:@"Available Stations"];
-    [xForm addChild:title];
-    
-    // actually add the stations
-    
-    int count = 0;
-    for (NSDictionary *station in stations) {
-      NSXMLElement *field = [NSXMLElement elementWithName:@"field"];
-      [field addAttributeWithName:@"var" stringValue:[NSString stringWithFormat:@"%i", count]];
-      [field addAttributeWithName:@"label" stringValue:[station valueForKey:@"label"]];
-      [xForm addChild:field];
-      count++;
-    }
-    
-    [cmdElement addChild:xForm];
-    [iq addChild:cmdElement];
-
-    NSLog(@"Sending return command");
-    [[sender xmppStream] sendElement:iqRes];
-  }
-  
-  NSLog(@"command %@", command);
-}
-
 
 #pragma mark -
 #pragma mark XMPPPubSub Delegate Methods
@@ -932,24 +1005,27 @@
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didSubscribe:(XMPPIQ *)iq
 {
-  NSLog(@"pubsub subscribed");
+  DLog(@"pubsub subscribed");
+  [[self window] setShowsToolbarButton:YES];
+  [toolBar setVisible:YES];
 }
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didCreateNode:(NSString*)node withIQ:(XMPPIQ *)iq
 {
-  NSLog(@"pubsub created node");
+  DLog(@"pubsub created node");
 }
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveError:(XMPPIQ *)iq
 {
-  NSLog(@"pubsub error: %@", iq);
+  DLog(@"pubsub error: %@", iq);
   [liveTextView progressIndictorOff];
-  liveTextView.text = DR_CONTENT_UNAVAILABLE;
+  [[self window] setShowsToolbarButton:NO];
+  [toolBar setVisible:NO];
 }
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveResult:(XMPPIQ *)iq
 {
-  NSLog(@"pubsub result");
+  DLog(@"pubsub result");
 }
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveMessage:(XMPPMessage *)message
@@ -988,12 +1064,12 @@
       BOOL success = [[self scrobbler] scrobbleWithParams:params error:&error];
       
       if (!success) {
-        NSLog(@"Error! %@", [error localizedDescription]);
+        DLog(@"Error! %@", [error localizedDescription]);
       }
     }
   }
   
-  NSLog(@"Message: %@", txt);
+  DLog(@"Message: %@", txt);
   
   if (liveTextView) {
     [liveTextView progressIndictorOff];

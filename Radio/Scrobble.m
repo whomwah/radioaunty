@@ -93,7 +93,7 @@ enum {
   clientVersion         = @"1.0";
   self.clientId         = @"tst";
   postHandshake         = STATE_STANDBY;
-  self.scrobbleHistory  = [NSMutableArray arrayWithCapacity:1];
+  self.scrobbleHistory  = [NSMutableArray array];
 }
 
 /**
@@ -553,14 +553,14 @@ enum {
   
   NSDictionary *opts = sender ? [sender userInfo] : self.scrobbleBuffer;
   
-  Play *lastScrobble = [scrobbleHistory objectAtIndex:0];
+  Play *lastScrobble = [scrobbleHistory objectAtIndex:[scrobbleHistory count]-1];
   if (lastScrobble) {
     NSString *lastScrobbleSig = lastScrobble.signature;
     NSString *sig = [self toMD5:[NSString stringWithFormat:@"%@%@", 
                               [opts objectForKey:@"track"], 
                               [opts objectForKey:@"artist"]]];
     if ([lastScrobbleSig isEqual:sig]) {
-      NSLog(@"Warning: Attempted to scrobble the same track again");
+      DLog(@"Warning: Attempted to scrobble the same track again");
       return;
     }
   }

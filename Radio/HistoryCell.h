@@ -1,5 +1,5 @@
 //
-//  MyCell.h
+//  HistoryCell.h
 //  abFinder
 //
 //  Created by Duncan Robertson on 07/02/2009.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MyCell : NSCell {
+@interface HistoryCell : NSCell {
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "HistoryWindowController.h"
-#import "MyCell.h"
+#import "HistoryCell.h"
 #import "Play.h"
 
 @implementation HistoryWindowController
@@ -32,7 +32,7 @@
   [tableView setIntercellSpacing:NSMakeSize(0,1)];
   [tableView setRowHeight:44];
   
-  MyCell *cell = [[[MyCell alloc] init] autorelease];
+  HistoryCell *cell = [[[HistoryCell alloc] init] autorelease];
 	[[tableView tableColumnWithIdentifier:@"theTableColumn"] setDataCell:cell];
 }
 

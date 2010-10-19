@@ -43,7 +43,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 																					format:&format 
 																					errorDescription:&errorDesc];
 		if (!temp) {
-			NSLog(@"Error: %@", errorDesc);
+			DLog(@"Error: %@", errorDesc);
 			[errorDesc release];
 		}
     
@@ -176,7 +176,7 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 
 - (BOOL)xmppReconnect:(XMPPReconnect *)sender shouldAttemptAutoReconnect:(SCNetworkReachabilityFlags)reachabilityFlags
 {
-	NSLog(@"---------- xmppReconnect:shouldAttemptAutoReconnect: ----------");
+	DLog(@"---------- xmppReconnect:shouldAttemptAutoReconnect: ----------");
 	
 	return YES;
 }
@@ -239,24 +239,22 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 - (void)scrobble:(Scrobble*)sender didNotDoScrobbleHandshake:(NSError*)error
 {
   // adjust the preferences to reflect error
-  NSString *errorStr = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
-  NSLog(@"HandshakeError: %@", errorStr);
+  DLog(@"HandshakeError: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);
 }
 
 - (void)scrobble:(Scrobble*)sender didSendNowPlaying:(NSString*)response;
 {
-  NSLog(@"NowPlaying: %@", response);
+  DLog(@"NowPlaying: %@", response);
 }
 
 - (void)scrobble:(Scrobble*)sender didScrobble:(NSString*)response
 {
-  NSLog(@"Scrobbled: %@", response);  
+  DLog(@"Scrobbled: %@", response);  
 }
 
 - (void)scrobble:(Scrobble*)sender didNotAddToHistory:(NSError*)error
 {
-  NSString *errorStr = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
-  NSLog(@"didNotAddToHistory: %@", errorStr);  
+  DLog(@"didNotAddToHistory: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);  
 }
 
 - (void)scrobble:(Scrobble*)sender didAddToHistory:(Play*)play

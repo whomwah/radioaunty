@@ -20,31 +20,30 @@
 @class XMPPPubSub;
 
 @interface MainWindowController : NSWindowController {
-	IBOutlet NSView *drMainView;
-  IBOutlet NSToolbar *toolBar;  
-  
-  LiveTextView *liveTextView;
-  
-  NSDictionary *currentStation;
-  NSArray *stations;
   NSString *windowTitle;
-  BBCSchedule *currentSchedule;
+	IBOutlet NSView *mainView;
+  IBOutlet NSToolbar *toolBar;  
+
+  NSArray *stations;
+  NSDictionary *currentStation;
   BBCBroadcast *currentBroadcast;
-  EmpViewController *empViewController;
   NSTimer *scheduleTimer;
+  NSMutableArray *schedules;
+  
+  EmpViewController *empViewController;
   DockView *dockIconView;
   
-  BOOL availableForSubscription;
   NSString *anonJID;
-  
   XMPPCapabilities *xmppCapabilities;
   XMPPPubSub *pubsub;
+  NSMutableArray *subscriptions;
+  LiveTextView *liveTextView;
 }
 
 @property (nonatomic, retain) NSTimer *scheduleTimer;
 @property (nonatomic, copy) NSString *windowTitle;
 @property (nonatomic, retain) LiveTextView *liveTextView;
-@property (nonatomic, retain) BBCSchedule *currentSchedule;
+@property (nonatomic, retain) NSMutableArray *schedules;
 @property (nonatomic, readonly) XMPPCapabilities *xmppCapabilities;
 @property (nonatomic, retain) XMPPPubSub *pubsub;
 @property (nonatomic, copy) NSString *anonJID;
@@ -54,15 +53,15 @@
 - (void)changeDockNetworkIconTo:(NSString *)service;
 - (void)stopScheduleTimer;
 - (void)startScheduleTimer;
+- (BBCSchedule*)currentSchedule;
 - (void)refreshStation:(id)sender;
 - (void)fetchRADIO:(NSDictionary *)station;
 - (void)fetchAOD:(id)sender;
 - (void)changeStation:(id)sender;
 - (void)redrawEmp;
 - (void)buildStationsMenu;
-- (void)buildScheduleMenu;
-- (void)fetchNewSchedule:(id)sender;
-- (void)clearMenu:(NSMenu *)menu;
+- (void)buildSchedule;
+- (void)prepareSchedules:(id)sender;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object 
                         change:(NSDictionary *)change context:(void *)context;
 

@@ -118,12 +118,12 @@
 
 - (void)webView:(WebView *)sender didStartProvisionalLoadForFrame:(WebFrame *)frame
 {
-  NSLog(@"Started to load the page");
+  DLog(@"Started to load the page");
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-  NSLog(@"Finshed loading page");
+  DLog(@"Finshed loading page");
 }
 
 - (void)webView:(WebView *)sender didFailProvisionalLoadWithError:(NSError *)error forFrame:(WebFrame *)frame

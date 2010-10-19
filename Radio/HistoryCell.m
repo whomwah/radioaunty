@@ -1,15 +1,15 @@
 //
-//  MyCell.m
+//  HistoryCell.m
 //  abFinder
 //
 //  Created by Duncan Robertson on 07/02/2009.
 //  Copyright 2009 Whomwah. All rights reserved.
 //
 
-#import "MyCell.h"
+#import "HistoryCell.h"
 #import "Play.h"
 
-@implementation MyCell
+@implementation HistoryCell
 
 - (void)setObjectValue:(id)object {
   id oldObjectValue = [self objectValue];

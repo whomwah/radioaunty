@@ -3,6 +3,21 @@
 //  Radio
 //
 
+/*
+ TODO - Impliment the Ad-Hoc Commands work
+ 
+ XMPPAdHocCommands *ahc = [[XMPPAdHocCommands alloc] initWithStream:[self xmppStream]];
+ XMPPJID *jid = [XMPPJID jidWithString:@"tv@xmpp.local"];
+ [ahc addCommandWithNode:@"station"          andName:@"Switch to station <key>"             andJID:jid];
+ [ahc addCommandWithNode:@"station-up"       andName:@"Switch to next station"              andJID:jid];
+ [ahc addCommandWithNode:@"station-down"     andName:@"Switch to previous station"          andJID:jid];
+ [ahc addCommandWithNode:@"station-now"      andName:@"What's on the current station now"   andJID:jid];
+ [ahc addCommandWithNode:@"station-next"     andName:@"What's on the current station next"  andJID:jid];
+ [ahc addCommandWithNode:@"station-list"     andName:@"List all available stations"         andJID:jid];
+ [ahc addCommandWithNode:@"station-schedule" andName:@"Schedule for station <key>"          andJID:jid];
+ [ahc addDelegate:self];
+ */
+
 #import <Foundation/Foundation.h>
 #import "XMPPModule.h"
 

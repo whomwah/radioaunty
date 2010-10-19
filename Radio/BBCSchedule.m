@@ -18,7 +18,7 @@
 
 @synthesize broadcasts;
 @synthesize service;
-
+@synthesize date;
 
 - (id)init
 {
@@ -34,7 +34,8 @@
 {
   [broadcasts release];
   [service release];
-
+  [date release];
+  
 	[super dealloc];
 }
 
@@ -45,19 +46,13 @@
   
   outletKey  = outlet; 
   serviceKey = network;
+  self.date = [NSDate date];
   
   return self;
 }
 
 
-- (BBCSchedule *)fetchScheduleForDate:(NSDate *)date
-{
-  [self fetch:[self urlForDate:date]];
-  return self;
-}
-
-
-- (NSURL *)urlForDate:(NSDate *)date
+- (NSURL *)constructUrl
 {  
   NSString *outletStr = outletKey ? [NSString stringWithFormat:@"/%@", outletKey] : @"";
   NSString *serviceStr = serviceKey ? [NSString stringWithFormat:@"%@/", serviceKey] : @"";  
@@ -69,11 +64,30 @@
   return [NSURL URLWithString:url_str];
 }
 
+- (BBCSchedule *)fetchScheduleForDate:(NSDate *)scheduleDate
+{
+  self.date = scheduleDate;
+  [self fetch:[self constructUrl]];
+  return self;
+}
+
+
+- (BBCSchedule *)fetch
+{
+  [self fetch:[self constructUrl]];
+  return self;
+}
+
+
+- (BBCSchedule *)refreshDateAndFetch
+{
+  self.date = [NSDate date];
+  [self fetch:[self constructUrl]];
+  return self;
+}
 
 - (void)fetch:(NSURL *)url
-{
-  NSLog(@"url: %@", [url absoluteURL]);
-  
+{  
   NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];
@@ -130,7 +144,7 @@
 
 - (void)myFetcher:(GDataHTTPFetcher *)fetcher failedWithError:(NSError *)error
 {
-  NSLog(@"Connection failed with Error - %@", [error localizedDescription]);
+  DLog(@"Connection failed with Error - %@", [error localizedDescription]);
 }
 
 

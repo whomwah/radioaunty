@@ -3,7 +3,7 @@
 //  Radio
 //
 //  Created by Duncan Robertson on 14/10/2010.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Duncan Robertson. All rights reserved.
 //
 
 #import "ListenMenuItem.h"

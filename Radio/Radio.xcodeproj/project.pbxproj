@@ -99,6 +99,8 @@
 		AE73A04C0EF957A200AB9578 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE73A04B0EF957A200AB9578 /* Growl.framework */; };
 		AE73A04F0EF957B200AB9578 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AE73A04B0EF957A200AB9578 /* Growl.framework */; };
 		AE75A00011CA698800A12D3B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE759FFF11CA698800A12D3B /* AppDelegate.m */; };
+		AE76B01B1268BB9F005EAEDC /* ScheduleMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AE76B01A1268BB9F005EAEDC /* ScheduleMenuItem.m */; };
+		AE76B2EE126C76B8005EAEDC /* ScheduleMenuListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AE76B2ED126C76B8005EAEDC /* ScheduleMenuListItem.m */; };
 		AE801A3B11F6D41D00C914F4 /* XMPPAdHocCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = AE801A3A11F6D41D00C914F4 /* XMPPAdHocCommands.m */; };
 		AE8574E811CBA7B600691F4B /* SSCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = AE85749D11CBA7B600691F4B /* SSCrypto.m */; };
 		AE8574E911CBA7B600691F4B /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8574A011CBA7B600691F4B /* AsyncSocket.m */; };
@@ -134,7 +136,7 @@
 		AEA0B4880EF7F3C900137DAA /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = AEA0B4870EF7F3C900137DAA /* dsa_pub.pem */; };
 		AEA67EB8125A0BE30038B4C7 /* HistoryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA67EB7125A0BE30038B4C7 /* HistoryWindowController.m */; };
 		AEA67EBA125A0C6B0038B4C7 /* History.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA67EB9125A0C6B0038B4C7 /* History.xib */; };
-		AEA68039125A2DA90038B4C7 /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA68038125A2DA90038B4C7 /* MyCell.m */; };
+		AEA68039125A2DA90038B4C7 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA68038125A2DA90038B4C7 /* HistoryCell.m */; };
 		AEA685CE125C76660038B4C7 /* Play.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA685CD125C76660038B4C7 /* Play.m */; };
 		AEB914C30EFBF7C90074754A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AEA0B4400EF7F01600137DAA /* Sparkle.framework */; };
 		AEC16F210F68334800A38C90 /* DockView.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC16F200F68334800A38C90 /* DockView.m */; };
@@ -286,6 +288,10 @@
 		AE73A04B0EF957A200AB9578 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		AE759FFE11CA698800A12D3B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE759FFF11CA698800A12D3B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE76B0191268BB9F005EAEDC /* ScheduleMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleMenuItem.h; sourceTree = "<group>"; };
+		AE76B01A1268BB9F005EAEDC /* ScheduleMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleMenuItem.m; sourceTree = "<group>"; };
+		AE76B2EC126C76B8005EAEDC /* ScheduleMenuListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleMenuListItem.h; sourceTree = "<group>"; };
+		AE76B2ED126C76B8005EAEDC /* ScheduleMenuListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleMenuListItem.m; sourceTree = "<group>"; };
 		AE801A3911F6D41D00C914F4 /* XMPPAdHocCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPAdHocCommands.h; sourceTree = "<group>"; };
 		AE801A3A11F6D41D00C914F4 /* XMPPAdHocCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPAdHocCommands.m; sourceTree = "<group>"; };
 		AE85749C11CBA7B600691F4B /* SSCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SSCrypto.h; path = "../../../svn/googlecode/xmppframework-read-only/SSCrypto.h"; sourceTree = SOURCE_ROOT; };
@@ -358,8 +364,8 @@
 		AEA67EB6125A0BE30038B4C7 /* HistoryWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryWindowController.h; sourceTree = "<group>"; };
 		AEA67EB7125A0BE30038B4C7 /* HistoryWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryWindowController.m; sourceTree = "<group>"; };
 		AEA67EB9125A0C6B0038B4C7 /* History.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = History.xib; sourceTree = "<group>"; };
-		AEA68037125A2DA90038B4C7 /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
-		AEA68038125A2DA90038B4C7 /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
+		AEA68037125A2DA90038B4C7 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		AEA68038125A2DA90038B4C7 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		AEA685CC125C76660038B4C7 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
 		AEA685CD125C76660038B4C7 /* Play.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play.m; sourceTree = "<group>"; };
 		AEC16F1F0F68334800A38C90 /* DockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DockView.h; sourceTree = "<group>"; };
@@ -843,14 +849,18 @@
 		AEA0B0F40EF7B44600137DAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AEA68037125A2DA90038B4C7 /* MyCell.h */,
-				AEA68038125A2DA90038B4C7 /* MyCell.m */,
+				AEA68037125A2DA90038B4C7 /* HistoryCell.h */,
+				AEA68038125A2DA90038B4C7 /* HistoryCell.m */,
 				AEC16F1F0F68334800A38C90 /* DockView.h */,
 				AEC16F200F68334800A38C90 /* DockView.m */,
 				AE2B1610123A125E0028D2D1 /* LiveTextView.h */,
 				AE2B1611123A125E0028D2D1 /* LiveTextView.m */,
 				AE320F591267B25A00EE3488 /* ListenMenuItem.h */,
 				AE320F5A1267B25A00EE3488 /* ListenMenuItem.m */,
+				AE76B0191268BB9F005EAEDC /* ScheduleMenuItem.h */,
+				AE76B01A1268BB9F005EAEDC /* ScheduleMenuItem.m */,
+				AE76B2EC126C76B8005EAEDC /* ScheduleMenuListItem.h */,
+				AE76B2ED126C76B8005EAEDC /* ScheduleMenuListItem.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1056,9 +1066,11 @@
 				AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */,
 				AE5E3C9512477ACC00C15403 /* Scrobble.m in Sources */,
 				AEA67EB8125A0BE30038B4C7 /* HistoryWindowController.m in Sources */,
-				AEA68039125A2DA90038B4C7 /* MyCell.m in Sources */,
+				AEA68039125A2DA90038B4C7 /* HistoryCell.m in Sources */,
 				AEA685CE125C76660038B4C7 /* Play.m in Sources */,
 				AE320F5B1267B25A00EE3488 /* ListenMenuItem.m in Sources */,
+				AE76B01B1268BB9F005EAEDC /* ScheduleMenuItem.m in Sources */,
+				AE76B2EE126C76B8005EAEDC /* ScheduleMenuListItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,6 +1166,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DDEBUG=1";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};

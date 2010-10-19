@@ -149,7 +149,6 @@
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
 {
   if ([[tabViewItem identifier] isEqual:@"stations"]) {
-    //NSString *urlStr = @"http://localhost/~duncan/services.json";
     NSString *urlStr = @"http://www.bbc.co.uk/programmes/services.json";
     NSURL *url = [NSURL URLWithString:urlStr];
     
@@ -163,8 +162,7 @@
 
 - (void)serviceFetcher:(GDataHTTPFetcher *)serviceFetcher failedWithError:(NSError *)error
 {
-  NSString *errorStr = [[error userInfo] objectForKey:@"NSLocalizedDescription"];
-  NSLog(@"serviceFetcher: %@", errorStr);  
+  DLog(@"serviceFetcher: %@", [[error userInfo] objectForKey:@"NSLocalizedDescription"]);  
 }
 
 - (void)serviceFetcher:(GDataHTTPFetcher *)serviceFetcher finishedWithData:(NSData *)retrievedData
@@ -193,7 +191,6 @@
   [parser release];
   [result_string release];
 }
-
 
 #pragma mark -
 #pragma mark NSOutlineView delegates

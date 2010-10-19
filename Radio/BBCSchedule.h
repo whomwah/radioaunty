@@ -14,6 +14,7 @@
 @interface BBCSchedule : NSObject {  
   NSString *serviceKey;
   NSString *outletKey;
+  NSDate *date;
   
   NSArray *broadcasts;
   BBCService *service;
@@ -21,11 +22,14 @@
 
 @property (nonatomic, retain) NSArray *broadcasts;
 @property (nonatomic, retain) BBCService *service;
+@property (nonatomic, retain) NSDate *date;
 @property (nonatomic, readonly, retain) BBCBroadcast *current_broadcast;
 
 - (id)initUsingNetwork:(NSString *)network andOutlet:(NSString *)outlet;
-- (BBCSchedule *)fetchScheduleForDate:(NSDate *)date;
-- (NSURL *)urlForDate:(NSDate *)date;
+- (BBCSchedule *)fetchScheduleForDate:(NSDate *)scheduleDate;
+- (BBCSchedule *)fetch;
+- (BBCSchedule *)refreshDateAndFetch;
+- (NSURL *)constructUrl;
 - (void)fetch:(NSURL *)url;
 - (BBCBroadcast *)next_broadcast;
 - (BBCBroadcast *)previous_broadcast;

@@ -19,6 +19,7 @@
 @synthesize start;
 @synthesize display_titles;
 @synthesize media;
+@synthesize availability;
 
 
 #pragma mark -
@@ -50,7 +51,11 @@
   self.media =          [prog objectForKey:@"media"];
   self.pid   =          [prog objectForKey:@"pid"];
   self.short_synopsis = [prog objectForKey:@"short_synopsis"];
-  self.type  =          [prog objectForKey:@"type"];  
+  self.type  =          [prog objectForKey:@"type"];
+
+  if (media) {
+    self.availability = [media objectForKey:@"availability"];
+  }
   
   [formatDate release];
   

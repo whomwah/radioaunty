@@ -56,11 +56,13 @@
   NSDictionary *display_titles;
   NSDictionary *media;
   NSString *short_synopsis;
+  NSString *availability;
   NSString *pid;
   NSString *type;
 }
 
 @property (nonatomic, copy) NSString *short_synopsis;
+@property (nonatomic, copy) NSString *availability;
 @property (nonatomic, copy) NSString *pid;
 @property (nonatomic, copy) NSString *type;
 @property (nonatomic, retain) NSDate *end;
