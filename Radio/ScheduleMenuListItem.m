@@ -22,6 +22,13 @@
 	return self;
 }
 
+- (void)dealloc
+{
+  [title release];
+   
+  [super dealloc];
+}
+
 - (void)createLabel
 {
   NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:title];

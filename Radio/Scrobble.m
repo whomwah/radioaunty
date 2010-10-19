@@ -66,9 +66,7 @@ enum {
 
 - (void)dealloc
 {  
-  [protocolVersion release];
   [clientId release];
-  [clientVersion release];
   [user release];
   [apiKey release];
   [apiSecret release];

@@ -20,6 +20,9 @@
   BBCService *service;
 }
 
+
+@property (nonatomic, copy) NSString *serviceKey;
+@property (nonatomic, copy) NSString *outletKey;
 @property (nonatomic, retain) NSArray *broadcasts;
 @property (nonatomic, retain) BBCService *service;
 @property (nonatomic, retain) NSDate *date;

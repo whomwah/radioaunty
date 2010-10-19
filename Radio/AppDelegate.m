@@ -95,12 +95,8 @@ typedef SCNetworkConnectionFlags SCNetworkReachabilityFlags;
 
 - (void)dealloc
 {
-	[mainWindowController release];
-	[xmppStream release];
-  [xmppReconnect release];
-  [scrobbler release];
 	[preferencesWindowController release];
-  [livetextLookup release];
+  [historyWindowController release];
 	
 	[super dealloc];
 }

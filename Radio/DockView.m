@@ -23,6 +23,13 @@
   return self;
 }
 
+- (void)dealloc
+{
+  [networkIcon release];
+  
+	[super dealloc];
+}
+
 - (void)drawRect:(NSRect)rect
 {
   [self setSubviews:[NSArray array]];

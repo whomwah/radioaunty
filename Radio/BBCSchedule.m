@@ -19,6 +19,8 @@
 @synthesize broadcasts;
 @synthesize service;
 @synthesize date;
+@synthesize serviceKey;
+@synthesize outletKey;
 
 - (id)init
 {
@@ -35,6 +37,8 @@
   [broadcasts release];
   [service release];
   [date release];
+  [serviceKey release];
+  [outletKey release];
   
 	[super dealloc];
 }
@@ -44,8 +48,8 @@
 {
   if (![super init]) return nil;
   
-  outletKey  = outlet; 
-  serviceKey = network;
+  self.outletKey  = outlet; 
+  self.serviceKey = network;
   self.date = [NSDate date];
   
   return self;
@@ -120,7 +124,8 @@
  
   // first create the service
   BBCService *ser = [[BBCService alloc] initWithDictionary:[schedule objectForKey:@"service"]];
-  [self setService:ser];
+  self.service = ser;
+  [ser release];
     
   // create a tmp array to store the broadcasts
   NSArray *tmp_broadcasts = [[schedule objectForKey:@"day"] objectForKey:@"broadcasts"];
@@ -135,7 +140,7 @@
   }
   
   // do it like this for key value observing
-  [self setBroadcasts:bcs];
+  self.broadcasts = bcs;
   
   [parser release];
   [json_string release];

@@ -41,6 +41,7 @@
 
 - (void)dealloc
 {
+  [text release];
   [progressIndictor release];
   [textArea release];
   

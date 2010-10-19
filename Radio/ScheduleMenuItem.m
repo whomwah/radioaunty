@@ -31,6 +31,8 @@
 {
 	[start release];
   [title release];
+  [availability release];
+  [short_synopsis release];
   [currentState release];
 	
 	[super dealloc];

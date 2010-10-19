@@ -20,7 +20,8 @@ NSString *const PlayDefaultSmallImage = @"http://cdn.last.fm/flatness/catalogue/
   [track release];
   [mbid release];
   [small_image release];
-  [timestamp release];
+  [signature release];
+  [timestamp release];  
   
 	[super dealloc];
 }

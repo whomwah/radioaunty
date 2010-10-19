@@ -158,14 +158,14 @@
  **/
 
 - (void)dealloc
-{
-  [dockIconView release];
-	[empViewController release];
-  [xmppCapabilities release];
-  [pubsub release];
+{  
+  [scheduleTimer release];
+  [windowTitle release];
   [liveTextView release];
-  [currentStation release];
   [schedules release];
+  [pubsub release];
+  [anonJID release];
+  [currentStation release];
   
 	[super dealloc];
 }
@@ -315,14 +315,17 @@
 {    
   BBCSchedule *s;
   
-  // set the tag
-  int tag = [[sender performSelector:@selector(parentItem)] tag];
-  if (tag < 1) {
+  // fetch the menu of the sender
+  NSMenu *m = [sender menu];
+  
+  // NOTE: relies on the menu item being called Schedule
+  if ([[m title] isEqual:@"Schedule"]) {
     // set the current schedule
     s = [self currentSchedule];
   } else {
     // set one of the 7 day catchup
-    s = [schedules objectAtIndex:(tag/100)];
+    int index = [[[m supermenu] itemAtIndex:[[m supermenu] indexOfItemWithSubmenu:m]] tag];
+    s = [schedules objectAtIndex:(index/100)];
   }
   
   // set the window title to something sane
@@ -659,7 +662,7 @@
     [self growl];
   } else {
     // rebuild the schedules menu
-    // TODO: This is overkill at the moment as we erbuild
+    // TODO: This is overkill at the moment as we rebuld everything
     // the whole schedule menu rather than the one that has changed
     [self buildSchedule];
   }
@@ -690,12 +693,12 @@
   
   // set a timer that loads the schedule again when the 
   // current broadcast has finshed
-  NSTimer *timer = [[NSTimer alloc] initWithFireDate:currentBroadcast.end
-                                            interval:0.0
-                                              target:self
-                                            selector:@selector(prepareSchedules:)
-                                            userInfo:nil
-                                             repeats:NO];
+  NSTimer *timer = [[[NSTimer alloc] initWithFireDate:currentBroadcast.end
+                                             interval:0.0
+                                               target:self
+                                             selector:@selector(prepareSchedules:)
+                                             userInfo:nil
+                                              repeats:NO] autorelease];
   
   // add the timer to the current run loop
   NSRunLoop *runLoop = [NSRunLoop currentRunLoop];

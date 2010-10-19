@@ -76,6 +76,7 @@
   [start release];
   [display_titles release];
   [media release];
+  [availability release];
 	
   [super dealloc];
 }
