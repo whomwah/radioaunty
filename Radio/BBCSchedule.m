@@ -64,7 +64,6 @@
   NSString *api_url = API_URL;
   NSString *url_str = [NSString stringWithFormat:api_url, serviceStr, outletStr, dateStr];
   
-  //return [NSURL URLWithString:@"http://localhost/~duncan/programmes/london.json"];
   return [NSURL URLWithString:url_str];
 }
 
@@ -92,6 +91,7 @@
 
 - (void)fetch:(NSURL *)url
 {  
+  DLog(@"schedule: %@", [url absoluteURL]);
   NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
                                           timeoutInterval:60.0];

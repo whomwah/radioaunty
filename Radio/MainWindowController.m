@@ -738,7 +738,7 @@
     // create a new menu item
     mitem = [[ScheduleMenuItem alloc] init];
     mitem.start = broadcast.start;
-    mitem.title = [broadcast.display_titles objectForKey:@"title"];
+    mitem.title = [[broadcast.display_titles objectForKey:@"title"] description];
     mitem.availability = broadcast.availability;
     mitem.short_synopsis = broadcast.short_synopsis;
     [mitem setTarget:self];
@@ -751,7 +751,7 @@
       // display so you know that the parent has an active child
       [scheduleMenuItem setState:NSMixedState];
       
-    } else if (broadcast.media && [[broadcast.media objectForKey:@"format"] isEqualToString:@"audio"]) {
+    } else if (broadcast.media && [[[broadcast.media objectForKey:@"format"] description] isEqualToString:@"audio"]) {
       [mitem setAction:@selector(fetchAOD:)];
     }
     
@@ -817,7 +817,7 @@
     // create a new menu item
     newItem = [[ScheduleMenuItem alloc] init];
     newItem.start = broadcast.start;
-    newItem.title = [broadcast.display_titles objectForKey:@"title"];
+    newItem.title = [[broadcast.display_titles objectForKey:@"title"] description];
     newItem.availability = broadcast.availability;
     newItem.short_synopsis = broadcast.short_synopsis;
     [newItem setTarget:self];
@@ -829,7 +829,7 @@
     } else if ([broadcast isEqual:[self currentSchedule].current_broadcast]) {
       newItem.currentState = @"LIVE";
       [newItem setAction:@selector(refreshStation:)];
-    } else if (broadcast.media && [[broadcast.media objectForKey:@"format"] isEqualToString:@"audio"]) {
+    } else if (broadcast.media && [[[broadcast.media objectForKey:@"format"] description] isEqualToString:@"audio"]) {
       [newItem setAction:@selector(fetchAOD:)];
     }
     
@@ -882,15 +882,15 @@
   }
 }
 
-- (NSSize)windowWillResize:(NSWindow *)window toSize:(NSSize)proposedFrameSize
-{  
-  return [window frame].size;
-}
-
 - (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)proposedFrame
 {  
   return YES;
 }
+
+/**
+ * Minimizes the player based on pressing zoom
+ *
+ **/
 
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)window defaultFrame:(NSRect)defaultFrame
 { 
@@ -927,6 +927,11 @@
 #pragma mark Presence Management
 #pragma mark -
 
+/**
+ * sends a presence stanza to say we're online
+ *
+ **/
+
 - (void)goOnline
 {
 	NSXMLElement *presence = [NSXMLElement elementWithName:@"presence"];
@@ -937,6 +942,10 @@
 	[[self xmppStream] sendElement:presence];
 }
 
+/**
+ * sends a presence stanza to say we're offline
+ *
+ **/
 
 - (void)goOffline
 {
@@ -950,6 +959,12 @@
 #pragma mark -
 #pragma mark XMPPClient Delegate Methods
 #pragma mark -
+
+/**
+ * Our initial XMPP handshake worked so we can now
+ * try authorise anonymously
+ *
+ **/
 
 - (void)xmppStreamDidConnect:(XMPPStream *)sender
 {	
@@ -967,36 +982,46 @@
 	}
 }
 
+/**
+ * We're in. We can now send our online presence and try
+ * to subscribe to the required livetext channel
+ *
+ **/
+
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender
 {	
   DLog(@"Authenticated ok");
   
-  // Send presence
-  
+  // Send presence  
 	[self goOnline];
-  
-  // unsubscribe subscribe to the livetext node of the current station
-  // TODO This is clearly messy and needs to be done properly
-  
+
+  // subscribe to the current stations livetext channel
   [self subscribeToLiveTextChannel:[currentStation objectForKey:@"key"]];
 }
+
+/**
+ * Looks like we have been disconnected. Deal with it
+ *
+ **/
 
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender
 {	
   DLog(@"XMPP Connection has disconnected");
+  
   [liveTextView progressIndictorOff];
   [[self window] setShowsToolbarButton:NO];
   [toolBar setVisible:NO];
 }
 
-- (void)xmppStreamWasToldToDisconnect:(XMPPStream *)sender
-{
-  DLog(@"XMPP Connection told to disconnected");
-}
+/**
+ * Looks like we couldn't connect
+ *
+ **/
 
 - (void)xmppStream:(XMPPStream *)sender didNotConnect:(NSError *)error
 {
   DLog(@"XMPP Connection did not even connect?");
+  
   [liveTextView progressIndictorOff];
   [[self window] setShowsToolbarButton:NO];
   [toolBar setVisible:NO];
@@ -1006,35 +1031,42 @@
 #pragma mark XMPPPubSub Delegate Methods
 #pragma mark -
 
+/**
+ * We successfully subscribed to a livetext node
+ *
+ **/
+
 - (void)xmppPubSub:(XMPPPubSub *)sender didSubscribe:(XMPPIQ *)iq
 {
   DLog(@"pubsub subscribed");
+  
   [[self window] setShowsToolbarButton:YES];
   [toolBar setVisible:YES];
 }
 
-- (void)xmppPubSub:(XMPPPubSub *)sender didCreateNode:(NSString*)node withIQ:(XMPPIQ *)iq
-{
-  DLog(@"pubsub created node");
-}
+/**
+ * We recieved an error when subscribing
+ *
+ **/
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveError:(XMPPIQ *)iq
 {
   DLog(@"pubsub error: %@", iq);
+  
   [liveTextView progressIndictorOff];
   [[self window] setShowsToolbarButton:NO];
   [toolBar setVisible:NO];
 }
 
-- (void)xmppPubSub:(XMPPPubSub *)sender didReceiveResult:(XMPPIQ *)iq
-{
-  DLog(@"pubsub result");
-}
+/**
+ * We recieved an message. This will be the actual livetext information. We take
+ * any messages, including ones that have been re-delivered or delayed
+ *
+ **/
 
 - (void)xmppPubSub:(XMPPPubSub *)sender didReceiveMessage:(XMPPMessage *)message
 {
-  //if ([message elementForName:@"delay"]) return;
-  
+  // dig into the stanza and return the actual livetext information
   NSString *txt = [[[[[message elementForName:@"event"] 
                                elementForName:@"items"] 
                                elementForName:@"item"] 
@@ -1042,19 +1074,23 @@
   
   if (!txt) return;
   
+  // we crudely match for now playing information as it is structured
+  // the same way. i.e starts with Now Playing: and has the artist and
+  // track sepreated by the word 'by'. This obviously fails if the artist
+  // or track has the word 'by' in it. What can you do !
   NSString *match = @"Now playing: ";
   if ([txt hasPrefix:match])
-  {
-    // first remove the now playing bit
-    NSString *string = [txt stringByReplacingOccurrencesOfString:match withString:@""];
-    NSRange split = [string rangeOfString:@" by "];
-    NSString *track  = [string substringWithRange:NSMakeRange(0,split.location)];
-    NSString *artist = [string substringWithRange:NSMakeRange(split.location+split.length,
-                                                              [string length]-split.location-split.length-1)];
-    
+  {    
     // has the user allowed the app to scrobble
     if (([[NSUserDefaults standardUserDefaults] boolForKey:@"DefaultLastFMEnabled"] == YES)
         && [[self scrobbler] isAuthorised]) {
+   
+      // first remove the now playing bit
+      NSString *string = [txt stringByReplacingOccurrencesOfString:match withString:@""];
+      NSRange split = [string rangeOfString:@" by "];
+      NSString *track  = [string substringWithRange:NSMakeRange(0,split.location)];
+      NSString *artist = [string substringWithRange:NSMakeRange(split.location+split.length,
+                                                                [string length]-split.location-split.length-1)];
       
       // scrobble track and artist      
       NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
