@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 2.1 (Choose any BBC Radio Station, plus 7 day catchup)</title>
+            <title>Version 2.1.1 (Fixed schedule bug)</title>
 						<sparkle:releaseNotesLink>
               http://whomwah.github.com/radioaunty/changelog.html 
 						</sparkle:releaseNotesLink>
-            <pubDate>Wed, 20 Oct 2010 16:00:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.1.dmg" sparkle:shortVersionString="2.1" sparkle:version="2.1.0" length="1021081" type="application/octet-stream" sparkle:dsaSignature="MCwCFAKxhk+pVfKLIQ7Jyhx1QfE3/RESAhRQ72HiKCAkqnVvgfggOD+BBUAxuw==" />
+            <pubDate>Fri, 22 Oct 2010 16:00:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.1.1.dmg" sparkle:shortVersionString="2.1" sparkle:version="2.1.1" length="1020707" type="application/octet-stream" sparkle:dsaSignature="MCwCFGyo8E6inkC8uWwCKAf7nhqcq0HLAhQUkSnl/TD/jCJTmf2yf6kaP+TkKA==" />
          </item>
    </channel>
 </rss>

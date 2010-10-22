@@ -1,3 +1,7 @@
+*2.1.1* (Oct 22, 2010)
+
+* fix bug which stoppped some local station schedules not appearing
+
 *2.1* (Oct 20, 2010)
 
 * Add local radio and customisable stations 
