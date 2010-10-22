@@ -730,19 +730,19 @@
   
   // set a counter
   int count = 0;
-  
+
   // loop through all the broadcasts and add them to the submenu
   ScheduleMenuItem *mitem;
   for (BBCBroadcast *broadcast in schedule.broadcasts) {
     
     // create a new menu item
     mitem = [[ScheduleMenuItem alloc] init];
-    mitem.start = broadcast.start;
-    mitem.title = [[broadcast.display_titles objectForKey:@"title"] description];
+    mitem.startDate = broadcast.start;
+    mitem.titleString = [[broadcast.display_titles objectForKey:@"title"] description];
     mitem.availability = broadcast.availability;
     mitem.short_synopsis = broadcast.short_synopsis;
     [mitem setTarget:self];
-    
+
     if ([broadcast isEqual:currentBroadcast]) {
       mitem.currentState = @"NOW PLAYING";
       [mitem setState:NSOnState];
@@ -816,8 +816,8 @@
      
     // create a new menu item
     newItem = [[ScheduleMenuItem alloc] init];
-    newItem.start = broadcast.start;
-    newItem.title = [[broadcast.display_titles objectForKey:@"title"] description];
+    newItem.startDate = broadcast.start;
+    newItem.titleString = [[broadcast.display_titles objectForKey:@"title"] description];
     newItem.availability = broadcast.availability;
     newItem.short_synopsis = broadcast.short_synopsis;
     [newItem setTarget:self];

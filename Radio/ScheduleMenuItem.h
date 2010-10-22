@@ -10,15 +10,15 @@
 
 
 @interface ScheduleMenuItem : NSMenuItem {
-  NSDate *start;
-  NSString *title;
+  NSDate   *startDate;
+  NSString *titleString;
   NSString *availability;
   NSString *short_synopsis;
   NSString *currentState;
 }
 
-@property (nonatomic, retain) NSDate *start;
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, copy) NSString *titleString;
 @property (nonatomic, copy) NSString *availability;
 @property (nonatomic, copy) NSString *short_synopsis;
 @property (nonatomic, copy) NSString *currentState;

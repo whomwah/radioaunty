@@ -11,8 +11,8 @@
 
 @implementation ScheduleMenuItem
 
-@synthesize start;
-@synthesize title;
+@synthesize startDate;
+@synthesize titleString;
 @synthesize currentState;
 @synthesize availability;
 @synthesize short_synopsis;
@@ -20,7 +20,7 @@
 - (id)init
 {
 	if (self = [super init]) {
-    self.title = @"";
+    self.titleString = @"";
     self.currentState = @"";
 	}
   
@@ -29,8 +29,8 @@
 
 - (void)dealloc
 {
-	[start release];
-  [title release];
+	[startDate release];
+  [titleString release];
   [availability release];
   [short_synopsis release];
   [currentState release];
@@ -40,8 +40,8 @@
 
 - (NSString*)startAsHHMM
 {
-  if ([start isKindOfClass:[NSDate class]]) {
-    return [start descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil]; 
+  if ([startDate isKindOfClass:[NSDate class]]) {
+    return [startDate descriptionWithCalendarFormat:@"%H:%M" timeZone:nil locale:nil]; 
   }
   return @"";
 }
@@ -59,26 +59,26 @@
 }
 
 - (void)createLabel
-{
-  NSString *startStr = [self startAsHHMM];
-  NSString *origStr = [NSString stringWithFormat:@"%@  %@ %@", startStr, title, currentState];  
+{      
+  NSString *startString = [self startAsHHMM];
+  NSString *origStr = [NSString stringWithFormat:@"%@  %@ %@", startString, self.titleString, self.currentState];  
   NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:
                                  [origStr stringByTrimmingCharactersInSet:
                                   [NSCharacterSet whitespaceCharacterSet]]];
   NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithAttributedString:attrStr];
-  
-  int slen  = [startStr length];
-  int tlen  = [title length];
-  int stlen = [currentState length];
+
+  NSUInteger slen  = [startString length];
+  NSUInteger tlen  = [self.titleString length];
+  NSUInteger stlen = [self.currentState length];
   
   [str addAttribute:NSFontAttributeName
               value:[NSFont boldSystemFontOfSize:13.3]
-              range:NSMakeRange(0, slen)];
+              range:NSMakeRange(0, slen)];  
   
   [str addAttribute:NSFontAttributeName
               value:[NSFont userFontOfSize:13.6]
-              range:NSMakeRange(slen+2, tlen)];
-    
+              range:NSMakeRange(slen, [str length]-slen)];
+
   [str addAttribute:NSForegroundColorAttributeName
               value:[NSColor lightGrayColor]
               range:NSMakeRange(3+slen+tlen, stlen)];
