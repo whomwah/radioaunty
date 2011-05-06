@@ -16,6 +16,7 @@
 		AE2B0FB51234ED170028D2D1 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B0FB41234ED170028D2D1 /* libresolv.dylib */; };
 		AE2B1612123A125E0028D2D1 /* LiveTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B1611123A125E0028D2D1 /* LiveTextView.m */; };
 		AE2B1AF8123E1CEE0028D2D1 /* XMPPPubSub.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */; };
+		AE2D44051371A8E000952107 /* bbc_radio_four_extra.png in Resources */ = {isa = PBXBuildFile; fileRef = AE2D44041371A8E000952107 /* bbc_radio_four_extra.png */; };
 		AE320D7112674D5800EE3488 /* bbc_1xtra.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3812674D5700EE3488 /* bbc_1xtra.png */; };
 		AE320D7212674D5800EE3488 /* bbc_6music.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3912674D5700EE3488 /* bbc_6music.png */; };
 		AE320D7312674D5800EE3488 /* bbc_7.png in Resources */ = {isa = PBXBuildFile; fileRef = AE320D3A12674D5700EE3488 /* bbc_7.png */; };
@@ -188,6 +189,7 @@
 		AE2B1611123A125E0028D2D1 /* LiveTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTextView.m; sourceTree = "<group>"; };
 		AE2B1AF6123E1CEE0028D2D1 /* XMPPPubSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPPubSub.h; sourceTree = "<group>"; };
 		AE2B1AF7123E1CEE0028D2D1 /* XMPPPubSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPPubSub.m; sourceTree = "<group>"; };
+		AE2D44041371A8E000952107 /* bbc_radio_four_extra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_radio_four_extra.png; sourceTree = "<group>"; };
 		AE320D3812674D5700EE3488 /* bbc_1xtra.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_1xtra.png; sourceTree = "<group>"; };
 		AE320D3912674D5700EE3488 /* bbc_6music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_6music.png; sourceTree = "<group>"; };
 		AE320D3A12674D5700EE3488 /* bbc_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbc_7.png; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 		AE320D3712674D5700EE3488 /* bbc_radio_logos */ = {
 			isa = PBXGroup;
 			children = (
+				AE2D44041371A8E000952107 /* bbc_radio_four_extra.png */,
 				AE320D3812674D5700EE3488 /* bbc_1xtra.png */,
 				AE320D3912674D5700EE3488 /* bbc_6music.png */,
 				AE320D3A12674D5700EE3488 /* bbc_7.png */,
@@ -1004,6 +1007,7 @@
 				AE320DA712674D5800EE3488 /* bbc_three_counties_radio.png in Resources */,
 				AE320DA812674D5800EE3488 /* bbc_wm.png in Resources */,
 				AE320DA912674D5800EE3488 /* bbc_world_service.png in Resources */,
+				AE2D44051371A8E000952107 /* bbc_radio_four_extra.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1122,8 +1126,10 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/libidn\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = RadioAunty;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -1152,8 +1158,10 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/libidn\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = RadioAunty;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
