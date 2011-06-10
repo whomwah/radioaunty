@@ -6,12 +6,12 @@
       <description>Most recent changes with links to updates.</description>
       <language>en</language>
          <item>
-            <title>Version 2.1.1 (Fixed schedule bug)</title>
+            <title>Version 2.1.2 (Added Radio Four Extra)</title>
 						<sparkle:releaseNotesLink>
               http://whomwah.github.com/radioaunty/changelog.html 
 						</sparkle:releaseNotesLink>
-            <pubDate>Fri, 22 Oct 2010 16:00:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.1.1.dmg" sparkle:shortVersionString="2.1" sparkle:version="2.1.1" length="1020707" type="application/octet-stream" sparkle:dsaSignature="MCwCFGyo8E6inkC8uWwCKAf7nhqcq0HLAhQUkSnl/TD/jCJTmf2yf6kaP+TkKA==" />
+            <pubDate>Fri, 10 Jun 2011 12:00:00 +0000</pubDate>
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.1.2.dmg" sparkle:shortVersionString="2.1" sparkle:version="2.1.2" length="" type="application/octet-stream" sparkle:dsaSignature="" />
          </item>
    </channel>
 </rss>
