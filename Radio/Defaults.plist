@@ -171,11 +171,11 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>bbc_7</string>
+			<string>bbc_radio_four_extra</string>
 			<key>key</key>
-			<string>radio7</string>
+			<string>radio4extra</string>
 			<key>title</key>
-			<string>BBC Radio 7</string>
+			<string>BBC Radio 4 Extra</string>
 			<key>subtype</key>
 			<string>national</string>
 		</dict>
@@ -218,7 +218,7 @@
 		<string></string>
 		<key>bbc_6music</key>
 		<string></string>
-		<key>bbc_7</key>
+		<key>bbc_radio_four_extra</key>
 		<string></string>
 		<key>bbc_asian_network</key>
 		<string></string>

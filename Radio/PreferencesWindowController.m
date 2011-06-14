@@ -149,7 +149,7 @@
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
 {
   if ([[tabViewItem identifier] isEqual:@"stations"]) {
-    NSString *urlStr = @"http://www.bbc.co.uk/programmes/services.json";
+    NSString *urlStr = @"http://www.bbc.co.uk/radio/programmes/services.json";
     NSURL *url = [NSURL URLWithString:urlStr];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -172,11 +172,12 @@
   NSString *result_string = [[NSString alloc] initWithData:retrievedData encoding:NSUTF8StringEncoding];    
   NSDictionary *result = [parser objectWithString:result_string error:nil];
   
-  // replace any existing version of the services data with
-  // only the radio data from the services.json
+  // remove station keys that don't appear to have a stream
   NSArray *allservices = [result objectForKey:@"services"];
   if (allservices) {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == 'radio'"];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type == 'radio'"];
+    // TODO This is a hack and not ideal !!!
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT(id IN { 'bbc_radio_swindon', 'home_service', 'third_programme', 'bbc_southern_counties_radio', 'bbc_school_radio' })"];
     NSArray *services = [allservices filteredArrayUsingPredicate:predicate];
     if ([services count] > 0) {
       [ud setValue:services forKey:@"Services"];
