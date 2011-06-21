@@ -11,7 +11,7 @@
               http://whomwah.github.com/radioaunty/changelog.html 
 						</sparkle:releaseNotesLink>
             <pubDate>Fri, 10 Jun 2011 12:00:00 +0000</pubDate>
-            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.1.2.dmg" sparkle:shortVersionString="2.1" sparkle:version="2.1.2" length="" type="application/octet-stream" sparkle:dsaSignature="" />
+            <enclosure url="http://cloud.github.com/downloads/whomwah/radioaunty/RadioAunty_2.1.2.dmg" sparkle:shortVersionString="2.1" sparkle:version="2.1.2" length="833246" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCtzMyKheBPr5ErubLGzF9s1pWN/wIVAI3rjod+yTCbrkqoGPbF4mVxaxCz" />
          </item>
    </channel>
 </rss>
